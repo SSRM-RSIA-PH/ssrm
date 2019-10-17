@@ -17,3 +17,10 @@ Route::get('/', function () {
 Route::get('/dokter', function () {
     return view('dokter.show');
 });
+Route::get('/cari', function () {
+    return view('dokter.index');
+});
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
