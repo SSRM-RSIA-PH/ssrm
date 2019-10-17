@@ -14,3 +14,6 @@
 Route::get('/', function () {
     return view('welcome');
 });
+Route::get('/dokter', function () {
+    return view('dokter.show');
+});
