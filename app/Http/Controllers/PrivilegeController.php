@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
-class ControllerPoli extends Controller
+class PrivilegeController extends Controller
 {
     //
 }

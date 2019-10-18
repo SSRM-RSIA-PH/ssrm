@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
-class ControllerIgd extends Controller
+class IgdController extends Controller
 {
     //
 }

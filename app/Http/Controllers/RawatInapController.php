@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
-class ControllerRawatInap extends Controller
+class RawatInapController extends Controller
 {
     //
 }
