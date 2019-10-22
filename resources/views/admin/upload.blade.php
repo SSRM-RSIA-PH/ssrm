@@ -48,12 +48,4 @@
         <embed src="{{ asset('img/1.pdf') }}" type="application/pdf" width="100%" height="600px" />
     </div>
 </div>
-
-<script>
-    // Add the following code if you want the name of the file appear on select
-    $(".custom-file-input").on("change", function() {
-        var fileName = $(this).val().split("\\").pop();
-        $(this).siblings(".custom-file-label").addClass("selected").html(fileName);
-    });
-</script>
 @endsection
