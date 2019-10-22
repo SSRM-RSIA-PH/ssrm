@@ -20,6 +20,9 @@ Route::get('/dokter', function () {
 Route::get('/cari', function () {
     return view('dokter.index');
 });
+Route::get('/admin', function () {
+    return view('admin.upload');
+});
 
 Auth::routes();
 
