@@ -16,7 +16,7 @@
 
 <div class="col-10">
     <div class="card">
-        <embed src="{{ asset('img/1.pdf') }}" type="application/pdf" width="100%" height="600px" />
+        <embed src="{{ asset('img/1.pdf') }}" type="application/pdf" width="100%" height="800px" />
     </div>
 </div>
 

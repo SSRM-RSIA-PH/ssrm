@@ -16,11 +16,11 @@
         <div class="card mb-3">
             <div class="card-header">
                 <div class="custom-control custom-checkbox">
-                    <input type="checkbox" class="custom-control-input" id="customCheck1">
+                    <input type="checkbox" class="custom-control-input" checked id="customCheck1">
                     <label class="custom-control-label" for="customCheck1">Penunjang</label>
                 </div>
             </div>
-            <div class="card-body" id="penunjang" hidden>
+            <div class="card-body" id="penunjang">
                 <div class="form-group">
                     <select class="form-control" id="">
                         <option value="">Pilih..</option>
@@ -41,6 +41,8 @@
             <label for="">Tanggal</label>
             <input type="datetime-local" class="form-control" name="" id="">
         </div>
+        <input type="submit" value="Simpan" class="btn btn-primary float-right">
+        <button type="reset" class="btn btn-danger float-right mr-2">Reset</button>
     </form>
 </div>
 <div class="col-9">
