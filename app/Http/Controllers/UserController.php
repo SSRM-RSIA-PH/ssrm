@@ -3,12 +3,14 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use \App\User;
 
 class UserController extends Controller
 {
     public function index()
     {
-        //
+        $users = \App\User::paginate(10);
+        return view('user.index', ['users'=>$users]);
     }
 
     public function create()
@@ -18,7 +20,15 @@ class UserController extends Controller
 
     public function store(Request $request)
     {
-        
+        $new_user =  new User;
+        $new_user->name = $request->get('name');
+        $new_user->email = $request->get('name');
+        $new_user->username = $request->get('username');
+        $new_user->role = $request->get('role');
+        $new_user->password = \Hash::make($request->get('password'));
+        $new_user->save();
+
+        return redirect()->route('user.create')->with('status', 'User successfully created');
     }
 
     public function show($id)
@@ -28,12 +38,13 @@ class UserController extends Controller
 
     public function edit($id)
     {
-        //
+        $user = User::findOrFail($id);
+        return view('user.edit', ['user'=>$user]);
     }
 
     public function update(Request $request, $id)
     {
-        //
+        
     }
 
     public function destroy($id)
