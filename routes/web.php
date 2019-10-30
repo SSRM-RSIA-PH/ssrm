@@ -3,7 +3,7 @@
 Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
 
-Route::get('/', function() {
+Route::get('/', function () {
     return redirect('/home');
 });
 
@@ -38,3 +38,4 @@ Route::get('/cari', function () {
 Route::get('/admin', function () {
     return view('rekmed.admin.upload');
 });
+

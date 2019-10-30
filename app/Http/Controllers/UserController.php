@@ -44,7 +44,20 @@ class UserController extends Controller
 
     public function update(Request $request, $id)
     {
-        
+        $user = User::findOrFail($id);
+
+        $user->name = $request->get('name');
+        $user->username = $request->get('username');
+        $user->email = $request->get('email');
+        $user->role = $request->get('role');
+
+        if($request->get('password')){
+            $user->password = \Hash::make($request->get('password'));
+        }
+
+        $user->save();
+
+        return redirect()->route('user.edit', ['id' => $id])->with('status', 'User successfully updated');
     }
 
     public function destroy($id)
