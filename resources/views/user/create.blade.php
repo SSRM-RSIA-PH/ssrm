@@ -3,6 +3,12 @@
 @section("title") Create User @endsection
 
 @section("content")
+@if(session('status'))
+    <div class="alert alert-success">
+        {{session('status')}}
+    </div>
+@endif
+
 <form 
     class="bg-white shadow-sm p-3"
     enctype="multipart/form-data" 
@@ -10,7 +16,14 @@
     method="POST">
 
     @csrf
-    
+    <label for="email">Email</label>
+    <input
+        class="form-control"
+        type="email"
+        name="email"
+        id="email"/>
+    <br>
+
     <label for="name">Name</label>
     <input
         class="form-control"
