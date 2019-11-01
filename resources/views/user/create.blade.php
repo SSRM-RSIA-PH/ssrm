@@ -16,14 +16,6 @@
     method="POST">
 
     @csrf
-    <label for="email">Email</label>
-    <input
-        class="form-control"
-        type="email"
-        name="email"
-        id="email"/>
-    <br>
-
     <label for="name">Name</label>
     <input
         class="form-control"
@@ -38,6 +30,14 @@
         type="text"
         name="username"
         id="username"/>
+    <br>
+
+    <label for="email">Email</label>
+    <input
+        class="form-control"
+        type="email"
+        name="email"
+        id="email"/>
     <br>
         
     <label for="role">Role</label>
