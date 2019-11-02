@@ -2,7 +2,7 @@
 @section('title') Dokter @endsection
 @section('content')
 <div class="container">
-<div class="alert alert-success mt-3">Welcome {{Auth::user()->name}}</div>
+<div class="alert alert-success mt-3 w-100">Welcome {{Auth::user()->name}}</div>
     <div class="">
         <div class="row d-flex justify-content-center mb-3">
             <img src="img/logo-rsia-ph.png" width="300px" alt="rsia-ph">
