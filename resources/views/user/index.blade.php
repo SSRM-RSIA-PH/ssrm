@@ -1,4 +1,4 @@
-@extends('layouts.global')
+@extends('layouts.user')
 
 @section('title')
 List User
@@ -12,12 +12,13 @@ List User
 @endif
 
 <div class="row">
-    <div class="col-md-6">
+    <div class="col-6">
         <form action="{{route('user.index')}}">
             <div class="input-group mb-3">
                 <select class="form-control col-md-10" name="keyword">
                     <option value="">All</option>
-                    <option value="SUPERVISOR" {{Request::get('keyword') == 'SUPERVISOR' ? 'selected' : ''}}>Supervisor</option>
+                    <option value="SUPERVISOR" {{Request::get('keyword') == 'SUPERVISOR' ? 'selected' : ''}}>Supervisor
+                    </option>
                     <option value="ADMIN" {{Request::get('keyword') == 'ADMIN' ? 'selected' : ''}}>Admin</option>
                     <option value="DOKTER" {{Request::get('keyword') == 'DOKTER' ? 'selected' : ''}}>Dokter</option>
                 </select>
@@ -27,21 +28,19 @@ List User
             </div>
         </form>
     </div>
-    <div class="col-md-4"></div>
-    <div class="col-md-2">
-        <div class="col-md-12 text-right">
-            <a href="{{route('user.create')}}" class="btn btn-primary">Add User</a>
-        </div>
+
+    <div class="col-6 text-right">
+        <a href="{{route('user.create')}}" class="btn btn-primary text-right">Add User</a>
     </div>
 </div>
 
 <table class="table table-bordered">
     <thead>
-        <th><b>Name</b></th>
+        <th>Name</th>
         {{-- <th><b>Username</b></th> --}}
         {{-- <th><b>Email</b></th> --}}
-        <th><b>Hak Akses</b></th>
-        <th><b>Action</b></th>
+        <th>Hak Akses</th>
+        <th style="width: 20%">Action</th>
     </thead>
     <tbody>
         @foreach ($users as $u)
@@ -66,12 +65,6 @@ List User
         </tr>
         @endforeach
     </tbody>
-    <tfoot>
-        <tr>
-            <td colspan=10>
-                {{$users->appends(Request::all())->links()}}
-            </td>
-        </tr>
-    </tfoot>
 </table>
+{{$users->appends(Request::all())->links()}}
 @endsection
