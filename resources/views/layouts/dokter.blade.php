@@ -46,7 +46,7 @@
                         </a>
                         <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
                             <a class="dropdown-item" href="#">Catatan Perkembangan Terintegrasi</a>
-                            <a class="dropdown-item" href="#">Catatn Operasi/Tindakan</a>
+                            <a class="dropdown-item" href="#">Catatan Operasi/Tindakan</a>
                             <a class="dropdown-item" href="#">Bayi</a>
                             <a class="dropdown-item" href="#">Resume Inap</a>
                         </div>
