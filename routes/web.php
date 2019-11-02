@@ -38,4 +38,9 @@ Route::get('/cari', function () {
 Route::get('/admin', function () {
     return view('rekmed.admin.upload');
 });
-
+Route::get('/create', function () {
+    return view('admin.create');
+});
+Route::get('/log', function () {
+    return view('super.index');
+});
