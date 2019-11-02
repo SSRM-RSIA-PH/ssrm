@@ -68,12 +68,15 @@
             </div>
             <div class="dropdown float-right">
                 <a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    [Nama Dokter]
+                    {{Auth::user()->name}}
                 </a>
                 <div class="dropdown-menu dropdown-menu-right">
                     <a class="dropdown-item" href="#">Profile</a>
                     <div class="dropdown-divider"></div>
-                    <a class="dropdown-item" href="#">Logout</a>
+                    <form action="{{route("logout")}}" method="POST">
+                        @csrf
+                        <button class="dropdown-item" style="cursor:pointer">Sign Out</button>
+                    </form>
                 </div>
             </div>
         </div>

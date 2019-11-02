@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Auth;
 
 class HomeController extends Controller
 {
@@ -23,6 +24,19 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('home');
+        switch (Auth::user()->role) {
+            case 'SUPERVISOR':
+                return view('home.supervisor');
+                break;
+            case 'ADMIN':
+                return view('home.admin');
+                break;
+            case 'DOKTER':
+                return view('home.dokter');
+                break;
+            default:
+                abort(403, 'Anda tidak memiliki cukup hak akses');
+                break;
+        }
     }
 }

@@ -1,8 +1,8 @@
-@extends('layouts.search')
+@extends('layouts.dokter')
 @section('title') Dokter @endsection
 @section('content')
 <div class="container">
-    <div class="alert alert-success mt-3">Welcome [Nama Dokter]!</div>
+<div class="alert alert-success mt-3">Welcome {{Auth::user()->name}}</div>
     <div class="">
         <div class="row d-flex justify-content-center mb-3">
             <img src="img/logo-rsia-ph.png" width="300px" alt="rsia-ph">
@@ -10,7 +10,7 @@
         <div class="row d-flex justify-content-center">
             <div class="col-6">
                 <div class="input-group">
-                    <input type="text" class="form-control" placeholder="Search No Rekam Medis" aria-label="Recipient's username" aria-describedby="button-addon2">
+                    <input name="saerch" type="text" class="form-control" placeholder="Search No Rekam Medis" aria-label="Recipient's username" aria-describedby="button-addon2">
                     <div class="input-group-append">
                         <button class="btn btn-outline-primary" type="button" id="button-addon2">Search</button>
                     </div>
