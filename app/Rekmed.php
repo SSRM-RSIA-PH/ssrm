@@ -7,6 +7,8 @@ use Illuminate\Database\Eloquent\Model;
 class Rekmed extends Model
 {
     protected $table = "rekmed";
-    protected $primaryKey = "rek_id";
-    protected $timestamps = false;
+    protected $primaryKey = "rekid";
+    public $timestamps = false;
+    public $incrementing = false;
+
 }

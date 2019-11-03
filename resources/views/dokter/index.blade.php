@@ -10,19 +10,19 @@
         <div class="row d-flex justify-content-center">
             <div class="col-6">
                 <div class="input-group">
-                    <input name="saerch" type="text" class="form-control" placeholder="Search No Rekam Medis" aria-label="Recipient's username" aria-describedby="button-addon2">
+                <form action="{{route('dokter.index')}}">
+                    <input name="search" type="text" class="form-control" placeholder="Search No Rekam Medis" aria-label="Recipient's username" aria-describedby="button-addon2">
                     <div class="input-group-append">
-                        <button class="btn btn-outline-primary" type="button" id="button-addon2">Search</button>
+                        <input class="btn btn-outline-primary" type="submit" id="button-addon2" value="Saerch">
                     </div>
+                </form>
                 </div>
             </div>
         </div>
         <div class="row d-flex justify-content-center">
-            <div class="col-6" hidden>
+            <div class="col-6">
                 <div class="list-group">
-                    <a href="#" class="list-group-item list-group-item-action">123456</a>
-                    <a href="#" class="list-group-item list-group-item-action">234567</a>
-                    <a href="#" class="list-group-item list-group-item-action">345678</a>
+                <a href="#" class="list-group-item list-group-item-action">{{$find->first()->rekid}}</a>
                 </div>
             </div>
         </div>

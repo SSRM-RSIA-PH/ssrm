@@ -17,7 +17,8 @@ List User
             <div class="input-group mb-3">
                 <select class="form-control col-md-10" name="keyword">
                     <option value="">All</option>
-                    <option value="SUPERVISOR" {{Request::get('keyword') == 'SUPERVISOR' ? 'selected' : ''}}>Supervisor</option>
+                    <option value="SUPERVISOR" {{Request::get('keyword') == 'SUPERVISOR' ? 'selected' : ''}}>Supervisor
+                    </option>
                     <option value="ADMIN" {{Request::get('keyword') == 'ADMIN' ? 'selected' : ''}}>Admin</option>
                     <option value="DOKTER" {{Request::get('keyword') == 'DOKTER' ? 'selected' : ''}}>Dokter</option>
                 </select>
@@ -30,7 +31,7 @@ List User
     <div class="col-md-4"></div>
     <div class="col-md-2">
         <div class="col-md-12 text-right">
-            <a href="{{route('user.create')}}" class="btn btn-primary">Add User</a>
+                <a href="{{route('user.create')}}" class="btn btn-primary">Add User</a>
         </div>
     </div>
 </div>
@@ -45,7 +46,7 @@ List User
     </thead>
     <tbody>
         @foreach ($users as $u)
-        <tr>
+        {{-- <tr> --}}
             <td>{{$u->name}}</td>
             {{-- <td>{{$u->username}}</td> --}}
             {{-- <td>{{$u->email}}</td> --}}
@@ -53,9 +54,7 @@ List User
 
             <td>
                 <a href="{{route('user.show', ['id' => $u->id])}}" class="btn btn-primary btn-sm">Detail</a>
-
                 <a class="btn btn-info text-white btn-sm" href="{{route('user.edit',['id'=> $u->id])}}">Edit</a>
-
                 <form onsubmit="return confirm('Delete user {{$u->name}} permanently ?')" class="d-inline"
                     action="{{route('user.destroy', ['id' => $u->id ])}}" method="POST">
                     @csrf

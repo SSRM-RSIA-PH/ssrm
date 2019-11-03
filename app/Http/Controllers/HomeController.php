@@ -32,7 +32,7 @@ class HomeController extends Controller
                 return view('home.admin');
                 break;
             case 'DOKTER':
-                return view('home.dokter');
+                return redirect()->route('dokter.index');
                 break;
             default:
                 abort(403, 'Anda tidak memiliki cukup hak akses');

@@ -12,3 +12,5 @@ Route::match(["GET", "POST"], "/register", function () {
 
 Route::resource('user', 'UserController');
 
+Route::get('/dokter', 'DokterController@index')->name('dokter.index');
+

@@ -19,6 +19,7 @@ class UserController extends Controller
     public function index(Request $request)
     {
         $filter = $request->get('keyword');
+
         if ($filter) {
             $users = User::where('role', 'LIKE', $filter)->paginate(10);
         } else {
