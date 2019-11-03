@@ -19,11 +19,9 @@
             border: 1px solid #202e78;
             color: #fff;
         }
-
         hr {
             margin: 6rem 0;
         }
-
         hr+.display-3,
         hr+.display-2+.display-3 {
             margin-bottom: 2rem;
@@ -33,7 +31,6 @@
         document.documentElement.className = document.documentElement.className.replace('no-js', 'js') + (document
             .implementation.hasFeature("http://www.w3.org/TR/SVG11/feature#BasicStructure ", "1.1 ") ? ' svg' :
             ' no-svg');
-
     </script>
 </head>
 

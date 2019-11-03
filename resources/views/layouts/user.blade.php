@@ -35,14 +35,22 @@
             </ul>
 
             <div class="dropdown float-right">
-                <a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown"
-                    aria-haspopup="true" aria-expanded="false">
-                    [Nama Admin Super]
-                </a>
-                <div class="dropdown-menu dropdown-menu-right">
-                    <a class="dropdown-item" href="#">Profile</a>
+                @if(\Auth::user())
+                <button class="btn btn-link btn-link-primary dropdown-toggle" id="navbar-dropdown"
+                    data-toggle="dropdown">
+                    {{Auth::user()->name}}
+                </button>
+                @endif
+                <div class="dropdown-menu dropdown-menu-right" id="navbar-dropdown">
+                    <a href="#" class="dropdown-item">Profile</a>
+                    <a href="#" class="dropdown-item">Setting</a>
                     <div class="dropdown-divider"></div>
-                    <a class="dropdown-item" href="#">Logout</a>
+                    <li>
+                        <form action="{{route("logout")}}" method="POST">
+                            @csrf
+                            <button class="dropdown-item" style="cursor:pointer">Sign Out</button>
+                        </form>
+                    </li>
                 </div>
             </div>
         </div>
@@ -50,10 +58,7 @@
     <!-- end navbar -->
 
     <div class="container">
-        <div class="row">
-            @yield("content")
-
-        </div>
+        @yield("content")
     </div>
 
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
