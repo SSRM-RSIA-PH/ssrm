@@ -59,10 +59,6 @@
                             <button type="submit" class="btn-block btn btn-primary">
                                 Login
                             </button>
-
-                            <a class="btn btn-link pl-0" href="{{ route('password.request') }}">
-                                Forgot Your Password?
-                            </a>
                         </div>
                     </div>
                 </form>

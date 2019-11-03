@@ -29,7 +29,7 @@ class HomeController extends Controller
                 return view('home.supervisor');
                 break;
             case 'ADMIN':
-                return view('home.admin');
+                return view('admin.index');
                 break;
             case 'DOKTER':
                 return redirect()->route('dokter.index');
