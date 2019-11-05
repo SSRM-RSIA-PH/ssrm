@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use \App\Rekmed;
+use \App\Igd;
 
 class AdminController extends Controller
 {
@@ -46,7 +47,18 @@ class AdminController extends Controller
 
     public function store_igd(Request $request)
     {
-        
+        $rek_id = $request->get('rek_id');
+
+        $igd = new Igd;
+        $igd->rek_id = $rek_id;
+        $igd->u_id = $request->get('u_id');
+
+        if ($request->file('catatan')) {
+            $file = $request->file('catatan')->store("rekmed/$rek_id/Catatan_Perkembangan", 'public');
+            $igd->igd_ctt_perkembangan = $file;
+        }
+
+        $igd->save();
     }
 
     public function edit_igd()
