@@ -80,19 +80,47 @@
     </script>
 
     <script>
+        //catatan perkembangan
         $('#customCheck1').click(function() {
-            $('#perkembangan').prop('hidden', false);
+            $('#perkembangan').toggle();
+            $('#perkembangan').attr('hidden', false);
         });
         
-        
+        //resume
         $('#customCheck2').click(function() {
-            $('#resume').prop('hidden', false);
+            $('#resume').toggle();
+            $('#resume').attr('hidden', false);
         });
 
-
+        //penunjang
         $('#customCheck3').click(function() {
-            $('#penunjang').prop('hidden', false);
+            $('#penunjang').toggle();
+            $('#penunjang').attr('hidden', false);
         });
+
+        //penunjang detail
+        $('#cusg').click(function() {
+            $('#fusg').toggle();
+            $('#fusg').attr('hidden', false);
+        });
+        $('#cctg').click(function() {
+            $('#fctg').toggle();
+            $('#fctg').attr('hidden', false);
+        });
+        $('#cxray').click(function() {
+            $('#fxray').toggle();
+            $('#fxray').attr('hidden', false);
+        });
+        $('#cekg').click(function() {
+            $('#fekg').toggle();
+            $('#fekg').attr('hidden', false);
+        });
+        $('#clab').click(function() {
+            $('#flab').toggle();
+            $('#flab').attr('hidden', false);
+        });
+        
+
     </script>
 </body>
 

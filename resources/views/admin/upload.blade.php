@@ -45,19 +45,69 @@
                 </div>
             </div>
             <div class="card-body" hidden id="penunjang">
+                {{-- 1 --}}
                 <div class="form-group">
-                    <select class="form-control" id="">
-                        <option value="">Pilih..</option>
-                        <option value="">USG</option>
-                        <option value="">CTG</option>
-                        <option value="">X-Ray</option>
-                        <option value="">EKG</option>
-                        <option value="">LAB</option>
-                    </select>
+                    <div class="custom-control custom-checkbox">
+                        <input type="checkbox" class="custom-control-input" id="cusg">
+                        <label class="custom-control-label" for="cusg">USG</label>
+                    </div>
+
+                    <div class="custom-file" hidden id="fusg">
+                        <input type="file" class="custom-file-input" id="customFile" name="filename">
+                        <label class="custom-file-label" for="customFile">Choose file</label>
+                    </div>
                 </div>
-                <div class="custom-file">
-                    <input type="file" class="custom-file-input" id="customFile" name="filename">
-                    <label class="custom-file-label" for="customFile">Choose file</label>
+                
+                {{-- 2 --}}
+                <div class="form-group">
+                    <div class="custom-control custom-checkbox">
+                        <input type="checkbox" class="custom-control-input" id="cctg">
+                        <label class="custom-control-label" for="cctg">CTG</label>
+                    </div>
+
+                    <div class="custom-file" hidden id="fctg">
+                        <input type="file" class="custom-file-input" id="customFile" name="filename">
+                        <label class="custom-file-label" for="customFile">Choose file</label>
+                    </div>
+                </div>
+                
+                {{-- 3 --}}
+                <div class="form-group">
+                    <div class="custom-control custom-checkbox">
+                        <input type="checkbox" class="custom-control-input" id="cxray">
+                        <label class="custom-control-label" for="cxray">X-RAY</label>
+                    </div>
+
+                    <div class="custom-file" hidden id="fxray">
+                        <input type="file" class="custom-file-input" id="customFile" name="filename">
+                        <label class="custom-file-label" for="customFile">Choose file</label>
+                    </div>
+                </div>
+                
+                {{-- 4 --}}
+                <div class="form-group">
+                    <div class="custom-control custom-checkbox">
+                        <input type="checkbox" class="custom-control-input" id="cekg">
+                        <label class="custom-control-label" for="cekg">EKG</label>
+                    </div>
+
+                    <div class="custom-file" hidden id="fekg">
+                        <input type="file" class="custom-file-input" id="customFile" name="filename">
+                        <label class="custom-file-label" for="customFile">Choose file</label>
+                    </div>
+                </div>
+                
+                {{-- 5 --}}
+                <div class="form-group">
+                    <div class="custom-control custom-checkbox">
+                        <input type="checkbox" class="custom-control-input" id="clab">
+                        <label class="custom-control-label" for="clab">LAB</label>
+                    </div>
+
+                    <div class="custom-file" hidden id="flab">
+                        <input type="file" class="custom-file-input" id="customFile" name="filename">
+                        <label class="custom-file-label" for="customFile">Choose file</label>
+                    </div>
                 </div>
             </div>
         </div>
