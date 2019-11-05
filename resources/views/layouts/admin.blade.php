@@ -62,7 +62,7 @@
     </nav>
     <!-- end navbar -->
 
-    <div class="container-fluid">
+    <div class="container">
         <div class="row">
             @yield("content")
 
@@ -78,12 +78,17 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
         integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous">
     </script>
+    <script src="https://cdn.jsdelivr.net/npm/bs-custom-file-input/dist/bs-custom-file-input.js"></script>
 
     <script>
+        $(document).ready(function () {
+            bsCustomFileInput.init()
+        });
         //catatan perkembangan
         $('#customCheck1').click(function() {
             $('#perkembangan').toggle();
             $('#perkembangan').attr('hidden', false);
+            
         });
         
         //resume
