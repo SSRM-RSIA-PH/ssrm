@@ -24,7 +24,7 @@
             <ul class="navbar-nav mr-auto">
                 <li class="nav-item">
                     <a class="nav-link" href="
-                    {{route('logupload')}}
+                    {{-- {{route('logupload')}} --}}
                     ">Log Upload</a>
                 </li>
                 <li class="nav-item">
@@ -38,17 +38,19 @@
                 @if(\Auth::user())
                 <button class="btn btn-link btn-link-primary dropdown-toggle" id="navbar-dropdown"
                     data-toggle="dropdown">
-                    {{Auth::user()->name}}
+                    @if (Auth::user())
+                        {{Auth::user()->name}}
+                    @endif
                 </button>
                 @endif
                 <div class="dropdown-menu dropdown-menu-right" id="navbar-dropdown">
                     <a href="#" class="dropdown-item">Profile</a>
-                    <a href="#" class="dropdown-item">Setting</a>
+                    {{-- <a href="#" class="dropdown-item">Setting</a> --}}
                     <div class="dropdown-divider"></div>
                     <li>
                         <form action="{{route("logout")}}" method="POST">
                             @csrf
-                            <button class="dropdown-item" style="cursor:pointer">Sign Out</button>
+                            <button class="dropdown-item" style="cursor:pointer">Log Out</button>
                         </form>
                     </li>
                 </div>

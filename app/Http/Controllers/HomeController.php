@@ -26,10 +26,10 @@ class HomeController extends Controller
     {
         switch (Auth::user()->role) {
             case 'SUPERVISOR':
-                return view('home.supervisor');
+                return redirect()->route('super.index');
                 break;
             case 'ADMIN':
-                return view('admin.index');
+                return redirect()->route('admin.index');
                 break;
             case 'DOKTER':
                 return redirect()->route('dokter.index');

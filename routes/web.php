@@ -10,7 +10,25 @@ Route::match(["GET", "POST"], "/register", function () {
     return redirect("/login");
 })->name("register");
 
-Route::resource('user', 'UserController');
 
-Route::get('/dokter', 'DokterController@index')->name('dokter.index');
+// supervisor
+Route::group(['prefix' => '/supervisor'], function () {
+    Route::get('/', 'SuperController@index')->name('super.index');
+});
+Route::resource('/supervisor/user', 'UserController');
 
+
+// admin upload
+Route::group(['prefix' => '/admin'], function () {
+    Route::get('/', 'AdminController@index')->name('admin.index');
+    Route::post('/igd/create', 'AdminController@create_rek')->name('admin.create.rek');
+    Route::post('/igd', 'AdminController@store_rek')->name('admin.store.rek');
+    Route::get('/igd/{rek_id}/upload', 'AdminController@upload_igd')->name('admin.upload.igd');
+    // Route::post('/igd/{rek_id}');
+});
+
+
+// dokter
+Route::group(['prefix' => '/dokter'], function () {
+    Route::get('/', 'DokterController@index')->name('dokter.index');
+});

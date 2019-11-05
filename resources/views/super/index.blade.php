@@ -3,7 +3,7 @@
 @section('content')
 
 <div class="alert alert-success w-100">Welcome 
-    {{-- {{Auth::user()->name}} --}}
+    {{Auth::user()->name}}
 </div>
 
 

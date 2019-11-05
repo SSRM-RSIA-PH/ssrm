@@ -8,14 +8,24 @@ use App\Rekmed;
 
 class DokterController extends Controller
 {
-    public function index(Request $request){
+    public function index(Request $request)
+    {
         $search = $request->get('search');
-        
         if ($search) {
-            $find = Rekmed::all()->where('rekid', 'LIKE', $search);
-            return view('dokter.index', ['find' => $find]);
+            $find = Rekmed::where('rek_id', 'LIKE', $search)->get();;
         } else {
-            return view('dokter.index', ['find' => "Not Found"]);
+            $find = NULL;
         }
+        return view('dokter.index', ['find' => $find]);
+    }
+
+    public function igd_ctt()
+    {
+
+    }
+
+    public function igd_res()
+    {
+
     }
 }

@@ -24,7 +24,7 @@
             <ul class="navbar-nav mr-auto">
                 <li class="nav-item">
                     <a class="nav-link" href="
-                    {{route('logupload')}}
+                    {{-- {{route('logupload')}} --}}
                     ">Log Upload</a>
                 </li>
                 <li class="nav-item">
@@ -37,12 +37,19 @@
             <div class="dropdown float-right">
                 <a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown"
                     aria-haspopup="true" aria-expanded="false">
-                    [Nama Admin Super]
+                    @if (Auth::user())
+                        {{Auth::user()->name}}
+                    @endif
                 </a>
                 <div class="dropdown-menu dropdown-menu-right">
                     <a class="dropdown-item" href="#">Profile</a>
                     <div class="dropdown-divider"></div>
-                    <a class="dropdown-item" href="#">Logout</a>
+                    <li>
+                        <form action="{{route("logout")}}" method="POST">
+                            @csrf
+                            <button class="dropdown-item" style="cursor:pointer">Log Out</button>
+                        </form>
+                    </li>
                 </div>
             </div>
         </div>

@@ -44,7 +44,7 @@ List User
     </thead>
     <tbody>
         @foreach ($users as $u)
-        {{-- <tr> --}}
+        <tr>
             <td>{{$u->name}}</td>
             {{-- <td>{{$u->username}}</td> --}}
             {{-- <td>{{$u->email}}</td> --}}
