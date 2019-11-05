@@ -36,8 +36,7 @@ class AdminController extends Controller
         $rekmed->u_id = $request->get('u_id');
         $rekmed->save();
 
-        // return redirect()->route('admin.upload.igd', ['rek_id'=>$rek_id]);
-        return view('admin.upload', ['rek_id'=>$rek_id]);
+        return redirect()->route('admin.upload.igd', ['rek_id'=>$rek_id]);
     }
 
     public function upload_igd($rek_id)
@@ -47,7 +46,7 @@ class AdminController extends Controller
 
     public function store_igd(Request $request)
     {
-
+        
     }
 
     public function edit_igd()
