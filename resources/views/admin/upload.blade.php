@@ -26,7 +26,7 @@
 </div>
 <div class="col-9">
     <div class="card">
-        <embed src="{{ asset('img/1.pdf') }}" type="application/pdf" width="100%" height="600px" />
+        <embed src="{{ asset('storage/rekmed/REKID3/oewY7W4MgzVWDe7dhnDGs9hJj0Vsf82UCNVXXARE.pdf') }}" type="application/pdf" width="100%" height="600px" />
     </div>
 </div>
 @endsection
