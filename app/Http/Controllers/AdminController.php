@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use \App\Rekmed;
-use \App\Igd;
 
 class AdminController extends Controller
 {
@@ -19,14 +18,14 @@ class AdminController extends Controller
         return view('admin.index', ['find' => $find]);
     }
 
-    public function create_rek(Request $request)
+    public function create(Request $request)
     {
         $id = $request->get('id');
         $id = strtoupper($id);
         return view('admin.create', ['id' => $id]);
     }
 
-    public function store_rek(Request $request)
+    public function store(Request $request)
     {
         $rek_id = $request->get('rek_id');
         $name = 'agung';
@@ -37,43 +36,7 @@ class AdminController extends Controller
         $rekmed->u_id = $request->get('u_id');
         $rekmed->save();
 
-        return redirect()->route('admin.upload.igd', ['rek_id'=>$rek_id]);
-    }
-
-    public function upload_igd($rek_id)
-    {
-        return view('admin.upload', ['rek_id'=>$rek_id]);
-    }
-
-    public function store_igd(Request $request)
-    {
-        $rek_id = $request->get('rek_id');
-
-        $igd = new Igd;
-        $igd->rek_id = $rek_id;
-        $igd->u_id = $request->get('u_id');
-
-        if ($request->file('cp')) {
-            $file = $request->file('cp')->store("Rekmed/$rek_id/Catatan_Perkembangan", 'public');
-            $igd->igd_ctt_perkembangan = $file;
-        }
-
-        $igd->save();
-    }
-
-    public function edit_igd()
-    {
-        
-    }
-
-    public function update_igd()
-    {
-
-    }
-
-    public function show_igd()
-    {
-
+        return redirect()->route('admin.create.igd', ['rek_id'=>$rek_id]);
     }
 
 }

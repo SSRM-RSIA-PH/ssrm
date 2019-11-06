@@ -21,10 +21,11 @@ Route::resource('/supervisor/user', 'UserController');
 // admin upload
 Route::group(['prefix' => '/admin'], function () {
     Route::get('/', 'AdminController@index')->name('admin.index');
-    Route::post('/igd/create', 'AdminController@create_rek')->name('admin.create.rek');
-    Route::post('/igd/create/s', 'AdminController@store_rek')->name('admin.store.rek');
-    Route::get('/igd/{rek_id}/upload', 'AdminController@upload_igd')->name('admin.upload.igd');
-    Route::post('/igd/upload/s', 'AdminController@store_igd')->name('admin.store.igd');
+    Route::post('/igd/create', 'AdminController@create')->name('admin.create.rek');
+    Route::post('/igd/create/s', 'AdminController@store')->name('admin.store.rek');
+
+    Route::get('/igd/{rek_id}/upload', 'AdminIgdController@create')->name('admin.create.igd');
+    Route::post('/igd/upload/s', 'AdminIgdController@store')->name('admin.store.igd');
 });
 
 

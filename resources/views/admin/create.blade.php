@@ -6,7 +6,7 @@ Add ID Rekam Medis
 <div class="container">
     <form action="{{route('admin.store.rek')}}" method="POST">
         @csrf
-        <label for="">REKID</label><br>
+        <label for="">Rekam Medis ID</label><br>
         <input name="rek_id" type="text" value="{{$id}}">
         <br><br>
 
