@@ -62,7 +62,7 @@
     </nav>
     <!-- end navbar -->
 
-    <div class="container-fluid">
+    <div class="container">
         <div class="row">
             @yield("content")
 
@@ -78,21 +78,54 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
         integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous">
     </script>
+    <script src="https://cdn.jsdelivr.net/npm/bs-custom-file-input/dist/bs-custom-file-input.js"></script>
 
     <script>
+        $(document).ready(function () {
+            bsCustomFileInput.init()
+        });
+        //catatan perkembangan
         $('#customCheck1').click(function() {
-            $('#perkembangan').prop('hidden', false);
+            $('#perkembangan').toggle();
+            $('#perkembangan').attr('hidden', false);
+            
         });
         
-        
+        //resume
         $('#customCheck2').click(function() {
-            $('#resume').prop('hidden', false);
+            $('#resume').toggle();
+            $('#resume').attr('hidden', false);
         });
 
-
+        //penunjang
         $('#customCheck3').click(function() {
-            $('#penunjang').prop('hidden', false);
+            $('#penunjang').toggle();
+            $('#penunjang').attr('hidden', false);
         });
+
+        //penunjang detail
+        $('#cusg').click(function() {
+            $('#fusg').toggle();
+            $('#fusg').attr('hidden', false);
+        });
+        $('#cctg').click(function() {
+            $('#fctg').toggle();
+            $('#fctg').attr('hidden', false);
+        });
+        $('#cxray').click(function() {
+            $('#fxray').toggle();
+            $('#fxray').attr('hidden', false);
+        });
+        $('#cekg').click(function() {
+            $('#fekg').toggle();
+            $('#fekg').attr('hidden', false);
+        });
+        $('#clab').click(function() {
+            $('#flab').toggle();
+            $('#flab').attr('hidden', false);
+        });
+        
+
     </script>
 </body>
 

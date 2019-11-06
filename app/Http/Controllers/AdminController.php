@@ -53,8 +53,8 @@ class AdminController extends Controller
         $igd->rek_id = $rek_id;
         $igd->u_id = $request->get('u_id');
 
-        if ($request->file('catatan')) {
-            $file = $request->file('catatan')->store("rekmed/$rek_id/Catatan_Perkembangan", 'public');
+        if ($request->file('cp')) {
+            $file = $request->file('cp')->store("Rekmed/$rek_id/Catatan_Perkembangan", 'public');
             $igd->igd_ctt_perkembangan = $file;
         }
 
