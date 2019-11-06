@@ -8,5 +8,4 @@ class Poli extends Model
 {
     protected $table = "poli";
     protected $primaryKey = "poli_id";
-    public $incrementing = false;
 }

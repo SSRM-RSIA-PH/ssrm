@@ -16,10 +16,8 @@ class AdminIgdController extends Controller
     public function store(Request $request)
     {
         $rek_id = $request->get('rek_id');
-        $igd_id = $rek_id."IGD";
 
         $igd = new Igd;
-        $igd->igd_id = $igd_id;
         $igd->rek_id = $rek_id;
         $igd->u_id = $request->get('u_id');
         $igd->igd_datetime = $request->get('date');
@@ -43,26 +41,11 @@ class AdminIgdController extends Controller
                 $file = $request->file($p_name)->store("Rekmed/$rek_id/Penunjang/$p_name", 'public');
                 $penunjang->p_name = strtoupper($p_name);
                 $penunjang->p_file = $file;
-                $penunjang->igd_id = $igd_id;
+                $penunjang->igd_id = $igd->igd_id;
                 $penunjang->save();
             }
         }
         
         return redirect()->route('admin.index');
-    }
-
-    public function edit()
-    {
-        
-    }
-
-    public function update()
-    {
-
-    }
-
-    public function show()
-    {
-
     }
 }

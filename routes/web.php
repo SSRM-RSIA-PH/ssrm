@@ -14,6 +14,7 @@ Route::match(["GET", "POST"], "/register", function () {
 // supervisor
 Route::group(['prefix' => '/supervisor'], function () {
     Route::get('/', 'SuperController@index')->name('super.index');
+    Route::get('/log', 'LogController@index')->name('super.log');
 });
 Route::resource('/supervisor/user', 'UserController');
 

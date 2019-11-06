@@ -8,5 +8,4 @@ class Nicu extends Model
 {
     protected $table = "nicu";
     protected $primaryKey = "nicu_id";
-    public $incrementing = false;
 }
