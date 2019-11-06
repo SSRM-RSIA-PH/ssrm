@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: mysql
--- Generation Time: Nov 05, 2019 at 12:10 PM
+-- Generation Time: Nov 06, 2019 at 11:25 AM
 -- Server version: 5.7.28
 -- PHP Version: 7.2.23
 
@@ -29,13 +29,42 @@ SET time_zone = "+00:00";
 --
 
 CREATE TABLE `igd` (
-  `igd_id` char(15) NOT NULL,
-  `igd_ctt_perkembangan` varchar(255) NOT NULL,
-  `igd_resume` varchar(255) NOT NULL,
-  `igd_datetime` datetime NOT NULL,
+  `igd_id` char(9) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `igd_ctt_perkembangan` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `igd_resume` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `igd_datetime` timestamp NULL DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
   `u_id` bigint(20) UNSIGNED NOT NULL,
-  `rek_id` char(6) NOT NULL
+  `rek_id` char(6) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `igd`
+--
+
+INSERT INTO `igd` (`igd_id`, `igd_ctt_perkembangan`, `igd_resume`, `igd_datetime`, `created_at`, `updated_at`, `u_id`, `rek_id`) VALUES
+('MEDIS1IGD', 'Rekmed/MEDIS1/Catatan_Perkembangan/AJL4LR14Ed2uglHo4huD2JEJCcMPEU1Nux98KyCJ.pdf', 'Rekmed/MEDIS1/Resume/i9NwkwqqQRqwB5PzwIZZq2aQlqBYVuxakjwHBQ20.pdf', '2019-11-04 12:00:00', '2019-11-06 11:20:15', '2019-11-06 11:20:15', 113, 'MEDIS1');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `igd_penunjang`
+--
+
+CREATE TABLE `igd_penunjang` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `p_name` varchar(64) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `p_file` varchar(225) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `igd_id` char(9) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `igd_penunjang`
+--
+
+INSERT INTO `igd_penunjang` (`id`, `p_name`, `p_file`, `igd_id`) VALUES
+(16, 'XRAY', 'Rekmed/MEDIS1/Penunjang/xray/ZgSOJQsaDZNddEhmXuoQRZh6tAfmYlj70WXo5MfR.pdf', 'MEDIS1IGD');
 
 -- --------------------------------------------------------
 
@@ -68,7 +97,8 @@ CREATE TABLE `migrations` (
 INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
 (4, '2014_10_12_000000_create_users_table', 1),
 (5, '2014_10_12_100000_create_password_resets_table', 1),
-(6, '2019_10_27_130246_configure-users-tbl', 2);
+(6, '2019_10_27_130246_configure-users-tbl', 2),
+(7, '2019_11_05_133712_add_timestamp', 3);
 
 -- --------------------------------------------------------
 
@@ -77,15 +107,30 @@ INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
 --
 
 CREATE TABLE `nicu` (
-  `nicu_id` char(15) NOT NULL,
-  `nicu_ctt_integ` varchar(255) NOT NULL,
-  `nicu_resume` varchar(255) NOT NULL,
-  `nicu_pengkajian` varchar(255) NOT NULL,
-  `nicu_grafik` varchar(255) NOT NULL,
-  `nicu_datetime` datetime NOT NULL,
+  `nicu_id` char(9) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `nicu_ctt_integ` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `nicu_resume` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `nicu_pengkajian` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `nicu_grafik` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `nicu_datetime` timestamp NULL DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
   `u_id` bigint(20) UNSIGNED NOT NULL,
-  `rek_id` char(6) NOT NULL
+  `rek_id` char(6) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `nicu_penunjang`
+--
+
+CREATE TABLE `nicu_penunjang` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `p_name` varchar(64) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `p_file` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `nicu_id` char(9) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
@@ -102,55 +147,32 @@ CREATE TABLE `password_resets` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `penunjang`
---
-
-CREATE TABLE `penunjang` (
-  `penunjang_id` bigint(20) NOT NULL,
-  `penunjang_name` varchar(255) NOT NULL,
-  `penunjang_file` varchar(255) NOT NULL,
-  `penunjang_ctg` varchar(15) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Dumping data for table `penunjang`
---
-
-INSERT INTO `penunjang` (`penunjang_id`, `penunjang_name`, `penunjang_file`, `penunjang_ctg`) VALUES
-(5, 'penunjang 1', 'penunjang file 1', 'IGD'),
-(6, 'penunjang 2`', 'penunjang file 2', 'IGD');
-
--- --------------------------------------------------------
-
---
 -- Table structure for table `poli`
 --
 
 CREATE TABLE `poli` (
-  `po_id` char(15) NOT NULL,
-  `po_ctt_integ` varchar(255) NOT NULL,
-  `po_resume` varchar(255) NOT NULL,
-  `po_datetime` datetime NOT NULL,
+  `poli_id` char(9) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `poli_ctt_integ` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `poli_resume` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `poli_datetime` timestamp NULL DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
   `u_id` bigint(20) UNSIGNED NOT NULL,
-  `rek_id` char(6) NOT NULL
+  `rek_id` char(6) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `rawat_inap`
+-- Table structure for table `poli_penunjang`
 --
 
-CREATE TABLE `rawat_inap` (
-  `raw_id` char(15) NOT NULL,
-  `raw_ctt_integ` varchar(255) NOT NULL,
-  `raw_ctt_oper` varchar(255) NOT NULL,
-  `raw_resume` varchar(255) NOT NULL,
-  `raw_bayi` varchar(255) NOT NULL,
-  `raw_datetime` datetime NOT NULL,
-  `u_id` bigint(20) UNSIGNED NOT NULL,
-  `rek_id` char(6) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+CREATE TABLE `poli_penunjang` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `p_name` varchar(64) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `p_file` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `poli_id` char(9) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
@@ -159,8 +181,10 @@ CREATE TABLE `rawat_inap` (
 --
 
 CREATE TABLE `rekmed` (
-  `rek_id` char(6) NOT NULL,
-  `rek_name` varchar(255) NOT NULL,
+  `rek_id` char(6) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `rek_name` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
   `u_id` bigint(20) UNSIGNED NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
@@ -168,19 +192,40 @@ CREATE TABLE `rekmed` (
 -- Dumping data for table `rekmed`
 --
 
-INSERT INTO `rekmed` (`rek_id`, `rek_name`, `u_id`) VALUES
-('AETEW1', 'asus', 113),
-('MET001', 'tyuio', 113),
-('MIT001', 'qwe', 113),
-('MIT004', 'qweer', 113),
-('MIT007', 'qweer', 113),
-('REKID1', 'Iling Abi Wira Guna', 113),
-('REKID2', 'Agung Eka Saputra', 113),
-('REKIO3', 'yucu', 113),
-('REKIQ1', 'sedap', 113),
-('REKWQ1', 'yuzu', 113),
-('TER001', 'tea', 113),
-('TIM001', 'qwe', 113);
+INSERT INTO `rekmed` (`rek_id`, `rek_name`, `created_at`, `updated_at`, `u_id`) VALUES
+('MEDIS1', 'yuzu', '2019-11-06 11:19:38', '2019-11-06 11:19:38', 113);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `ri`
+--
+
+CREATE TABLE `ri` (
+  `ri_id` char(9) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `ri_ctt_integ` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `ri_ctt_oper` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `ri_resume` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `ri_bayi` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `ri_datetime` timestamp NULL DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
+  `u_id` bigint(20) UNSIGNED NOT NULL,
+  `rek_id` char(6) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `ri_penunjang`
+--
+
+CREATE TABLE `ri_penunjang` (
+  `id` bigint(20) NOT NULL,
+  `p_name` varchar(64) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `p_file` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `ri_id` char(9) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
@@ -246,6 +291,13 @@ ALTER TABLE `igd`
   ADD KEY `u_id` (`u_id`) USING BTREE;
 
 --
+-- Indexes for table `igd_penunjang`
+--
+ALTER TABLE `igd_penunjang`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `igd_id` (`igd_id`);
+
+--
 -- Indexes for table `log`
 --
 ALTER TABLE `log`
@@ -266,32 +318,32 @@ ALTER TABLE `nicu`
   ADD KEY `rek_id` (`rek_id`);
 
 --
+-- Indexes for table `nicu_penunjang`
+--
+ALTER TABLE `nicu_penunjang`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `nicu_id` (`nicu_id`);
+
+--
 -- Indexes for table `password_resets`
 --
 ALTER TABLE `password_resets`
   ADD KEY `password_resets_email_index` (`email`);
 
 --
--- Indexes for table `penunjang`
---
-ALTER TABLE `penunjang`
-  ADD PRIMARY KEY (`penunjang_id`);
-
---
 -- Indexes for table `poli`
 --
 ALTER TABLE `poli`
-  ADD PRIMARY KEY (`po_id`),
+  ADD PRIMARY KEY (`poli_id`),
   ADD KEY `u_id` (`u_id`),
   ADD KEY `rek_id` (`rek_id`);
 
 --
--- Indexes for table `rawat_inap`
+-- Indexes for table `poli_penunjang`
 --
-ALTER TABLE `rawat_inap`
-  ADD PRIMARY KEY (`raw_id`),
-  ADD KEY `u_id` (`u_id`),
-  ADD KEY `rek_id` (`rek_id`);
+ALTER TABLE `poli_penunjang`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `poli_id` (`poli_id`);
 
 --
 -- Indexes for table `rekmed`
@@ -299,6 +351,21 @@ ALTER TABLE `rawat_inap`
 ALTER TABLE `rekmed`
   ADD PRIMARY KEY (`rek_id`),
   ADD KEY `users_id` (`u_id`);
+
+--
+-- Indexes for table `ri`
+--
+ALTER TABLE `ri`
+  ADD PRIMARY KEY (`ri_id`),
+  ADD KEY `u_id` (`u_id`),
+  ADD KEY `rek_id` (`rek_id`);
+
+--
+-- Indexes for table `ri_penunjang`
+--
+ALTER TABLE `ri_penunjang`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `ri_id` (`ri_id`);
 
 --
 -- Indexes for table `users`
@@ -313,6 +380,12 @@ ALTER TABLE `users`
 --
 
 --
+-- AUTO_INCREMENT for table `igd_penunjang`
+--
+ALTER TABLE `igd_penunjang`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
+
+--
 -- AUTO_INCREMENT for table `log`
 --
 ALTER TABLE `log`
@@ -322,13 +395,25 @@ ALTER TABLE `log`
 -- AUTO_INCREMENT for table `migrations`
 --
 ALTER TABLE `migrations`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
--- AUTO_INCREMENT for table `penunjang`
+-- AUTO_INCREMENT for table `nicu_penunjang`
 --
-ALTER TABLE `penunjang`
-  MODIFY `penunjang_id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+ALTER TABLE `nicu_penunjang`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `poli_penunjang`
+--
+ALTER TABLE `poli_penunjang`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `ri_penunjang`
+--
+ALTER TABLE `ri_penunjang`
+  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `users`
@@ -348,11 +433,23 @@ ALTER TABLE `igd`
   ADD CONSTRAINT `igd_ibfk_2` FOREIGN KEY (`rek_id`) REFERENCES `rekmed` (`rek_id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
+-- Constraints for table `igd_penunjang`
+--
+ALTER TABLE `igd_penunjang`
+  ADD CONSTRAINT `igd_penunjang_ibfk_1` FOREIGN KEY (`igd_id`) REFERENCES `igd` (`igd_id`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
 -- Constraints for table `nicu`
 --
 ALTER TABLE `nicu`
   ADD CONSTRAINT `nicu_ibfk_1` FOREIGN KEY (`u_id`) REFERENCES `users` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
   ADD CONSTRAINT `nicu_ibfk_2` FOREIGN KEY (`rek_id`) REFERENCES `rekmed` (`rek_id`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
+-- Constraints for table `nicu_penunjang`
+--
+ALTER TABLE `nicu_penunjang`
+  ADD CONSTRAINT `nicu_penunjang_ibfk_1` FOREIGN KEY (`nicu_id`) REFERENCES `nicu` (`nicu_id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Constraints for table `poli`
@@ -362,17 +459,29 @@ ALTER TABLE `poli`
   ADD CONSTRAINT `poli_ibfk_2` FOREIGN KEY (`rek_id`) REFERENCES `rekmed` (`rek_id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- Constraints for table `rawat_inap`
+-- Constraints for table `poli_penunjang`
 --
-ALTER TABLE `rawat_inap`
-  ADD CONSTRAINT `rawat_inap_ibfk_1` FOREIGN KEY (`u_id`) REFERENCES `users` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `rawat_inap_ibfk_2` FOREIGN KEY (`rek_id`) REFERENCES `rekmed` (`rek_id`) ON DELETE CASCADE ON UPDATE CASCADE;
+ALTER TABLE `poli_penunjang`
+  ADD CONSTRAINT `poli_penunjang_ibfk_1` FOREIGN KEY (`poli_id`) REFERENCES `poli` (`poli_id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Constraints for table `rekmed`
 --
 ALTER TABLE `rekmed`
   ADD CONSTRAINT `rekmed_ibfk_1` FOREIGN KEY (`u_id`) REFERENCES `users` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
+-- Constraints for table `ri`
+--
+ALTER TABLE `ri`
+  ADD CONSTRAINT `ri_ibfk_1` FOREIGN KEY (`u_id`) REFERENCES `users` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `ri_ibfk_2` FOREIGN KEY (`rek_id`) REFERENCES `rekmed` (`rek_id`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
+-- Constraints for table `ri_penunjang`
+--
+ALTER TABLE `ri_penunjang`
+  ADD CONSTRAINT `ri_penunjang_ibfk_1` FOREIGN KEY (`ri_id`) REFERENCES `ri` (`ri_id`) ON DELETE CASCADE ON UPDATE CASCADE;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
