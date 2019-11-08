@@ -29,8 +29,13 @@
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="
-                    {{route('user.index')}}
+                        {{route('user.index')}}
                     ">Manage Users</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="
+                        {{route('super.rekmed')}}
+                    ">Manage Rekmed</a>
                 </li>
             </ul>
 
@@ -38,7 +43,7 @@
                 <a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown"
                     aria-haspopup="true" aria-expanded="false">
                     @if (Auth::user())
-                        {{Auth::user()->name}}
+                    {{Auth::user()->name}}
                     @endif
                 </a>
                 <div class="dropdown-menu dropdown-menu-right">

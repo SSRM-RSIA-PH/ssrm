@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 use \App\User;
 use Illuminate\Support\Facades\Gate;
 
-class UserController extends Controller
+class SuperUserController extends Controller
 {
     public function __construct()
     {
@@ -18,7 +18,7 @@ class UserController extends Controller
 
     public function index(Request $request)
     {
-        $filter = $request->get('keyword');
+        $filter = $request->get('filter');
 
         if ($filter) {
             $users = User::where('role', 'LIKE', $filter)->paginate(10);
@@ -26,12 +26,12 @@ class UserController extends Controller
             $users = User::paginate(10);
         }
 
-        return view('user.index', ['users' => $users]);
+        return view('super.user.index', ['users' => $users]);
     }
 
     public function create()
     {
-        return view("user.create");
+        return view("super.user.create");
     }
 
     public function store(Request $request)
@@ -50,13 +50,13 @@ class UserController extends Controller
     public function show($id)
     {
         $user = User::findOrFail($id);
-        return view('user.show', ['user' => $user]);
+        return view('super.user.show', ['user' => $user]);
     }
 
     public function edit($id)
     {
         $user = User::findOrFail($id);
-        return view('user.edit', ['user' => $user]);
+        return view('super.user.edit', ['user' => $user]);
     }
 
     public function update(Request $request, $id)

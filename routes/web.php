@@ -14,9 +14,13 @@ Route::match(["GET", "POST"], "/register", function () {
 // supervisor
 Route::group(['prefix' => '/supervisor'], function () {
     Route::get('/', 'SuperController@index')->name('super.index');
+    Route::resource('/user', 'SuperUserController');
+    Route::get('/rekmed', 'SuperRekmedController@index')->name('super.rekmed');
+    Route::post('/rekmed/{id}', 'SuperRekmedController@show')->name('super.rekmed.show');
+    Route::post('/rekmed/{id}/{ctg}/{id_ctg}', 'SuperRekmedController@showdetail')->name('super.rekmed.showdetail');
+
     Route::get('/log', 'LogController@index')->name('super.log');
 });
-Route::resource('/supervisor/user', 'UserController');
 
 
 // admin upload

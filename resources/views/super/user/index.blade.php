@@ -15,12 +15,12 @@ List User
     <div class="col-6">
         <form action="{{route('user.index')}}">
             <div class="input-group mb-3">
-                <select class="form-control col-md-10" name="keyword">
+                <select class="form-control col-md-10" name="filter">
                     <option value="">All</option>
-                    <option value="SUPERVISOR" {{Request::get('keyword') == 'SUPERVISOR' ? 'selected' : ''}}>Supervisor
+                    <option value="SUPERVISOR" {{Request::get('filter') == 'SUPERVISOR' ? 'selected' : ''}}>Supervisor
                     </option>
-                    <option value="ADMIN" {{Request::get('keyword') == 'ADMIN' ? 'selected' : ''}}>Admin</option>
-                    <option value="DOKTER" {{Request::get('keyword') == 'DOKTER' ? 'selected' : ''}}>Dokter</option>
+                    <option value="ADMIN" {{Request::get('filter') == 'ADMIN' ? 'selected' : ''}}>Admin</option>
+                    <option value="DOKTER" {{Request::get('filter') == 'DOKTER' ? 'selected' : ''}}>Dokter</option>
                 </select>
                 <div class="input-group-append">
                     <input type="submit" value="Filter" class="btn btn-primary">

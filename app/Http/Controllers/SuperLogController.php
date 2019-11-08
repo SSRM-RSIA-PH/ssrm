@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
-class LogController extends Controller
+class SuperLogController extends Controller
 {
     public function index()
     {
