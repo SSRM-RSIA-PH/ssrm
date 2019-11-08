@@ -14,7 +14,7 @@ Detail User
 
 @if ($detail->igd_resum)   
 <b>Resume</b><br>
-<object data="{{asset("storage/e")}}" type="application/pdf" width="100%" height="700px"></object>
+<object data="{{asset("storage/$detail->igd_resum")}}" type="application/pdf" width="100%" height="700px"></object>
 <br><br>
 @endif
 

@@ -45,7 +45,22 @@ class AdminIgdController extends Controller
                 $penunjang->save();
             }
         }
-        
+
+        return redirect()->route('admin.validation', ['id'=>$igd->igd_id]);
+    }   
+
+    public function validation($id)
+    {
+        $data = Igd::where('igd_id', $id)->get()->first();
+        return view('admin.igd.validation', ['igd'=>$data]);
+    }
+
+    public function cancel(Request $request)
+    {
+        $igd_id = $request->get('igd_id');
+        $igd = Igd::findOrFail($igd_id);
+        $igd->delete();
         return redirect()->route('admin.index');
     }
+
 }
