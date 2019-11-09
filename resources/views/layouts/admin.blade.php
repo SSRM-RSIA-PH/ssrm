@@ -88,41 +88,53 @@
         $('#customCheck1').click(function() {
             $('#perkembangan').toggle();
             $('#perkembangan').attr('hidden', false);
-            
+            $('#cfl1').html('Choose file');
+            // $('#customCheck1').val('');
         });
         
         //resume
         $('#customCheck2').click(function() {
             $('#resume').toggle();
             $('#resume').attr('hidden', false);
+            $('#cfl2').html('Choose file');
         });
-
+        
         //penunjang
         $('#customCheck3').click(function() {
             $('#penunjang').toggle();
             $('#penunjang').attr('hidden', false);
+            $('#cflp1').html('Choose file');
+            $('#cflp2').html('Choose file');
+            $('#cflp3').html('Choose file');
+            $('#cflp4').html('Choose file');
+            $('#cflp5').html('Choose file');
         });
-
+        
         //penunjang detail
         $('#cusg').click(function() {
             $('#fusg').toggle();
             $('#fusg').attr('hidden', false);
+            $('#cflp1').html('Choose file');
         });
         $('#cctg').click(function() {
             $('#fctg').toggle();
             $('#fctg').attr('hidden', false);
+            $('#cflp2').html('Choose file');
         });
         $('#cxray').click(function() {
             $('#fxray').toggle();
             $('#fxray').attr('hidden', false);
+            $('#cflp3').html('Choose file');
         });
         $('#cekg').click(function() {
             $('#fekg').toggle();
             $('#fekg').attr('hidden', false);
+            $('#cflp4').html('Choose file');
         });
         $('#clab').click(function() {
             $('#flab').toggle();
             $('#flab').attr('hidden', false);
+            $('#cflp5').html('Choose file');
         });
         
 
