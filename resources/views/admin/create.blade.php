@@ -14,13 +14,13 @@ Add ID Rekam Medis
                     <div class="form-group">
                         <label for="rek_id">Rekam Medis ID</label>
                         <input type="text" class="form-control" name="rek_id" id="rek_id" aria-describedby="rek_id"
-                            placeholder="" value="{{$id}}">
+                            placeholder="" value="{{$id}}" required>
                     </div>
 
                     <div class="form-group">
                         <label for="rek_name">Nama Pasien</label>
                         <input type="text" class="form-control" name="rek_name" id="rek_name"
-                            aria-describedby="rek_name" placeholder="">
+                            aria-describedby="rek_name" placeholder="" required>
                     </div>
 
                     @if (Auth::user())
