@@ -1,4 +1,7 @@
 @extends('layouts.admin')
+@section('menu') 
+<a href="{{route('admin.create.igd', ['rek_id'=>$rek_id])}}" class="nav-item nav-link">IGD</a>
+@endsection
 @section('title') Admin @endsection
 @section('content')
 
