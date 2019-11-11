@@ -30,6 +30,7 @@
                 <div class="list-group">
                     @isset($find)
                     @if ($find == '[]')
+                    <small>Result : </small>
                     <form action="{{route('admin.create.rek')}}" method="POST" class="form-inline">
                         @csrf
                         <input type="text" name="id" value="{{Request::get('search')}}" hidden>
@@ -37,6 +38,7 @@
                             value="Not Found [{{Request::get('search')}}] Click to Create New">
                     </form>
                     @else
+                    <small>Result : </small>
                     @foreach ($find as $f)
                     <a href="{{route('admin.show.rek', ['rek_id'=>$f->rek_id])}}"
                         class="list-group-item list-group-item-action">{{$f->rek_id}} - {{$f->rek_name}}</a>
