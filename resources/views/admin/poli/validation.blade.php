@@ -1,4 +1,4 @@
-@extends('layouts.super')
+@extends('layouts.admin')
 @section('title') Supervisor @endsection
 @section('content')
 
@@ -8,7 +8,7 @@
 
 <div class="card">
     <div class="card-header">
-        {{$poli->rek_id}} - poli
+        {{$poli->rek_id}} - IGD
     </div>
     <div class="card-body">
         @if ($poli->poli_ctt_integ)

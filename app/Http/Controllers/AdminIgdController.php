@@ -46,7 +46,7 @@ class AdminIgdController extends Controller
             }
         }
 
-        return redirect()->route('admin.validation', ['rek_id'=>$igd->igd_id]);
+        return redirect()->route('admin.validation.igd', ['rek_id'=>$igd->igd_id]);
     }   
 
     public function validation($id)

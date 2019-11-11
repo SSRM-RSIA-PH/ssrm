@@ -22,7 +22,7 @@
                 </div>
                 <div class="card-body">
 
-                    <form enctype="multipart/form-data" action="{{route('admin.store.igd')}}" method="POST">
+                    <form enctype="multipart/form-data" action="{{route('admin.store.poli')}}" method="POST">
                         @csrf
 
                         <div class="col">
@@ -43,18 +43,17 @@
                             <input name="u_id" type="text" hidden value="{{Auth::user()->id}}">
                             @endif
 
-                            {{-- catatan Perkembangan --}}
+                            {{-- catatan terintegrasi --}}
                             <div class="card mb-3">
                                 <div class="card-header">
                                     <div class="custom-control custom-checkbox">
                                         <input type="checkbox" class="custom-control-input" id="customCheck1">
-                                        <label class="custom-control-label" for="customCheck1">Catatan
-                                            Perkembangan</label>
+                                        <label class="custom-control-label" for="customCheck1">Catatan Terintegrasi</label>
                                     </div>
                                 </div>
                                 <div class="card-body" hidden id="perkembangan">
                                     <div class="custom-file">
-                                        <input type="file" class="custom-file-input" id="customFile" name="cp">
+                                        <input type="file" class="custom-file-input" id="customFile" name="ct">
                                         <label class="custom-file-label" id="cfl1" for="customFile">Choose file</label>
                                     </div>
                                 </div>

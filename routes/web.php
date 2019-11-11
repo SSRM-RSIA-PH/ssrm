@@ -34,8 +34,14 @@ Route::group(['prefix' => '/admin'], function () {
     //admin igd controller
     Route::get('/igd/{rek_id}/upload', 'AdminIgdController@create')->name('admin.create.igd');
     Route::post('/igd/upload/s', 'AdminIgdController@store')->name('admin.store.igd');
-    Route::get('/igd/{rek_id}/validation', 'AdminIgdController@validation')->name('admin.validation');
-    Route::post('/igd/validation/cancel', 'AdminIgdController@cancel')->name('admin.validation.cancel');
+    Route::get('/igd/{rek_id}/validation', 'AdminIgdController@validation')->name('admin.validation.igd');
+    Route::post('/igd/validation/cancel', 'AdminIgdController@cancel')->name('admin.validation.igd.cancel');
+
+    //admin poli
+    Route::get('/poli/{rek_id}/upload', 'AdminPoliController@create')->name('admin.create.poli');
+    Route::post('/poli/upload/s', 'AdminPoliController@store')->name('admin.store.poli');
+    Route::get('/poli/{rek_id}/validation', 'AdminPoliController@validation')->name('admin.validation.poli');
+    Route::post('/poli/validation/cancel', 'AdminPoliController@cancel')->name('admin.validation.poli.cancel');
 });
 
 
