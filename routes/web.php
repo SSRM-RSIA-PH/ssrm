@@ -31,7 +31,7 @@ Route::group(['prefix' => '/admin'], function () {
     Route::post('/create/s', 'AdminController@store')->name('admin.store.rek');
     Route::get('/show/{rek_id}', 'AdminController@show')->name('admin.show.rek');
 
-    //admin igd controller
+    //admin igd
     Route::get('/igd/{rek_id}/upload', 'AdminIgdController@create')->name('admin.create.igd');
     Route::post('/igd/upload/s', 'AdminIgdController@store')->name('admin.store.igd');
     Route::get('/igd/{rek_id}/validation', 'AdminIgdController@validation')->name('admin.validation.igd');
@@ -42,6 +42,12 @@ Route::group(['prefix' => '/admin'], function () {
     Route::post('/poli/upload/s', 'AdminPoliController@store')->name('admin.store.poli');
     Route::get('/poli/{rek_id}/validation', 'AdminPoliController@validation')->name('admin.validation.poli');
     Route::post('/poli/validation/cancel', 'AdminPoliController@cancel')->name('admin.validation.poli.cancel');
+
+    //admin nicu
+    Route::get('/nicu/{rek_id}/upload', 'AdminPoliController@create')->name('admin.create.nicu');
+    Route::post('/nicu/upload/s', 'AdminPoliController@store')->name('admin.store.nicu');
+    Route::get('/nicu/{rek_id}/validation', 'AdminPoliController@validation')->name('admin.validation.nicu');
+    Route::post('/nicu/validation/cancel', 'AdminPoliController@cancel')->name('admin.validation.nicu.cancel');
 });
 
 
