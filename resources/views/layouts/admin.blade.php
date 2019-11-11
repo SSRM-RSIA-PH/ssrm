@@ -65,6 +65,7 @@
         integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous">
     </script>
     <script src="https://cdn.jsdelivr.net/npm/bs-custom-file-input/dist/bs-custom-file-input.js"></script>
+    <script src="{{asset('js/sweetalert2.min.js')}}"></script>
 
     <script>
         $(document).ready(function () {
@@ -75,7 +76,7 @@
             $('#perkembangan').toggle();
             $('#perkembangan').attr('hidden', false);
             $('#cfl1').html('Choose file');
-            // $('#customCheck1').val('');
+            $('#cp').val(null);
         });
         
         //resume
@@ -83,17 +84,24 @@
             $('#resume').toggle();
             $('#resume').attr('hidden', false);
             $('#cfl2').html('Choose file');
+            $('#rsm').val(null);
         });
         
         //penunjang
         $('#customCheck3').click(function() {
             $('#penunjang').toggle();
             $('#penunjang').attr('hidden', false);
+            $('#cusg').attr('checked', false);
             $('#cflp1').html('Choose file');
+            $('#usg').val(null);
             $('#cflp2').html('Choose file');
+            $('#ctg').val(null);
             $('#cflp3').html('Choose file');
+            $('#xray').val(null);
             $('#cflp4').html('Choose file');
+            $('#ekg').val(null);
             $('#cflp5').html('Choose file');
+            $('#lab').val(null);
         });
         
         //penunjang detail
@@ -101,26 +109,31 @@
             $('#fusg').toggle();
             $('#fusg').attr('hidden', false);
             $('#cflp1').html('Choose file');
+            $('#usg').val(null);
         });
         $('#cctg').click(function() {
             $('#fctg').toggle();
             $('#fctg').attr('hidden', false);
             $('#cflp2').html('Choose file');
+            $('#ctg').val(null);
         });
         $('#cxray').click(function() {
             $('#fxray').toggle();
             $('#fxray').attr('hidden', false);
             $('#cflp3').html('Choose file');
+            $('#xray').val(null);
         });
         $('#cekg').click(function() {
             $('#fekg').toggle();
             $('#fekg').attr('hidden', false);
             $('#cflp4').html('Choose file');
+            $('#ekg').val(null);
         });
         $('#clab').click(function() {
             $('#flab').toggle();
             $('#flab').attr('hidden', false);
             $('#cflp5').html('Choose file');
+            $('#lab').val(null);
         });
         
 

@@ -50,8 +50,8 @@
                                 </div>
                                 <div class="card-body" hidden id="perkembangan">
                                     <div class="custom-file">
-                                        <input type="file" class="custom-file-input" id="customFile" name="cp">
-                                        <label class="custom-file-label" id="cfl1" for="customFile">Choose file</label>
+                                        <input type="file" class="custom-file-input" id="cp" name="cp">
+                                        <label class="custom-file-label" id="cfl1" for="cp">Choose file</label>
                                     </div>
                                 </div>
                             </div>
@@ -66,8 +66,8 @@
                                 </div>
                                 <div class="card-body" hidden id="resume">
                                     <div class="custom-file">
-                                        <input type="file" class="custom-file-input" id="customFile" name="resume">
-                                        <label class="custom-file-label" id="cfl2" for="customFile">Choose file</label>
+                                        <input type="file" class="custom-file-input" id="rsm" name="resume">
+                                        <label class="custom-file-label" id="cfl2" for="rsm">Choose file</label>
                                     </div>
                                 </div>
                             </div>
@@ -93,8 +93,8 @@
                                         </div>
 
                                         <div class="custom-file" hidden id="fusg">
-                                            <input type="file" class="custom-file-input" id="customFile" name="usg">
-                                            <label class="custom-file-label" id="cflp1" for="customFile">Choose
+                                            <input type="file" class="custom-file-input" id="usg" name="usg">
+                                            <label class="custom-file-label" id="cflp1" for="usg">Choose
                                                 file</label>
                                         </div>
                                     </div>
@@ -107,8 +107,8 @@
                                         </div>
 
                                         <div class="custom-file" hidden id="fctg">
-                                            <input type="file" class="custom-file-input" id="customFile" name="ctg">
-                                            <label class="custom-file-label" id="cflp2" for="customFile">Choose
+                                            <input type="file" class="custom-file-input" id="ctg" name="ctg">
+                                            <label class="custom-file-label" id="cflp2" for="ctg">Choose
                                                 file</label>
                                         </div>
                                     </div>
@@ -121,8 +121,8 @@
                                         </div>
 
                                         <div class="custom-file" hidden id="fxray">
-                                            <input type="file" class="custom-file-input" id="customFile" name="xray">
-                                            <label class="custom-file-label" id="cflp3" for="customFile">Choose
+                                            <input type="file" class="custom-file-input" id="xray" name="xray">
+                                            <label class="custom-file-label" id="cflp3" for="xray">Choose
                                                 file</label>
                                         </div>
                                     </div>
@@ -135,8 +135,8 @@
                                         </div>
 
                                         <div class="custom-file" hidden id="fekg">
-                                            <input type="file" class="custom-file-input" id="customFile" name="ekg">
-                                            <label class="custom-file-label" id="cflp4" for="customFile">Choose
+                                            <input type="file" class="custom-file-input" id="ekg" name="ekg">
+                                            <label class="custom-file-label" id="cflp4" for="ekg">Choose
                                                 file</label>
                                         </div>
                                     </div>
@@ -149,8 +149,8 @@
                                         </div>
 
                                         <div class="custom-file" hidden id="flab">
-                                            <input type="file" class="custom-file-input" id="customFile" name="lab">
-                                            <label class="custom-file-label" id="cflp5" for="customFile">Choose
+                                            <input type="file" class="custom-file-input" id="lab" name="lab">
+                                            <label class="custom-file-label" id="cflp5" for="lab">Choose
                                                 file</label>
                                         </div>
                                     </div>
