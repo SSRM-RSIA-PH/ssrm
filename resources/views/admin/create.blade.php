@@ -20,7 +20,7 @@ Add ID Rekam Medis
                     <div class="form-group">
                         <label for="rek_name">Nama Pasien</label>
                         <input type="text" class="form-control" name="rek_name" id="rek_name"
-                            aria-describedby="rek_name" placeholder="" required>
+                            aria-describedby="rek_name" placeholder="" required autofocus>
                     </div>
 
                     @if (Auth::user())
@@ -29,7 +29,7 @@ Add ID Rekam Medis
 
             </div>
             <div class="card-footer">
-                <button type="submit" class="btn btn-primary">Simpan</button>
+                <button id="simpan" type="submit" class="btn btn-primary">Simpan</button>
                 </form>
             </div>
         </div>

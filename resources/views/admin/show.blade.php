@@ -10,10 +10,28 @@
 @section('content')
 
 <div class="container">
-    <p>No Rekam Medis : {{$rekmed->rek_id}}</p>
-    <p>Nama Pasien : {{$rekmed->rek_id}}</p>
-    <p>Waktu : {{$rekmed->created_at}}</p>
-    <p>Uploader : {{$rekmed->user()->name}}</p>
-    <br>
+    <div class="row d-flex justify-content-center">
+        <div class="col-6">
+            <div class="card">
+                <div class="card-header">
+                    Profil Pasien
+                </div>
+                <div class="card-body">
+                    <div class="alert alert-success w-100">
+                        <table class="w-100">                            
+                            <tr>
+                                <th>No Rekam Medis</th>
+                                <td>{{$rekmed->rek_id}}</td>
+                            </tr>
+                            <tr>
+                                <th>Nama Pasien</th>
+                                <td>{{$rekmed->rek_name}}</td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
 @endsection
