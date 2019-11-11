@@ -13,12 +13,12 @@ class SuperRekmedController extends Controller
 {
     public function index()
     {
-        $rekmed = Rekmed::paginate(10);
+        $rekmed = Rekmed::orderByDesc('created_at')->paginate(10);
 
         return view('super.rekmed.index', ['rekmed' => $rekmed]);
     }
 
-    public function show($id)
+    public function show($id)   
     {
         $igd = Igd::where('rek_id', $id)->get();
         $nicu = Nicu::where('rek_id', $id)->get();

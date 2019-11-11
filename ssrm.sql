@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: mysql
--- Generation Time: Nov 06, 2019 at 11:25 AM
+-- Generation Time: Nov 11, 2019 at 10:40 AM
 -- Server version: 5.7.28
 -- PHP Version: 7.2.23
 
@@ -29,9 +29,9 @@ SET time_zone = "+00:00";
 --
 
 CREATE TABLE `igd` (
-  `igd_id` char(9) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
-  `igd_ctt_perkembangan` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
-  `igd_resume` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `igd_id` bigint(20) UNSIGNED NOT NULL,
+  `igd_ctt_perkembangan` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `igd_resume` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `igd_datetime` timestamp NULL DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
@@ -44,7 +44,8 @@ CREATE TABLE `igd` (
 --
 
 INSERT INTO `igd` (`igd_id`, `igd_ctt_perkembangan`, `igd_resume`, `igd_datetime`, `created_at`, `updated_at`, `u_id`, `rek_id`) VALUES
-('MEDIS1IGD', 'Rekmed/MEDIS1/Catatan_Perkembangan/AJL4LR14Ed2uglHo4huD2JEJCcMPEU1Nux98KyCJ.pdf', 'Rekmed/MEDIS1/Resume/i9NwkwqqQRqwB5PzwIZZq2aQlqBYVuxakjwHBQ20.pdf', '2019-11-04 12:00:00', '2019-11-06 11:20:15', '2019-11-06 11:20:15', 113, 'MEDIS1');
+(4, 'Rekmed/MERIS0/Catatan_Perkembangan/eMqKlkAzP85NRMl5aeg4ehyw8IqH4C4H1w5McMCq.pdf', NULL, '2019-11-07 12:00:00', '2019-11-06 21:44:55', '2019-11-06 21:44:55', 113, 'MERIS0'),
+(5, 'Rekmed/MERIS1/Catatan_Perkembangan/kq5igcIJH3d0uEDwNSupWk0XObROuLmd2aOCqUU7.pdf', NULL, '2019-11-06 23:04:00', '2019-11-07 08:38:02', '2019-11-07 08:38:02', 112, 'MERIS1');
 
 -- --------------------------------------------------------
 
@@ -56,7 +57,7 @@ CREATE TABLE `igd_penunjang` (
   `id` bigint(20) UNSIGNED NOT NULL,
   `p_name` varchar(64) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   `p_file` varchar(225) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
-  `igd_id` char(9) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL
+  `igd_id` bigint(20) UNSIGNED NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
@@ -64,7 +65,8 @@ CREATE TABLE `igd_penunjang` (
 --
 
 INSERT INTO `igd_penunjang` (`id`, `p_name`, `p_file`, `igd_id`) VALUES
-(16, 'XRAY', 'Rekmed/MEDIS1/Penunjang/xray/ZgSOJQsaDZNddEhmXuoQRZh6tAfmYlj70WXo5MfR.pdf', 'MEDIS1IGD');
+(22, 'USG', 'Rekmed/MERIS0/Penunjang/usg/ZzocsJuzGZJvrefEcREK5XAXieDBmE2IHtp0qFp4.pdf', 4),
+(23, 'XRAY', 'Rekmed/MERIS0/Penunjang/xray/441pYB6Ya8usgUrRCvsLhX7viCXbkEyDWXVYzgbr.pdf', 4);
 
 -- --------------------------------------------------------
 
@@ -73,9 +75,11 @@ INSERT INTO `igd_penunjang` (`id`, `p_name`, `p_file`, `igd_id`) VALUES
 --
 
 CREATE TABLE `log` (
-  `log_id` int(11) NOT NULL,
-  `log_create_at` datetime NOT NULL,
-  `log_kategori_id` char(15) NOT NULL
+  `log_id` bigint(20) NOT NULL,
+  `log_subject` varchar(64) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `log_do` varchar(191) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -107,11 +111,11 @@ INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
 --
 
 CREATE TABLE `nicu` (
-  `nicu_id` char(9) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
-  `nicu_ctt_integ` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
-  `nicu_resume` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
-  `nicu_pengkajian` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
-  `nicu_grafik` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `nicu_id` bigint(20) UNSIGNED NOT NULL,
+  `nicu_ctt_integ` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `nicu_resume` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `nicu_pengkajian` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `nicu_grafik` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `nicu_datetime` timestamp NULL DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
@@ -129,7 +133,7 @@ CREATE TABLE `nicu_penunjang` (
   `id` bigint(20) UNSIGNED NOT NULL,
   `p_name` varchar(64) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   `p_file` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
-  `nicu_id` char(9) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL
+  `nicu_id` bigint(20) UNSIGNED NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
@@ -151,15 +155,22 @@ CREATE TABLE `password_resets` (
 --
 
 CREATE TABLE `poli` (
-  `poli_id` char(9) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
-  `poli_ctt_integ` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
-  `poli_resume` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `poli_id` bigint(20) UNSIGNED NOT NULL,
+  `poli_ctt_integ` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `poli_resume` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `poli_datetime` timestamp NULL DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   `u_id` bigint(20) UNSIGNED NOT NULL,
   `rek_id` char(6) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `poli`
+--
+
+INSERT INTO `poli` (`poli_id`, `poli_ctt_integ`, `poli_resume`, `poli_datetime`, `created_at`, `updated_at`, `u_id`, `rek_id`) VALUES
+(1, 'nihl', NULL, '2019-11-06 00:00:00', '2019-11-07 00:00:00', '2019-11-07 00:00:00', 112, 'MERIS0');
 
 -- --------------------------------------------------------
 
@@ -171,7 +182,7 @@ CREATE TABLE `poli_penunjang` (
   `id` bigint(20) UNSIGNED NOT NULL,
   `p_name` varchar(64) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   `p_file` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
-  `poli_id` char(9) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL
+  `poli_id` bigint(20) UNSIGNED NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
@@ -193,7 +204,8 @@ CREATE TABLE `rekmed` (
 --
 
 INSERT INTO `rekmed` (`rek_id`, `rek_name`, `created_at`, `updated_at`, `u_id`) VALUES
-('MEDIS1', 'yuzu', '2019-11-06 11:19:38', '2019-11-06 11:19:38', 113);
+('MERIS0', 'qwe', '2019-11-06 21:39:21', '2019-11-06 21:39:21', 113),
+('MERIS1', 'yuxi', '2019-11-07 08:37:38', '2019-11-07 08:37:38', 112);
 
 -- --------------------------------------------------------
 
@@ -202,17 +214,24 @@ INSERT INTO `rekmed` (`rek_id`, `rek_name`, `created_at`, `updated_at`, `u_id`) 
 --
 
 CREATE TABLE `ri` (
-  `ri_id` char(9) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
-  `ri_ctt_integ` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
-  `ri_ctt_oper` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
-  `ri_resume` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
-  `ri_bayi` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `ri_id` bigint(20) UNSIGNED NOT NULL,
+  `ri_ctt_integ` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `ri_ctt_oper` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `ri_resume` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `ri_bayi` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `ri_datetime` timestamp NULL DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   `u_id` bigint(20) UNSIGNED NOT NULL,
   `rek_id` char(6) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `ri`
+--
+
+INSERT INTO `ri` (`ri_id`, `ri_ctt_integ`, `ri_ctt_oper`, `ri_resume`, `ri_bayi`, `ri_datetime`, `created_at`, `updated_at`, `u_id`, `rek_id`) VALUES
+(1, 'nihil', NULL, NULL, NULL, '2019-11-03 00:00:00', '2019-11-05 00:00:00', '2019-11-05 00:00:00', 112, 'MERIS0');
 
 -- --------------------------------------------------------
 
@@ -221,10 +240,10 @@ CREATE TABLE `ri` (
 --
 
 CREATE TABLE `ri_penunjang` (
-  `id` bigint(20) NOT NULL,
+  `id` bigint(20) UNSIGNED NOT NULL,
   `p_name` varchar(64) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   `p_file` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
-  `ri_id` char(9) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL
+  `ri_id` bigint(20) UNSIGNED NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
@@ -255,13 +274,11 @@ INSERT INTO `users` (`id`, `name`, `email`, `email_verified_at`, `password`, `re
 (7, 'Gilang Restu Alam', 'gilang@gmail.com', NULL, '$2y$10$L.H.rBVXPJlMW9kPBuBJ9ONGY6XGYJfuKkdD6kf7/cudCykWga6rK', 'Frr8ODUEiC4UVB4vliIeIXrchEiRm2g6grwB2MA3eW4WETkZvbIBnrH25u6l', '2019-10-30 15:40:00', '2019-10-30 15:42:52', 'gilang', 'DOKTER'),
 (8, 'Farasut Widodo Malik', 'dodo@gmail.com', NULL, '$2y$10$3KBt.ZnlnUeJ5r03/6gHpu3MF08leEtMKQkU8n5pE2lc2cDhCHZGu', NULL, '2019-10-30 15:40:30', '2019-10-30 15:43:11', 'dodo', 'DOKTER'),
 (9, 'L Yuda Rahmani Karnaen', 'yuda@ssrm.com', NULL, '$2y$10$BTVOjh9yaiwMAxIctoXhwO643s8ettMQVN/2FXamHiuqBA9.9iqDa', 'e36geDWfjTWfIZXwsZN26Wyyv0mrHyobowhbIgomME9hNxpfBprQVBptySWt', '2019-10-30 15:40:52', '2019-10-30 15:43:28', 'yuda', 'SUPERVISOR'),
-(112, 'user99', 'usradm99@ssrm.com', NULL, '$2y$10$GJWKnuyehORlGnbo9ZI87OwQNV3jZ..6xBKA0TsUokzCgKN0Bfi4S', NULL, '2019-10-31 07:55:25', '2019-10-31 07:55:25', 'usradm99', 'ADMIN'),
-(113, 'user100', 'usradm100@ssrm.com', NULL, '$2y$10$lAoy5FZNZestJMwNZURLtu64/BDQN53HnmKFmD2Nz.qxEmm/udmDu', '49brLGLIMGxwbSkHq9t7FnCp2bwUxL4NGZJCCinrCBt8ADg5K2PA7cGAWBXz', '2019-10-31 07:55:25', '2019-10-31 07:55:25', 'usradm100', 'ADMIN'),
+(112, 'admin', 'admin@ssrm.com', NULL, '$2y$10$a4Gn3h5ClO5FcTEF4j81QOuw8t5FmursEiRkEKhY13z1Te0QWUIhu', 'yCR4obNsqjciHWOOg9FMjmOLtZXU9FkiXlDa7kFjN9r4fV04dtTSI0oOKxIW', '2019-10-31 07:55:25', '2019-11-06 22:11:10', 'admin', 'ADMIN'),
+(113, 'user100', 'usradm100@ssrm.com', NULL, '$2y$10$lAoy5FZNZestJMwNZURLtu64/BDQN53HnmKFmD2Nz.qxEmm/udmDu', 'qkCDB7oUQeWfc3zSIEcIzqgHfFQuDqhuoMO0W47ob1pgytiNyODyCCb7H5cG', '2019-10-31 07:55:25', '2019-10-31 07:55:25', 'usradm100', 'ADMIN'),
 (114, 'user0', 'usradm0@ssrm.com', NULL, '$2y$10$OqQgjYXqstE/jSOjBd5Aq./BJEYt5vUYg1Y27qQy6ssw6K9trYvi6', NULL, '2019-11-03 10:06:57', '2019-11-03 10:06:57', 'seed0', 'ADMIN'),
 (115, 'user1', 'usradm1@ssrm.com', NULL, '$2y$10$x/eGr4WpC4K0OpBFpfOS5.Ejd9hw96aZv.NAARwLUGCTt9HQCmZG6', NULL, '2019-11-03 10:06:58', '2019-11-03 10:06:58', 'seed1', 'ADMIN'),
 (116, 'user2', 'usradm2@ssrm.com', NULL, '$2y$10$HQFqgmnGOet1Xj8h2NJVeuNS2CFkXKGFWlET/DK1wFFkpUIp5TGuy', NULL, '2019-11-03 10:06:58', '2019-11-03 10:06:58', 'seed2', 'ADMIN'),
-(117, 'user3', 'usradm3@ssrm.com', NULL, '$2y$10$xgakaqYdZ6GpA2HlZ9VLsO5NiA/.O0s1dm/BdBzh358HfRUkmdN2i', NULL, '2019-11-03 10:06:58', '2019-11-03 10:06:58', 'seed3', 'ADMIN'),
-(118, 'user4', 'usradm4@ssrm.com', NULL, '$2y$10$8RzrYBfIw8xzSoTgeyX99ulkjsWl6Ebsnq.XWvBG9S1oNcTukLrnu', NULL, '2019-11-03 10:06:58', '2019-11-03 10:06:58', 'seed4', 'ADMIN'),
 (119, 'user5', 'usradm5@ssrm.com', NULL, '$2y$10$nhgrrLYqWMSoneDMK35Die8fujEDJRnwu/ZP685axjQIAxeUEt7ty', NULL, '2019-11-03 10:06:58', '2019-11-03 10:06:58', 'seed5', 'ADMIN'),
 (120, 'user6', 'usradm6@ssrm.com', NULL, '$2y$10$H.d91mu3Ol4ghL0vS7aS8e2RAuFpF.3gAFKCjE.rKFvacrAWhiBLK', NULL, '2019-11-03 10:06:58', '2019-11-03 10:06:58', 'seed6', 'ADMIN'),
 (121, 'user7', 'usradm7@ssrm.com', NULL, '$2y$10$tJUtQnCxEJwklTJredrdKO5rBmmHIppBWM4pqQSMrbuJ/eD82dcnm', NULL, '2019-11-03 10:06:58', '2019-11-03 10:06:58', 'seed7', 'ADMIN'),
@@ -380,16 +397,22 @@ ALTER TABLE `users`
 --
 
 --
+-- AUTO_INCREMENT for table `igd`
+--
+ALTER TABLE `igd`
+  MODIFY `igd_id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+
+--
 -- AUTO_INCREMENT for table `igd_penunjang`
 --
 ALTER TABLE `igd_penunjang`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
 
 --
 -- AUTO_INCREMENT for table `log`
 --
 ALTER TABLE `log`
-  MODIFY `log_id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `log_id` bigint(20) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `migrations`
@@ -398,10 +421,22 @@ ALTER TABLE `migrations`
   MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
+-- AUTO_INCREMENT for table `nicu`
+--
+ALTER TABLE `nicu`
+  MODIFY `nicu_id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+
+--
 -- AUTO_INCREMENT for table `nicu_penunjang`
 --
 ALTER TABLE `nicu_penunjang`
   MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `poli`
+--
+ALTER TABLE `poli`
+  MODIFY `poli_id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `poli_penunjang`
@@ -410,10 +445,16 @@ ALTER TABLE `poli_penunjang`
   MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --
+-- AUTO_INCREMENT for table `ri`
+--
+ALTER TABLE `ri`
+  MODIFY `ri_id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
 -- AUTO_INCREMENT for table `ri_penunjang`
 --
 ALTER TABLE `ri_penunjang`
-  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `users`

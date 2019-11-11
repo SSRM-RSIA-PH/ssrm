@@ -32,9 +32,7 @@
         @endforeach
     </div>
 
-    <form class="form-inline" action="{{route('admin.index')}}">
-        <input type="submit" value="Valid" class="btn btn-primary">
-    </form>
+    <a href="{{route('admin.index')}}" class="btn btn-primary">Valid</a>
     <form class="form-inline" action="{{route('admin.validation.cancel')}}" method="POST">
         @csrf
         <input type="text" name="igd_id" hidden value="{{$igd->igd_id}}">
