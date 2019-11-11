@@ -27,7 +27,9 @@ Add ID Rekam Medis
                     <input name="u_id" type="text" hidden value="{{Auth::user()->id}}">
                     @endif
 
-                    <button type="submit" class="btn btn-primary">Simpan</button>
+            </div>
+            <div class="card-footer">
+                <button type="submit" class="btn btn-primary">Simpan</button>
                 </form>
             </div>
         </div>

@@ -13,20 +13,20 @@
             <img src="img/logo-rsia-ph.png" width="300px" alt="rsia-ph">
         </div>
         <div class="row d-flex justify-content-center">
-            <div class="col-6">
-                <div class="input-group mb-2">
-                    <form action="{{route('admin.index')}}" class="form-inline">
+            <div class="col-8">
+                <form action="{{route('admin.index')}}">
+                    <div class="input-group input-group-lg mb-3">
                         <input name="search" type="text" class="form-control" placeholder="Search No Rekam Medis"
-                            aria-label="Recipient's username" aria-describedby="button-addon2">
+                            aria-label="Search No Rekam Medis" aria-describedby="button-addon2">
                         <div class="input-group-append">
-                            <input class="btn btn-outline-primary" type="submit" id="button-addon2" value="Saerch">
+                            <input class="btn btn-outline-primary" type="submit" id="button-addon2" value="Search">
                         </div>
-                    </form>
-                </div>
+                    </div>
+                </form>
             </div>
         </div>
         <div class="row d-flex justify-content-center">
-            <div class="col-6">
+            <div class="col-8">
                 <div class="list-group">
                     @isset($find)
                     @if ($find == '[]')

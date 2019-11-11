@@ -1,5 +1,5 @@
-@extends('layouts.super')
-@section('title') Supervisor @endsection
+@extends('layouts.admin')
+@section('title') Admin @endsection
 @section('content')
 
 <div class="alert alert-success w-100">
