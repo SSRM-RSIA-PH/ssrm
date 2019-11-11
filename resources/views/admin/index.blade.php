@@ -29,18 +29,19 @@
             <div class="col-6">
                 <div class="list-group">
                     @isset($find)
-                        @if ($find == '[]')
-                        <form action="{{route('admin.create.rek')}}" method="POST" class="form-inline">
-                            @csrf
-                            <input type="text" name="id" value="{{Request::get('search')}}" hidden>
-                            <input type="submit" class="list-group-item list-group-item-action"
-                                value="Not Found [{{Request::get('search')}}] Click to Create New">
-                        </form>
-                        @else
-                            @foreach ($find as $f)
-                            <a href="#" class="list-group-item list-group-item-action">{{$f->rek_id}} - {{$f->rek_name}}</a>
-                            @endforeach
-                        @endif
+                    @if ($find == '[]')
+                    <form action="{{route('admin.create.rek')}}" method="POST" class="form-inline">
+                        @csrf
+                        <input type="text" name="id" value="{{Request::get('search')}}" hidden>
+                        <input type="submit" class="list-group-item list-group-item-action"
+                            value="Not Found [{{Request::get('search')}}] Click to Create New">
+                    </form>
+                    @else
+                    @foreach ($find as $f)
+                    <a href="{{route('admin.show.rek', ['rek_id'=>$f->rek_id])}}"
+                        class="list-group-item list-group-item-action">{{$f->rek_id}} - {{$f->rek_name}}</a>
+                    @endforeach
+                    @endif
                     @endisset
                 </div>
             </div>

@@ -10,11 +10,11 @@ class AdminController extends Controller
     public function index(Request $request)
     {
         $search = $request->get('search');
+        $find = NULL;
         if ($search) {
             $find = Rekmed::where('rek_id', 'LIKE', $search)->orWhere('rek_name', 'LIKE', "%$search%")->get();
-        } else {
-            $find = NULL;
         }
+        
         return view('admin.index', ['find' => $find]);
     }
 

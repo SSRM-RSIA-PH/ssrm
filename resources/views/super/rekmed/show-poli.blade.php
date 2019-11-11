@@ -6,15 +6,15 @@ Detail User
 
 @section('content')
 
-@if ($detail->igd_ctt_perkembangan)    
-<b>Catatan Perkembangan</b><br>
-<object data="{{asset("storage/$detail->igd_ctt_perkembangan")}}" type="application/pdf" width="100%" height="700px"></object>
+@if ($detail->poli_ctt_integ)
+<b>Catatan Terintegrasi</b><br>
+<object data="{{asset("storage/$detail->poli_ctt_integ")}}" type="application/pdf" width="100%" height="700px"></object>
 <br><br>
 @endif
 
-@if ($detail->igd_resum)   
+@if ($detail->poli_resume)
 <b>Resume</b><br>
-<object data="{{asset("storage/$detail->igd_resum")}}" type="application/pdf" width="100%" height="700px"></object>
+<object data="{{asset("storage/$detail->poli_resume")}}" type="application/pdf" width="100%" height="700px"></object>
 <br><br>
 @endif
 
@@ -28,9 +28,9 @@ Detail User
 
 <div class="col-md-8">
     <a href="{{route('super.rekmed')}}" class="btn btn-primary mb-3">Back</a>
-    <div class="card">
+    {{-- <div class="card">
         <div class="card-body">
         </div>
-    </div>
+    </div> --}}
 </div>
 @endsection

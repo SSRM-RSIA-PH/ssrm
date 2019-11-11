@@ -38,12 +38,15 @@ class SuperRekmedController extends Controller
         switch ($ctg) {
             case 'IGD':
                 $detail = Igd::where('igd_id', $id_ctg)->get()->first();
+                return view('super.rekmed.show-igd', ['detail'=>$detail]);
                 break;
 
             case 'NICU':
                 break;
 
             case 'POLI':
+                $detail = Poli::where('poli_id', $id_ctg)->get()->first();
+                return view('super.rekmed.show-poli', ['detail'=>$detail]);
                 break;
 
             case 'RI':
@@ -53,6 +56,5 @@ class SuperRekmedController extends Controller
                 break;
         }
 
-        return view('super.rekmed.show-igd', ['detail'=>$detail]);
     }
 }
