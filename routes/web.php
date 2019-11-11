@@ -26,12 +26,13 @@ Route::group(['prefix' => '/supervisor'], function () {
 // admin upload
 Route::group(['prefix' => '/admin'], function () {
     Route::get('/', 'AdminController@index')->name('admin.index');
-    Route::post('/igd/create', 'AdminController@create')->name('admin.create.rek');
-    Route::post('/igd/create/s', 'AdminController@store')->name('admin.store.rek');
+    Route::post('/create', 'AdminController@create')->name('admin.create.rek');
+    Route::post('/create/s', 'AdminController@store')->name('admin.store.rek');
+    Route::get('/show/{rek_id}', 'AdminController@show')->name('admin.show.rek');
 
     Route::get('/igd/{rek_id}/upload', 'AdminIgdController@create')->name('admin.create.igd');
     Route::post('/igd/upload/s', 'AdminIgdController@store')->name('admin.store.igd');
-    Route::get('/igd/{id}/validation', 'AdminIgdController@validation')->name('admin.validation');
+    Route::get('/igd/{rek_id}/validation', 'AdminIgdController@validation')->name('admin.validation');
     Route::post('/igd/validation/cancel', 'AdminIgdController@cancel')->name('admin.validation.cancel');
 });
 

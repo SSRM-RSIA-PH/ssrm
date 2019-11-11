@@ -36,7 +36,12 @@ class AdminController extends Controller
         $rekmed->u_id = $request->get('u_id');
         $rekmed->save();
 
-        return redirect()->route('admin.create.igd', ['rek_id'=>$rek_id]);
+        return redirect()->route('admin.show.rek', ['rek_id'=>$rek_id]);
+    }
+
+    public function show($rek_id)
+    {
+        return view('admin.show', ['rek_id'=>$rek_id]);
     }
 
 }
