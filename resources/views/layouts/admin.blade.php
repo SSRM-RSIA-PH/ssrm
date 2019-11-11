@@ -78,6 +78,14 @@
             $('#cfl1').html('Choose file');
             $('#cp').val(null);
         });
+
+        //catatan perkembangan terintegrasi
+        $('#customCheck1t').click(function() {
+            $('#perkembangant').toggle();
+            $('#perkembangant').attr('hidden', false);
+            $('#cflct').html('Choose file');
+            $('#ct').val(null);
+        });
         
         //resume
         $('#customCheck2').click(function() {
@@ -85,6 +93,22 @@
             $('#resume').attr('hidden', false);
             $('#cfl2').html('Choose file');
             $('#rsm').val(null);
+        });
+        
+        //grafik perkembangan
+        $('#customCheckgp').click(function() {
+            $('#gp').toggle();
+            $('#gp').attr('hidden', false);
+            $('#cflgp').html('Choose file');
+            $('#cfgp').val(null);
+        });
+        
+        //pengkajian awal
+        $('#customCheckpa').click(function() {
+            $('#pa').toggle();
+            $('#pa').attr('hidden', false);
+            $('#cflpa').html('Choose file');
+            $('#cfpa').val(null);
         });
         
         //penunjang

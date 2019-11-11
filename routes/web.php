@@ -44,10 +44,10 @@ Route::group(['prefix' => '/admin'], function () {
     Route::post('/poli/validation/cancel', 'AdminPoliController@cancel')->name('admin.validation.poli.cancel');
 
     //admin nicu
-    Route::get('/nicu/{rek_id}/upload', 'AdminPoliController@create')->name('admin.create.nicu');
-    Route::post('/nicu/upload/s', 'AdminPoliController@store')->name('admin.store.nicu');
-    Route::get('/nicu/{rek_id}/validation', 'AdminPoliController@validation')->name('admin.validation.nicu');
-    Route::post('/nicu/validation/cancel', 'AdminPoliController@cancel')->name('admin.validation.nicu.cancel');
+    Route::get('/nicu/{rek_id}/upload', 'AdminNicuController@create')->name('admin.create.nicu');
+    Route::post('/nicu/upload/s', 'AdminNicuController@store')->name('admin.store.nicu');
+    Route::get('/nicu/{rek_id}/validation', 'AdminNicuController@validation')->name('admin.validation.nicu');
+    Route::post('/nicu/validation/cancel', 'AdminNicuController@cancel')->name('admin.validation.nicu.cancel');
 });
 
 
