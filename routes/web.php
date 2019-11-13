@@ -48,6 +48,12 @@ Route::group(['prefix' => '/admin'], function () {
     Route::post('/nicu/upload/s', 'AdminNicuController@store')->name('admin.store.nicu');
     Route::get('/nicu/{rek_id}/validation', 'AdminNicuController@validation')->name('admin.validation.nicu');
     Route::post('/nicu/validation/cancel', 'AdminNicuController@cancel')->name('admin.validation.nicu.cancel');
+
+    //admin rawat inap
+    Route::get('/ri/{rek_id}/upload', 'AdminRiController@create')->name('admin.create.ri');
+    Route::post('/ri/upload/s', 'AdminRiController@store')->name('admin.store.ri');
+    Route::get('/ri/{rek_id}/validation', 'AdminRiController@validation')->name('admin.validation.ri');
+    Route::post('/ri/validation/cancel', 'AdminRiController@cancel')->name('admin.validation.ri.cancel');
 });
 
 

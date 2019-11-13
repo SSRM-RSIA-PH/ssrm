@@ -3,11 +3,20 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Gate;
 use \App\Poli;
 use \App\PoliPenunjang;
 
 class AdminPoliController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware(function ($request, $next) {
+            if (Gate::allows('admin')) return $next($request);
+            abort(403, 'Anda tidak memiliki cukup hak akses');
+        });
+    }
+
     public function create($rek_id)
     {
         return view('admin.poli.create', ['rek_id'=>$rek_id]);
@@ -23,12 +32,12 @@ class AdminPoliController extends Controller
         $poli->poli_datetime = $request->get('date');
 
         if ($request->file('ct')) {
-            $file = $request->file('ct')->store("Rekmed/$rek_id/Catatan_Terintegrasi", 'public');
+            $file = $request->file('ct')->store("Rekmed/$rek_id/Poli/Catatan_Terintegrasi", 'public');
             $poli->poli_ctt_integ = $file;
         }
 
         if ($request->file('resume')) {
-            $file = $request->file('resume')->store("Rekmed/$rek_id/Resume", 'public');
+            $file = $request->file('resume')->store("Rekmed/$rek_id/Poli/Resume", 'public');
             $poli->poli_resume = $file;
         }
 
@@ -38,7 +47,7 @@ class AdminPoliController extends Controller
         foreach ($penunjang_names as $p_name) {
             if ($request->file($p_name)) {
                 $penunjang = new PoliPenunjang;
-                $file = $request->file($p_name)->store("Rekmed/$rek_id/Penunjang/$p_name", 'public');
+                $file = $request->file($p_name)->store("Rekmed/$rek_id/Poli/Penunjang/$p_name", 'public');
                 $penunjang->p_name = strtoupper($p_name);
                 $penunjang->p_file = $file;
                 $penunjang->poli_id = $poli->poli_id;
@@ -60,6 +69,6 @@ class AdminPoliController extends Controller
         $poli_id = $request->get('poli_id');
         $poli = Poli::findOrFail($poli_id);
         $poli->delete();
-        return redirect()->route('admin.index');
+        return redirect()->route('admin.show.rek', ['rek_id'=>$poli->rek_id]);
     }
 }

@@ -39,7 +39,7 @@
         </div>
 
         <div class="card-footer">
-            <a href="{{route('admin.index')}}" class="btn btn-primary float-right">Confirm</a>
+            <a href="{{route('admin.show.rek', ['rek_id'=>$igd->rek_id])}}" class="btn btn-primary float-right">Confirm</a>
             <form class="float-right mr-2" action="{{route('admin.validation.igd.cancel')}}" method="POST">
                 @csrf
                 <input type="text" name="igd_id" hidden value="{{$igd->igd_id}}">

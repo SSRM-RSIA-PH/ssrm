@@ -3,16 +3,25 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Gate;
 use \App\Rekmed;
 
 class AdminController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware(function ($request, $next) {
+            if (Gate::allows('admin')) return $next($request);
+            abort(403, 'Anda tidak memiliki cukup hak akses');
+        });
+    }
+
     public function index(Request $request)
     {
         $search = $request->get('search');
         $find = NULL;
         if ($search) {
-            $find = Rekmed::where('rek_id', 'LIKE', $search)->orWhere('rek_name', 'LIKE', "%$search%")->get();
+            $find = Rekmed::where('rek_id', 'LIKE', $search)->get();
         }
         
         return view('admin.index', ['find' => $find]);

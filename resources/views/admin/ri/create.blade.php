@@ -22,7 +22,7 @@
                 </div>
                 <div class="card-body">
 
-                    <form enctype="multipart/form-data" action="{{route('admin.store.nicu')}}" method="POST">
+                    <form enctype="multipart/form-data" action="{{route('admin.store.ri')}}" method="POST">
                         @csrf
 
                         <div class="input-group pt-2">
@@ -74,33 +74,33 @@
                             </div>
                         </div>
 
-                        {{-- pengkajian awal --}}
+                        {{-- catatan tindakan / operasi --}}
                         <div class="card mb-3">
                             <div class="card-header">
                                 <div class="custom-control custom-checkbox">
                                     <input type="checkbox" class="custom-control-input" id="customCheckpa">
-                                    <label class="custom-control-label" for="customCheckpa">Pengkajian Awal</label>
+                                    <label class="custom-control-label" for="customCheckpa">Catatan Tindakan/Operasi</label>
                                 </div>
                             </div>
                             <div class="card-body" hidden id="pa">
                                 <div class="custom-file">
-                                    <input type="file" class="custom-file-input" id="cfpa" name="pengkajian">
+                                    <input type="file" class="custom-file-input" id="cfpa" name="cto">
                                     <label class="custom-file-label" id="cflpa" for="cfpa">Choose file</label>
                                 </div>
                             </div>
                         </div>
 
-                        {{-- grafik perkembangan --}}
+                        {{-- bayi --}}
                         <div class="card mb-3">
                             <div class="card-header">
                                 <div class="custom-control custom-checkbox">
                                     <input type="checkbox" class="custom-control-input" id="customCheckgp">
-                                    <label class="custom-control-label" for="customCheckgp">Grafik Perkembangan</label>
+                                    <label class="custom-control-label" for="customCheckgp">Bayi</label>
                                 </div>
                             </div>
                             <div class="card-body" hidden id="gp">
                                 <div class="custom-file">
-                                    <input type="file" class="custom-file-input" id="cfgp" name="gp">
+                                    <input type="file" class="custom-file-input" id="cfgp" name="bayi">
                                     <label class="custom-file-label" id="cflgp" for="cfgp">Choose file</label>
                                 </div>
                             </div>

@@ -39,7 +39,7 @@
         </div>
 
         <div class="card-footer">
-            <a href="{{route('admin.index')}}" class="btn btn-primary float-right">Confirm</a>
+            <a href="{{route('admin.show.rek', ['rek_id'=>$poli->rek_id])}}" class="btn btn-primary float-right">Confirm</a>
             <form class="float-right mr-2" action="{{route('admin.validation.poli.cancel')}}" method="POST">
                 @csrf
                 <input type="text" name="poli_id" hidden value="{{$poli->poli_id}}">
