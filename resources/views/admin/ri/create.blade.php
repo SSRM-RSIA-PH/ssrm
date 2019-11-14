@@ -37,7 +37,7 @@
                             </div>
                             <div class="custom-file">
                                 <input name="date" type="datetime-local" class="form-control"
-                                    style="border-top-left-radius:0px;border-bottom-left-radius:0px;">
+                                    style="border-top-left-radius:0px;border-bottom-left-radius:0px;" required autofocus>
                             </div>
                         </div><br>
 
