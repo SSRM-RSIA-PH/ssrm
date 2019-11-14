@@ -11,16 +11,16 @@
             IGD
         </div>
         <div class="card-body">
-            <hr>
             @if ($igd->igd_ctt_perkembangan)
+            <hr>
             <b>Catatan Perkembangan</b><br>
             <object data="{{asset("storage/$igd->igd_ctt_perkembangan")}}" type="application/pdf" width="100%"
                 height="700px"></object>
             <br><br>
             @endif
 
-            <hr>
             @if ($igd->igd_resume)
+            <hr>
             <b>Resume</b><br>
             <object data="{{asset("storage/$igd->igd_resume")}}" type="application/pdf" width="100%"
                 height="700px"></object>
@@ -39,7 +39,8 @@
         </div>
 
         <div class="card-footer">
-            <a href="{{route('admin.show.rek', ['rek_id'=>$igd->rek_id])}}" class="btn btn-primary float-right">Confirm</a>
+            <a href="{{route('admin.show.rek', ['rek_id'=>$igd->rek_id])}}"
+                class="btn btn-primary float-right">Confirm</a>
             <form class="float-right mr-2" action="{{route('admin.validation.igd.cancel')}}" method="POST">
                 @csrf
                 <input type="text" name="igd_id" hidden value="{{$igd->igd_id}}">

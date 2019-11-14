@@ -19,7 +19,7 @@ class AdminIgdController extends Controller
 
     public function create($rek_id)
     {
-        return view('admin.igd.create', ['rek_id'=>$rek_id]);
+        return view('admin.igd.create', ['rek_id' => $rek_id]);
     }
 
     public function store(Request $request)
@@ -55,13 +55,13 @@ class AdminIgdController extends Controller
             }
         }
 
-        return redirect()->route('admin.validation.igd', ['rek_id'=>$igd->igd_id]);
-    }   
+        return redirect()->route('admin.create.igd', ['rek_id' => $rek_id])->with('status', $igd->igd_id);
+    }
 
     public function validation($id)
     {
         $data = Igd::where('igd_id', $id)->get()->first();
-        return view('admin.igd.validation', ['igd'=>$data]);
+        return view('admin.igd.validation', ['igd' => $data]);
     }
 
     public function cancel(Request $request)
@@ -69,7 +69,6 @@ class AdminIgdController extends Controller
         $igd_id = $request->get('igd_id');
         $igd = Igd::findOrFail($igd_id);
         $igd->delete();
-        return redirect()->route('admin.show.rek', ['rek_id'=>$igd->rek_id]);
+        return redirect()->route('admin.show.rek', ['rek_id' => $igd->rek_id]);
     }
-
 }

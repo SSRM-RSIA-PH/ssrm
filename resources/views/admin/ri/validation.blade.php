@@ -8,7 +8,7 @@
     </div>
     <div class="card mb-3">
         <div class="card-header">
-            IGD
+            RAWAT INAP
         </div>
         <div class="card-body">
             @if ($ri->ri_ctt_integ)
@@ -55,7 +55,8 @@
         </div>
 
         <div class="card-footer">
-            <a href="{{route('rek_id'=>$ri->rek_id])}}" class="btn btn-primary float-right">Confirm</a>
+            <a href="{{route('admin.show.rek',['rek_id'=>$ri->rek_id])}}"
+                class="btn btn-primary float-right">Confirm</a>
             <form class="float-right mr-2" action="{{route('admin.validation.ri.cancel')}}" method="POST">
                 @csrf
                 <input type="text" name="ri_id" hidden value="{{$ri->ri_id}}">

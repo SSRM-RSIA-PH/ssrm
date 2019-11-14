@@ -65,7 +65,7 @@ class AdminNicuController extends Controller
             }
         }
 
-        return redirect()->route('admin.validation.nicu', ['rek_id'=>$nicu->nicu_id]);
+        return redirect()->route('admin.create.nicu', ['rek_id' => $rek_id])->with('status', $nicu->nicu_id);
     }   
 
     public function validation($id)

@@ -55,7 +55,7 @@ class AdminPoliController extends Controller
             }
         }
 
-        return redirect()->route('admin.validation.poli', ['rek_id'=>$poli->poli_id]);
+        return redirect()->route('admin.create.poli', ['rek_id' => $rek_id])->with('status', $poli->poli_id);
     }
 
     public function validation($id)

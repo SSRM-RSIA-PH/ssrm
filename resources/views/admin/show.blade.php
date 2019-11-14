@@ -5,7 +5,7 @@
 <a href="{{route('admin.create.igd', ['rek_id'=>$rekmed->rek_id])}}" class="nav-item nav-link">IGD</a>
 <a href="{{route('admin.create.poli', ['rek_id'=>$rekmed->rek_id])}}" class="nav-item nav-link">POLI</a>
 <a href="{{route('admin.create.nicu', ['rek_id'=>$rekmed->rek_id])}}" class="nav-item nav-link">NICU</a>
-<a href="" class="nav-item nav-link">RAWAT INAP</a>
+<a href="{{route('admin.create.ri', ['rek_id'=>$rekmed->rek_id])}}" class="nav-item nav-link">RAWAT INAP</a>
 @endsection
 @section('content')
 
@@ -18,7 +18,7 @@
                 </div>
                 <div class="card-body">
                     <div class="alert alert-success w-100">
-                        <table class="w-100">                            
+                        <table class="w-100">
                             <tr>
                                 <th>No Rekam Medis</th>
                                 <td>{{$rekmed->rek_id}}</td>

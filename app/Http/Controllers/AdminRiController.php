@@ -65,7 +65,7 @@ class AdminRiController extends Controller
             }
         }
 
-        return redirect()->route('admin.validation.ri', ['rek_id'=>$ri->ri_id]);
+        return redirect()->route('admin.create.ri', ['rek_id' => $rek_id])->with('status', $ri->ri_id);
     }   
 
     public function validation($id)
