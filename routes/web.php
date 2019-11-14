@@ -34,20 +34,26 @@ Route::group(['prefix' => '/admin'], function () {
     //admin igd
     Route::get('/igd/{rek_id}/upload', 'AdminIgdController@create')->name('admin.create.igd');
     Route::post('/igd/upload/s', 'AdminIgdController@store')->name('admin.store.igd');
-    Route::get('/igd/{rek_id}/validation', 'AdminIgdController@validation')->name('admin.validation.igd');
+    Route::get('/igd/{id}/validation', 'AdminIgdController@validation')->name('admin.validation.igd');
     Route::post('/igd/validation/cancel', 'AdminIgdController@cancel')->name('admin.validation.igd.cancel');
 
     //admin poli
     Route::get('/poli/{rek_id}/upload', 'AdminPoliController@create')->name('admin.create.poli');
     Route::post('/poli/upload/s', 'AdminPoliController@store')->name('admin.store.poli');
-    Route::get('/poli/{rek_id}/validation', 'AdminPoliController@validation')->name('admin.validation.poli');
+    Route::get('/poli/{id}/validation', 'AdminPoliController@validation')->name('admin.validation.poli');
     Route::post('/poli/validation/cancel', 'AdminPoliController@cancel')->name('admin.validation.poli.cancel');
 
     //admin nicu
     Route::get('/nicu/{rek_id}/upload', 'AdminNicuController@create')->name('admin.create.nicu');
     Route::post('/nicu/upload/s', 'AdminNicuController@store')->name('admin.store.nicu');
-    Route::get('/nicu/{rek_id}/validation', 'AdminNicuController@validation')->name('admin.validation.nicu');
+    Route::get('/nicu/{id}/validation', 'AdminNicuController@validation')->name('admin.validation.nicu');
     Route::post('/nicu/validation/cancel', 'AdminNicuController@cancel')->name('admin.validation.nicu.cancel');
+
+    //admin rawat inap
+    Route::get('/ri/{rek_id}/upload', 'AdminRiController@create')->name('admin.create.ri');
+    Route::post('/ri/upload/s', 'AdminRiController@store')->name('admin.store.ri');
+    Route::get('/ri/{id}/validation', 'AdminRiController@validation')->name('admin.validation.ri');
+    Route::post('/ri/validation/cancel', 'AdminRiController@cancel')->name('admin.validation.ri.cancel');
 });
 
 

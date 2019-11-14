@@ -14,4 +14,9 @@ class RawatInap extends Model
     {
         return User::where('id', $this->u_id)->get()->first();
     }
+
+    public function penunjang()
+    {
+        return RawatInapPenunjang::where('ri_id', $this->ri_id)->get();
+    }
 }

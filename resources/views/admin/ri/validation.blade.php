@@ -4,49 +4,49 @@
 
 <div class="col">
     <div class="alert alert-success w-100">
-        Preview Upload {{$nicu->rek_id}}
+        Preview Upload {{$ri->rek_id}}
     </div>
     <div class="card mb-3">
         <div class="card-header">
-            NICU
+            RAWAT INAP
         </div>
         <div class="card-body">
-            @if ($nicu->nicu_ctt_integ)
+            @if ($ri->ri_ctt_integ)
             <hr>
             <b>Catatan Perkembangan Terintegrasi</b><br>
-            <object data="{{asset("storage/$nicu->nicu_ctt_integ")}}" type="application/pdf" width="100%"
+            <object data="{{asset("storage/$ri->ri_ctt_integ")}}" type="application/pdf" width="100%"
                 height="700px"></object>
             <br><br>
             @endif
 
-            @if ($nicu->nicu_resume)
+            @if ($ri->ri_resume)
             <hr>
             <b>Resume</b><br>
-            <object data="{{asset("storage/$nicu->nicu_resume")}}" type="application/pdf" width="100%"
+            <object data="{{asset("storage/$ri->ri_resume")}}" type="application/pdf" width="100%"
                 height="700px"></object>
             <br><br>
             @endif
 
-            @if ($nicu->nicu_pengkajian)
+            @if ($ri->ri_ctt_oper)
             <hr>
-            <b>Pengkajian Awal</b><br>
-            <object data="{{asset("storage/$nicu->nicu_pengkajian")}}" type="application/pdf" width="100%"
+            <b>Catatan Tindakan/Operasi</b><br>
+            <object data="{{asset("storage/$ri->ri_ctt_oper")}}" type="application/pdf" width="100%"
                 height="700px"></object>
             <br><br>
             @endif
 
-            @if ($nicu->nicu_grafik)
+            @if ($ri->ri_bayi)
             <hr>
-            <b>Grafik</b><br>
-            <object data="{{asset("storage/$nicu->nicu_grafik")}}" type="application/pdf" width="100%"
+            <b>Bayi</b><br>
+            <object data="{{asset("storage/$ri->ri_bayi")}}" type="application/pdf" width="100%"
                 height="700px"></object>
             <br><br>
             @endif
 
-            @if ($nicu->penunjang() != '[]')
+            @if ($ri->penunjang() != '[]')
             <hr>
             <b>Penunjang</b><br>
-            @foreach ($nicu->penunjang() as $p)
+            @foreach ($ri->penunjang() as $p)
             <p>{{$p->p_name}}</p>
             <object data="{{asset("storage/$p->p_file")}}" type="application/pdf" width="100%" height="700px"></object>
             @endforeach
@@ -55,11 +55,11 @@
         </div>
 
         <div class="card-footer">
-            <a href="{{route('admin.show.rek', ['rek_id'=>$nicu->rek_id])}}"
+            <a href="{{route('admin.show.rek',['rek_id'=>$ri->rek_id])}}"
                 class="btn btn-primary float-right">Confirm</a>
-            <form class="float-right mr-2" action="{{route('admin.validation.nicu.cancel')}}" method="POST">
+            <form class="float-right mr-2" action="{{route('admin.validation.ri.cancel')}}" method="POST">
                 @csrf
-                <input type="text" name="nicu_id" hidden value="{{$nicu->nicu_id}}">
+                <input type="text" name="ri_id" hidden value="{{$ri->ri_id}}">
                 <input type="submit" class="btn btn-danger" value="Hapus">
             </form>
         </div>

@@ -8,19 +8,19 @@
     </div>
     <div class="card mb-3">
         <div class="card-header">
-            IGD
+            POLI
         </div>
         <div class="card-body">
-            <hr>
             @if ($poli->poli_ctt_integ)
+            <hr>
             <b>Catatan Perkembangan</b><br>
             <object data="{{asset("storage/$poli->poli_ctt_integ")}}" type="application/pdf" width="100%"
                 height="700px"></object>
             <br><br>
             @endif
 
-            <hr>
             @if ($poli->poli_resume)
+            <hr>
             <b>Resume</b><br>
             <object data="{{asset("storage/$poli->poli_resume")}}" type="application/pdf" width="100%"
                 height="700px"></object>
@@ -39,7 +39,8 @@
         </div>
 
         <div class="card-footer">
-            <a href="{{route('admin.index')}}" class="btn btn-primary float-right">Confirm</a>
+            <a href="{{route('admin.show.rek', ['rek_id'=>$poli->rek_id])}}"
+                class="btn btn-primary float-right">Confirm</a>
             <form class="float-right mr-2" action="{{route('admin.validation.poli.cancel')}}" method="POST">
                 @csrf
                 <input type="text" name="poli_id" hidden value="{{$poli->poli_id}}">

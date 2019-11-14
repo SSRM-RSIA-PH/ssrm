@@ -1,16 +1,22 @@
 @extends('layouts.admin')
-@section('menu') 
+@section('menu')
 <a href="{{route('admin.show.rek', ['rek_id'=>$rek_id])}}" class="nav-item nav-link">{{$rek_id}}</a>
 <a href="{{route('admin.create.igd', ['rek_id'=>$rek_id])}}" class="nav-item nav-link">IGD</a>
 <a href="{{route('admin.create.poli', ['rek_id'=>$rek_id])}}" class="nav-item nav-link">POLI</a>
-<a href="" class="nav-item nav-link">NICU</a>
-<a href="" class="nav-item nav-link">RAWAT INAP</a>
+<a href="{{route('admin.create.nicu', ['rek_id'=>$rek_id])}}" class="nav-item nav-link">NICU</a>
+<a href="{{route('admin.create.ri', ['rek_id'=>$rek_id])}}" class="nav-item nav-link">RAWAT INAP</a>
 @endsection
 @section('title') Admin @endsection
 @section('content')
 
-
 <div class="container">
+    @if (session('status'))
+    <div class="alert alert-success">
+        Berhasil ditambahkan <br>
+        <a class="btn btn-primary" href="{{route('admin.validation.poli', ['id'=>session('status')])}}">Check</a>
+    </div>
+    @endif
+
     <div class="row">
         <div class="col-3">
             <div class="alert alert-primary text-center">{{$rek_id}}</div>
@@ -48,7 +54,8 @@
                                 <div class="card-header">
                                     <div class="custom-control custom-checkbox">
                                         <input type="checkbox" class="custom-control-input" id="customCheck1">
-                                        <label class="custom-control-label" for="customCheck1">Catatan Terintegrasi</label>
+                                        <label class="custom-control-label" for="customCheck1">Catatan
+                                            Terintegrasi</label>
                                     </div>
                                 </div>
                                 <div class="card-body" hidden id="perkembangan">
