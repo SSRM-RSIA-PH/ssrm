@@ -1,7 +1,7 @@
 @extends('layouts.admin')
 @section('title','Detail')
 @section('menu')
-<a href="{{route('admin.show.rek', ['rek_id'=>$rekmed->rek_id])}}" class="nav-item nav-link">{{$rekmed->rek_id}}</a>
+<a href="{{route('admin.show.rek', ['rek_id'=>$rekmed->rek_id])}}" class="nav-item nav-link active">{{$rekmed->rek_id}}</a>
 <a href="{{route('admin.create.igd', ['rek_id'=>$rekmed->rek_id])}}" class="nav-item nav-link">IGD</a>
 <a href="{{route('admin.create.poli', ['rek_id'=>$rekmed->rek_id])}}" class="nav-item nav-link">POLI</a>
 <a href="{{route('admin.create.nicu', ['rek_id'=>$rekmed->rek_id])}}" class="nav-item nav-link">NICU</a>
@@ -14,7 +14,7 @@
         <div class="col-6">
             <div class="card">
                 <div class="card-header">
-                    Profil Pasien
+                    Profile Pasien
                 </div>
                 <div class="card-body">
                     <div class="alert alert-success w-100">
