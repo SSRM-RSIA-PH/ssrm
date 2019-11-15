@@ -88,14 +88,6 @@
             </div>
         </div>
     </nav>
-    <!-- end navbar -->
-    <nav aria-label="breadcrumb">
-        <ol class="breadcrumb">
-            <li class="breadcrumb-item"><a href="#">IGD</a></li>
-            <li class="breadcrumb-item"><a href="#">Catatan Perkembangan</a></li>
-            <li class="breadcrumb-item active" aria-current="page">Date last</li>
-        </ol>
-    </nav>
 
     <div class="container-fluid">
         <div class="row">
