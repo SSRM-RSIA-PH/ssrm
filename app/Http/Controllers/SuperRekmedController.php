@@ -22,48 +22,59 @@ class SuperRekmedController extends Controller
 
     public function index()
     {
-        $rekmed = Rekmed::orderByDesc('created_at')->paginate(10);
-
+        $rekmed = Rekmed::orderBy('created_at', 'DESC')->paginate(10);
         return view('super.rekmed.index', ['rekmed' => $rekmed]);
     }
 
-    public function show($id)   
+    
+    //show list
+    public function show_igd($rek_id)
     {
-        $igd = Igd::where('rek_id', $id)->get();
-        $nicu = Nicu::where('rek_id', $id)->get();
-        $poli = Poli::where('rek_id', $id)->get();
-        $ri = RawatInap::where('rek_id', $id)->get();
-
-        return view('super.rekmed.show', [
-            'igd' => $igd,
-            'nicu' => $nicu,
-            'poli' => $poli,
-            'ri' => $ri
-        ]);
+        $igd = Igd::where('rek_id', $rek_id)->orderBy('igd_datetime', 'DESC')->paginate(10);
+        return view('super.rekmed.show.igd', ['igd' => $igd]);
     }
 
-    public function showdetail($id, $ctg, $id_ctg)
+    public function show_nicu($rek_id)
     {
-        switch ($ctg) {
-            case 'IGD':
-                $detail = Igd::where('igd_id', $id_ctg)->get()->first();
-                return view('super.rekmed.show-igd', ['detail'=>$detail]);
-                break;
+        $nicu = Nicu::where('rek_id', $rek_id)->orderBy('nicu_datetime', 'DESC')->paginate(10);
+        return view('super.rekmed.show.nicu', ['nicu' => $nicu]);
+    }
 
-            case 'NICU':
-                break;
+    public function show_poli($rek_id)
+    {
+        $poli = Poli::where('rek_id', $rek_id)->orderBy('poli_datetime', 'DESC')->paginate(10);
+        return view('super.rekmed.show.poli', ['poli' => $poli,]);
+    }
 
-            case 'POLI':
-                $detail = Poli::where('poli_id', $id_ctg)->get()->first();
-                return view('super.rekmed.show-poli', ['detail'=>$detail]);
-                break;
+    public function show_ri($rek_id)
+    {
+        $ri = RawatInap::where('rek_id', $rek_id)->orderBy('ri_datetime', 'DESC')->paginate(10);
+        return view('super.rekmed.show.ri', ['ri' => $ri,]);
+    }
 
-            case 'RI':
-                break;
 
-            default:
-                break;
-        }
+    //detail file
+    public function detail_igd($rek_id, $id)
+    {
+        $data = Igd::where('igd_id', $id)->get()->first();
+        return view('super.rekmed.detail.igd', ['igd'=>$data]);
+    }
 
+    public function detail_nicu($rek_id, $id)
+    {
+        $data = Nicu::where('nicu_id', $id)->get()->first();
+        return view('super.rekmed.detail.nicu', ['nicu'=>$data]);
+    }
+
+    public function detail_poli($rek_id, $id)
+    {
+        $data = Poli::where('poli_id', $id)->get()->first();
+        return view('super.rekmed.detail.poli', ['poli'=>$data]);
+    }
+
+    public function detail_ri($rek_id, $id)
+    {
+        $data = RawatInap::where('ri_id', $id)->get()->first();
+        return view('super.rekmed.detail.ri', ['ri'=>$data]);
     }
 }

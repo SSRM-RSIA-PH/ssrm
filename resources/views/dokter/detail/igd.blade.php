@@ -4,7 +4,6 @@
 
 <div class="col">
     <div class="alert alert-success w-100">
-        Preview Upload {{$igd->rek_id}}
     </div>
     <div class="card mb-3">
         <div class="card-header">
@@ -35,17 +34,6 @@
             <object data="{{asset("storage/$p->p_file")}}" type="application/pdf" width="100%" height="700px"></object>
             @endforeach
             @endif
-
-        </div>
-
-        <div class="card-footer">
-            <a href="{{route('admin.show.rek', ['rek_id'=>$igd->rek_id])}}"
-                class="btn btn-primary float-right">Confirm</a>
-            <form class="float-right mr-2" action="{{route('admin.validation.igd.cancel')}}" method="POST">
-                @csrf
-                <input type="text" name="igd_id" hidden value="{{$igd->igd_id}}">
-                <input type="submit" class="btn btn-danger" value="Hapus">
-            </form>
         </div>
     </div>
 </div>

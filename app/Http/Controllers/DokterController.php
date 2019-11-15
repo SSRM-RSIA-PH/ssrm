@@ -4,7 +4,11 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Gate;
-use App\Rekmed;
+use \App\Rekmed;
+use \App\Igd;
+use \App\Poli;
+use \App\Nicu;
+use \App\RawatInap;
 
 class DokterController extends Controller
 {
@@ -27,13 +31,55 @@ class DokterController extends Controller
         return view('dokter.index', ['find' => $find]);
     }
 
-    public function igd_ctt()
-    {
 
+    //show list
+    public function show_igd($rek_id)
+    {
+        $igd = Igd::where('rek_id', $rek_id)->orderBy('igd_datetime', 'DESC')->paginate(10);
+        return view('dokter.show.igd', ['igd' => $igd]);
     }
 
-    public function igd_res()
+    public function show_nicu($rek_id)
     {
+        $nicu = Nicu::where('rek_id', $rek_id)->orderBy('nicu_datetime', 'DESC')->paginate(10);
+        return view('dokter.show.nicu', ['nicu' => $nicu]);
+    }
 
+    public function show_poli($rek_id)
+    {
+        $poli = Poli::where('rek_id', $rek_id)->orderBy('poli_datetime', 'DESC')->paginate(10);
+        return view('dokter.show.poli', ['poli' => $poli,]);
+    }
+
+    public function show_ri($rek_id)
+    {
+        $ri = RawatInap::where('rek_id', $rek_id)->orderBy('ri_datetime', 'DESC')->paginate(10);
+        return view('dokter.show.ri', ['ri' => $ri,]);
+    }
+
+
+    //detail file
+    public function detail_igd($rek_id, $id)
+    {
+        $data = Igd::where('igd_id', $id)->get()->first();
+        return view('dokter.detail.igd', ['igd'=>$data]);
+    }
+
+    public function detail_nicu($rek_id, $id)
+    {
+        $data = Nicu::where('nicu_id', $id)->get()->first();
+        return view('dokter.detail.nicu', ['nicu'=>$data]);
+    }
+
+    public function detail_poli($rek_id, $id)
+    {
+        $data = Poli::where('poli_id', $id)->get()->first();
+        return view('dokter.detail.poli', ['poli'=>$data]);
+    }
+
+    public function detail_ri($rek_id, $id)
+    {
+        $data = RawatInap::where('ri_id', $id)->get()->first();
+        return view('dokter.detail.ri', ['ri'=>$data]);
     }
 }
