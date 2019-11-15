@@ -27,10 +27,7 @@ List Rekmed
             <td>{{$r->created_at}}</td>
             <td>{{$r->user()->name}}</td>
             <td>
-                <form action="{{route('super.rekmed.show', ['id'=>$r->rek_id])}}" method="POST">
-                    @csrf
-                    <input type="submit" class="btn btn-primary" value="Go">
-                </form>
+                <a href="{{route('super.rekmed.show.igd', ['rek_id'=>$r->rek_id])}}" class="btn btn-primary">Go</a>
             </td>
         </tr>
         @endforeach

@@ -28,11 +28,15 @@
             <div class="col-6">
                 <div class="list-group">
                     @isset($find)
-                    @if ($find == '[]')
-                    <div href="" class="list-group-item list-group-item-action">Not Found</div>
-                    @else
-                    <a href="#" class="list-group-item list-group-item-action">{{$find->first()->rek_id}}</a>
-                    @endif
+                        <small>Result : </small>
+                        @if ($find == '[]')
+                            <div href="" class="list-group-item list-group-item-action">Not Found</div>
+                        @else
+                            @foreach ($find as $f)
+                                <a href="{{route('dokter.show.igd', ['rek_id'=>$f->rek_id])}}"
+                                    class="list-group-item list-group-item-action">{{$f->rek_id}} - {{$f->rek_name}}</a>
+                            @endforeach
+                        @endif
                     @endisset
                 </div>
             </div>
