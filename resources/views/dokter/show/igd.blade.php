@@ -8,7 +8,7 @@
 <a class="nav-link" href="{{route('dokter.show.ri', ['rek_id'=>$rek_id])}}">RAWAT INAP</a>
 @endsection
 @section('content')
-<br><br>
+
 <table class="table table-bordered">
     <thead>
         <th>Tanggal Rekam Medis</th>

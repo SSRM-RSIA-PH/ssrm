@@ -8,13 +8,7 @@
 <a class="nav-link active" href="{{route('dokter.show.ri', ['rek_id'=>$rek_id])}}">RAWAT INAP</a>
 @endsection
 @section('content')
-<div class="container">
-    {{$rek_id = $ri->first()->rek_id}} <br>
-    <a class="btn btn-primary" href="{{route('dokter.show.igd', ['rek_id'=>$rek_id])}}">IGD</a>
-    <a class="btn btn-primary" href="{{route('dokter.show.nicu', ['rek_id'=>$rek_id])}}">NICU</a>
-    <a class="btn btn-primary" href="{{route('dokter.show.poli', ['rek_id'=>$rek_id])}}">POLI</a>
-    <a class="btn btn-primary" href="{{route('dokter.show.ri', ['rek_id'=>$rek_id])}}">RAWAT INAP</a>
-    <br><br>
+
     <table class="table table-bordered">
         <thead>
             <th>Tanggal Rekam Medis</th>
@@ -37,5 +31,5 @@
         </tbody>
     </table>
     {{$ri->links()}}
-</div>
+
 @endsection
