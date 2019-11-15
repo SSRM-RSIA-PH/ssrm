@@ -18,21 +18,21 @@ List Rekmed
 
 <table class="table table-bordered">
     <thead>
-        <th>Rekmed ID</th>
-        <th>Nama</th>
-        <th>Tanggal</th>
+        <th>ID</th>
+        <th>Nama Pasien</th>
+        <th>Tanggal Upload</th>
         <th>User</th>
-        <th width="100px">Action</th>
+        <th width="100px"></th>
     </thead>
     <tbody>
         @foreach ($rekmed as $r)
         <tr>
             <td>{{$r->rek_id}}</td>
             <td>{{$r->rek_name}}</td>
-            <td>{{$r->created_at}}</td>
+            <td>{{$r->updated_at}}</td>
             <td>{{$r->user()->name}}</td>
             <td>
-                <a href="{{route('super.rekmed.show.igd', ['rek_id'=>$r->rek_id])}}" class="btn btn-primary">Go</a>
+                <a href="{{route('super.rekmed.show.igd', ['rek_id'=>$r->rek_id])}}" class="btn btn-primary">Detail</a>
             </td>
         </tr>
         @endforeach

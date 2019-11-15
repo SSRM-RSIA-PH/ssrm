@@ -77,4 +77,10 @@ class SuperRekmedController extends Controller
         $data = RawatInap::where('ri_id', $id)->get()->first();
         return view('super.rekmed.detail.ri', ['ri'=>$data]);
     }
+
+
+    public function edit_rekmed($rek_id)
+    {
+        
+    }
 }
