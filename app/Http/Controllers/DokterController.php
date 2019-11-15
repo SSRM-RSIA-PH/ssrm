@@ -31,55 +31,89 @@ class DokterController extends Controller
         return view('dokter.index', ['find' => $find]);
     }
 
+    public function show($rek_id)
+    {
+        $data = Rekmed::where('rek_id', $rek_id)->get()->first();
+        return view('dokter.show', ['rekmed' => $data]);
+    }
+
 
     //show list
     public function show_igd($rek_id)
     {
         $igd = Igd::where('rek_id', $rek_id)->orderBy('igd_datetime', 'DESC')->paginate(10);
-        return view('dokter.show.igd', ['igd' => $igd]);
+        return view('dokter.show.igd', [
+            'rek_id' => $rek_id,
+            'igd' => $igd
+        ]);
     }
 
     public function show_nicu($rek_id)
     {
         $nicu = Nicu::where('rek_id', $rek_id)->orderBy('nicu_datetime', 'DESC')->paginate(10);
-        return view('dokter.show.nicu', ['nicu' => $nicu]);
+        return view('dokter.show.nicu', [
+            'rek_id' => $rek_id,
+            'nicu' => $nicu
+        ]);
     }
 
     public function show_poli($rek_id)
     {
         $poli = Poli::where('rek_id', $rek_id)->orderBy('poli_datetime', 'DESC')->paginate(10);
-        return view('dokter.show.poli', ['poli' => $poli,]);
+        return view('dokter.show.poli', [
+            'rek_id' => $rek_id,
+            'poli' => $poli,
+        ]);
     }
 
     public function show_ri($rek_id)
     {
         $ri = RawatInap::where('rek_id', $rek_id)->orderBy('ri_datetime', 'DESC')->paginate(10);
-        return view('dokter.show.ri', ['ri' => $ri,]);
+        return view('dokter.show.ri', [
+            'rek_id' => $rek_id,
+            'ri' => $ri,
+        ]);
     }
 
 
     //detail file
-    public function detail_igd($rek_id, $id)
+    public function detail_igd($rek_id, $id, $ctg)
     {
         $data = Igd::where('igd_id', $id)->get()->first();
-        return view('dokter.detail.igd', ['igd'=>$data]);
+        return view('dokter.detail.igd', [
+            'rek_id' => $rek_id,
+            'ctg' => $ctg,
+            'igd' => $data
+        ]);
     }
 
-    public function detail_nicu($rek_id, $id)
+    public function detail_nicu($rek_id, $id, $ctg)
     {
         $data = Nicu::where('nicu_id', $id)->get()->first();
-        return view('dokter.detail.nicu', ['nicu'=>$data]);
+        return view('dokter.detail.nicu', [
+            'rek_id' => $rek_id,
+            'ctg' => $ctg,
+            'nicu' => $data
+        ]);
     }
 
-    public function detail_poli($rek_id, $id)
+    public function detail_poli($rek_id, $id, $ctg)
     {
         $data = Poli::where('poli_id', $id)->get()->first();
-        return view('dokter.detail.poli', ['poli'=>$data]);
+        return view('dokter.detail.poli', [
+            'rek_id' => $rek_id,
+            'ctg' => $ctg,
+            'poli' => $data
+        ]);
     }
 
-    public function detail_ri($rek_id, $id)
+    public function detail_ri($rek_id, $id, $ctg)
     {
         $data = RawatInap::where('ri_id', $id)->get()->first();
-        return view('dokter.detail.ri', ['ri'=>$data]);
+        return view('dokter.detail.ri', [
+            'rek_id' => $rek_id,
+            'ctg' => $ctg,
+            'ri' => $data
+        ]);
     }
 }

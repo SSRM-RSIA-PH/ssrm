@@ -1,7 +1,7 @@
 @extends('layouts.main')
 @section('title') Show @endsection
 @section('menu')
-{{$rek_id = $igd->first()->rek_id}} <br>
+<a class="nav-item nav-link" href="{{route('dokter.show', ['rek_id'=>$rek_id])}}">{{$rek_id}}</a>
 <a class="nav-link" href="{{route('dokter.show.igd', ['rek_id'=>$rek_id])}}">IGD</a>
 <a class="nav-link" href="{{route('dokter.show.nicu', ['rek_id'=>$rek_id])}}">NICU</a>
 <a class="nav-link active" href="{{route('dokter.show.poli', ['rek_id'=>$rek_id])}}">POLI</a>
@@ -22,7 +22,8 @@
                 <td>
                     <a href="{{route('dokter.detail.poli', [
                             'rek_id'=>$p->rek_id,
-                            'id'=>$p->poli_id
+                            'id'=>$p->poli_id,
+                            'ctg'=>'c'
                         ])}}" class="btn btn-primary">View</a>
                 </td>
             </tr>

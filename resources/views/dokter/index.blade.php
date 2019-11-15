@@ -27,7 +27,7 @@
                 <div href="" class="list-group-item list-group-item-action">Not Found</div>
                 @else
                 @foreach ($find as $f)
-                <a href="{{route('dokter.show.igd', ['rek_id'=>$f->rek_id])}}"
+                <a href="{{route('dokter.show', ['rek_id'=>$f->rek_id])}}"
                     class="list-group-item list-group-item-action">{{$f->rek_id}} - {{$f->rek_name}}</a>
                 @endforeach
                 @endif

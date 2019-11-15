@@ -14,7 +14,7 @@ Route::match(["GET", "POST"], "/register", function () {
 // supervisor
 Route::group(['prefix' => '/supervisor'], function () {
     Route::get('/', 'SuperController@index')->name('super.index');
-    
+
     Route::resource('/user', 'SuperUserController');
     
     Route::group(['prefix' => '/rekmed'], function () {
@@ -76,14 +76,15 @@ Route::group(['prefix' => '/dokter'], function () {
     Route::get('/', 'DokterController@index')->name('dokter.index');
 
     //show list
+    Route::get('/{rek_id}', 'DokterController@show')->name('dokter.show');
     Route::get('/{rek_id}/igd', 'DokterController@show_igd')->name('dokter.show.igd');
     Route::get('/{rek_id}/nicu', 'DokterController@show_nicu')->name('dokter.show.nicu');
     Route::get('/{rek_id}/poli', 'DokterController@show_poli')->name('dokter.show.poli');
     Route::get('/{rek_id}/ri', 'DokterController@show_ri')->name('dokter.show.ri');
 
     //show detail
-    Route::get('/{rek_id}/igd/{id}', 'DokterController@detail_igd')->name('dokter.detail.igd');
-    Route::get('/{rek_id}/nicu/{id}', 'DokterController@detail_nicu')->name('dokter.detail.nicu');
-    Route::get('/{rek_id}/poli/{id}', 'DokterController@detail_poli')->name('dokter.detail.poli');
-    Route::get('/{rek_id}/ri/{id}', 'DokterController@detail_ri')->name('dokter.detail.ri');
+    Route::get('/{rek_id}/igd/{id}/{ctg}', 'DokterController@detail_igd')->name('dokter.detail.igd');
+    Route::get('/{rek_id}/nicu/{id}/{ctg}', 'DokterController@detail_nicu')->name('dokter.detail.nicu');
+    Route::get('/{rek_id}/poli/{id}/{ctg}', 'DokterController@detail_poli')->name('dokter.detail.poli');
+    Route::get('/{rek_id}/ri/{id}/{ctg}', 'DokterController@detail_ri')->name('dokter.detail.ri');
 });
