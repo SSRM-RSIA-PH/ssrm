@@ -1,5 +1,12 @@
-@extends('layouts.dokter')
+@extends('layouts.main')
 @section('title') Show @endsection
+@section('menu')
+{{$rek_id = $igd->first()->rek_id}} <br>
+<a class="nav-link" href="{{route('dokter.show.igd', ['rek_id'=>$rek_id])}}">IGD</a>
+<a class="nav-link" href="{{route('dokter.show.nicu', ['rek_id'=>$rek_id])}}">NICU</a>
+<a class="nav-link" href="{{route('dokter.show.poli', ['rek_id'=>$rek_id])}}">POLI</a>
+<a class="nav-link active" href="{{route('dokter.show.ri', ['rek_id'=>$rek_id])}}">RAWAT INAP</a>
+@endsection
 @section('content')
 <div class="container">
     {{$rek_id = $ri->first()->rek_id}} <br>
