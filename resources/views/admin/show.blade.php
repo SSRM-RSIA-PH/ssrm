@@ -1,4 +1,4 @@
-@extends('layouts.admin')
+@extends('layouts.main')
 @section('title','Detail')
 @section('menu')
 <a href="{{route('admin.show.rek', ['rek_id'=>$rekmed->rek_id])}}" class="nav-item nav-link active">{{$rekmed->rek_id}}</a>
