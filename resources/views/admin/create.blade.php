@@ -1,4 +1,4 @@
-@extends('layouts.admindex')
+@extends('layouts.main')
 @section('title')
 Add ID Rekam Medis
 @endsection

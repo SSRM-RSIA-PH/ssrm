@@ -1,6 +1,7 @@
 @extends('layouts.main')
 @section('title') Show @endsection
 @section('menu')
+<a href="{{route('dokter.index')}}" class="nav-item nav-link">Dashboard</a>
 <a class="nav-item nav-link" href="{{route('dokter.show', ['rek_id'=>$rek_id])}}">{{$rek_id}}</a>
 <a class="nav-link" href="{{route('dokter.show.igd', ['rek_id'=>$rek_id])}}">IGD</a>
 <a class="nav-link active" href="{{route('dokter.show.nicu', ['rek_id'=>$rek_id])}}">NICU</a>
@@ -12,14 +13,12 @@
     <table class="table table-bordered">
         <thead>
             <th>Tanggal Rekam Medis</th>
-            <th>Kategori</th>
-            <th>Action</th>
+            <th width="100px">Action</th>
         </thead>
         <tbody>
             @foreach ($nicu as $n)
             <tr>
                 <td>{{$n->nicu_datetime}}</td>
-                <td>NICU</td>
                 <td>
                     <a href="{{route('dokter.detail.nicu', [
                             'rek_id'=>$n->rek_id,

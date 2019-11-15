@@ -1,5 +1,5 @@
-@extends('layouts.admin')
-@section('title') Admin @endsection
+@extends('layouts.main')
+@section('title') Detail @endsection
 @section('content')
 
 <div class="col">

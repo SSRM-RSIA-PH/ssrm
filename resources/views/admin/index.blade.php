@@ -1,4 +1,4 @@
-@extends('layouts.admindex')
+@extends('layouts.main')
 @section('title') Admin @endsection
 @section('content')
 

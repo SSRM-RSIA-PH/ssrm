@@ -1,6 +1,7 @@
 @extends('layouts.main')
 @section('title') Dokter @endsection
 @section('menu')
+<a href="{{route('dokter.index')}}" class="nav-item nav-link">Dashboard</a>
 <a href="{{route('dokter.detail.ri', [
     'rek_id'=>$rek_id,
     'id'=>$ri->ri_id,

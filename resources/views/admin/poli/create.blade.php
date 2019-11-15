@@ -1,5 +1,6 @@
-@extends('layouts.admin')
+@extends('layouts.main')
 @section('menu')
+<a href="{{route('admin.index')}}" class="nav-item nav-link">Dashboard</a>
 <a href="{{route('admin.show.rek', ['rek_id'=>$rek_id])}}" class="nav-item nav-link">{{$rek_id}}</a>
 <a href="{{route('admin.create.igd', ['rek_id'=>$rek_id])}}" class="nav-item nav-link">IGD</a>
 <a href="{{route('admin.create.poli', ['rek_id'=>$rek_id])}}" class="nav-item nav-link active">POLI</a>

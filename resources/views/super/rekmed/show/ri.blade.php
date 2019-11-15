@@ -1,4 +1,4 @@
-@extends('layouts.dokter')
+@extends('layouts.main')
 @section('title') Show @endsection
 @section('content')
 <div class="container">

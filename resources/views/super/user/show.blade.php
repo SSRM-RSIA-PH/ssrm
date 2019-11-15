@@ -4,6 +4,7 @@
 Detail User
 @endsection
 @section('menu')
+<a href="{{route('super.index')}}" class="nav-item nav-link">Dashboard</a>
 <a class="nav-link" href="{{-- {{route('logupload')}} --}}">Log Upload</a>
 <a class="nav-link active" href="{{route('user.index')}}">Manage Users</a>
 <a class="nav-link" href="{{route('super.rekmed')}}">Manage Rekmed</a>
