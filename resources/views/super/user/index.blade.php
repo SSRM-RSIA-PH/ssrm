@@ -1,15 +1,15 @@
-@extends('layouts.super')
+@extends('layouts.main')
 
 @section('title')
 List User
 @endsection
+@section('menu')
+<a class="nav-link" href="{{-- {{route('logupload')}} --}}">Log Upload</a>
+<a class="nav-link active" href="{{route('user.index')}}">Manage Users</a>
+<a class="nav-link" href="{{route('super.rekmed')}}">Manage Rekmed</a>
+@endsection
 
 @section('content')
-@if(session('status'))
-<div class="alert alert-success">
-    {{session('status')}}
-</div>
-@endif
 
 <div class="row">
     <div class="col-6">

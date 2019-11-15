@@ -1,7 +1,12 @@
-@extends('layouts.user')
+@extends('layouts.main')
 
 @section('title')
 Detail Rekmed
+@endsection
+@section('menu')
+<a class="nav-link" href="{{-- {{route('logupload')}} --}}">Log Upload</a>
+<a class="nav-link" href="{{route('user.index')}}">Manage Users</a>
+<a class="nav-link active" href="{{route('super.rekmed')}}">Manage Rekmed</a>
 @endsection
 
 @section('content')
@@ -17,7 +22,7 @@ Detail Rekmed
         <th>Kategori</th>
         <th>User</th>
         <th>Upload Date</th>
-        <th>Action</th>
+        <th width="100px">Action</th>
     </thead>
     <tbody>
         @foreach ($igd as $i)
@@ -33,7 +38,7 @@ Detail Rekmed
                     'id_ctg'=>$i->igd_id
                 ])}}" method="POST">
                     @csrf
-                    <input type="submit" class="btn btn-primary" value="Go">
+                    <input type="submit" class="btn btn-primary" value="View Detail">
                 </form>
             </td>
         </tr>
@@ -52,7 +57,7 @@ Detail Rekmed
                         'id_ctg'=>$n->nicu_id
                     ])}}" method="POST">
                     @csrf
-                    <input type="submit" class="btn btn-primary" value="Go">
+                    <input type="submit" class="btn btn-primary" value="View Detail">
                 </form>
             </td>
         </tr>
@@ -71,7 +76,7 @@ Detail Rekmed
                         'id_ctg'=>$p->poli_id
                     ])}}" method="POST">
                     @csrf
-                    <input type="submit" class="btn btn-primary" value="Go">
+                    <input type="submit" class="btn btn-primary" value="View Detail">
                 </form>
             </td>
         </tr>
@@ -90,7 +95,7 @@ Detail Rekmed
                         'id_ctg'=>$r->ri_id
                     ])}}" method="POST">
                     @csrf
-                    <input type="submit" class="btn btn-primary" value="Go">
+                    <input type="submit" class="btn btn-primary" value="View Detail">
                 </form>
             </td>
         </tr>

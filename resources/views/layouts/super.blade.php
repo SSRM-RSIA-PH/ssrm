@@ -7,6 +7,11 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>SSRM @yield('title')</title>
     <link rel="stylesheet" href="{{asset('css/bootstrap.min.css')}}">
+    <style>
+    .active {
+        border-bottom: 2px solid gray
+    }
+    </style>
 </head>
 
 <body>
@@ -22,21 +27,7 @@
             </button>
 
             <ul class="navbar-nav mr-auto">
-                <li class="nav-item">
-                    <a class="nav-link" href="
-                    {{-- {{route('logupload')}} --}}
-                    ">Log Upload</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="
-                        {{route('user.index')}}
-                    ">Manage Users</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="
-                        {{route('super.rekmed')}}
-                    ">Manage Rekmed</a>
-                </li>
+                @yield('menu')
             </ul>
 
             <div class="dropdown float-right">
@@ -62,16 +53,19 @@
     <!-- end navbar -->
 
     <div class="container">
-        <div class="row d-flex justify-content-center">
-            @yield("content")
-
-        </div>
+        @yield("content")
     </div>
 
     <script src="{{asset('js/jquery.min.js')}}"></script>
     <script src="{{asset('js/bootstrap.min.js')}}"></script>
     <script src="{{asset('js/bscfi.js')}}"></script>
     <script src="{{asset('js/sweetalert2.all.min.js')}}"></script>
+    <script>
+        // $('.nav-link').on('click', function() {
+    //     $('.nav-link').removeClass('active');
+    //     $(this).addClass('active');
+    // });
+    </script>
 </body>
 
 </html>

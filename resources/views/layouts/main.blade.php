@@ -54,10 +54,10 @@
     <!-- end navbar -->
 
     <div class="container">
-        <div class="row">
+        {{-- <div class="row"> --}}
             @yield("content")
 
-        </div>
+        {{-- </div> --}}
     </div>
 
     <script src="{{asset('js/jquery.min.js')}}"></script>

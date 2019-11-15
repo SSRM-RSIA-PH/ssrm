@@ -1,7 +1,12 @@
-@extends('layouts.user')
+@extends('layouts.main')
 
 @section('title')
 Detail User
+@endsection
+@section('menu')
+<a class="nav-link" href="{{-- {{route('logupload')}} --}}">Log Upload</a>
+<a class="nav-link" href="{{route('user.index')}}">Manage Users</a>
+<a class="nav-link active" href="{{route('super.rekmed')}}">Manage Rekmed</a>
 @endsection
 
 @section('content')
