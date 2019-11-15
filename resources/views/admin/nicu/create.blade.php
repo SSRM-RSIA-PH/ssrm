@@ -3,7 +3,7 @@
 <a href="{{route('admin.show.rek', ['rek_id'=>$rek_id])}}" class="nav-item nav-link">{{$rek_id}}</a>
 <a href="{{route('admin.create.igd', ['rek_id'=>$rek_id])}}" class="nav-item nav-link">IGD</a>
 <a href="{{route('admin.create.poli', ['rek_id'=>$rek_id])}}" class="nav-item nav-link">POLI</a>
-<a href="{{route('admin.create.nicu', ['rek_id'=>$rek_id])}}" class="nav-item nav-link">NICU</a>
+<a href="{{route('admin.create.nicu', ['rek_id'=>$rek_id])}}" class="nav-item nav-link active">NICU</a>
 <a href="{{route('admin.create.ri', ['rek_id'=>$rek_id])}}" class="nav-item nav-link">RAWAT INAP</a>
 @endsection
 @section('title') Admin @endsection
@@ -37,7 +37,7 @@
                             </div>
                             <div class="custom-file">
                                 <input name="date" type="datetime-local" class="form-control"
-                                    style="border-top-left-radius:0px;border-bottom-left-radius:0px;">
+                                    style="border-top-left-radius:0px;border-bottom-left-radius:0px;" required autofocus>
                             </div>
                         </div><br>
 

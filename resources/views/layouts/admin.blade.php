@@ -7,6 +7,11 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>SSRM @yield('title')</title>
     <link rel="stylesheet" href="{{asset('css/bootstrap.min.css')}}">
+    <style>
+    .active {
+        border-bottom: 3px solid gray
+    }
+    </style>
 </head>
 
 <body>
@@ -154,7 +159,8 @@
             $('#lab').val(null);
         });
         
-
+        // Navbar
+        
     </script>
 </body>
 

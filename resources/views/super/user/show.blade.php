@@ -1,4 +1,4 @@
-@extends('layouts.user')
+@extends('layouts.super')
 
 @section('title')
 Detail User
