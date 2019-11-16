@@ -36,6 +36,9 @@ Route::group(['prefix' => '/supervisor'], function () {
         //edit
         Route::get('/{rek_id}/edit', 'SuperRekmedController@edit_rekmed')->name('super.rekmed.edit');
         Route::put('/{rek_id}/update', 'SuperRekmedController@update_rekmed')->name('super.rekmed.update');
+
+        //delete
+        Route::delete('/{rek_id}/destroy', 'SuperRekmedController@destroy_rekmed')->name('super.rekmed.destroy');
     });
 
     Route::get('/log', 'LogController@index')->name('super.log');

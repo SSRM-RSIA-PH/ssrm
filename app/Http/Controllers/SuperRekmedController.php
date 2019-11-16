@@ -115,4 +115,11 @@ class SuperRekmedController extends Controller
 
         return redirect()->route('super.rekmed.edit', ['rek_id' => $rekmed->rek_id])->with('status', 'Berhasil');
     }
+
+    public function destroy_rekmed($rek_id)
+    {
+        $rekmed = Rekmed::findOrFail($rek_id);
+        $rekmed->delete();
+        return redirect()->route('super.rekmed');
+    }
 }
