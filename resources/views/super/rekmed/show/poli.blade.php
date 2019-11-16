@@ -12,13 +12,15 @@
         <thead>
             <th>Tanggal Rekam Medis</th>
             <th>Kategori</th>
-            <th>Action</th>
+            <th>User</th>
+            <th></th>
         </thead>
         <tbody>
             @foreach ($poli as $p)
             <tr>
                 <td>{{$p->poli_datetime}}</td>
                 <td>Poli</td>
+                <td>{{$p->user()->name}}</td>
                 <td>
                     <a href="{{route('super.rekmed.detail.poli', [
                             'rek_id'=>$p->rek_id,

@@ -31,6 +31,10 @@ Route::group(['prefix' => '/supervisor'], function () {
         Route::get('/{rek_id}/nicu/{id}', 'SuperRekmedController@detail_nicu')->name('super.rekmed.detail.nicu');
         Route::get('/{rek_id}/poli/{id}', 'SuperRekmedController@detail_poli')->name('super.rekmed.detail.poli');
         Route::get('/{rek_id}/ri/{id}', 'SuperRekmedController@detail_ri')->name('super.rekmed.detail.ri');
+
+        //edit
+        Route::get('/{rek_id}/edit', 'SuperRekmedController@edit_rekmed')->name('super.rekmed.edit');
+        Route::put('/{rek_id}/update', 'SuperRekmedController@update_rekmed')->name('super.rekmed.update');
     });
 
     Route::get('/log', 'LogController@index')->name('super.log');
@@ -41,7 +45,7 @@ Route::group(['prefix' => '/supervisor'], function () {
 Route::group(['prefix' => '/admin'], function () {
     //admin controller
     Route::get('/', 'AdminController@index')->name('admin.index');
-    Route::post('/create', 'AdminController@create')->name('admin.create.rek');
+    Route::get('/create', 'AdminController@create')->name('admin.create.rek');
     Route::post('/create/s', 'AdminController@store')->name('admin.store.rek');
     Route::get('/show/{rek_id}', 'AdminController@show')->name('admin.show.rek');
 

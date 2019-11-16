@@ -18,7 +18,7 @@ Edit User
             Edit User
         </div>
         <div class="card-body">
-            <form enctype="multipart/form-data" action="{{route('user.update', ['id'=>$user->id])}}" method="POST">
+            <form action="{{route('user.update', ['id'=>$user->id])}}" method="POST">
                 @csrf
                 <input type="hidden" value="PUT" name="_method">
 

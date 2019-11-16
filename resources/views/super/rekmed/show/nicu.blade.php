@@ -12,13 +12,15 @@
         <thead>
             <th>Tanggal Rekam Medis</th>
             <th>Kategori</th>
-            <th>Action</th>
+            <th>User</th>
+            <th></th>
         </thead>
         <tbody>
             @foreach ($nicu as $n)
             <tr>
                 <td>{{$n->nicu_datetime}}</td>
                 <td>NICU</td>
+                <td>{{$n->user()->name}}</td>
                 <td>
                     <a href="{{route('super.rekmed.detail.nicu', [
                             'rek_id'=>$n->rek_id,

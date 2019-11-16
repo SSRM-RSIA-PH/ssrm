@@ -12,13 +12,15 @@
         <thead>
             <th>Tanggal Rekam Medis</th>
             <th>Kategori</th>
-            <th>Action</th>
+            <th>User</th>
+            <th></th>
         </thead>
         <tbody>
             @foreach ($igd as $i)
             <tr>
                 <td>{{$i->igd_datetime}}</td>
                 <td>IGD</td>
+                <td>{{$i->user()->name}}</td>
                 <td>
                     <a href="{{route('super.rekmed.detail.igd', [
                             'rek_id'=>$i->rek_id, 

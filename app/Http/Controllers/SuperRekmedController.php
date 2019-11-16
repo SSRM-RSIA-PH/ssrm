@@ -56,31 +56,44 @@ class SuperRekmedController extends Controller
     //detail file
     public function detail_igd($rek_id, $id)
     {
-        $data = Igd::where('igd_id', $id)->get()->first();
+        $data = Igd::findOrFail($id);
         return view('super.rekmed.detail.igd', ['igd'=>$data]);
     }
 
     public function detail_nicu($rek_id, $id)
     {
-        $data = Nicu::where('nicu_id', $id)->get()->first();
+        $data = Nicu::findOrFail($id);
         return view('super.rekmed.detail.nicu', ['nicu'=>$data]);
     }
 
     public function detail_poli($rek_id, $id)
     {
-        $data = Poli::where('poli_id', $id)->get()->first();
+        $data = Poli::findOrFail($id);
         return view('super.rekmed.detail.poli', ['poli'=>$data]);
     }
 
     public function detail_ri($rek_id, $id)
     {
-        $data = RawatInap::where('ri_id', $id)->get()->first();
+        $data = RawatInap::findOrFail($id);
         return view('super.rekmed.detail.ri', ['ri'=>$data]);
     }
 
 
     public function edit_rekmed($rek_id)
     {
-        
+        $data = Rekmed::findOrFail($rek_id);
+        return view('super.rekmed.edit', ['rekmed'=> $data]);
     }
+
+    public function update_rekmed(Request $request, $rek_id)
+    {
+        $rekmed = Rekmed::findOrFail($rek_id);
+        $rekmed->rek_id = $request->get('rek_id');
+        $rekmed->rek_name = $request->get('rek_name');
+        $rekmed->save();
+
+        return redirect()->route('super.rekmed.edit', ['rek_id'=>$rekmed->rek_id])->with('status', 'berhasil');
+    }
+
+    
 }

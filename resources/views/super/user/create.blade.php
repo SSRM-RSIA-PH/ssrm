@@ -8,6 +8,11 @@
 <a class="nav-link" href="{{route('super.rekmed')}}">Manage Rekmed</a>
 @endsection
 @section("content")
+@if (session('status'))
+<div class="alert alert-success">
+    {{session('status')}}
+</div>
+@endif
 
 <div class="col-md-8 mb-3">
     <div class="card">
