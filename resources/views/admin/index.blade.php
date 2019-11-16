@@ -31,9 +31,8 @@
                     @isset($find)
                     @if ($find == '[]')
                     <small>Result : </small>
-                    <form action="{{route('admin.create.rek')}}" method="POST" class="form-inline">
-                        @csrf
-                        <input type="text" name="id" value="{{Request::get('search')}}" hidden>
+                    <form action="{{route('admin.create.rek')}}" class="form-inline">
+                        <input type="hidden" name="id" value="{{Request::get('search')}}">
                         <input type="submit" class="list-group-item list-group-item-action"
                             value="Not Found [{{Request::get('search')}}] Click to Create New">
                     </form>

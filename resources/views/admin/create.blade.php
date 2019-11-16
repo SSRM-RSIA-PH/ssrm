@@ -3,7 +3,15 @@
 Add ID Rekam Medis
 @endsection
 @section('content')
+
 <div class="container">
+    @if (session('status'))
+    <div class="alert alert-success">
+        Berhasil Menambahkan {{session('status')}}<br>
+        <a href="{{route('admin.show.rek', ['rek_id'=>session('status')])}}" class="btn btn-primary">Upload</a>
+    </div><br>
+    @endif
+
     <div class="col-md-6">
         <div class="card">
             <div class="card-header">Tambah Pasien Baru</div>

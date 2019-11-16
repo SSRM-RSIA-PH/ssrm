@@ -10,6 +10,11 @@
 @section("content")
 <div class="row d-flex justify-content-center">
     <div class="col-md-8 mb-3">
+        @if (session('status'))
+        <div class="alert alert-success">
+            {{session('status')}}
+        </div>
+        @endif
         <div class="card">
             <div class="card-header">Tambah User</div>
             <div class="card-body">
@@ -46,7 +51,6 @@
                     <br>
             </div>
             <div class="card-footer">
-
                 <input class="btn btn-primary" type="submit" value="Simpan" />
                 <button type="reset" class="btn btn-danger">Reset</button>
                 </form>

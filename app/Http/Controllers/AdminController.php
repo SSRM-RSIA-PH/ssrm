@@ -36,16 +36,15 @@ class AdminController extends Controller
 
     public function store(Request $request)
     {
-        $rek_id = $request->get('rek_id');
-        $name = 'agung';
-
+        $rek_id = strtoupper($request->get('rek_id'));
+        
         $rekmed = new Rekmed;
         $rekmed->rek_id = $rek_id;
         $rekmed->rek_name = $request->get('rek_name');
         $rekmed->u_id = $request->get('u_id');
         $rekmed->save();
 
-        return redirect()->route('admin.show.rek', ['rek_id'=>$rek_id]);
+        return redirect()->route('admin.create.rek')->with('status', $rek_id);
     }
 
     public function show($rek_id)
