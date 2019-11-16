@@ -19,6 +19,7 @@ Route::group(['prefix' => '/supervisor'], function () {
     
     Route::group(['prefix' => '/rekmed'], function () {
         Route::get('/', 'SuperRekmedController@index')->name('super.rekmed');
+        Route::get('/{rek_id}', 'SuperRekmedController@show')->name('super.rekmed.show');
 
         //show list
         Route::get('/{rek_id}/igd', 'SuperRekmedController@show_igd')->name('super.rekmed.show.igd');

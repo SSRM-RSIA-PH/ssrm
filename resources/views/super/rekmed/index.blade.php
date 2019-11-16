@@ -33,7 +33,8 @@ List Rekmed
             <td>{{$r->updated_at}}</td>
             <td>{{$r->user()->name}}</td>
             <td>
-                <a href="{{route('super.rekmed.show.igd', ['rek_id'=>$r->rek_id])}}" class="btn btn-primary">Detail</a>
+                <a href="{{route('super.rekmed.show', ['rek_id'=>$r->rek_id])}}" class="btn btn-primary">Detail</a>
+                <a href="{{route('super.rekmed.edit', ['rek_id'=>$r->rek_id])}}" class="btn btn-primary">Edit</a>
             </td>
         </tr>
         @endforeach

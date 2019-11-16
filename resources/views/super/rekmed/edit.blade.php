@@ -1,6 +1,6 @@
 @extends('layouts.main')
 @section('title')
-    Super
+Edit
 @endsection
 @section('menu')
 <a href="{{route('super.index')}}" class="nav-item nav-link">Dashboard</a>
@@ -11,7 +11,8 @@
 @section('content')
 @if (session('status'))
 <div class="alert alert-success">
-    {{session('status')}}
+    {{session('status')}} <br>
+    <a href="{{route('super.rekmed')}}" class="btn btn-primary">Back</a>
 </div>
 @endif
 

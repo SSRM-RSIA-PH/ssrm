@@ -26,6 +26,15 @@ class SuperRekmedController extends Controller
         return view('super.rekmed.index', ['rekmed' => $rekmed]);
     }
 
+    public function show($rek_id)
+    {
+        $data = Rekmed::findOrFail($rek_id);
+        return view('super.rekmed.show', [
+            'rek_id'=>$rek_id,
+            'rekmed'=>$data
+        ]);
+    }
+
 
     //show list
     public function show_igd($rek_id)
@@ -104,6 +113,6 @@ class SuperRekmedController extends Controller
         $rekmed->rek_name = $request->get('rek_name');
         $rekmed->save();
 
-        return redirect()->route('super.rekmed.edit', ['rek_id' => $rekmed->rek_id])->with('status', 'berhasil');
+        return redirect()->route('super.rekmed.edit', ['rek_id' => $rekmed->rek_id])->with('status', 'Berhasil');
     }
 }
