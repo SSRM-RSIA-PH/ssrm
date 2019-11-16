@@ -2,7 +2,6 @@
 @section('title') Show @endsection
 @section('content')
 <div class="container">
-    {{$rek_id = $igd->first()->rek_id}} <br>
     <a class="btn btn-primary" href="{{route('super.rekmed.show.igd', ['rek_id'=>$rek_id])}}">IGD</a>
     <a class="btn btn-primary" href="{{route('super.rekmed.show.nicu', ['rek_id'=>$rek_id])}}">NICU</a>
     <a class="btn btn-primary" href="{{route('super.rekmed.show.poli', ['rek_id'=>$rek_id])}}">POLI</a>
