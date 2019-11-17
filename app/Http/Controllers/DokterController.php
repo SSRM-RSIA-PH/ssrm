@@ -33,7 +33,7 @@ class DokterController extends Controller
 
     public function show($rek_id)
     {
-        $data = Rekmed::where('rek_id', $rek_id)->get()->first();
+        $data = Rekmed::findOrFail($rek_id);
         return view('dokter.show', ['rekmed' => $data]);
     }
 
@@ -79,7 +79,7 @@ class DokterController extends Controller
     //detail file
     public function detail_igd($rek_id, $id, $ctg)
     {
-        $data = Igd::where('igd_id', $id)->get()->first();
+        $data = Igd::findOrFail($id);
         return view('dokter.detail.igd', [
             'rek_id' => $rek_id,
             'ctg' => $ctg,
@@ -89,7 +89,7 @@ class DokterController extends Controller
 
     public function detail_nicu($rek_id, $id, $ctg)
     {
-        $data = Nicu::where('nicu_id', $id)->get()->first();
+        $data = Nicu::findOrFail($id);
         return view('dokter.detail.nicu', [
             'rek_id' => $rek_id,
             'ctg' => $ctg,
@@ -99,7 +99,7 @@ class DokterController extends Controller
 
     public function detail_poli($rek_id, $id, $ctg)
     {
-        $data = Poli::where('poli_id', $id)->get()->first();
+        $data = Poli::findOrFail($id);
         return view('dokter.detail.poli', [
             'rek_id' => $rek_id,
             'ctg' => $ctg,
@@ -109,7 +109,7 @@ class DokterController extends Controller
 
     public function detail_ri($rek_id, $id, $ctg)
     {
-        $data = RawatInap::where('ri_id', $id)->get()->first();
+        $data = RawatInap::findOrFail($id);
         return view('dokter.detail.ri', [
             'rek_id' => $rek_id,
             'ctg' => $ctg,

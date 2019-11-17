@@ -60,7 +60,7 @@ class AdminPoliController extends Controller
 
     public function validation($id)
     {
-        $data = Poli::where('poli_id', $id)->get()->first();
+        $data = Poli::findOrFail($id);
         return view('admin.poli.validation', ['poli'=>$data]);
     }
 

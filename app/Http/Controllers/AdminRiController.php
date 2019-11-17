@@ -70,7 +70,7 @@ class AdminRiController extends Controller
 
     public function validation($id)
     {
-        $data = RawatInap::where('ri_id', $id)->get()->first();
+        $data = RawatInap::findOrFail($id);
         return view('admin.ri.validation', ['ri'=>$data]);
     }
 
