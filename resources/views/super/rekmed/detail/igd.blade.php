@@ -1,29 +1,32 @@
 @extends('layouts.main')
 @section('title') Detail @endsection
+@section('menu')
+<a href="{{route('super.index')}}" class="nav-link">Dashboard</a>
+<a href="{{route('super.rekmed.show.igd', ['igd'=>$igd])}}" class="nav-link">Kembali</a>
+@endsection
 @section('content')
-
 <div class="col">
-    <div class="alert alert-success w-100">
-    </div>
     <div class="card mb-3">
         <div class="card-header">
+            <a href="" aria-label="Close" class="close">
+                <span aria-hidden="true">&times;</span>
+            </a>
             IGD
         </div>
         <div class="card-body">
             @if ($igd->igd_ctt_perkembangan)
-            <hr>
             <b>Catatan Perkembangan</b><br>
-            <object data="{{asset("storage/$igd->igd_ctt_perkembangan")}}" type="application/pdf" width="100%"
-                height="700px"></object>
-            <br><br>
+            <div class="embed-responsive embed-responsive-16by9">
+                <object data="{{asset("storage/$igd->igd_ctt_perkembangan")}}" type="application/pdf"></object>
+            </div>
             @endif
 
             @if ($igd->igd_resume)
             <hr>
             <b>Resume</b><br>
-            <object data="{{asset("storage/$igd->igd_resume")}}" type="application/pdf" width="100%"
-                height="700px"></object>
-            <br><br>
+            <div class="embed-responsive embed-responsive-16by9">
+                <object data="{{asset("storage/$igd->igd_resume")}}" type="application/pdf"></object>
+            </div>
             @endif
 
             @if ($igd->penunjang() != '[]')
@@ -31,7 +34,9 @@
             <b>Penunjang</b><br>
             @foreach ($igd->penunjang() as $p)
             <p>{{$p->p_name}}</p>
-            <object data="{{asset("storage/$p->p_file")}}" type="application/pdf" width="100%" height="700px"></object>
+            <div class="embed-responsive embed-responsive-16by9">
+                <object data="{{asset("storage/$p->p_file")}}" type="application/pdf"></object>
+            </div>
             @endforeach
             @endif
         </div>
