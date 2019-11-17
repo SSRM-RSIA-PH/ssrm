@@ -27,18 +27,22 @@ Route::group(['prefix' => '/supervisor'], function () {
         Route::get('/{rek_id}/poli', 'SuperRekmedController@show_poli')->name('super.rekmed.show.poli');
         Route::get('/{rek_id}/ri', 'SuperRekmedController@show_ri')->name('super.rekmed.show.ri');
 
-        //show detail
-        Route::get('/{rek_id}/igd/{id}', 'SuperRekmedController@detail_igd')->name('super.rekmed.detail.igd');
-        Route::get('/{rek_id}/nicu/{id}', 'SuperRekmedController@detail_nicu')->name('super.rekmed.detail.nicu');
-        Route::get('/{rek_id}/poli/{id}', 'SuperRekmedController@detail_poli')->name('super.rekmed.detail.poli');
-        Route::get('/{rek_id}/ri/{id}', 'SuperRekmedController@detail_ri')->name('super.rekmed.detail.ri');
-
         //edit
         Route::get('/{rek_id}/edit', 'SuperRekmedController@edit_rekmed')->name('super.rekmed.edit');
         Route::put('/{rek_id}/update', 'SuperRekmedController@update_rekmed')->name('super.rekmed.update');
 
         //delete
         Route::delete('/{rek_id}/destroy', 'SuperRekmedController@destroy_rekmed')->name('super.rekmed.destroy');
+        
+        //show detail
+        Route::get('/{rek_id}/igd/{id}', 'SuperRekmedController@detail_igd')->name('super.rekmed.detail.igd');
+        Route::get('/{rek_id}/nicu/{id}', 'SuperRekmedController@detail_nicu')->name('super.rekmed.detail.nicu');
+        Route::get('/{rek_id}/poli/{id}', 'SuperRekmedController@detail_poli')->name('super.rekmed.detail.poli');
+        Route::get('/{rek_id}/ri/{id}', 'SuperRekmedController@detail_ri')->name('super.rekmed.detail.ri');
+
+        //edit detail
+        Route::get('/{rek_id}/igd/{id}/edit', 'SuperRekmedController@edit_detail_igd')->name('super.rekmed.igd.edit');
+        Route::put('/{rek_id}/igd/{id}/update', 'SuperRekmedController@update_detail_igd')->name('super.rekmed.igd.update');
     });
 
     Route::get('/log', 'LogController@index')->name('super.log');

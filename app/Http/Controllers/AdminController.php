@@ -49,7 +49,7 @@ class AdminController extends Controller
 
     public function show($rek_id)
     {
-        $rekmed = Rekmed::where('rek_id', $rek_id)->get()->first();
+        $rekmed = Rekmed::findOrFail($rek_id);
         return view('admin.show', ['rekmed'=>$rekmed]);
     }
 

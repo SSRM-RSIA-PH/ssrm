@@ -30,8 +30,8 @@ class SuperRekmedController extends Controller
     {
         $data = Rekmed::findOrFail($rek_id);
         return view('super.rekmed.show', [
-            'rek_id'=>$rek_id,
-            'rekmed'=>$data
+            'rek_id' => $rek_id,
+            'rekmed' => $data
         ]);
     }
 
@@ -121,5 +121,67 @@ class SuperRekmedController extends Controller
         $rekmed = Rekmed::findOrFail($rek_id);
         $rekmed->delete();
         return redirect()->route('super.rekmed');
+    }
+
+    public function edit_detail_igd($rek_id, $id)
+    {
+        return view('super.rekmed.detail_edit.igd', [
+            'rek_id' => $rek_id,
+            'id' => $id
+        ]);
+    }
+
+    public function update_detail_igd(Request $request, $rek_id, $id)
+    {
+        $igd = Igd::findOrFail($id);
+
+        if ($request->get('u_id')) {
+            $igd->u_id = $request->get('u_id');
+        }
+
+        if ($request->get('date')) {
+            $igd->igd_datetime = $request->get('date');
+        }
+
+
+        if ($request->file('cp')) {
+            $dbfile = $igd->igd_ctt_perkembangan;
+            if ($dbfile && file_exists(storage_path('app/public/' . $dbfile))) {
+                \Storage::delete('public/' . $dbfile);
+            }
+
+            $file = $request->file('cp')->store("Rekmed/$rek_id/IGD/Catatan_Perkembangan", 'public');
+            $igd->igd_ctt_perkembangan = $file;
+        }
+
+        if ($request->file('resume')) {
+            $dbfile = $igd->igd_resume;
+            if ($dbfile && file_exists(storage_path('app/public/' . $dbfile))) {
+                \Storage::delete('public/' . $dbfile);
+            }
+
+            $file = $request->file('resume')->store("Rekmed/$rek_id/IGD/Resume", 'public');
+            $igd->igd_resume = $file;
+        }
+
+        $igd->save();
+        $penunjang_names = ['usg', 'ctg', 'xray', 'ekg', 'lab'];
+
+        foreach ($penunjang_names as $p_name) {
+            if ($request->file($p_name)) {
+                $dbfile = $igd->igd_resume;
+
+                if ($dbfile && file_exists(storage_path('app/public/' . $dbfile))) {
+                    \Storage::delete('public/' . $dbfile);
+                }
+
+                $penunjang = new IgdPenunjang;
+                $file = $request->file($p_name)->store("Rekmed/$rek_id/IGD/Penunjang/$p_name", 'public');
+                $penunjang->p_name = strtoupper($p_name);
+                $penunjang->p_file = $file;
+                $penunjang->igd_id = $igd->igd_id;
+                $penunjang->save();
+            }
+        }
     }
 }

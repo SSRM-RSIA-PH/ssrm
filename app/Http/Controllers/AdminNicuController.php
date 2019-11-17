@@ -70,7 +70,7 @@ class AdminNicuController extends Controller
 
     public function validation($id)
     {
-        $data = Nicu::where('nicu_id', $id)->get()->first();
+        $data = Nicu::findOrFail($id);
         return view('admin.nicu.validation', ['nicu'=>$data]);
     }
 

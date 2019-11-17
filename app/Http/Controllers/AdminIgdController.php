@@ -60,7 +60,7 @@ class AdminIgdController extends Controller
 
     public function validation($id)
     {
-        $data = Igd::where('igd_id', $id)->get()->first();
+        $data = Igd::findOrFail($id);
         return view('admin.igd.validation', ['igd' => $data]);
     }
 
