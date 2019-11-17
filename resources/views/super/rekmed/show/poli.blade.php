@@ -4,7 +4,7 @@
 <a href="" class="nav-link">{{$rek_id = $poli->first()->rek_id}}</a>
 <a class="nav-link" href="{{route('super.rekmed.show.igd', ['rek_id'=>$rek_id])}}">IGD</a>
 <a class="nav-link" href="{{route('super.rekmed.show.nicu', ['rek_id'=>$rek_id])}}">NICU</a>
-<a class="nav-link" href="{{route('super.rekmed.show.poli', ['rek_id'=>$rek_id])}}">POLI</a>
+<a class="nav-link active" href="{{route('super.rekmed.show.poli', ['rek_id'=>$rek_id])}}">POLI</a>
 <a class="nav-link" href="{{route('super.rekmed.show.ri', ['rek_id'=>$rek_id])}}">RAWAT INAP</a>
 @endsection
 @section('content')
