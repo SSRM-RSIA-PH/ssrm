@@ -19,6 +19,7 @@ Route::group(['prefix' => '/supervisor'], function () {
     
     Route::group(['prefix' => '/rekmed'], function () {
         Route::get('/', 'SuperRekmedController@index')->name('super.rekmed');
+        Route::get('/{rek_id}', 'SuperRekmedController@show')->name('super.rekmed.show');
 
         //show list
         Route::get('/{rek_id}/igd', 'SuperRekmedController@show_igd')->name('super.rekmed.show.igd');
@@ -35,6 +36,9 @@ Route::group(['prefix' => '/supervisor'], function () {
         //edit
         Route::get('/{rek_id}/edit', 'SuperRekmedController@edit_rekmed')->name('super.rekmed.edit');
         Route::put('/{rek_id}/update', 'SuperRekmedController@update_rekmed')->name('super.rekmed.update');
+
+        //delete
+        Route::delete('/{rek_id}/destroy', 'SuperRekmedController@destroy_rekmed')->name('super.rekmed.destroy');
     });
 
     Route::get('/log', 'LogController@index')->name('super.log');
