@@ -185,7 +185,7 @@ class SuperRekmedController extends Controller
                         $p->p_file = $file;
                         $p->save();
 
-                        $c = $c + 1;
+                        $c += 1;
                     }
                 }
 
