@@ -16,7 +16,7 @@
             <th>Tanggal Rekam Medis</th>
             <th>Kategori</th>
             <th>User</th>
-            <th></th>
+            <th width="150px"></th>
         </thead>
         <tbody>
             @foreach ($igd as $i)
@@ -28,7 +28,7 @@
                     <a href="{{route('super.rekmed.detail.igd', [
                             'rek_id'=>$i->rek_id, 
                             'id'=>$i->igd_id
-                        ])}}" class="btn btn-primary">View</a>
+                        ])}}" class="btn btn-info">View</a>
                     <a href="{{route('super.rekmed.igd.edit', [
                         'rek_id'=>$i->rek_id, 
                         'id'=>$i->igd_id
