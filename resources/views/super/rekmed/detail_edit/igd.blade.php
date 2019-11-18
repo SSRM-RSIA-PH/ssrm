@@ -4,8 +4,8 @@
 <div class="container">
     @if (session('status'))
     <div class="alert alert-success">
-        Berhasil Diubah <br>
-        <a class="btn btn-primary" href="{{route('admin.validation.igd', ['id'=>session('status')])}}">Check</a>
+        {{session('status')}} <br>
+        <a class="btn btn-primary" href="{{route('super.rekmed.show', ['rek_id'=>$rek_id])}}">Back</a>
     </div>
     @endif
 
@@ -34,8 +34,7 @@
                                 </div>
                                 <div class="custom-file">
                                     <input name="date" type="datetime-local" class="form-control"
-                                        style="border-top-left-radius:0px;border-bottom-left-radius:0px;" required
-                                        autofocus>
+                                        style="border-top-left-radius:0px;border-bottom-left-radius:0px;" autofocus>
                                 </div>
                             </div>
                         </div><br>

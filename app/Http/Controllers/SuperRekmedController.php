@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Gate;
 use \App\Rekmed;
 use \App\Igd;
+use App\IgdPenunjang;
 use \App\Nicu;
 use \App\Poli;
 use \App\RawatInap;
@@ -163,25 +164,46 @@ class SuperRekmedController extends Controller
             $file = $request->file('resume')->store("Rekmed/$rek_id/IGD/Resume", 'public');
             $igd->igd_resume = $file;
         }
-
         $igd->save();
-        $penunjang_names = ['usg', 'ctg', 'xray', 'ekg', 'lab'];
 
-        foreach ($penunjang_names as $p_name) {
-            if ($request->file($p_name)) {
-                $dbfile = $igd->igd_resume;
+        $penunjang = IgdPenunjang::where('igd_id', $id)->get();
+        $ctgs = ['USG', 'CTG', 'XRAY', 'EKG', 'LAB'];
 
-                if ($dbfile && file_exists(storage_path('app/public/' . $dbfile))) {
-                    \Storage::delete('public/' . $dbfile);
+        foreach ($ctgs as $ctg) {
+            $c = 0;
+            if ($request->file($ctg)) {
+
+                foreach ($penunjang as $p) {
+                    if ($ctg == $p->p_name) {
+                        $dbfile = $p->p_file;
+
+                        if ($dbfile && file_exists(storage_path('app/public/' . $dbfile))) {
+                            \Storage::delete('public/' . $dbfile);
+                        }
+
+                        $file = $request->file($ctg)->store("Rekmed/$rek_id/IGD/Penunjang/$ctg", 'public');
+                        $p->p_file = $file;
+                        $p->save();
+
+                        $c = $c + 1;
+                    }
                 }
 
-                $penunjang = new IgdPenunjang;
-                $file = $request->file($p_name)->store("Rekmed/$rek_id/IGD/Penunjang/$p_name", 'public');
-                $penunjang->p_name = strtoupper($p_name);
-                $penunjang->p_file = $file;
-                $penunjang->igd_id = $igd->igd_id;
-                $penunjang->save();
+                if ($c < 1) {
+                    $file = $request->file($ctg)->store("Rekmed/$rek_id/IGD/Penunjang/$ctg", 'public');
+
+                    $new_penunjang = new IgdPenunjang;
+                    $new_penunjang->p_name = $ctg;
+                    $new_penunjang->p_file = $file;
+                    $new_penunjang->igd_id = $id;
+                    $new_penunjang->save();
+                }
             }
         }
+
+        return redirect()->route('super.rekmed.igd.edit', [
+            'rek_id' => $rek_id,
+            'id' => $id
+        ])->with('status', 'Berhasil Diubah');
     }
 }
