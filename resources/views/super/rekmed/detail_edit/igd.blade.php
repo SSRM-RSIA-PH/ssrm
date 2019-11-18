@@ -5,7 +5,7 @@
     @if (session('status'))
     <div class="alert alert-success">
         {{session('status')}} <br>
-        <a class="btn btn-primary" href="{{route('super.rekmed.show', ['rek_id'=>$rek_id])}}">Back</a>
+        <a class="btn btn-primary" href="{{route('super.rekmed.show.igd', ['rek_id'=>$rek_id])}}">Back</a>
     </div>
     @endif
 
