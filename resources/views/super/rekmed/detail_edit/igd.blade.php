@@ -48,13 +48,9 @@
                             {{-- catatan Perkembangan --}}
                             <div class="card mb-3">
                                 <div class="card-header">
-                                    <div class="custom-control custom-checkbox">
-                                        <input type="checkbox" class="custom-control-input" id="customCheck1">
-                                        <label class="custom-control-label" for="customCheck1">Catatan
-                                            Perkembangan</label>
-                                    </div>
+                                    Catatan Perkembangan
                                 </div>
-                                <div class="card-body" hidden id="perkembangan">
+                                <div class="card-body" id="perkembangan">
                                     <div class="custom-file">
                                         <input type="file" class="custom-file-input" id="cp" name="cp">
                                         <label class="custom-file-label" id="cfl1" for="cp">Choose file</label>
@@ -65,12 +61,9 @@
                             {{-- resume --}}
                             <div class="card mb-3">
                                 <div class="card-header">
-                                    <div class="custom-control custom-checkbox">
-                                        <input type="checkbox" class="custom-control-input" id="customCheck2">
-                                        <label class="custom-control-label" for="customCheck2">Resume</label>
-                                    </div>
+                                    Resume
                                 </div>
-                                <div class="card-body" hidden id="resume">
+                                <div class="card-body" id="resume">
                                     <div class="custom-file">
                                         <input type="file" class="custom-file-input" id="rsm" name="resume">
                                         <label class="custom-file-label" id="cfl2" for="rsm">Choose file</label>
@@ -85,20 +78,14 @@
                             {{-- penunjang --}}
                             <div class="card">
                                 <div class="card-header">
-                                    <div class="custom-control custom-checkbox">
-                                        <input type="checkbox" class="custom-control-input" id="customCheck3">
-                                        <label class="custom-control-label" for="customCheck3">Penunjang</label>
-                                    </div>
+                                    Penunjang
                                 </div>
-                                <div class="card-body" hidden id="penunjang">
+                                <div class="card-body" id="penunjang">
                                     {{-- 1 --}}
                                     <div class="form-group">
-                                        <div class="custom-control custom-checkbox">
-                                            <input type="checkbox" class="custom-control-input" id="cusg">
-                                            <label class="custom-control-label" for="cusg">USG</label>
-                                        </div>
+                                        USG
 
-                                        <div class="custom-file" hidden id="fusg">
+                                        <div class="custom-file" id="fusg">
                                             <input type="file" class="custom-file-input" id="usg" name="usg">
                                             <label class="custom-file-label" id="cflp1" for="usg">Choose
                                                 file</label>
@@ -107,12 +94,9 @@
 
                                     {{-- 2 --}}
                                     <div class="form-group">
-                                        <div class="custom-control custom-checkbox">
-                                            <input type="checkbox" class="custom-control-input" id="cctg">
-                                            <label class="custom-control-label" for="cctg">CTG</label>
-                                        </div>
+                                        CTG
 
-                                        <div class="custom-file" hidden id="fctg">
+                                        <div class="custom-file" id="fctg">
                                             <input type="file" class="custom-file-input" id="ctg" name="ctg">
                                             <label class="custom-file-label" id="cflp2" for="ctg">Choose
                                                 file</label>
@@ -121,12 +105,9 @@
 
                                     {{-- 3 --}}
                                     <div class="form-group">
-                                        <div class="custom-control custom-checkbox">
-                                            <input type="checkbox" class="custom-control-input" id="cxray">
-                                            <label class="custom-control-label" for="cxray">X-RAY</label>
-                                        </div>
+                                        X-RAY
 
-                                        <div class="custom-file" hidden id="fxray">
+                                        <div class="custom-file" id="fxray">
                                             <input type="file" class="custom-file-input" id="xray" name="xray">
                                             <label class="custom-file-label" id="cflp3" for="xray">Choose
                                                 file</label>
@@ -135,12 +116,9 @@
 
                                     {{-- 4 --}}
                                     <div class="form-group">
-                                        <div class="custom-control custom-checkbox">
-                                            <input type="checkbox" class="custom-control-input" id="cekg">
-                                            <label class="custom-control-label" for="cekg">EKG</label>
-                                        </div>
+                                        EKG
 
-                                        <div class="custom-file" hidden id="fekg">
+                                        <div class="custom-file" id="fekg">
                                             <input type="file" class="custom-file-input" id="ekg" name="ekg">
                                             <label class="custom-file-label" id="cflp4" for="ekg">Choose
                                                 file</label>
@@ -149,12 +127,9 @@
 
                                     {{-- 5 --}}
                                     <div class="form-group">
-                                        <div class="custom-control custom-checkbox">
-                                            <input type="checkbox" class="custom-control-input" id="clab">
-                                            <label class="custom-control-label" for="clab">LAB</label>
-                                        </div>
+                                        LAB
 
-                                        <div class="custom-file" hidden id="flab">
+                                        <div class="custom-file" id="flab">
                                             <input type="file" class="custom-file-input" id="lab" name="lab">
                                             <label class="custom-file-label" id="cflp5" for="lab">Choose
                                                 file</label>
