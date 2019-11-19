@@ -9,8 +9,49 @@
     </div>
     @endif
 
+    {{-- deklarasi nilai --}}
+    <div hidden>
+        {{$usg = NULL}}
+        {{$ctg = NULL}}
+        {{$xray = NULL}}
+        {{$ekg = NULL}}
+        {{$lab = NULL}}
+    </div>
+
+    {{-- isi nilai untuk dipake edit dan delete dibawah --}}
+    @foreach ($penunjang as $p)
+        @switch($p->p_name)
+            @case('USG')
+                <div hidden>
+                    {{$usg = $p}}
+                </div>
+                @break
+            @case('CTG')
+                <div hidden>
+                    {{$ctg = $p}}
+                </div>
+                @break
+            @case('XRAY')
+                <div hidden>
+                    {{$xray = $p}}
+                </div>
+                @break
+            @case('EKG')
+                <div hidden>
+                    {{$ekg = $p}}
+                </div>
+                @break
+            @case('LAB')
+                <div hidden>
+                    {{$lab = $p}}
+                </div>
+                @break
+            @default
+        @endswitch
+    @endforeach
+
     <div class="row">
-        <div class="col-3">
+        <div class="col-2">
             <div class="alert alert-primary text-center">{{$rek_id}}</div>
         </div>
         <div class="col-9">
@@ -22,7 +63,7 @@
 
                     <form enctype="multipart/form-data" action="{{route('super.rekmed.igd.update', [
                         'rek_id'=>$rek_id,
-                        'id'=>$id
+                        'id'=>$igd->igd_id
                     ])}}" method="POST">
                         @csrf
                         <input type="hidden" value="PUT" name="_method">
@@ -48,16 +89,18 @@
                             {{-- catatan Perkembangan --}}
                             <div class="card mb-3">
                                 <div class="card-header">
-                                    <div class="custom-control custom-checkbox">
-                                        <input type="checkbox" class="custom-control-input" id="customCheck1">
-                                        <label class="custom-control-label" for="customCheck1">Catatan
-                                            Perkembangan</label>
-                                    </div>
+                                    Catatan Perkembangan
                                 </div>
-                                <div class="card-body" hidden id="perkembangan">
+                                <div class="card-body" id="perkembangan">
                                     <div class="custom-file">
                                         <input type="file" class="custom-file-input" id="cp" name="cp">
-                                        <label class="custom-file-label" id="cfl1" for="cp">Choose file</label>
+                                        <label class="custom-file-label" id="cfl1" for="cp">
+                                            @if ($igd->igd_ctt_perkembangan)
+                                            <strong>File Catatan Perkembangan</strong>
+                                            @else
+                                            Choose file
+                                            @endif
+                                        </label>
                                     </div>
                                 </div>
                             </div>
@@ -65,258 +108,237 @@
                             {{-- resume --}}
                             <div class="card mb-3">
                                 <div class="card-header">
-                                    <div class="custom-control custom-checkbox">
-                                        <input type="checkbox" class="custom-control-input" id="customCheck2">
-                                        <label class="custom-control-label" for="customCheck2">Resume</label>
-                                    </div>
+                                    Resume
                                 </div>
-                                <div class="card-body" hidden id="resume">
+                                <div class="card-body" id="resume">
                                     <div class="custom-file">
                                         <input type="file" class="custom-file-input" id="rsm" name="resume">
-                                        <label class="custom-file-label" id="cfl2" for="rsm">Choose file</label>
+                                        <label class="custom-file-label" id="cfl2" for="rsm">
+                                            @if ($igd->igd_resume)
+                                            <strong>File Resume</strong>
+                                            @else
+                                            Choose file
+                                            @endif
+                                        </label>
                                     </div>
                                 </div>
                             </div>
                         </div>
 
-
                         {{-- kolom 2 --}}
-                        {{-- <div class="col"> --}}
-                        {{-- penunjang --}}
-                        {{-- <div class="card">
+                        <div class="col">
+                            {{-- penunjang --}}
+                            <div class="card">
                                 <div class="card-header">
-                                    <div class="custom-control custom-checkbox">
-                                        <input type="checkbox" class="custom-control-input" id="customCheck3">
-                                        <label class="custom-control-label" for="customCheck3">Penunjang</label>
-                                    </div>
+                                    Penunjang
                                 </div>
-                                <div class="card-body" hidden id="penunjang"> --}}
-                        {{-- 1 --}}
-                        {{-- <div class="form-group">
-                                        <div class="custom-control custom-checkbox">
-                                            <input type="checkbox" class="custom-control-input" id="cusg">
-                                            <label class="custom-control-label" for="cusg">USG</label>
-                                        </div>
 
-                                        <div class="custom-file" hidden id="fusg">
+                                <div class="card-body" id="penunjang">
+
+                                    {{-- 1 --}}
+                                    <div class="form-group">
+                                        USG
+
+                                        <div class="custom-file" id="fusg">
                                             <input type="file" class="custom-file-input" id="usg" name="usg">
-                                            <label class="custom-file-label" id="cflp1" for="usg">Choose
-                                                file</label>
+                                            @if ($usg)
+                                            <input type="hidden" name="id_usg" id="" value="{{$usg->id}}">
+                                            <label class="custom-file-label" id="cflp1" for="usg"><strong>File
+                                                    Penunjang</strong></label>
+                                            @else
+                                            <input type="hidden" name="id_usg" id="" value="">
+                                            <label class="custom-file-label" id="cflp1" for="usg">Tidak ada File</label>
+                                            @endif
                                         </div>
-                                    </div> --}}
+                                    </div>
 
-                        {{-- 2 --}}
-                        {{-- <div class="form-group">
-                                        <div class="custom-control custom-checkbox">
-                                            <input type="checkbox" class="custom-control-input" id="cctg">
-                                            <label class="custom-control-label" for="cctg">CTG</label>
-                                        </div>
+                                    {{-- 2 --}}
+                                    <div class="form-group">
+                                        CTG
 
-                                        <div class="custom-file" hidden id="fctg">
+                                        <div class="custom-file" id="fctg">
                                             <input type="file" class="custom-file-input" id="ctg" name="ctg">
-                                            <label class="custom-file-label" id="cflp2" for="ctg">Choose
-                                                file</label>
+                                            @if ($ctg)
+                                            <input type="hidden" name="id_ctg" id="" value="{{$ctg->id}}">
+                                            <label class="custom-file-label" id="cflp2" for="ctg"><strong>File
+                                                    Penunjang</strong></label>
+                                            @else
+                                            <input type="hidden" name="id_ctg" id="" value="">
+                                            <label class="custom-file-label" id="cflp2" for="ctg">Tidak ada File</label>
+                                            @endif
                                         </div>
-                                    </div> --}}
+                                    </div>
 
-                        {{-- 3 --}}
-                        {{-- <div class="form-group">
-                                        <div class="custom-control custom-checkbox">
-                                            <input type="checkbox" class="custom-control-input" id="cxray">
-                                            <label class="custom-control-label" for="cxray">X-RAY</label>
-                                        </div>
+                                    {{-- 3 --}}
+                                    <div class="form-group">
+                                        X-RAY
 
-                                        <div class="custom-file" hidden id="fxray">
+                                        <div class="custom-file" id="fxray">
                                             <input type="file" class="custom-file-input" id="xray" name="xray">
-                                            <label class="custom-file-label" id="cflp3" for="xray">Choose
-                                                file</label>
+                                            @if ($xray)
+                                            <input type="hidden" name="id_xray" id="" value="{{$xray->id}}">
+                                            <label class="custom-file-label" id="cflp3" for="xray"><strong>File
+                                                    Penunjang</strong></label>
+                                            @else
+                                            <input type="hidden" name="id_xray" id="" value="">
+                                            <label class="custom-file-label" id="cflp3" for="xray">Tidak ada
+                                                File</label>
+                                            @endif
                                         </div>
-                                    </div> --}}
+                                    </div>
 
-                        {{-- 4 --}}
-                        {{-- <div class="form-group">
-                                        <div class="custom-control custom-checkbox">
-                                            <input type="checkbox" class="custom-control-input" id="cekg">
-                                            <label class="custom-control-label" for="cekg">EKG</label>
-                                        </div>
+                                    {{-- 4 --}}
+                                    <div class="form-group">
+                                        EKG
 
-                                        <div class="custom-file" hidden id="fekg">
+                                        <div class="custom-file" id="fekg">
                                             <input type="file" class="custom-file-input" id="ekg" name="ekg">
-                                            <label class="custom-file-label" id="cflp4" for="ekg">Choose
-                                                file</label>
+                                            @if ($ekg)
+                                            <input type="hidden" name="id_ekg" id="" value="{{$ekg->id}}">
+                                            <label class="custom-file-label" id="cflp4" for="ekg"><strong>File
+                                                    Penunjang</strong></label>
+                                            @else
+                                            <input type="hidden" name="id_ekg" id="" value="">
+                                            <label class="custom-file-label" id="cflp4" for="ekg">Tidak ada File</label>
+                                            @endif
                                         </div>
-                                    </div> --}}
+                                    </div>
 
-                        {{-- 5 --}}
-                        {{-- <div class="form-group">
-                                        <div class="custom-control custom-checkbox">
-                                            <input type="checkbox" class="custom-control-input" id="clab">
-                                            <label class="custom-control-label" for="clab">LAB</label>
-                                        </div>
+                                    {{-- 5 --}}
+                                    <div class="form-group">
+                                        LAB
 
-                                        <div class="custom-file" hidden id="flab">
+                                        <div class="custom-file" id="flab">
                                             <input type="file" class="custom-file-input" id="lab" name="lab">
-                                            <label class="custom-file-label" id="cflp5" for="lab">Choose
-                                                file</label>
+                                            @if ($lab)
+                                            <input type="hidden" name="id_lab" id="" value="{{$lab->id}}">
+                                            <label class="custom-file-label" id="cflp5" for="lab"><strong>File
+                                                    Penunjang</strong></label>
+                                            @else
+                                            <input type="hidden" name="id_lab" id="" value="">
+                                            <label class="custom-file-label" id="cflp5" for="lab">Tidak ada File</label>
+                                            @endif
                                         </div>
                                     </div>
                                 </div>
-                            </div> --}}
+                            </div>
 
-                        <div hidden>
-                            {{$usg = NULL}}
-                            {{$ctg = NULL}}
-                            {{$xray = NULL}}
-                            {{$ekg = NULL}}
-                            {{$lab = NULL}}
+                            <div class="form-group mt-3">
+                                <input type="submit" value="Simpan" class="btn btn-primary float-right">
+                                <button type="reset" class="btn btn-danger float-right mr-2">Reset</button>
+                            </div>
                         </div>
-                        @foreach ($penunjang as $p)
-                        @switch($p->p_name)
-                        @case('USG')
-                        <div hidden>
-                            {{$usg = $p}}
-                        </div>
-                        @break
-                        @case('CTG')
-                        <div hidden>
-                            {{$ctg = $p}}
-                        </div>
-                        @break
-                        @case('XRAY')
-                        <div hidden>
-                            {{$xray = $p}}
-                        </div>
-                        @break
-                        @case('EKG')
-                        <div hidden>
-                            {{$ekg = $p}}
-                        </div>
-                        @break
-                        @case('LAB')
-                        <div hidden>
-                            {{$lab = $p}}
-                        </div>
-                        @break
-                        @default
-                        @endswitch
-                        @endforeach
-
-                        <br>
-                        <h5>Penunjang</h5>
-
-                        <table class="table">
-                            <tr>
-                                <th>Nama Penunjang</th>
-                                <th>File</th>
-                                <th></th>
-                            </tr>
-
-                            <tr>
-                                <td>USG</td>
-                                <td>
-                                    @if ($usg)
-                                    File Penunjang
-                                    @else
-                                    Tidak ada File
-                                    @endif
-                                </td>
-                                <td>
-                                    @if ($usg)
-                                    <a href="" class="btn btn-warning">Edit</a>
-                                    <a href="" class="btn btn-danger">Delete</a>
-                                    @else
-                                    <a href="" class="btn btn-primary">Tambah</a>
-                                    @endif
-                                </td>
-                            </tr>
-
-                            <tr>
-                                <td>CTG</td>
-                                <td>
-                                    @if ($ctg)
-                                    File Penunjang
-                                    @else
-                                    Tidak ada File
-                                    @endif
-                                </td>
-                                <td>
-                                    @if ($ctg)
-                                    <a href="" class="btn btn-warning">Edit</a>
-                                    <a href="" class="btn btn-danger">Delete</a>
-                                    @else
-                                    <a href="" class="btn btn-primary">Tambah</a>
-                                    @endif
-                                </td>
-                            </tr>
-
-                            <tr>
-                                <td>X-RAY</td>
-                                <td>
-                                    @if ($xray)
-                                    {File Penunjang
-                                    @else
-                                    Tidak ada File
-                                    @endif
-                                </td>
-                                <td>
-                                    @if ($xray)
-                                    <a href="" class="btn btn-warning">Edit</a>
-                                    <a href="" class="btn btn-danger">Delete</a>
-                                    @else
-                                    <a href="" class="btn btn-primary">Tambah</a>
-                                    @endif
-                                </td>
-                            </tr>
-
-                            <tr>
-                                <td>EKG</td>
-                                <td>
-                                    @if ($ekg)
-                                    File Penunjang
-                                    @else
-                                    Tidak ada File
-                                    @endif
-                                </td>
-                                <td>
-                                    @if ($ekg)
-                                    <a href="" class="btn btn-warning">Edit</a>
-                                    <a href="" class="btn btn-danger">Delete</a>
-                                    @else
-                                    <a href="" class="btn btn-primary">Tambah</a>
-                                    @endif
-                                </td>
-                            </tr>
-
-                            <tr>
-                                <td>LAB</td>
-                                <td>
-                                    @if ($lab)
-                                    File Penunjang
-                                    @else
-                                    Tidak ada File
-                                    @endif
-                                </td>
-                                <td>
-                                    @if ($lab)
-                                    <a href="" class="btn btn-warning">Edit</a>
-                                    <a href="" class="btn btn-danger">Delete</a>
-                                    @else
-                                    <a href="" class="btn btn-primary">Tambah</a>
-                                    @endif
-                                </td>
-                            </tr>
-                        </table>
-
-                        <div class="form-group mt-3">
-                            <input type="submit" value="Simpan" class="btn btn-primary float-right">
-                            <button type="reset" class="btn btn-danger float-right mr-2">Reset</button>
-                        </div>
+                    </form>
                 </div>
-                </form>
             </div>
         </div>
+
+        {{-- ini buat button delete --}}
+        <div class="col-1">
+            <br><br><br><br><br><br><br><br><br>
+            @if ($igd->igd_ctt_perkembangan)    
+                <form onsubmit="return confirm('Delete permanently ?')" action="{{route('super.rekmed.destroy_detail', [
+                        'id' => $igd->igd_id,
+                        'ctg' => 'igd'
+                    ])}}" method="POST">
+                    @csrf
+                    <input type="hidden" name="_method" value="DELETE">
+
+                    <input type="hidden" name="field" value="igd_ctt_perkembangan">
+                    <input type="submit" class="btn btn-danger" value="Delete">
+                </form>
+            @endif
+
+            <br><br><br><br>
+            @if ($igd->igd_resume)    
+                <form onsubmit="return confirm('Delete permanently ?')" action="{{route('super.rekmed.destroy_detail', [
+                        'id' => $igd->igd_id,
+                        'ctg' => 'igd'
+                    ])}}" method="POST">
+                    @csrf
+                    <input type="hidden" name="_method" value="DELETE">
+
+                    <input type="hidden" name="field" value="igd_resume">
+                    <input type="submit" class="btn btn-danger" value="Delete">
+                </form>
+            @endif
+
+            <br><br><br><br><br><br>
+            @if ($usg)
+                <form onsubmit="return confirm('Delete permanently ?')" action="{{route('super.rekmed.destroy_penunjang', [
+                    'id' => $usg->id,
+                    'ctg' => 'igd'
+                ])}}" method="POST">
+                @csrf
+                <input type="hidden" name="_method" value="DELETE">
+
+                <input type="hidden" name="rek_id" value="{{$rek_id}}">
+                <input type="hidden" name="id" value={{$igd->igd_id}}>
+                <input type="submit" class="btn btn-danger" value="Delete">
+                </form>
+            @endif
+
+            <br><br>
+            @if ($ctg)
+                <form onsubmit="return confirm('Delete permanently ?')" action="{{route('super.rekmed.destroy_penunjang', [
+                    'id' => $ctg->id,
+                    'ctg' => 'igd'
+                ])}}" method="POST">
+                @csrf
+                <input type="hidden" name="_method" value="DELETE">
+
+                <input type="hidden" name="rek_id" value="{{$rek_id}}">
+                <input type="hidden" name="id" value={{$igd->igd_id}}>
+                <input type="submit" class="btn btn-danger" value="Delete">
+                </form>
+            @endif
+
+            <br><br>
+            @if ($xray)
+                <form onsubmit="return confirm('Delete permanently ?')" action="{{route('super.rekmed.destroy_penunjang', [
+                    'id' => $xray->id,
+                    'ctg' => 'igd'
+                ])}}" method="POST">
+                @csrf
+                <input type="hidden" name="_method" value="DELETE">
+
+                <input type="hidden" name="rek_id" value="{{$rek_id}}">
+                <input type="hidden" name="id" value={{$igd->igd_id}}>
+                <input type="submit" class="btn btn-danger" value="Delete">
+                </form>
+            @endif
+
+            <br><br>
+            @if ($ekg)
+                <form onsubmit="return confirm('Delete permanently ?')" action="{{route('super.rekmed.destroy_penunjang', [
+                    'id' => $ekg->id,
+                    'ctg' => 'igd'
+                ])}}" method="POST">
+                @csrf
+                <input type="hidden" name="_method" value="DELETE">
+
+                <input type="hidden" name="rek_id" value="{{$rek_id}}">
+                <input type="hidden" name="id" value={{$igd->igd_id}}>
+                <input type="submit" class="btn btn-danger" value="Delete">
+                </form>
+            @endif
+
+            <br><br>
+            @if ($lab)
+                <form onsubmit="return confirm('Delete permanently ?')" action="{{route('super.rekmed.destroy_penunjang', [
+                    'id' => $lab->id,
+                    'ctg' => 'igd'
+                ])}}" method="POST">
+                @csrf
+                <input type="hidden" name="_method" value="DELETE">
+
+                <input type="hidden" name="rek_id" value="{{$rek_id}}">
+                <input type="hidden" name="id" value={{$igd->igd_id}}>
+                <input type="submit" class="btn btn-danger" value="Delete">
+                </form>
+            @endif
+        </div>
     </div>
-</div>
 </div>
 
 @endsection

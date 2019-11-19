@@ -1,10 +1,10 @@
 @extends('layouts.main')
 @section('title') Detail @endsection
+@section('menu')
+<a href="{{route('super.index')}}" class="nav-item nav-link">Dashboard</a>
+@endsection
 @section('content')
-
 <div class="col">
-    <div class="alert alert-success w-100">
-    </div>
     <div class="card mb-3">
         <div class="card-header">
             NICU

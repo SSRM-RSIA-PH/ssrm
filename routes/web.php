@@ -43,6 +43,12 @@ Route::group(['prefix' => '/supervisor'], function () {
         //edit detail
         Route::get('/{rek_id}/igd/{id}/edit', 'SuperRekmedController@edit_detail_igd')->name('super.rekmed.igd.edit');
         Route::put('/{rek_id}/igd/{id}/update', 'SuperRekmedController@update_detail_igd')->name('super.rekmed.igd.update');
+
+        //delete detail
+        Route::delete('/{id}/{ctg}/destroy_detail', 'SuperRekmedController@destroy_detail')->name('super.rekmed.destroy_detail');
+
+        //delete detail penunjang
+        Route::delete('/{id}/{ctg}/destroy_penunjang', "SuperRekmedController@destroy_detail_penunjang")->name('super.rekmed.destroy_penunjang');
     });
 
     Route::get('/log', 'LogController@index')->name('super.log');
