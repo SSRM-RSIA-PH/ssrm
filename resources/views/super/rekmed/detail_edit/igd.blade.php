@@ -81,18 +81,18 @@
 
 
                         {{-- kolom 2 --}}
-                        <div class="col">
-                            {{-- penunjang --}}
-                            <div class="card">
+                        {{-- <div class="col"> --}}
+                        {{-- penunjang --}}
+                        {{-- <div class="card">
                                 <div class="card-header">
                                     <div class="custom-control custom-checkbox">
                                         <input type="checkbox" class="custom-control-input" id="customCheck3">
                                         <label class="custom-control-label" for="customCheck3">Penunjang</label>
                                     </div>
                                 </div>
-                                <div class="card-body" hidden id="penunjang">
-                                    {{-- 1 --}}
-                                    <div class="form-group">
+                                <div class="card-body" hidden id="penunjang"> --}}
+                        {{-- 1 --}}
+                        {{-- <div class="form-group">
                                         <div class="custom-control custom-checkbox">
                                             <input type="checkbox" class="custom-control-input" id="cusg">
                                             <label class="custom-control-label" for="cusg">USG</label>
@@ -103,10 +103,10 @@
                                             <label class="custom-file-label" id="cflp1" for="usg">Choose
                                                 file</label>
                                         </div>
-                                    </div>
+                                    </div> --}}
 
-                                    {{-- 2 --}}
-                                    <div class="form-group">
+                        {{-- 2 --}}
+                        {{-- <div class="form-group">
                                         <div class="custom-control custom-checkbox">
                                             <input type="checkbox" class="custom-control-input" id="cctg">
                                             <label class="custom-control-label" for="cctg">CTG</label>
@@ -117,10 +117,10 @@
                                             <label class="custom-file-label" id="cflp2" for="ctg">Choose
                                                 file</label>
                                         </div>
-                                    </div>
+                                    </div> --}}
 
-                                    {{-- 3 --}}
-                                    <div class="form-group">
+                        {{-- 3 --}}
+                        {{-- <div class="form-group">
                                         <div class="custom-control custom-checkbox">
                                             <input type="checkbox" class="custom-control-input" id="cxray">
                                             <label class="custom-control-label" for="cxray">X-RAY</label>
@@ -131,10 +131,10 @@
                                             <label class="custom-file-label" id="cflp3" for="xray">Choose
                                                 file</label>
                                         </div>
-                                    </div>
+                                    </div> --}}
 
-                                    {{-- 4 --}}
-                                    <div class="form-group">
+                        {{-- 4 --}}
+                        {{-- <div class="form-group">
                                         <div class="custom-control custom-checkbox">
                                             <input type="checkbox" class="custom-control-input" id="cekg">
                                             <label class="custom-control-label" for="cekg">EKG</label>
@@ -145,10 +145,10 @@
                                             <label class="custom-file-label" id="cflp4" for="ekg">Choose
                                                 file</label>
                                         </div>
-                                    </div>
+                                    </div> --}}
 
-                                    {{-- 5 --}}
-                                    <div class="form-group">
+                        {{-- 5 --}}
+                        {{-- <div class="form-group">
                                         <div class="custom-control custom-checkbox">
                                             <input type="checkbox" class="custom-control-input" id="clab">
                                             <label class="custom-control-label" for="clab">LAB</label>
@@ -161,18 +161,162 @@
                                         </div>
                                     </div>
                                 </div>
-                            </div>
+                            </div> --}}
 
-                            <div class="form-group mt-3">
-                                <input type="submit" value="Simpan" class="btn btn-primary float-right">
-                                <button type="reset" class="btn btn-danger float-right mr-2">Reset</button>
-                            </div>
+                        <div hidden>
+                            {{$usg = NULL}}
+                            {{$ctg = NULL}}
+                            {{$xray = NULL}}
+                            {{$ekg = NULL}}
+                            {{$lab = NULL}}
                         </div>
-                    </form>
+                        @foreach ($penunjang as $p)
+                        @switch($p->p_name)
+                        @case('USG')
+                        <div hidden>
+                            {{$usg = $p}}
+                        </div>
+                        @break
+                        @case('CTG')
+                        <div hidden>
+                            {{$ctg = $p}}
+                        </div>
+                        @break
+                        @case('XRAY')
+                        <div hidden>
+                            {{$xray = $p}}
+                        </div>
+                        @break
+                        @case('EKG')
+                        <div hidden>
+                            {{$ekg = $p}}
+                        </div>
+                        @break
+                        @case('LAB')
+                        <div hidden>
+                            {{$lab = $p}}
+                        </div>
+                        @break
+                        @default
+                        @endswitch
+                        @endforeach
+
+                        <br>
+                        <h5>Penunjang</h5>
+
+                        <table class="table">
+                            <tr>
+                                <th>Nama Penunjang</th>
+                                <th>File</th>
+                                <th></th>
+                            </tr>
+
+                            <tr>
+                                <td>USG</td>
+                                <td>
+                                    @if ($usg)
+                                    File Penunjang
+                                    @else
+                                    Tidak ada File
+                                    @endif
+                                </td>
+                                <td>
+                                    @if ($usg)
+                                    <a href="" class="btn btn-warning">Edit</a>
+                                    <a href="" class="btn btn-danger">Delete</a>
+                                    @else
+                                    <a href="" class="btn btn-primary">Tambah</a>
+                                    @endif
+                                </td>
+                            </tr>
+
+                            <tr>
+                                <td>CTG</td>
+                                <td>
+                                    @if ($ctg)
+                                    File Penunjang
+                                    @else
+                                    Tidak ada File
+                                    @endif
+                                </td>
+                                <td>
+                                    @if ($ctg)
+                                    <a href="" class="btn btn-warning">Edit</a>
+                                    <a href="" class="btn btn-danger">Delete</a>
+                                    @else
+                                    <a href="" class="btn btn-primary">Tambah</a>
+                                    @endif
+                                </td>
+                            </tr>
+
+                            <tr>
+                                <td>X-RAY</td>
+                                <td>
+                                    @if ($xray)
+                                    {File Penunjang
+                                    @else
+                                    Tidak ada File
+                                    @endif
+                                </td>
+                                <td>
+                                    @if ($xray)
+                                    <a href="" class="btn btn-warning">Edit</a>
+                                    <a href="" class="btn btn-danger">Delete</a>
+                                    @else
+                                    <a href="" class="btn btn-primary">Tambah</a>
+                                    @endif
+                                </td>
+                            </tr>
+
+                            <tr>
+                                <td>EKG</td>
+                                <td>
+                                    @if ($ekg)
+                                    File Penunjang
+                                    @else
+                                    Tidak ada File
+                                    @endif
+                                </td>
+                                <td>
+                                    @if ($ekg)
+                                    <a href="" class="btn btn-warning">Edit</a>
+                                    <a href="" class="btn btn-danger">Delete</a>
+                                    @else
+                                    <a href="" class="btn btn-primary">Tambah</a>
+                                    @endif
+                                </td>
+                            </tr>
+
+                            <tr>
+                                <td>LAB</td>
+                                <td>
+                                    @if ($lab)
+                                    File Penunjang
+                                    @else
+                                    Tidak ada File
+                                    @endif
+                                </td>
+                                <td>
+                                    @if ($lab)
+                                    <a href="" class="btn btn-warning">Edit</a>
+                                    <a href="" class="btn btn-danger">Delete</a>
+                                    @else
+                                    <a href="" class="btn btn-primary">Tambah</a>
+                                    @endif
+                                </td>
+                            </tr>
+                        </table>
+
+                        <div class="form-group mt-3">
+                            <input type="submit" value="Simpan" class="btn btn-primary float-right">
+                            <button type="reset" class="btn btn-danger float-right mr-2">Reset</button>
+                        </div>
                 </div>
+                </form>
             </div>
         </div>
     </div>
+</div>
 </div>
 
 @endsection

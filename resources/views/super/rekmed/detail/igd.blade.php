@@ -1,5 +1,8 @@
 @extends('layouts.main')
 @section('title') Detail @endsection
+@section('menu')
+<a href="{{route('super.rekmed.show.igd', ['rek_id'=>$rek_id])}}">Kembali</a>
+@endsection
 @section('content')
 
 <div class="col">

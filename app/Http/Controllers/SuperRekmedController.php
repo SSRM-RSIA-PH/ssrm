@@ -79,25 +79,37 @@ class SuperRekmedController extends Controller
     public function detail_igd($rek_id, $id)
     {
         $data = Igd::findOrFail($id);
-        return view('super.rekmed.detail.igd', ['igd' => $data]);
+        return view('super.rekmed.detail.igd', [
+            'igd' => $data,
+            'rek_id' => $rek_id
+        ]);
     }
 
     public function detail_nicu($rek_id, $id)
     {
         $data = Nicu::findOrFail($id);
-        return view('super.rekmed.detail.nicu', ['nicu' => $data]);
+        return view('super.rekmed.detail.nicu', [
+            'nicu' => $data,
+            'rek_id' => $rek_id
+        ]);
     }
 
     public function detail_poli($rek_id, $id)
     {
         $data = Poli::findOrFail($id);
-        return view('super.rekmed.detail.poli', ['poli' => $data]);
+        return view('super.rekmed.detail.poli', [
+            'poli' => $data,
+            'rek_id' => $rek_id
+        ]);
     }
 
     public function detail_ri($rek_id, $id)
     {
         $data = RawatInap::findOrFail($id);
-        return view('super.rekmed.detail.ri', ['ri' => $data]);
+        return view('super.rekmed.detail.ri', [
+            'ri' => $data,
+            'rek_id' => $rek_id
+        ]);
     }
 
 
@@ -128,7 +140,8 @@ class SuperRekmedController extends Controller
     {
         return view('super.rekmed.detail_edit.igd', [
             'rek_id' => $rek_id,
-            'id' => $id
+            'id' => $id,
+            'penunjang'=> IgdPenunjang::where('igd_id', $id)->get()
         ]);
     }
 
