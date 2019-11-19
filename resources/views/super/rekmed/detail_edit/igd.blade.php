@@ -235,7 +235,7 @@
 
         {{-- ini buat button delete --}}
         <div class="col-1">
-            <br><br><br><br><br><br><br><br><br>
+            <br><br><br><br><br><br><br><br>
             @if ($igd->igd_ctt_perkembangan)    
                 <form onsubmit="return confirm('Delete permanently ?')" action="{{route('super.rekmed.destroy_detail', [
                         'id' => $igd->igd_id,
