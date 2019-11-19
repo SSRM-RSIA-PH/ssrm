@@ -42,7 +42,7 @@ class AdminIgdController extends Controller
         }
 
         $igd->save();
-        $penunjang_names = ['USG', 'CTG', 'XRAY', 'EKG', 'LAB'];
+        $penunjang_names = ['usg', 'ctg', 'xray', 'ekg', 'lab'];
 
         foreach ($penunjang_names as $p_name) {
             if ($request->file($p_name)) {

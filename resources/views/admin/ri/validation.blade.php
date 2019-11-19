@@ -50,7 +50,7 @@
             <hr>
             <b>Penunjang</b><br>
             @foreach ($ri->penunjang() as $p)
-            <p>{{$p->p_name}}</p>
+            <p>{{strtoupper($p->p_name)}}</p>
             <object data="{{asset("storage/$p->p_file")}}" type="application/pdf" width="100%" height="700px"></object>
             @endforeach
             @endif

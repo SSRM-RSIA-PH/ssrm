@@ -58,7 +58,7 @@ class AdminRiController extends Controller
             if ($request->file($p_name)) {
                 $penunjang = new RawatInapPenunjang;
                 $file = $request->file($p_name)->store("Rekmed/$rek_id/Rawar_Inap/Penunjang/$p_name", 'public');
-                $penunjang->p_name = strtoupper($p_name);
+                $penunjang->p_name = $p_name;
                 $penunjang->p_file = $file;
                 $penunjang->ri_id = $ri->ri_id;
                 $penunjang->save();

@@ -116,7 +116,7 @@ class SuperRekmedController extends Controller
     }
 
 
-    //edit update destroy rekmed
+    //edit update rekmed
     public function edit_rekmed($rek_id)
     {
         $data = Rekmed::findOrFail($rek_id);
@@ -133,20 +133,13 @@ class SuperRekmedController extends Controller
         return redirect()->route('super.rekmed.edit', ['rek_id' => $rekmed->rek_id])->with('status', 'Berhasil');
     }
 
-    public function destroy_rekmed($rek_id)
-    {
-        $rekmed = Rekmed::findOrFail($rek_id);
-        $rekmed->delete();
-        return redirect()->route('super.rekmed');
-    }
-
 
     //edit update detail igd
     public function edit_detail_igd($rek_id, $id)
     {
         $igd = Igd::findOrFail($id);
         $penunjang = IgdPenunjang::where('igd_id', $id)->get();
-        
+
         return view('super.rekmed.detail_edit.igd', [
             'rek_id' => $rek_id,
             'igd' => $igd,
@@ -199,11 +192,11 @@ class SuperRekmedController extends Controller
                 }
             } else {
                 $igd_p = new IgdPenunjang;
-                $igd_p->p_name = "USG";
+                $igd_p->p_name = "usg";
                 $igd_p->igd_id = $id;
             }
 
-            $file = $request->file('usg')->store("Rekmed/$rek_id/IGD/Penunjang/USG", 'public');
+            $file = $request->file('usg')->store("Rekmed/$rek_id/IGD/Penunjang/usg", 'public');
             $igd_p->p_file = $file;
             $igd_p->save();
         }
@@ -218,11 +211,11 @@ class SuperRekmedController extends Controller
                 }
             } else {
                 $igd_p = new IgdPenunjang;
-                $igd_p->p_name = "CTG";
+                $igd_p->p_name = "ctg";
                 $igd_p->igd_id = $id;
             }
 
-            $file = $request->file('ctg')->store("Rekmed/$rek_id/IGD/Penunjang/CTG", 'public');
+            $file = $request->file('ctg')->store("Rekmed/$rek_id/IGD/Penunjang/ctg", 'public');
             $igd_p->p_file = $file;
             $igd_p->save();
         }
@@ -237,11 +230,11 @@ class SuperRekmedController extends Controller
                 }
             } else {
                 $igd_p = new IgdPenunjang;
-                $igd_p->p_name = "XRAY";
+                $igd_p->p_name = "xray";
                 $igd_p->igd_id = $id;
             }
 
-            $file = $request->file('xray')->store("Rekmed/$rek_id/IGD/Penunjang/XRAY", 'public');
+            $file = $request->file('xray')->store("Rekmed/$rek_id/IGD/Penunjang/xray", 'public');
             $igd_p->p_file = $file;
             $igd_p->save();
         }
@@ -256,11 +249,11 @@ class SuperRekmedController extends Controller
                 }
             } else {
                 $igd_p = new IgdPenunjang;
-                $igd_p->p_name = "EKG";
+                $igd_p->p_name = "ekg";
                 $igd_p->igd_id = $id;
             }
 
-            $file = $request->file('ekg')->store("Rekmed/$rek_id/IGD/Penunjang/EKG", 'public');
+            $file = $request->file('ekg')->store("Rekmed/$rek_id/IGD/Penunjang/ekg", 'public');
             $igd_p->p_file = $file;
             $igd_p->save();
         }
@@ -275,11 +268,11 @@ class SuperRekmedController extends Controller
                 }
             } else {
                 $igd_p = new IgdPenunjang;
-                $igd_p->p_name = "LAB";
+                $igd_p->p_name = "lab";
                 $igd_p->igd_id = $id;
             }
 
-            $file = $request->file('lab')->store("Rekmed/$rek_id/IGD/Penunjang/LAB", 'public');
+            $file = $request->file('lab')->store("Rekmed/$rek_id/IGD/Penunjang/lab", 'public');
             $igd_p->p_file = $file;
             $igd_p->save();
         }
@@ -291,7 +284,16 @@ class SuperRekmedController extends Controller
     }
 
 
-    //destroy detail
+    //destroy
+    //rekmed
+    public function destroy_rekmed($rek_id)
+    {
+        $rekmed = Rekmed::findOrFail($rek_id);
+        $rekmed->delete();
+        return redirect()->route('super.rekmed');
+    }
+
+    //detail
     public function destroy_detail(Request $request, $id, $ctg)
     {
         switch ($ctg) {
@@ -316,7 +318,7 @@ class SuperRekmedController extends Controller
         }
 
         $field = $request->get('field');
-        
+
         if (file_exists(storage_path('app/public/' . $db->$field))) {
             \Storage::delete('public/' . $db->$field);
         }
@@ -329,7 +331,7 @@ class SuperRekmedController extends Controller
         ]);
     }
 
-    //destroy detail penunjang
+    //detail penunjang
     public function destroy_detail_penunjang(Request $request, $id, $ctg)
     {
         switch ($ctg) {
@@ -352,7 +354,7 @@ class SuperRekmedController extends Controller
             default:
                 break;
         }
-        
+
         if (file_exists(storage_path('app/public/' . $db->p_file))) {
             \Storage::delete('public/' . $db->p_file);
         }
@@ -364,5 +366,4 @@ class SuperRekmedController extends Controller
             'id' => $request->get('id')
         ]);
     }
-
 }

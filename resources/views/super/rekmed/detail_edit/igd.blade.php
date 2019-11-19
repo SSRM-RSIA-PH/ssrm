@@ -1,21 +1,83 @@
 @extends('layouts.main')
 @section('content')
 
-@if (session('status'))
-<div class="alert alert-success">
-    {{session('status')}} <br>
-    <a class="btn btn-primary" href="{{route('super.rekmed.show.igd', ['rek_id'=>$rek_id])}}">Kembali</a>
-</div>
-@endif
+    @if (session('status'))
+    <div class="alert alert-success">
+        {{session('status')}} <br>
+        <a class="btn btn-primary" href="{{route('super.rekmed.show.igd', ['rek_id'=>$rek_id])}}">Back</a>
+    </div>
+    @endif
 
-{{-- deklarasi nilai --}}
-<div hidden>
-    {{$usg = NULL}}
-    {{$ctg = NULL}}
-    {{$xray = NULL}}
-    {{$ekg = NULL}}
-    {{$lab = NULL}}
-</div>
+    {{-- deklarasi nilai --}}
+    <div hidden>
+        {{$usg = NULL}}
+        {{$ctg = NULL}}
+        {{$xray = NULL}}
+        {{$ekg = NULL}}
+        {{$lab = NULL}}
+    </div>
+
+    {{-- isi nilai untuk dipake edit dan delete dibawah --}}
+    @foreach ($penunjang as $p)
+        @switch($p->p_name)
+            @case('usg')
+                <div hidden>
+                    {{$usg = $p}}
+                </div>
+                @break
+            @case('ctg')
+                <div hidden>
+                    {{$ctg = $p}}
+                </div>
+                @break
+            @case('xray')
+                <div hidden>
+                    {{$xray = $p}}
+                </div>
+                @break
+            @case('ekg')
+                <div hidden>
+                    {{$ekg = $p}}
+                </div>
+                @break
+            @case('lab')
+                <div hidden>
+                    {{$lab = $p}}
+                </div>
+                @break
+            @default
+        @endswitch
+    @endforeach
+
+    <div class="row">
+        <div class="col-2">
+            <div class="alert alert-primary text-center">{{$rek_id}}</div>
+        </div>
+        <div class="col-9">
+            <div class="card mb-3">
+                <div class="card-header">
+                    Edit Rekam Medis {{$rek_id}}
+                </div>
+                <div class="card-body">
+
+                    <form enctype="multipart/form-data" action="{{route('super.rekmed.igd.update', [
+                        'rek_id'=>$rek_id,
+                        'id'=>$igd->igd_id
+                    ])}}" method="POST">
+                        @csrf
+                        <input type="hidden" value="PUT" name="_method">
+
+                        <div class="col">
+                            <div class="input-group pt-2">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text" id="inputGroupFileAddon01">Tanggal</span>
+                                </div>
+                                <div class="custom-file">
+                                    <input name="date" type="datetime-local" class="form-control"
+                                        style="border-top-left-radius:0px;border-bottom-left-radius:0px;" autofocus>
+                                </div>
+                            </div>
+                        </div><br>
 
 {{-- isi nilai untuk dipake edit dan delete dibawah --}}
 @foreach ($penunjang as $p)
@@ -349,7 +411,6 @@
 
 
     </div>
-</div>
 
 
 @endsection
