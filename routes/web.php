@@ -44,6 +44,14 @@ Route::group(['prefix' => '/supervisor'], function () {
         Route::get('/{rek_id}/igd/{id}/edit', 'SuperRekmedController@edit_detail_igd')->name('super.rekmed.igd.edit');
         Route::put('/{rek_id}/igd/{id}/update', 'SuperRekmedController@update_detail_igd')->name('super.rekmed.igd.update');
 
+        //edit detail nicu
+        Route::get('/{rek_id}/nicu/{id}/edit', 'SuperRekmedController@edit_detail_nicu')->name('super.rekmed.nicu.edit');
+        Route::put('/{rek_id}/nicu/{id}/update', 'SuperRekmedController@update_detail_nicu')->name('super.rekmed.nicu.update');
+
+        //edit detail rawat inap
+        Route::get('/{rek_id}/ri/{id}/edit', 'SuperRekmedController@edit_detail_ri')->name('super.rekmed.ri.edit');
+        Route::put('/{rek_id}/ri/{id}/update', 'SuperRekmedController@update_detail_ri')->name('super.rekmed.ri.update');
+
         //edit detail poli
         Route::get('/{rek_id}/poli/{id}/edit', 'SuperRekmedController@edit_detail_poli')->name('super.rekmed.poli.edit');
         Route::put('/{rek_id}/poli/{id}/update', 'SuperRekmedController@update_detail_poli')->name('super.rekmed.poli.update');

@@ -434,6 +434,232 @@ class SuperRekmedController extends Controller
     }
 
 
+    //edit update detail nicu
+    public function edit_detail_nicu($rek_id, $id)
+    {
+        $nicu = Nicu::findOrFail($id);
+        $penunjang = NicuPenunjang::where('nicu_id', $id)->get();
+
+        return view('super.rekmed.detail_edit.nicu', [
+            'rek_id' => $rek_id,
+            'nicu' => $nicu,
+            'penunjang' => $penunjang
+        ]);
+    }
+
+    public function update_detail_nicu(Request $request, $rek_id, $id)
+    {
+        //catatan & resume
+        $nicu = Nicu::findOrFail($id);
+
+        if ($request->get('u_id')) {
+            $nicu->u_id = $request->get('u_id');
+        }
+
+        if ($request->get('date')) {
+            $nicu->nicu_datetime = $request->get('date');
+        }
+
+        if ($request->file('cp')) {
+            $dbfile = $nicu->nicu_ctt_integ;
+            if ($dbfile && file_exists(storage_path('app/public/' . $dbfile))) {
+                \Storage::delete('public/' . $dbfile);
+            }
+
+            $file = $request->file('cp')->store("Rekmed/$rek_id/NICU/Catatan_Terintegrasi", 'public');
+            $nicu->nicu_ctt_integ = $file;
+        }
+
+        if ($request->file('resume')) {
+            $dbfile = $nicu->nicu_resume;
+            if ($dbfile && file_exists(storage_path('app/public/' . $dbfile))) {
+                \Storage::delete('public/' . $dbfile);
+            }
+
+            $file = $request->file('resume')->store("Rekmed/$rek_id/NICU/Resume", 'public');
+            $nicu->nicu_resume = $file;
+        }
+
+        if ($request->file('pengkajian')) {
+            $dbfile = $nicu->nicu_pengkajian;
+            if ($dbfile && file_exists(storage_path('app/public/' . $dbfile))) {
+                \Storage::delete('public/' . $dbfile);
+            }
+
+            $file = $request->file('pengkajian')->store("Rekmed/$rek_id/NICU/Pengkajian_Awal", 'public');
+            $nicu->nicu_pengkajian = $file;
+        }
+
+        if ($request->file('grafik')) {
+            $dbfile = $nicu->nicu_grafik;
+            if ($dbfile && file_exists(storage_path('app/public/' . $dbfile))) {
+                \Storage::delete('public/' . $dbfile);
+            }
+
+            $file = $request->file('grafik')->store("Rekmed/$rek_id/NICU/Grafik", 'public');
+            $nicu->nicu_grafik = $file;
+        }
+        $nicu->save();
+
+        //penunjang
+        if ($request->file('xray')) {
+            if ($request->get('id_xray')) {
+                $nicu_p = NicuPenunjang::findOrFail($request->get('id_xray'));
+
+                $dbfile = $nicu_p->p_file;
+                if ($dbfile && file_exists(storage_path('app/public/' . $dbfile))) {
+                    \Storage::delete('public/' . $dbfile);
+                }
+            } else {
+                $nicu_p = new NicuPenunjang;
+                $nicu_p->p_name = "xray";
+                $nicu_p->nicu_id = $id;
+            }
+
+            $file = $request->file('xray')->store("Rekmed/$rek_id/NICU/Penunjang/xray", 'public');
+            $nicu_p->p_file = $file;
+            $nicu_p->save();
+        }
+
+        if ($request->file('lab')) {
+            if ($request->get('id_lab')) {
+                $nicu_p = NicuPenunjang::findOrFail($request->get('id_lab'));
+
+                $dbfile = $nicu_p->p_file;
+                if ($dbfile && file_exists(storage_path('app/public/' . $dbfile))) {
+                    \Storage::delete('public/' . $dbfile);
+                }
+            } else {
+                $nicu_p = new NicuPenunjang;
+                $nicu_p->p_name = "lab";
+                $nicu_p->nicu_id = $id;
+            }
+
+            $file = $request->file('lab')->store("Rekmed/$rek_id/NICU/Penunjang/lab", 'public');
+            $nicu_p->p_file = $file;
+            $nicu_p->save();
+        }
+
+        return redirect()->route('super.rekmed.nicu.edit', [
+            'rek_id' => $rek_id,
+            'id' => $id
+        ])->with('status', 'Berhasil Diubah');
+    }
+
+
+    //edit update detail rawat inap
+    public function edit_detail_ri($rek_id, $id)
+    {
+        $ri = RawatInap::findOrFail($id);
+        $penunjang = RawatInapPenunjang::where('ri_id', $id)->get();
+
+        return view('super.rekmed.detail_edit.ri', [
+            'rek_id' => $rek_id,
+            'ri' => $ri,
+            'penunjang' => $penunjang
+        ]);
+    }
+
+    public function update_detail_ri(Request $request, $rek_id, $id)
+    {
+        //catatan & resume
+        $ri = RawatInap::findOrFail($id);
+
+        if ($request->get('u_id')) {
+            $ri->u_id = $request->get('u_id');
+        }
+
+        if ($request->get('date')) {
+            $ri->ri_datetime = $request->get('date');
+        }
+
+        if ($request->file('cp')) {
+            $dbfile = $ri->ri_ctt_integ;
+            if ($dbfile && file_exists(storage_path('app/public/' . $dbfile))) {
+                \Storage::delete('public/' . $dbfile);
+            }
+
+            $file = $request->file('cp')->store("Rekmed/$rek_id/Rawar_Inap/Catatan_Perkembangan_Terintegrasi", 'public');
+            $ri->ri_ctt_integ = $file;
+        }
+
+        if ($request->file('resume')) {
+            $dbfile = $ri->ri_resume;
+            if ($dbfile && file_exists(storage_path('app/public/' . $dbfile))) {
+                \Storage::delete('public/' . $dbfile);
+            }
+
+            $file = $request->file('resume')->store("Rekmed/$rek_id/Rawar_Inap/Resume_Inap", 'public');
+            $ri->ri_resume = $file;
+        }
+
+        if ($request->file('cto')) {
+            $dbfile = $ri->ri_ctt_oper;
+            if ($dbfile && file_exists(storage_path('app/public/' . $dbfile))) {
+                \Storage::delete('public/' . $dbfile);
+            }
+
+            $file = $request->file('cto')->store("Rekmed/$rek_id/Rawar_Inap/Catatan_Tindakan-Operasi", 'public');
+            $ri->ri_ctt_oper = $file;
+        }
+
+        if ($request->file('bayi')) {
+            $dbfile = $ri->ri_bayi;
+            if ($dbfile && file_exists(storage_path('app/public/' . $dbfile))) {
+                \Storage::delete('public/' . $dbfile);
+            }
+
+            $file = $request->file('bayi')->store("Rekmed/$rek_id/Rawar_Inap/Bayi", 'public');
+            $ri->ri_bayi = $file;
+        }
+        $ri->save();
+
+        //penunjang
+        if ($request->file('xray')) {
+            if ($request->get('id_xray')) {
+                $ri_p = RawatInapPenunjang::findOrFail($request->get('id_xray'));
+
+                $dbfile = $ri_p->p_file;
+                if ($dbfile && file_exists(storage_path('app/public/' . $dbfile))) {
+                    \Storage::delete('public/' . $dbfile);
+                }
+            } else {
+                $ri_p = new RawatInapPenunjang;
+                $ri_p->p_name = "xray";
+                $ri_p->ri_id = $id;
+            }
+
+            $file = $request->file('xray')->store("Rekmed/$rek_id/Rawar_Inap/Penunjang/xray", 'public');
+            $ri_p->p_file = $file;
+            $ri_p->save();
+        }
+
+        if ($request->file('lab')) {
+            if ($request->get('id_lab')) {
+                $ri_p = RawatInapPenunjang::findOrFail($request->get('id_lab'));
+
+                $dbfile = $ri_p->p_file;
+                if ($dbfile && file_exists(storage_path('app/public/' . $dbfile))) {
+                    \Storage::delete('public/' . $dbfile);
+                }
+            } else {
+                $ri_p = new RawatInapPenunjang;
+                $ri_p->p_name = "lab";
+                $ri_p->ri_id = $id;
+            }
+
+            $file = $request->file('lab')->store("Rekmed/$rek_id/Rawar_Inap/Penunjang/lab", 'public');
+            $ri_p->p_file = $file;
+            $ri_p->save();
+        }
+
+        return redirect()->route('super.rekmed.ri.edit', [
+            'rek_id' => $rek_id,
+            'id' => $id
+        ])->with('status', 'Berhasil Diubah');
+    }
+
+
     //destroy
     //destroy rekmed
     public function destroy_rekmed($rek_id)

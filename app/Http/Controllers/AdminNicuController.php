@@ -32,22 +32,22 @@ class AdminNicuController extends Controller
         $nicu->nicu_datetime = $request->get('date');
 
         if ($request->file('ct')) {
-            $file = $request->file('ct')->store("Rekmed/$rek_id/Nicu/Catatan_Perkembangan_Terintegrasi", 'public');
+            $file = $request->file('ct')->store("Rekmed/$rek_id/NICU/Catatan_Perkembangan_Terintegrasi", 'public');
             $nicu->nicu_ctt_integ = $file;
         }
 
         if ($request->file('resume')) {
-            $file = $request->file('resume')->store("Rekmed/$rek_id/Nicu/Resume", 'public');
+            $file = $request->file('resume')->store("Rekmed/$rek_id/NICU/Resume", 'public');
             $nicu->nicu_resume = $file;
         }
 
         if ($request->file('pengkajian')) {
-            $file = $request->file('pengkajian')->store("Rekmed/$rek_id/Nicu/Pengkajian_Awal", 'public');
+            $file = $request->file('pengkajian')->store("Rekmed/$rek_id/NICU/Pengkajian_Awal", 'public');
             $nicu->nicu_pengkajian = $file;
         }
         
         if ($request->file('gp')) {
-            $file = $request->file('gp')->store("Rekmed/$rek_id/Nicu/Grafik", 'public');
+            $file = $request->file('gp')->store("Rekmed/$rek_id/NICU/Grafik", 'public');
             $nicu->nicu_grafik = $file;
         }
 
@@ -57,7 +57,7 @@ class AdminNicuController extends Controller
         foreach ($penunjang_names as $p_name) {
             if ($request->file($p_name)) {
                 $penunjang = new NicuPenunjang;
-                $file = $request->file($p_name)->store("Rekmed/$rek_id/Nicu/Penunjang/$p_name", 'public');
+                $file = $request->file($p_name)->store("Rekmed/$rek_id/NICU/Penunjang/$p_name", 'public');
                 $penunjang->p_name = $p_name;
                 $penunjang->p_file = $file;
                 $penunjang->nicu_id = $nicu->nicu_id;
