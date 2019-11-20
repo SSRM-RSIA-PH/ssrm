@@ -14,5 +14,9 @@
     @endif
 </div>
 
+<div class="row d-flex justify-content-center pt-5">
+    <img src="img/logo-rsia-ph.png" width="300px" alt="rsia-ph">
+</div>
+
 
 @endsection

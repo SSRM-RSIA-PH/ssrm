@@ -15,7 +15,7 @@
         <th>Tanggal Rekam Medis</th>
         <th>Kategori</th>
         <th>User</th>
-        <th></th>
+        <th width="120px"></th>
     </thead>
     <tbody>
         @foreach ($nicu as $n)
@@ -27,7 +27,7 @@
                 <a href="{{route('super.rekmed.detail.nicu', [
                             'rek_id'=>$n->rek_id,
                             'id'=>$n->nicu_id
-                        ])}}" class="btn btn-primary">View</a>
+                        ])}}" class="btn btn-sm btn-info">View</a>
             </td>
         </tr>
         @endforeach

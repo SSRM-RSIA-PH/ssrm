@@ -41,7 +41,7 @@ List User
         {{-- <th><b>Username</b></th> --}}
         {{-- <th><b>Email</b></th> --}}
         <th>Hak Akses</th>
-        <th style="width: 20%">Action</th>
+        <th style="width: 200px"></th>
     </thead>
     <tbody>
         @foreach ($users as $u)
@@ -52,8 +52,8 @@ List User
             <td>{{$u->role}}</td>
 
             <td>
-                <a href="{{route('user.show', ['id' => $u->id])}}" class="btn btn-primary btn-sm">Detail</a>
-                <a class="btn btn-info text-white btn-sm" href="{{route('user.edit',['id'=> $u->id])}}">Edit</a>
+                <a href="{{route('user.show', ['id' => $u->id])}}" class="btn btn-info btn-sm">Detail</a>
+                <a class="btn btn-primary btn-sm" href="{{route('user.edit',['id'=> $u->id])}}">Edit</a>
                 <form onsubmit="return confirm('Delete user {{$u->name}} permanently ?')" class="d-inline"
                     action="{{route('user.destroy', ['id' => $u->id ])}}" method="POST">
                     @csrf

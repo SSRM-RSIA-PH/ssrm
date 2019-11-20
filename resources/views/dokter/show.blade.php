@@ -8,27 +8,24 @@
 <a class="nav-link" href="{{route('dokter.show.ri', ['rek_id'=>$rekmed->rek_id])}}">RAWAT INAP</a>
 @endsection
 @section('content')
-
-<div class="container">
-    <div class="row d-flex justify-content-center">
-        <div class="col-6">
-            <div class="card">
-                <div class="card-header">
-                    Profile Pasien
-                </div>
-                <div class="card-body">
-                    <div class="alert alert-success w-100">
-                        <table class="w-100">
-                            <tr>
-                                <th>No Rekam Medis</th>
-                                <td>{{$rekmed->rek_id}}</td>
-                            </tr>
-                            <tr>
-                                <th>Nama Pasien</th>
-                                <td>{{$rekmed->rek_name}}</td>
-                            </tr>
-                        </table>
-                    </div>
+<div class="row d-flex justify-content-center">
+    <div class="col-6">
+        <div class="card">
+            <div class="card-header">
+                Profile Pasien
+            </div>
+            <div class="card-body">
+                <div class="alert alert-success w-100">
+                    <table class="w-100">
+                        <tr>
+                            <th>No Rekam Medis</th>
+                            <td>{{$rekmed->rek_id}}</td>
+                        </tr>
+                        <tr>
+                            <th>Nama Pasien</th>
+                            <td>{{$rekmed->rek_name}}</td>
+                        </tr>
+                    </table>
                 </div>
             </div>
         </div>
