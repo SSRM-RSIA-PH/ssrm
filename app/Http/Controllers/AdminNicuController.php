@@ -58,7 +58,7 @@ class AdminNicuController extends Controller
             if ($request->file($p_name)) {
                 $penunjang = new NicuPenunjang;
                 $file = $request->file($p_name)->store("Rekmed/$rek_id/Nicu/Penunjang/$p_name", 'public');
-                $penunjang->p_name = strtoupper($p_name);
+                $penunjang->p_name = $p_name;
                 $penunjang->p_file = $file;
                 $penunjang->nicu_id = $nicu->nicu_id;
                 $penunjang->save();

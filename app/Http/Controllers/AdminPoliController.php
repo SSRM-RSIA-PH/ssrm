@@ -48,7 +48,7 @@ class AdminPoliController extends Controller
             if ($request->file($p_name)) {
                 $penunjang = new PoliPenunjang;
                 $file = $request->file($p_name)->store("Rekmed/$rek_id/Poli/Penunjang/$p_name", 'public');
-                $penunjang->p_name = strtoupper($p_name);
+                $penunjang->p_name = $p_name;
                 $penunjang->p_file = $file;
                 $penunjang->poli_id = $poli->poli_id;
                 $penunjang->save();

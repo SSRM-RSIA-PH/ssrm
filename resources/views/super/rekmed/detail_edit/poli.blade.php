@@ -21,27 +21,27 @@
     {{-- isi nilai untuk dipake edit dan delete dibawah --}}
     @foreach ($penunjang as $p)
         @switch($p->p_name)
-            @case('usg')
+            @case('USG')
                 <div hidden>
                     {{$usg = $p}}
                 </div>
                 @break
-            @case('ctg')
+            @case('CTG')
                 <div hidden>
                     {{$ctg = $p}}
                 </div>
                 @break
-            @case('xray')
+            @case('XRAY')
                 <div hidden>
                     {{$xray = $p}}
                 </div>
                 @break
-            @case('ekg')
+            @case('EKG')
                 <div hidden>
                     {{$ekg = $p}}
                 </div>
                 @break
-            @case('lab')
+            @case('LAB')
                 <div hidden>
                     {{$lab = $p}}
                 </div>
