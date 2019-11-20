@@ -28,6 +28,10 @@
                             'rek_id'=>$p->rek_id,
                             'id'=>$p->poli_id
                         ])}}" class="btn btn-primary">View</a>
+                <a href="{{route('super.rekmed.poli.edit', [
+                            'rek_id'=>$p->rek_id, 
+                            'id'=>$p->poli_id
+                        ])}}" class="btn btn-primary">Edit</a>
             </td>
         </tr>
         @endforeach

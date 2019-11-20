@@ -284,8 +284,158 @@ class SuperRekmedController extends Controller
     }
 
 
+    //edit update detail poli
+    public function edit_detail_poli($rek_id, $id)
+    {
+        $poli = Poli::findOrFail($id);
+        $penunjang = PoliPenunjang::where('poli_id', $id)->get();
+
+        return view('super.rekmed.detail_edit.poli', [
+            'rek_id' => $rek_id,
+            'poli' => $poli,
+            'penunjang' => $penunjang
+        ]);
+    }
+
+    public function update_detail_poli(Request $request, $rek_id, $id)
+    {
+        //catatan & resume
+        $poli = Poli::findOrFail($id);
+
+        if ($request->get('u_id')) {
+            $poli->u_id = $request->get('u_id');
+        }
+
+        if ($request->get('date')) {
+            $poli->poli_datetime = $request->get('date');
+        }
+
+        if ($request->file('cp')) {
+            $dbfile = $poli->poli_ctt_integ;
+            if ($dbfile && file_exists(storage_path('app/public/' . $dbfile))) {
+                \Storage::delete('public/' . $dbfile);
+            }
+
+            $file = $request->file('cp')->store("Rekmed/$rek_id/POLI/Catatan_Terintegrasi", 'public');
+            $poli->poli_ctt_integ = $file;
+        }
+
+        if ($request->file('resume')) {
+            $dbfile = $poli->poli_resume;
+            if ($dbfile && file_exists(storage_path('app/public/' . $dbfile))) {
+                \Storage::delete('public/' . $dbfile);
+            }
+
+            $file = $request->file('resume')->store("Rekmed/$rek_id/POLI/Resume", 'public');
+            $poli->poli_resume = $file;
+        }
+        $poli->save();
+
+        //penunjang
+        if ($request->file('usg')) {
+            if ($request->get('id_usg')) {
+                $poli_p = PoliPenunjang::findOrFail($request->get('id_usg'));
+
+                $dbfile = $poli_p->p_file;
+                if ($dbfile && file_exists(storage_path('app/public/' . $dbfile))) {
+                    \Storage::delete('public/' . $dbfile);
+                }
+            } else {
+                $poli_p = new PoliPenunjang;
+                $poli_p->p_name = "usg";
+                $poli_p->poli_id = $id;
+            }
+
+            $file = $request->file('usg')->store("Rekmed/$rek_id/POLI/Penunjang/usg", 'public');
+            $poli_p->p_file = $file;
+            $poli_p->save();
+        }
+
+        if ($request->file('ctg')) {
+            if ($request->get('id_ctg')) {
+                $poli_p = PoliPenunjang::findOrFail($request->get('id_ctg'));
+
+                $dbfile = $poli_p->p_file;
+                if ($dbfile && file_exists(storage_path('app/public/' . $dbfile))) {
+                    \Storage::delete('public/' . $dbfile);
+                }
+            } else {
+                $poli_p = new PoliPenunjang;
+                $poli_p->p_name = "ctg";
+                $poli_p->poli_id = $id;
+            }
+
+            $file = $request->file('ctg')->store("Rekmed/$rek_id/POLI/Penunjang/ctg", 'public');
+            $poli_p->p_file = $file;
+            $poli_p->save();
+        }
+
+        if ($request->file('xray')) {
+            if ($request->get('id_xray')) {
+                $poli_p = PoliPenunjang::findOrFail($request->get('id_xray'));
+
+                $dbfile = $poli_p->p_file;
+                if ($dbfile && file_exists(storage_path('app/public/' . $dbfile))) {
+                    \Storage::delete('public/' . $dbfile);
+                }
+            } else {
+                $poli_p = new PoliPenunjang;
+                $poli_p->p_name = "xray";
+                $poli_p->poli_id = $id;
+            }
+
+            $file = $request->file('xray')->store("Rekmed/$rek_id/POLI/Penunjang/xray", 'public');
+            $poli_p->p_file = $file;
+            $poli_p->save();
+        }
+
+        if ($request->file('ekg')) {
+            if ($request->get('id_ekg')) {
+                $poli_p = PoliPenunjang::findOrFail($request->get('id_ekg'));
+
+                $dbfile = $poli_p->p_file;
+                if ($dbfile && file_exists(storage_path('app/public/' . $dbfile))) {
+                    \Storage::delete('public/' . $dbfile);
+                }
+            } else {
+                $poli_p = new PoliPenunjang;
+                $poli_p->p_name = "ekg";
+                $poli_p->poli_id = $id;
+            }
+
+            $file = $request->file('ekg')->store("Rekmed/$rek_id/POLI/Penunjang/ekg", 'public');
+            $poli_p->p_file = $file;
+            $poli_p->save();
+        }
+
+        if ($request->file('lab')) {
+            if ($request->get('id_lab')) {
+                $poli_p = PoliPenunjang::findOrFail($request->get('id_lab'));
+
+                $dbfile = $poli_p->p_file;
+                if ($dbfile && file_exists(storage_path('app/public/' . $dbfile))) {
+                    \Storage::delete('public/' . $dbfile);
+                }
+            } else {
+                $poli_p = new PoliPenunjang;
+                $poli_p->p_name = "lab";
+                $poli_p->poli_id = $id;
+            }
+
+            $file = $request->file('lab')->store("Rekmed/$rek_id/POLI/Penunjang/lab", 'public');
+            $poli_p->p_file = $file;
+            $poli_p->save();
+        }
+
+        return redirect()->route('super.rekmed.poli.edit', [
+            'rek_id' => $rek_id,
+            'id' => $id
+        ])->with('status', 'Berhasil Diubah');
+    }
+
+
     //destroy
-    //rekmed
+    //destroy rekmed
     public function destroy_rekmed($rek_id)
     {
         $rekmed = Rekmed::findOrFail($rek_id);
@@ -293,7 +443,7 @@ class SuperRekmedController extends Controller
         return redirect()->route('super.rekmed');
     }
 
-    //detail
+    //destroy detail
     public function destroy_detail(Request $request, $id, $ctg)
     {
         switch ($ctg) {
@@ -325,13 +475,13 @@ class SuperRekmedController extends Controller
         $db->$field = NULL;
         $db->save();
 
-        return redirect()->route('super.rekmed.igd.edit', [
+        return redirect()->route("super.rekmed.$ctg.edit", [
             'rek_id' => $db->rek_id,
             'id' => $id
         ]);
     }
 
-    //detail penunjang
+    //destroy detail penunjang
     public function destroy_detail_penunjang(Request $request, $id, $ctg)
     {
         switch ($ctg) {
@@ -361,7 +511,7 @@ class SuperRekmedController extends Controller
 
         $db->delete();
 
-        return redirect()->route('super.rekmed.igd.edit', [
+        return redirect()->route("super.rekmed.$ctg.edit", [
             'rek_id' => $request->get('rek_id'),
             'id' => $request->get('id')
         ]);

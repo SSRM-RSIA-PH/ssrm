@@ -74,7 +74,7 @@
                                     <span class="input-group-text" id="inputGroupFileAddon01">Tanggal</span>
                                 </div>
                                 <div class="custom-file">
-                                    <input name="date" type="datetime-local" class="form-control"
+                                <input value="{{str_replace(" ","T",$igd->igd_datetime)}}" name="date" type="datetime-local" class="form-control"
                                         style="border-top-left-radius:0px;border-bottom-left-radius:0px;" autofocus>
                                 </div>
                             </div>

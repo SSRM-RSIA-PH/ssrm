@@ -5,7 +5,7 @@
     @if (session('status'))
     <div class="alert alert-success">
         {{session('status')}} <br>
-        <a class="btn btn-primary" href="{{route('super.rekmed.show.igd', ['rek_id'=>$rek_id])}}">Back</a>
+        <a class="btn btn-primary" href="{{route('super.rekmed.show.poli', ['rek_id'=>$rek_id])}}">Back</a>
     </div>
     @endif
 
@@ -21,27 +21,27 @@
     {{-- isi nilai untuk dipake edit dan delete dibawah --}}
     @foreach ($penunjang as $p)
         @switch($p->p_name)
-            @case('USG')
+            @case('usg')
                 <div hidden>
                     {{$usg = $p}}
                 </div>
                 @break
-            @case('CTG')
+            @case('ctg')
                 <div hidden>
                     {{$ctg = $p}}
                 </div>
                 @break
-            @case('XRAY')
+            @case('xray')
                 <div hidden>
                     {{$xray = $p}}
                 </div>
                 @break
-            @case('EKG')
+            @case('ekg')
                 <div hidden>
                     {{$ekg = $p}}
                 </div>
                 @break
-            @case('LAB')
+            @case('lab')
                 <div hidden>
                     {{$lab = $p}}
                 </div>
@@ -61,9 +61,9 @@
                 </div>
                 <div class="card-body">
 
-                    <form enctype="multipart/form-data" action="{{route('super.rekmed.igd.update', [
+                    <form enctype="multipart/form-data" action="{{route('super.rekmed.poli.update', [
                         'rek_id'=>$rek_id,
-                        'id'=>$igd->igd_id
+                        'id'=>$poli->poli_id
                     ])}}" method="POST">
                         @csrf
                         <input type="hidden" value="PUT" name="_method">
@@ -74,7 +74,7 @@
                                     <span class="input-group-text" id="inputGroupFileAddon01">Tanggal</span>
                                 </div>
                                 <div class="custom-file">
-                                    <input name="date" type="datetime-local" class="form-control"
+                                    <input value="{{str_replace(" ","T",$poli->poli_datetime)}}" name="date" type="datetime-local" class="form-control"
                                         style="border-top-left-radius:0px;border-bottom-left-radius:0px;" autofocus>
                                 </div>
                             </div>
@@ -95,7 +95,7 @@
                                     <div class="custom-file">
                                         <input type="file" class="custom-file-input" id="cp" name="cp">
                                         <label class="custom-file-label" id="cfl1" for="cp">
-                                            @if ($igd->igd_ctt_perkembangan)
+                                            @if ($poli->poli_ctt_integ)
                                             <strong>File Catatan Perkembangan</strong>
                                             @else
                                             Choose file
@@ -114,7 +114,7 @@
                                     <div class="custom-file">
                                         <input type="file" class="custom-file-input" id="rsm" name="resume">
                                         <label class="custom-file-label" id="cfl2" for="rsm">
-                                            @if ($igd->igd_resume)
+                                            @if ($poli->poli_resume)
                                             <strong>File Resume</strong>
                                             @else
                                             Choose file
@@ -236,29 +236,29 @@
         {{-- ini buat button delete --}}
         <div class="col-1">
             <br><br><br><br><br><br><br><br>
-            @if ($igd->igd_ctt_perkembangan)    
+            @if ($poli->poli_ctt_integ)    
                 <form onsubmit="return confirm('Delete permanently ?')" action="{{route('super.rekmed.destroy_detail', [
-                        'id' => $igd->igd_id,
-                        'ctg' => 'igd'
+                        'id' => $poli->poli_id,
+                        'ctg' => 'poli'
                     ])}}" method="POST">
                     @csrf
                     <input type="hidden" name="_method" value="DELETE">
 
-                    <input type="hidden" name="field" value="igd_ctt_perkembangan">
+                    <input type="hidden" name="field" value="poli_ctt_integ">
                     <input type="submit" class="btn btn-danger" value="Delete">
                 </form>
             @endif
 
             <br><br><br><br>
-            @if ($igd->igd_resume)    
+            @if ($poli->poli_resume)    
                 <form onsubmit="return confirm('Delete permanently ?')" action="{{route('super.rekmed.destroy_detail', [
-                        'id' => $igd->igd_id,
-                        'ctg' => 'igd'
+                        'id' => $poli->poli_id,
+                        'ctg' => 'poli'
                     ])}}" method="POST">
                     @csrf
                     <input type="hidden" name="_method" value="DELETE">
 
-                    <input type="hidden" name="field" value="igd_resume">
+                    <input type="hidden" name="field" value="poli_resume">
                     <input type="submit" class="btn btn-danger" value="Delete">
                 </form>
             @endif
@@ -267,13 +267,13 @@
             @if ($usg)
                 <form onsubmit="return confirm('Delete permanently ?')" action="{{route('super.rekmed.destroy_penunjang', [
                     'id' => $usg->id,
-                    'ctg' => 'igd'
+                    'ctg' => 'poli'
                 ])}}" method="POST">
                 @csrf
                 <input type="hidden" name="_method" value="DELETE">
 
                 <input type="hidden" name="rek_id" value="{{$rek_id}}">
-                <input type="hidden" name="id" value={{$igd->igd_id}}>
+                <input type="hidden" name="id" value={{$poli->poli_id}}>
                 <input type="submit" class="btn btn-danger" value="Delete">
                 </form>
             @endif
@@ -282,13 +282,13 @@
             @if ($ctg)
                 <form onsubmit="return confirm('Delete permanently ?')" action="{{route('super.rekmed.destroy_penunjang', [
                     'id' => $ctg->id,
-                    'ctg' => 'igd'
+                    'ctg' => 'poli'
                 ])}}" method="POST">
                 @csrf
                 <input type="hidden" name="_method" value="DELETE">
 
                 <input type="hidden" name="rek_id" value="{{$rek_id}}">
-                <input type="hidden" name="id" value={{$igd->igd_id}}>
+                <input type="hidden" name="id" value={{$poli->poli_id}}>
                 <input type="submit" class="btn btn-danger" value="Delete">
                 </form>
             @endif
@@ -297,13 +297,13 @@
             @if ($xray)
                 <form onsubmit="return confirm('Delete permanently ?')" action="{{route('super.rekmed.destroy_penunjang', [
                     'id' => $xray->id,
-                    'ctg' => 'igd'
+                    'ctg' => 'poli'
                 ])}}" method="POST">
                 @csrf
                 <input type="hidden" name="_method" value="DELETE">
 
                 <input type="hidden" name="rek_id" value="{{$rek_id}}">
-                <input type="hidden" name="id" value={{$igd->igd_id}}>
+                <input type="hidden" name="id" value={{$poli->poli_id}}>
                 <input type="submit" class="btn btn-danger" value="Delete">
                 </form>
             @endif
@@ -312,13 +312,13 @@
             @if ($ekg)
                 <form onsubmit="return confirm('Delete permanently ?')" action="{{route('super.rekmed.destroy_penunjang', [
                     'id' => $ekg->id,
-                    'ctg' => 'igd'
+                    'ctg' => 'poli'
                 ])}}" method="POST">
                 @csrf
                 <input type="hidden" name="_method" value="DELETE">
 
                 <input type="hidden" name="rek_id" value="{{$rek_id}}">
-                <input type="hidden" name="id" value={{$igd->igd_id}}>
+                <input type="hidden" name="id" value={{$poli->poli_id}}>
                 <input type="submit" class="btn btn-danger" value="Delete">
                 </form>
             @endif
@@ -327,13 +327,13 @@
             @if ($lab)
                 <form onsubmit="return confirm('Delete permanently ?')" action="{{route('super.rekmed.destroy_penunjang', [
                     'id' => $lab->id,
-                    'ctg' => 'igd'
+                    'ctg' => 'poli'
                 ])}}" method="POST">
                 @csrf
                 <input type="hidden" name="_method" value="DELETE">
 
                 <input type="hidden" name="rek_id" value="{{$rek_id}}">
-                <input type="hidden" name="id" value={{$igd->igd_id}}>
+                <input type="hidden" name="id" value={{$poli->poli_id}}>
                 <input type="submit" class="btn btn-danger" value="Delete">
                 </form>
             @endif
