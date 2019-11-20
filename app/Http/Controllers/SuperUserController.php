@@ -19,8 +19,13 @@ class SuperUserController extends Controller
     public function index(Request $request)
     {
         $filter = $request->get('filter');
+        $search = $request->get('search');
 
-        if ($filter) {
+        if ($filter && $search) {
+            $users = User::where('name', 'LIKE', "%$search%")->where('role', 'LIKE', $filter)->paginate(10);
+        } elseif ($search) {
+            $users = User::where('name', 'LIKE', "%$search%")->paginate(10);
+        } elseif ($filter) {
             $users = User::where('role', 'LIKE', $filter)->paginate(10);
         } else {
             $users = User::paginate(10);

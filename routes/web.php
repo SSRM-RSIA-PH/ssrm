@@ -63,7 +63,7 @@ Route::group(['prefix' => '/supervisor'], function () {
         Route::delete('/{id}/{ctg}/destroy_penunjang', "SuperRekmedController@destroy_detail_penunjang")->name('super.rekmed.destroy_penunjang');
     });
 
-    Route::get('/log', 'LogController@index')->name('super.log');
+    Route::get('/log', 'SuperLogController@index')->name('super.log');
 });
 
 

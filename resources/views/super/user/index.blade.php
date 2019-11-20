@@ -5,9 +5,9 @@ List User
 @endsection
 @section('menu')
 <a href="{{route('super.index')}}" class="nav-item nav-link">Dashboard</a>
-<a class="nav-link" href="{{-- {{route('logupload')}} --}}">Log Upload</a>
+<a class="nav-link" href="{{route('super.log')}}">Log Upload</a>
 <a class="nav-link active" href="{{route('user.index')}}">Manage Users</a>
-<a class="nav-link" href="{{route('super.rekmed')}}">Manage Rekmed</a>
+<a class="nav-link" href="{{route('super.rekmed')}}">Rekam Medis</a>
 @endsection
 
 @section('content')
@@ -16,7 +16,12 @@ List User
     <div class="col-6">
         <form action="{{route('user.index')}}">
             <div class="input-group mb-3">
-                <select class="form-control col-md-10" name="filter">
+            <input class="form-control col-md-9" type="text" name="search" placeholder="Search" value="{{Request::get('search')}}">
+                <div class="input-group-append">
+                    <input type="submit" value="Search" class="btn btn-primary">
+                </div>
+
+                <select class="form-control col-md-3" name="filter">
                     <option value="">All</option>
                     <option value="SUPERVISOR" {{Request::get('filter') == 'SUPERVISOR' ? 'selected' : ''}}>Supervisor
                     </option>
@@ -38,8 +43,6 @@ List User
 <table class="table table-bordered">
     <thead>
         <th>Name</th>
-        {{-- <th><b>Username</b></th> --}}
-        {{-- <th><b>Email</b></th> --}}
         <th>Hak Akses</th>
         <th style="width: 200px"></th>
     </thead>
@@ -47,8 +50,6 @@ List User
         @foreach ($users as $u)
         <tr>
             <td>{{$u->name}}</td>
-            {{-- <td>{{$u->username}}</td> --}}
-            {{-- <td>{{$u->email}}</td> --}}
             <td>{{$u->role}}</td>
 
             <td>

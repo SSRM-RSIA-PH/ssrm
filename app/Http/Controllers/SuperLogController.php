@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Log;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Gate;
 
@@ -17,6 +18,7 @@ class SuperLogController extends Controller
 
     public function index()
     {
-        
+        $logs = Log::orderBy('created_at', 'DESC')->paginate(10);
+        return view('super.log', ['logs' => $logs]);
     }
 }

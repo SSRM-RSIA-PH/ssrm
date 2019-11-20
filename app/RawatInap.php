@@ -12,7 +12,7 @@ class RawatInap extends Model
 
     public function user()
     {
-        return User::where('id', $this->u_id)->get()->first();
+        return User::findOrFail($this->u_id);
     }
 
     public function penunjang()
