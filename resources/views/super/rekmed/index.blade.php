@@ -17,6 +17,18 @@ List Rekmed
 </div>
 @endif
 
+<div class="col-6">
+    <form action="{{route('super.rekmed')}}">
+        <div class="input-group mb-3">
+            <input class="form-control col-md-7" type="text" name="search" placeholder="Search"
+                value="{{Request::get('search')}}">
+            <div class="input-group-append">
+                <input type="submit" value="Search" class="btn btn-primary">
+            </div>
+        </div>
+    </form>
+</div>
+
 <table class="table table-bordered">
     <thead>
         <th>ID</th>

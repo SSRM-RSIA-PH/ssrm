@@ -24,9 +24,16 @@ class SuperRekmedController extends Controller
         });
     }
 
-    public function index()
+    public function index(Request $request)
     {
-        $rekmed = Rekmed::orderBy('created_at', 'DESC')->paginate(10);
+        $search = $request->get('search');
+
+        if ($search) {
+            $rekmed = Rekmed::where('rek_name', 'LIKE', "%$search%")->orderBy('created_at', 'DESC')->paginate(10);
+        } else {
+            $rekmed = Rekmed::orderBy('created_at', 'DESC')->paginate(10);
+        }
+
         return view('super.rekmed.index', ['rekmed' => $rekmed]);
     }
 
