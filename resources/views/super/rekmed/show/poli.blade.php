@@ -15,7 +15,7 @@
         <th>Tanggal Rekam Medis</th>
         <th>Kategori</th>
         <th>User</th>
-        <th></th>
+        <th width="120px"></th>
     </thead>
     <tbody>
         @foreach ($poli as $p)
@@ -27,11 +27,11 @@
                 <a href="{{route('super.rekmed.detail.poli', [
                             'rek_id'=>$p->rek_id,
                             'id'=>$p->poli_id
-                        ])}}" class="btn btn-primary">View</a>
+                        ])}}" class="btn btn-sm btn-info">View</a>
                 <a href="{{route('super.rekmed.poli.edit', [
                             'rek_id'=>$p->rek_id, 
                             'id'=>$p->poli_id
-                        ])}}" class="btn btn-primary">Edit</a>
+                        ])}}" class="btn btn-sm btn-primary">Edit</a>
             </td>
         </tr>
         @endforeach

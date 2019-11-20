@@ -24,7 +24,7 @@
                             'rek_id'=>$r->rek_id,
                             'id'=>$r->ri_id,
                             'ctg'=>'c'
-                        ])}}" class="btn btn-primary">View</a>
+                        ])}}" class="btn btn-info btn-sm">View</a>
                 </td>
             </tr>
             @endforeach

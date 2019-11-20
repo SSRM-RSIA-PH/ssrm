@@ -34,7 +34,7 @@ Edit
                     <label for="">Nama Pasien</label><br>
                     <input class="form-control" type="text" name="rek_name" value="{{$rekmed->rek_name}}" required>
                     <br>
-                    <input type="submit" value="Simpan" class="btn btn-primary">
+                    <input type="submit" value="Simpan" class="btn btn-sm btn-primary">
                 </form>
             </div>
         </div>

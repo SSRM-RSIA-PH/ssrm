@@ -23,7 +23,7 @@
                             'rek_id'=>$p->rek_id,
                             'id'=>$p->poli_id,
                             'ctg'=>'c'
-                        ])}}" class="btn btn-primary">View</a>
+                        ])}}" class="btn btn-info btn-sm">View</a>
                 </td>
             </tr>
             @endforeach
