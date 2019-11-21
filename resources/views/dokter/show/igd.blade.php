@@ -31,7 +31,8 @@
         @endforeach
     </tbody>
 </table>
-@else
+@endif
+@if($igd == null)
 <h3>Data tidak tersedia!</h3>
 @endif
 {{$igd->links()}}
