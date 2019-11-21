@@ -7,7 +7,7 @@ Add ID Rekam Medis
 <div class="container">
     @if (session('status'))
     <div class="alert alert-success">
-        Berhasil Menambahkan {{session('status')}}<br>
+        Berhasil Menambahkan {{session('status')}}
         <a href="{{route('admin.show.rek', ['rek_id'=>session('status')])}}">Rekam Medis</a>
     </div><br>
     @endif
