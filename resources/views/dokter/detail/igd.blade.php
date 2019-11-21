@@ -25,7 +25,6 @@
     <div class="tab-content" id="myTabContent">
         <div class="tab-pane fade show active" id="ctp" role="tabpanel" aria-labelledby="ctp-tab">
             @if ($igd->igd_ctt_perkembangan)
-            <b>{{$igd->igd_datetime}}</b>
             <object data="{{asset("storage/$igd->igd_ctt_perkembangan")}}" type="application/pdf" width="100%"
                 height="700px"></object>
             @else
@@ -33,29 +32,24 @@
             @endif
         </div>
         <div class="tab-pane fade" id="rsm" role="tabpanel" aria-labelledby="rsm-tab">
-            <div class="card-body">
-                @if ($igd->igd_resume)
-                <object data="{{asset("storage/$igd->igd_resume")}}" type="application/pdf" width="100%"
-                    height="700px"></object>
-                @else
-                <h3>Data Tidak Tersedia</h3>
-                @endif
-            </div>
+            @if ($igd->igd_resume)
+            <object data="{{asset("storage/$igd->igd_resume")}}" type="application/pdf" width="100%"
+                height="700px"></object>
+            @else
+            <h3>Data Tidak Tersedia</h3>
+            @endif
         </div>
         <div class="tab-pane fade" id="pnj" role="tabpanel" aria-labelledby="pnj-tab">
-            <div class="card-body">
-                @if ($igd->penunjang() != '[]')
-                <b>Penunjang</b><br>
-                @foreach ($igd->penunjang() as $p)
-                <hr>
-                <p>{{$p->p_name}}</p>
-                <object data="{{asset("storage/$p->p_file")}}" type="application/pdf" width="100%"
-                    height="700px"></object>
-                @endforeach
-                @else
-                <h3>Data Tidak Tersedia</h3>
-                @endif
-            </div>
+            @if ($igd->penunjang() != '[]')
+            <b>Penunjang</b><br>
+            @foreach ($igd->penunjang() as $p)
+            <hr>
+            <p>{{$p->p_name}}</p>
+            <object data="{{asset("storage/$p->p_file")}}" type="application/pdf" width="100%" height="700px"></object>
+            @endforeach
+            @else
+            <h3>Data Tidak Tersedia</h3>
+            @endif
         </div>
     </div>
 </div>
