@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: mysql
--- Generation Time: Nov 11, 2019 at 10:40 AM
+-- Generation Time: Nov 21, 2019 at 03:21 PM
 -- Server version: 5.7.28
 -- PHP Version: 7.2.23
 
@@ -44,8 +44,28 @@ CREATE TABLE `igd` (
 --
 
 INSERT INTO `igd` (`igd_id`, `igd_ctt_perkembangan`, `igd_resume`, `igd_datetime`, `created_at`, `updated_at`, `u_id`, `rek_id`) VALUES
-(4, 'Rekmed/MERIS0/Catatan_Perkembangan/eMqKlkAzP85NRMl5aeg4ehyw8IqH4C4H1w5McMCq.pdf', NULL, '2019-11-07 12:00:00', '2019-11-06 21:44:55', '2019-11-06 21:44:55', 113, 'MERIS0'),
-(5, 'Rekmed/MERIS1/Catatan_Perkembangan/kq5igcIJH3d0uEDwNSupWk0XObROuLmd2aOCqUU7.pdf', NULL, '2019-11-06 23:04:00', '2019-11-07 08:38:02', '2019-11-07 08:38:02', 112, 'MERIS1');
+(14, 'Rekmed/PH0A01/IGD/Catatan_Perkembangan/jDtvJhDTLKjptpM1CBHVKVHT4u5oRhaP7CI1fBRc.pdf', NULL, '2019-11-04 09:22:00', '2019-11-20 00:22:14', '2019-11-20 00:27:44', 3, 'PH0A01'),
+(15, 'Rekmed/PC0A01/IGD/Catatan_Perkembangan/AJLa860JAFhFrH1ckNRztNAezMqhScIjxi4de7gt.pdf', NULL, '2019-11-12 11:11:00', '2019-11-20 15:16:57', '2019-11-20 15:16:57', 112, 'PC0A01'),
+(16, 'Rekmed/PC0A01/IGD/Catatan_Perkembangan/20iHWmcI4mxpJvVHJZzgIBtMdszSsG1cIQzVVuqg.pdf', NULL, '2019-11-13 11:11:00', '2019-11-20 15:19:37', '2019-11-20 15:19:37', 112, 'PC0A01'),
+(17, 'Rekmed/PC0A01/IGD/Catatan_Perkembangan/ZFZcRoXpIhJUTSGuZpDSTqSeh2UEyYoAHZk08qdc.pdf', NULL, '2019-11-05 12:22:00', '2019-11-20 15:21:52', '2019-11-20 15:21:52', 112, 'PC0A01'),
+(18, NULL, 'Rekmed/PC0A01/IGD/Resume/gd8TWHcOXBhgslTXjYWfoMe0med4vXelVwFqL4E9.pdf', '2019-11-12 11:11:00', '2019-11-20 15:23:01', '2019-11-20 15:23:01', 112, 'PC0A01');
+
+--
+-- Triggers `igd`
+--
+DELIMITER $$
+CREATE TRIGGER `insert_igd` AFTER INSERT ON `igd` FOR EACH ROW BEGIN
+    INSERT INTO log
+    set log_user = new.u_id,
+    log_do = 'Upload IGD',
+    rek_id = new.rek_id,
+    ctg = 'igd',
+    id_ctg = new.igd_id,
+    created_at = NOW(),
+    updated_at = NOW(); 
+END
+$$
+DELIMITER ;
 
 -- --------------------------------------------------------
 
@@ -65,8 +85,7 @@ CREATE TABLE `igd_penunjang` (
 --
 
 INSERT INTO `igd_penunjang` (`id`, `p_name`, `p_file`, `igd_id`) VALUES
-(22, 'USG', 'Rekmed/MERIS0/Penunjang/usg/ZzocsJuzGZJvrefEcREK5XAXieDBmE2IHtp0qFp4.pdf', 4),
-(23, 'XRAY', 'Rekmed/MERIS0/Penunjang/xray/441pYB6Ya8usgUrRCvsLhX7viCXbkEyDWXVYzgbr.pdf', 4);
+(39, 'usg', 'Rekmed/PH0A01/IGD/Penunjang/usg/t3zMAtID9CumTDhLFZeENuy1icwYuaF10dp18BLg.pdf', 14);
 
 -- --------------------------------------------------------
 
@@ -75,12 +94,22 @@ INSERT INTO `igd_penunjang` (`id`, `p_name`, `p_file`, `igd_id`) VALUES
 --
 
 CREATE TABLE `log` (
-  `log_id` bigint(20) NOT NULL,
-  `log_subject` varchar(64) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `log_id` bigint(20) UNSIGNED NOT NULL,
+  `log_user` varchar(64) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   `log_do` varchar(191) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `rek_id` char(6) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `ctg` varchar(32) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `id_ctg` bigint(20) DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `log`
+--
+
+INSERT INTO `log` (`log_id`, `log_user`, `log_do`, `rek_id`, `ctg`, `id_ctg`, `created_at`, `updated_at`) VALUES
+(7, '112', 'upload igd', 'PC0A01', 'igd', 18, '2019-11-20 15:23:01', '2019-11-20 15:23:01');
 
 -- --------------------------------------------------------
 
@@ -123,6 +152,30 @@ CREATE TABLE `nicu` (
   `rek_id` char(6) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+--
+-- Dumping data for table `nicu`
+--
+
+INSERT INTO `nicu` (`nicu_id`, `nicu_ctt_integ`, `nicu_resume`, `nicu_pengkajian`, `nicu_grafik`, `nicu_datetime`, `created_at`, `updated_at`, `u_id`, `rek_id`) VALUES
+(1, 'Rekmed/PH0A01/NICU/Catatan_Terintegrasi/joCvl17w2zcZPUk1mR2Sdpd4GxYgHmGToftm8FTp.pdf', 'Rekmed/PH0A01/NICU/Resume/igElMYvhOCFHr9Nr4L3W0tLHwG2q9PBL62N4liN3.pdf', NULL, NULL, '2019-11-08 03:03:00', '2019-11-20 00:23:34', '2019-11-20 12:40:31', 3, 'PH0A01');
+
+--
+-- Triggers `nicu`
+--
+DELIMITER $$
+CREATE TRIGGER `insert_nicu` AFTER INSERT ON `nicu` FOR EACH ROW BEGIN
+    INSERT INTO log
+    set log_user = new.u_id,
+    log_do = 'Upload NICU',
+    rek_id = new.rek_id,
+    ctg = 'nicu',
+    id_ctg = new.nicu_id,
+    created_at = NOW(),
+    updated_at = NOW(); 
+END
+$$
+DELIMITER ;
+
 -- --------------------------------------------------------
 
 --
@@ -135,6 +188,14 @@ CREATE TABLE `nicu_penunjang` (
   `p_file` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   `nicu_id` bigint(20) UNSIGNED NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `nicu_penunjang`
+--
+
+INSERT INTO `nicu_penunjang` (`id`, `p_name`, `p_file`, `nicu_id`) VALUES
+(1, 'xray', 'Rekmed/PH0A01/Nicu/Penunjang/xray/VlyxgYawJ5VKZ9sKayAn6bOIxxYkjtIvSnOHkMSD.pdf', 1),
+(2, 'lab', 'Rekmed/PH0A01/NICU/Penunjang/lab/69lfNgQnB39oyFRPtSsaixdFRv39xEBdybyJBkiE.pdf', 1);
 
 -- --------------------------------------------------------
 
@@ -170,7 +231,25 @@ CREATE TABLE `poli` (
 --
 
 INSERT INTO `poli` (`poli_id`, `poli_ctt_integ`, `poli_resume`, `poli_datetime`, `created_at`, `updated_at`, `u_id`, `rek_id`) VALUES
-(1, 'nihl', NULL, '2019-11-06 00:00:00', '2019-11-07 00:00:00', '2019-11-07 00:00:00', 112, 'MERIS0');
+(2, NULL, NULL, '2019-11-20 03:04:00', '2019-11-20 00:22:57', '2019-11-20 01:15:09', 112, 'PH0A01'),
+(3, 'Rekmed/PH0A01/Poli/Catatan_Terintegrasi/EV1EnJzCuS1jW3OJKMmNxSkhKzHE6PFXh2bwcX3z.pdf', NULL, '2019-11-14 11:11:00', '2019-11-20 01:17:13', '2019-11-20 01:28:05', 3, 'PH0A01');
+
+--
+-- Triggers `poli`
+--
+DELIMITER $$
+CREATE TRIGGER `insert_poli` AFTER INSERT ON `poli` FOR EACH ROW BEGIN
+    INSERT INTO log
+    set log_user = new.u_id,
+    log_do = 'Upload POLI',
+    rek_id = new.rek_id,
+    ctg = 'poli',
+    id_ctg = new.poli_id,
+    created_at = NOW(),
+    updated_at = NOW(); 
+END
+$$
+DELIMITER ;
 
 -- --------------------------------------------------------
 
@@ -184,6 +263,14 @@ CREATE TABLE `poli_penunjang` (
   `p_file` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   `poli_id` bigint(20) UNSIGNED NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `poli_penunjang`
+--
+
+INSERT INTO `poli_penunjang` (`id`, `p_name`, `p_file`, `poli_id`) VALUES
+(2, 'usg', 'Rekmed/PH0A01/Poli/Penunjang/usg/fniYdR9R0r24kigIhSIE0Djpq4EdtGR29djh3Qzp.pdf', 3),
+(4, 'ctg', 'Rekmed/PH0A01/POLI/Penunjang/ctg/i8g3aiUrGtUOH0oxQhQrgyZr35p76uha0L5lTXee.pdf', 3);
 
 -- --------------------------------------------------------
 
@@ -204,8 +291,8 @@ CREATE TABLE `rekmed` (
 --
 
 INSERT INTO `rekmed` (`rek_id`, `rek_name`, `created_at`, `updated_at`, `u_id`) VALUES
-('MERIS0', 'qwe', '2019-11-06 21:39:21', '2019-11-06 21:39:21', 113),
-('MERIS1', 'yuxi', '2019-11-07 08:37:38', '2019-11-07 08:37:38', 112);
+('PC0A01', 'rima', '2019-11-20 15:16:19', '2019-11-20 15:16:19', 112),
+('PH0A01', 'Yuna Chan', '2019-11-20 00:21:37', '2019-11-20 00:26:16', 112);
 
 -- --------------------------------------------------------
 
@@ -231,7 +318,24 @@ CREATE TABLE `ri` (
 --
 
 INSERT INTO `ri` (`ri_id`, `ri_ctt_integ`, `ri_ctt_oper`, `ri_resume`, `ri_bayi`, `ri_datetime`, `created_at`, `updated_at`, `u_id`, `rek_id`) VALUES
-(1, 'nihil', NULL, NULL, NULL, '2019-11-03 00:00:00', '2019-11-05 00:00:00', '2019-11-05 00:00:00', 112, 'MERIS0');
+(2, 'Rekmed/PH0A01/Rawar_Inap/Catatan_Perkembangan_Terintegrasi/jFMRLinoaFEuRCcbflWlrIXI0QV208ICh7KulmTr.pdf', NULL, NULL, NULL, '2019-11-01 11:11:00', '2019-11-20 00:24:04', '2019-11-20 14:16:11', 3, 'PH0A01');
+
+--
+-- Triggers `ri`
+--
+DELIMITER $$
+CREATE TRIGGER `insert_ri` AFTER INSERT ON `ri` FOR EACH ROW BEGIN
+    INSERT INTO log
+    set log_user = new.u_id,
+    log_do = 'Upload Rawat Inap',
+    rek_id = new.rek_id,
+    ctg = 'ri',
+    id_ctg = new.ri_id,
+    created_at = NOW(),
+    updated_at = NOW(); 
+END
+$$
+DELIMITER ;
 
 -- --------------------------------------------------------
 
@@ -245,6 +349,13 @@ CREATE TABLE `ri_penunjang` (
   `p_file` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   `ri_id` bigint(20) UNSIGNED NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `ri_penunjang`
+--
+
+INSERT INTO `ri_penunjang` (`id`, `p_name`, `p_file`, `ri_id`) VALUES
+(3, 'xray', 'Rekmed/PH0A01/Rawar_Inap/Penunjang/xray/MndnOx5wSKuCRAzuOHGHQYdkUcx4nr4Fyn4so0uu.pdf', 2);
 
 -- --------------------------------------------------------
 
@@ -270,11 +381,11 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `name`, `email`, `email_verified_at`, `password`, `remember_token`, `created_at`, `updated_at`, `username`, `role`) VALUES
-(3, 'Agung Saputra', 'agung@ssrm.com', NULL, '$2y$10$2AennWrtV5MLIr0pekY0Je753b5NiNAv9sMuKKi1GHoQhl8nlQh4q', '9LQhpAMA9PqYejXQDkO6mvFQFZCnwocbyVF0CtZ5P7yb1Ta2otWGfKI4WFOv', '2019-10-29 06:01:10', '2019-10-30 14:54:45', 'agungsptr', 'SUPERVISOR'),
-(7, 'Gilang Restu Alam', 'gilang@gmail.com', NULL, '$2y$10$L.H.rBVXPJlMW9kPBuBJ9ONGY6XGYJfuKkdD6kf7/cudCykWga6rK', 'Frr8ODUEiC4UVB4vliIeIXrchEiRm2g6grwB2MA3eW4WETkZvbIBnrH25u6l', '2019-10-30 15:40:00', '2019-10-30 15:42:52', 'gilang', 'DOKTER'),
+(3, 'Agung Saputra', 'agung@ssrm.com', NULL, '$2y$10$2AennWrtV5MLIr0pekY0Je753b5NiNAv9sMuKKi1GHoQhl8nlQh4q', 'H3B25ElBgS3pfe8xWzrzMK4qD1gtaiTZXGVcGrqscVuoYEo9vIO09NH716wH', '2019-10-29 06:01:10', '2019-10-30 14:54:45', 'agungsptr', 'SUPERVISOR'),
+(7, 'Gilang Restu Alam', 'gilang@gmail.com', NULL, '$2y$10$L.H.rBVXPJlMW9kPBuBJ9ONGY6XGYJfuKkdD6kf7/cudCykWga6rK', 'uSMffr4x4k6PzK6pZXRX5i8RvUPSWNN2hQfmeqwtbQeKa2pCo7Tlha4LHnyM', '2019-10-30 15:40:00', '2019-10-30 15:42:52', 'gilang', 'DOKTER'),
 (8, 'Farasut Widodo Malik', 'dodo@gmail.com', NULL, '$2y$10$3KBt.ZnlnUeJ5r03/6gHpu3MF08leEtMKQkU8n5pE2lc2cDhCHZGu', NULL, '2019-10-30 15:40:30', '2019-10-30 15:43:11', 'dodo', 'DOKTER'),
 (9, 'L Yuda Rahmani Karnaen', 'yuda@ssrm.com', NULL, '$2y$10$BTVOjh9yaiwMAxIctoXhwO643s8ettMQVN/2FXamHiuqBA9.9iqDa', 'e36geDWfjTWfIZXwsZN26Wyyv0mrHyobowhbIgomME9hNxpfBprQVBptySWt', '2019-10-30 15:40:52', '2019-10-30 15:43:28', 'yuda', 'SUPERVISOR'),
-(112, 'admin', 'admin@ssrm.com', NULL, '$2y$10$a4Gn3h5ClO5FcTEF4j81QOuw8t5FmursEiRkEKhY13z1Te0QWUIhu', 'yCR4obNsqjciHWOOg9FMjmOLtZXU9FkiXlDa7kFjN9r4fV04dtTSI0oOKxIW', '2019-10-31 07:55:25', '2019-11-06 22:11:10', 'admin', 'ADMIN'),
+(112, 'admin', 'admin@ssrm.com', NULL, '$2y$10$tvsyb7wwv.vxA/0q1V9E4OpQb57YyNETlDTn8D/2lXV56pYtPmGd.', 'Dvc9L85nmbzbe4oUMbJYimS9ijhneoQY8ZymbYWKLJJcuwSQwLuRWqP9SVDP', '2019-10-31 07:55:25', '2019-11-16 14:03:38', 'admin', 'ADMIN'),
 (113, 'user100', 'usradm100@ssrm.com', NULL, '$2y$10$lAoy5FZNZestJMwNZURLtu64/BDQN53HnmKFmD2Nz.qxEmm/udmDu', 'qkCDB7oUQeWfc3zSIEcIzqgHfFQuDqhuoMO0W47ob1pgytiNyODyCCb7H5cG', '2019-10-31 07:55:25', '2019-10-31 07:55:25', 'usradm100', 'ADMIN'),
 (114, 'user0', 'usradm0@ssrm.com', NULL, '$2y$10$OqQgjYXqstE/jSOjBd5Aq./BJEYt5vUYg1Y27qQy6ssw6K9trYvi6', NULL, '2019-11-03 10:06:57', '2019-11-03 10:06:57', 'seed0', 'ADMIN'),
 (115, 'user1', 'usradm1@ssrm.com', NULL, '$2y$10$x/eGr4WpC4K0OpBFpfOS5.Ejd9hw96aZv.NAARwLUGCTt9HQCmZG6', NULL, '2019-11-03 10:06:58', '2019-11-03 10:06:58', 'seed1', 'ADMIN'),
@@ -293,7 +404,8 @@ INSERT INTO `users` (`id`, `name`, `email`, `email_verified_at`, `password`, `re
 (130, 'user16', 'usradm16@ssrm.com', NULL, '$2y$10$qpyRtUujK90qjZL7iT31m.1b4vl49/wDGeUVx8ee1EDlwMnAMl0.q', NULL, '2019-11-03 10:06:59', '2019-11-03 10:06:59', 'seed16', 'ADMIN'),
 (131, 'user17', 'usradm17@ssrm.com', NULL, '$2y$10$b748GQ7aOGeknABLPae3GuR1y1J48ktjIOfDUSsYqcdL2ztcnB6vC', NULL, '2019-11-03 10:06:59', '2019-11-03 10:06:59', 'seed17', 'ADMIN'),
 (132, 'user18', 'usradm18@ssrm.com', NULL, '$2y$10$/AdHtowOzPpeO7Vwzb1dS.TpbCYjXw/e2zLyjOfHuktErXEjzEdu6', NULL, '2019-11-03 10:06:59', '2019-11-03 10:06:59', 'seed18', 'ADMIN'),
-(133, 'user19', 'usradm19@ssrm.com', NULL, '$2y$10$N7AwXXRMHR38/gnwjf.5Z.bAmQIZTIGVNKbwOIfl8q6swFaE62lgS', NULL, '2019-11-03 10:06:59', '2019-11-03 10:06:59', 'seed19', 'ADMIN');
+(133, 'user19', 'usradm19@ssrm.com', NULL, '$2y$10$N7AwXXRMHR38/gnwjf.5Z.bAmQIZTIGVNKbwOIfl8q6swFaE62lgS', NULL, '2019-11-03 10:06:59', '2019-11-03 10:06:59', 'seed19', 'ADMIN'),
+(134, 'tus', 'tus@tus.tus', NULL, '$2y$10$3TeBdQKdfPmW.udqscgGd.Cwey4Ab7KxZlAqeEtUzYbzDELHmT9fq', NULL, '2019-11-16 14:15:11', '2019-11-16 14:15:11', 'tus', 'SUPERVISOR');
 
 --
 -- Indexes for dumped tables
@@ -400,19 +512,19 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `igd`
 --
 ALTER TABLE `igd`
-  MODIFY `igd_id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `igd_id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
 
 --
 -- AUTO_INCREMENT for table `igd_penunjang`
 --
 ALTER TABLE `igd_penunjang`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=40;
 
 --
 -- AUTO_INCREMENT for table `log`
 --
 ALTER TABLE `log`
-  MODIFY `log_id` bigint(20) NOT NULL AUTO_INCREMENT;
+  MODIFY `log_id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT for table `migrations`
@@ -424,43 +536,43 @@ ALTER TABLE `migrations`
 -- AUTO_INCREMENT for table `nicu`
 --
 ALTER TABLE `nicu`
-  MODIFY `nicu_id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `nicu_id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `nicu_penunjang`
 --
 ALTER TABLE `nicu_penunjang`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `poli`
 --
 ALTER TABLE `poli`
-  MODIFY `poli_id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `poli_id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `poli_penunjang`
 --
 ALTER TABLE `poli_penunjang`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `ri`
 --
 ALTER TABLE `ri`
-  MODIFY `ri_id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `ri_id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `ri_penunjang`
 --
 ALTER TABLE `ri_penunjang`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=134;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=135;
 
 --
 -- Constraints for dumped tables
