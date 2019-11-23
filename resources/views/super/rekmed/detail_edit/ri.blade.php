@@ -4,8 +4,7 @@
 <div class="container">
     @if (session('status'))
     <div class="alert alert-success">
-        {{session('status')}} <br>
-        <a class="btn btn-primary" href="{{route('super.rekmed.show.nicu', ['rek_id'=>$rek_id])}}">Back</a>
+        {{session('status')}}
     </div>
     @endif
 
@@ -167,8 +166,7 @@
                                                     Penunjang</strong></label>
                                             @else
                                             <input type="hidden" name="id_xray" id="" value="">
-                                            <label class="custom-file-label" id="cflp3" for="xray">Tidak ada
-                                                File</label>
+                                            <label class="custom-file-label" id="cflp3" for="xray">Choose file</label>
                                             @endif
                                         </div>
                                     </div>
@@ -185,7 +183,7 @@
                                                     Penunjang</strong></label>
                                             @else
                                             <input type="hidden" name="id_lab" id="" value="">
-                                            <label class="custom-file-label" id="cflp5" for="lab">Tidak ada File</label>
+                                            <label class="custom-file-label" id="cflp5" for="lab">Choose file</label>
                                             @endif
                                         </div>
                                     </div>
@@ -206,7 +204,7 @@
         <div class="col-1">
             <br><br><br><br><br><br><br><br>
             @if ($ri->ri_ctt_integ)    
-                <form onsubmit="return confirm('Delete permanently ?')" action="{{route('super.rekmed.destroy_detail', [
+                <form onsubmit="return confirm('Delete Catatan Perkembangan Terintegrasi permanently ?')" action="{{route('super.rekmed.destroy_detail', [
                         'id' => $ri->ri_id,
                         'ctg' => 'ri'
                     ])}}" method="POST">
@@ -220,7 +218,7 @@
 
             <br><br><br><br>
             @if ($ri->ri_resume)    
-                <form onsubmit="return confirm('Delete permanently ?')" action="{{route('super.rekmed.destroy_detail', [
+                <form onsubmit="return confirm('Delete Resume permanently ?')" action="{{route('super.rekmed.destroy_detail', [
                         'id' => $ri->ri_id,
                         'ctg' => 'ri'
                     ])}}" method="POST">
@@ -233,7 +231,7 @@
             @endif
 
             @if ($ri->ri_ctt_oper)    
-                <form onsubmit="return confirm('Delete permanently ?')" action="{{route('super.rekmed.destroy_detail', [
+                <form onsubmit="return confirm('Delete Catatan Operasi/Tindakan permanently ?')" action="{{route('super.rekmed.destroy_detail', [
                         'id' => $ri->ri_id,
                         'ctg' => 'ri'
                     ])}}" method="POST">
@@ -246,7 +244,7 @@
             @endif
 
             @if ($ri->ri_bayi)    
-                <form onsubmit="return confirm('Delete permanently ?')" action="{{route('super.rekmed.destroy_detail', [
+                <form onsubmit="return confirm('Delete Bayi permanently ?')" action="{{route('super.rekmed.destroy_detail', [
                         'id' => $ri->ri_id,
                         'ctg' => 'ri'
                     ])}}" method="POST">
@@ -261,7 +259,7 @@
             <br><br>
 
             @if ($xray)
-                <form onsubmit="return confirm('Delete permanently ?')" action="{{route('super.rekmed.destroy_penunjang', [
+                <form onsubmit="return confirm('Delete XRAY permanently ?')" action="{{route('super.rekmed.destroy_penunjang', [
                     'id' => $xray->id,
                     'ctg' => 'ri'
                 ])}}" method="POST">
@@ -276,7 +274,7 @@
 
             <br><br>
             @if ($lab)
-                <form onsubmit="return confirm('Delete permanently ?')" action="{{route('super.rekmed.destroy_penunjang', [
+                <form onsubmit="return confirm('Delete LAB permanently ?')" action="{{route('super.rekmed.destroy_penunjang', [
                     'id' => $lab->id,
                     'ctg' => 'ri'
                 ])}}" method="POST">
@@ -291,5 +289,7 @@
         </div>
     </div>
 </div>
-
 @endsection
+
+{{-- link back --}}
+{{-- <a class="btn btn-primary" href="{{route('super.rekmed.show.nicu', ['rek_id'=>$rek_id])}}">Back</a> --}}

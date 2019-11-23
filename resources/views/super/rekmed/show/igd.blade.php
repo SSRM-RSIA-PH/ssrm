@@ -10,34 +10,32 @@
 <a class="nav-link" href="{{route('super.rekmed.show.ri', ['rek_id'=>$rek_id])}}">RAWAT INAP</a>
 @endsection
 @section('content')
-<div class="container">
-    <table class="table table-bordered">
-        <thead>
-            <th>Tanggal Rekam Medis</th>
-            <th>Kategori</th>
-            <th>User</th>
-            <th width="120px"></th>
-        </thead>
-        <tbody>
-            @foreach ($igd as $i)
-            <tr>
-                <td>{{$i->igd_datetime}}</td>
-                <td>IGD</td>
-                <td>{{$i->user()->name}}</td>
-                <td>
-                    <a href="{{route('super.rekmed.detail.igd', [
+<table class="table table-bordered">
+    <thead>
+        <th>Tanggal Rekam Medis</th>
+        <th>Kategori</th>
+        <th>User</th>
+        <th width="120px"></th>
+    </thead>
+    <tbody>
+        @foreach ($igd as $i)
+        <tr>
+            <td>{{$i->igd_datetime}}</td>
+            <td>IGD</td>
+            <td>{{$i->user()->name}}</td>
+            <td>
+                <a href="{{route('super.rekmed.detail.igd', [
                             'rek_id'=>$i->rek_id, 
                             'id'=>$i->igd_id
                         ])}}" class="btn btn-sm btn-info">View</a>
-                    <a href="{{route('super.rekmed.igd.edit', [
+                <a href="{{route('super.rekmed.igd.edit', [
                         'rek_id'=>$i->rek_id, 
                         'id'=>$i->igd_id
                     ])}}" class="btn btn-sm btn-primary">Edit</a>
-                </td>
-            </tr>
-            @endforeach
-        </tbody>
-    </table>
-    {{$igd->links()}}
-</div>
+            </td>
+        </tr>
+        @endforeach
+    </tbody>
+</table>
+{{$igd->links()}}
 @endsection

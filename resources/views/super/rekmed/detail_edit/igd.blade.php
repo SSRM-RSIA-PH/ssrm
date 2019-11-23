@@ -1,6 +1,6 @@
 @extends('layouts.main')
 @section('title')
-    Edit Detail
+Edit Detail
 @endsection
 @section('menu')
 <a href="{{route('super.index')}}" class="nav-link">Dashboard</a>
@@ -10,8 +10,7 @@
 
 @if (session('status'))
 <div class="alert alert-success">
-    {{session('status')}} <br>
-    <a class="btn btn-primary" href="{{route('super.rekmed.show.igd', ['rek_id'=>$rek_id])}}">Back</a>
+    {{session('status')}}
 </div>
 @endif
 
@@ -81,7 +80,8 @@
                                         <span class="input-group-text" id="inputGroupFileAddon01">Tanggal</span>
                                     </div>
                                     <div class="custom-file">
-                                        <input value="{{str_replace(" ","T",$igd->igd_datetime)}}" name="date" type="datetime-local" class="form-control"
+                                        <input value="{{str_replace(" ","T",$igd->igd_datetime)}}" name="date"
+                                            type="datetime-local" class="form-control"
                                             style="border-top-left-radius:0px;border-bottom-left-radius:0px;" autofocus>
                                     </div>
                                 </div>
@@ -154,8 +154,8 @@
                                                         Penunjang</strong></label>
                                                 @else
                                                 <input type="hidden" name="id_usg" id="" value="">
-                                                <label class="custom-file-label" id="cflp1" for="usg">Tidak ada
-                                                    File</label>
+                                                <label class="custom-file-label" id="cflp1" for="usg">Choose
+                                                    file</label>
                                                 @endif
                                             </div>
                                         </div>
@@ -172,8 +172,8 @@
                                                         Penunjang</strong></label>
                                                 @else
                                                 <input type="hidden" name="id_ctg" id="" value="">
-                                                <label class="custom-file-label" id="cflp2" for="ctg">Tidak ada
-                                                    File</label>
+                                                <label class="custom-file-label" id="cflp2" for="ctg">Choose
+                                                    file</label>
                                                 @endif
                                             </div>
                                         </div>
@@ -190,8 +190,8 @@
                                                         Penunjang</strong></label>
                                                 @else
                                                 <input type="hidden" name="id_xray" id="" value="">
-                                                <label class="custom-file-label" id="cflp3" for="xray">Tidak ada
-                                                    File</label>
+                                                <label class="custom-file-label" id="cflp3" for="xray">Choose
+                                                    file</label>
                                                 @endif
                                             </div>
                                         </div>
@@ -208,8 +208,8 @@
                                                         Penunjang</strong></label>
                                                 @else
                                                 <input type="hidden" name="id_ekg" id="" value="">
-                                                <label class="custom-file-label" id="cflp4" for="ekg">Tidak ada
-                                                    File</label>
+                                                <label class="custom-file-label" id="cflp4" for="ekg">Choose
+                                                    file</label>
                                                 @endif
                                             </div>
                                         </div>
@@ -226,8 +226,8 @@
                                                         Penunjang</strong></label>
                                                 @else
                                                 <input type="hidden" name="id_lab" id="" value="">
-                                                <label class="custom-file-label" id="cflp5" for="lab">Tidak ada
-                                                    File</label>
+                                                <label class="custom-file-label" id="cflp5" for="lab">Choose
+                                                    file</label>
                                                 @endif
                                             </div>
                                         </div>
@@ -245,7 +245,7 @@
                         <div class="row align-items-end" style="height:180px">
                             <div class="col pl-0">
                                 @if ($igd->igd_ctt_perkembangan)
-                                <form onsubmit="return confirm('Delete permanently ?')" action="{{route('super.rekmed.destroy_detail', [
+                                <form onsubmit="return confirm('Delete Catatan Perkembangan permanently ?')" action="{{route('super.rekmed.destroy_detail', [
                                 'id' => $igd->igd_id,
                                 'ctg' => 'igd'
                             ])}}" method="POST">
@@ -261,7 +261,7 @@
                         <div class="row align-items-end" style="height:145px">
                             <div class="col pl-0">
                                 @if ($igd->igd_resume)
-                                <form onsubmit="return confirm('Delete permanently ?')" action="{{route('super.rekmed.destroy_detail', [
+                                <form onsubmit="return confirm('Delete Resume permanently ?')" action="{{route('super.rekmed.destroy_detail', [
                                 'id' => $igd->igd_id,
                                 'ctg' => 'igd'
                             ])}}" method="POST">
@@ -277,7 +277,7 @@
                         <div class="row align-items-end" style="height:170px">
                             <div class="col pl-0">
                                 @if ($usg)
-                                <form onsubmit="return confirm('Delete permanently ?')" action="{{route('super.rekmed.destroy_penunjang', [
+                                <form onsubmit="return confirm('Delete USG permanently ?')" action="{{route('super.rekmed.destroy_penunjang', [
                             'id' => $usg->id,
                             'ctg' => 'igd'
                         ])}}" method="POST">
@@ -296,7 +296,7 @@
                             <div class="col pl-0">
 
                                 @if ($ctg)
-                                <form onsubmit="return confirm('Delete permanently ?')" action="{{route('super.rekmed.destroy_penunjang', [
+                                <form onsubmit="return confirm('Delete CTG permanently ?')" action="{{route('super.rekmed.destroy_penunjang', [
                             'id' => $ctg->id,
                             'ctg' => 'igd'
                         ])}}" method="POST">
@@ -315,7 +315,7 @@
                             <div class="col pl-0">
 
                                 @if ($xray)
-                                <form onsubmit="return confirm('Delete permanently ?')" action="{{route('super.rekmed.destroy_penunjang', [
+                                <form onsubmit="return confirm('Delete XRAY permanently ?')" action="{{route('super.rekmed.destroy_penunjang', [
                             'id' => $xray->id,
                             'ctg' => 'igd'
                         ])}}" method="POST">
@@ -333,7 +333,7 @@
                             <div class="col pl-0">
 
                                 @if ($ekg)
-                                <form onsubmit="return confirm('Delete permanently ?')" action="{{route('super.rekmed.destroy_penunjang', [
+                                <form onsubmit="return confirm('Delete EKG permanently ?')" action="{{route('super.rekmed.destroy_penunjang', [
                             'id' => $ekg->id,
                             'ctg' => 'igd'
                         ])}}" method="POST">
@@ -351,7 +351,7 @@
                             <div class="col pl-0">
 
                                 @if ($lab)
-                                <form onsubmit="return confirm('Delete permanently ?')" action="{{route('super.rekmed.destroy_penunjang', [
+                                <form onsubmit="return confirm('Delete LAB permanently ?')" action="{{route('super.rekmed.destroy_penunjang', [
                             'id' => $lab->id,
                             'ctg' => 'igd'
                         ])}}" method="POST">
@@ -366,15 +366,12 @@
                             </div>
                         </div>
                     </div>
-
                 </div>
             </div>
         </div>
     </div>
-
 </div>
-</div>
-</div>
-
-
 @endsection
+
+{{-- link back --}}
+{{-- <a class="btn btn-primary" href="{{route('super.rekmed.show.igd', ['rek_id'=>$rek_id])}}">Back</a> --}}

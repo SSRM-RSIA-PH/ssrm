@@ -21,14 +21,21 @@ Add ID Rekam Medis
 
                     <div class="form-group">
                         <label for="rek_id">Rekam Medis ID</label>
-                        <input type="text" class="form-control" name="rek_id" id="rek_id" aria-describedby="rek_id"
-                            placeholder="" value="{{$id}}" required>
+                        <input type="text" class="form-control {{$errors->first('rek_id') ? 'is-invalid':''}}"
+                            name="rek_id" id="rek_id" aria-describedby="rek_id" placeholder=""
+                            value="{{$errors->first('rek_id') ? old('rek_id'):$id}}" required
+                            {{$errors->first('rek_id') ? 'autofocus':''}}>
+                        @if ($errors->first('rek_id'))
+                        <div class="invalid-feedback">
+                            {{$errors->first('rek_id')}}
+                        </div>
+                        @endif
                     </div>
 
                     <div class="form-group">
                         <label for="rek_name">Nama Pasien</label>
                         <input type="text" class="form-control" name="rek_name" id="rek_name"
-                            aria-describedby="rek_name" placeholder="" required autofocus>
+                            aria-describedby="rek_name" required autofocus value="{{old('rek_name')}}">
                     </div>
 
                     @if (Auth::user())

@@ -44,7 +44,7 @@ List Rekmed
             <td>
                 <a href="{{route('super.rekmed.show', ['rek_id'=>$r->rek_id])}}" class="btn btn-sm btn-info">Detail</a>
                 <a href="{{route('super.rekmed.edit', ['rek_id'=>$r->rek_id])}}" class="btn btn-sm btn-primary">Edit</a>
-                <form onsubmit="return confirm('Delete user {{$r->rek_id}} permanently ?')" class="d-inline"
+                <form onsubmit="return confirm('Delete {{$r->rek_id}} permanently ?')" class="d-inline"
                     action="{{route('super.rekmed.destroy', ['rek_id'=>$r->rek_id])}}" method="POST">
                     @csrf
                     <input type="hidden" name="_method" value="DELETE">
