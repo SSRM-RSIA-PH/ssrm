@@ -23,32 +23,68 @@ Edit User
                 <input type="hidden" value="PUT" name="_method">
 
                 <label for="name">Name</label>
-                <input value="{{$user->name}}" class="form-control" type="text" name="name" id="name" />
+                <input class="form-control {{$errors->first('name') ? 'is-invalid':''}}" value="{{old('name')}}"
+                    type="text" name="name" id="name" required />
+                @if ($errors->first('name'))
+                <div class="invalid-feedback">
+                    {{$errors->first('name')}}
+                </div>
+                @endif
                 <br>
 
                 <label for="username">Username</label>
-                <input value="{{$user->username}}" class="form-control" type="text" name="username" id="username" />
+                <input class="form-control {{$errors->first('username') ? 'is-invalid':''}}" value="{{old('username')}}"
+                    type="text" name="username" id="username" required />
+                @if ($errors->first('username'))
+                <div class="invalid-feedback">
+                    {{$errors->first('username')}}
+                </div>
+                @endif
                 <br>
 
                 <label for="email">Email</label>
-                <input value="{{$user->email}}" class="form-control" type="email" name="email" id="email" />
+                <input class="form-control {{$errors->first('email') ? 'is-invalid':''}}" value="{{old('email')}}"
+                    type="email" name="email" id="email" required />
+                @if ($errors->first('email'))
+                <div class="invalid-feedback">
+                    {{$errors->first('email')}}
+                </div>
+                @endif
                 <br>
 
                 <label for="role">Role</label>
                 <br>
-                <select name="role" id="role" class="form-control">
-                    <option value="SUPERVISOR" {{$user->role == 'SUPERVISOR' ? 'selected' : ''}}>Supervisor</option>
-                    <option value="ADMIN" {{$user->role == 'ADMIN' ? 'selected' : ''}}>Admin</option>
-                    <option value="DOKTER" {{$user->role == 'DOKTER' ? 'selected' : ''}}>Dokter</option>
+                <select name="role" id="role" class="form-control {{$errors->first('role') ? 'is-invalid':''}}">
+                    <option value=" DOKTER">Dokter</option>
+                    <option value="ADMIN">Admin</option>
+                    <option value="SUPERVISOR">Supervisor</option>
                 </select>
+                @if ($errors->first('role'))
+                <div class="invalid-feedback">
+                    {{$errors->first('role')}}
+                </div>
+                @endif
                 <br>
 
-                <label for="password">New Password</label>
-                <input class="form-control" type="password" name="password" id="password" />
+                <label for="password">Password</label>
+                <input class="form-control {{$errors->first('password') ? 'is-invalid':''}}" value="{{old('password')}}"
+                    type="password" name="password" id="password" required />
+                @if ($errors->first('password'))
+                <div class="invalid-feedback">
+                    {{$errors->first('password')}}
+                </div>
+                @endif
                 <br>
 
                 <label for="password_confirmation">Password Confirmation</label>
-                <input class="form-control" type="password" name="password_confirmation" id="password_confirmation" />
+                <input class="form-control {{$errors->first('password_confirmation') ? 'is-invalid':''}}"
+                    value="{{old('password_confirmation')}}" type="password" name="password_confirmation"
+                    id="password_confirmation" required />
+                @if ($errors->first('password_confirmation'))
+                <div class="invalid-feedback">
+                    {{$errors->first('password_confirmation')}}
+                </div>
+                @endif
                 <br>
         </div>
         <div class="card-footer">

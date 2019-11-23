@@ -23,11 +23,11 @@ class DokterController extends Controller
     public function index(Request $request)
     {
         $search = $request->get('search');
+        $find = NULL;
         if ($search) {
-            $find = Rekmed::where('rek_id', 'LIKE', $search)->get();;
-        } else {
-            $find = NULL;
+            $find = Rekmed::where('rek_id', 'LIKE', $search)->get();
         }
+
         return view('dokter.index', ['find' => $find]);
     }
 

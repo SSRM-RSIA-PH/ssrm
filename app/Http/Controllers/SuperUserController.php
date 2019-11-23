@@ -41,6 +41,15 @@ class SuperUserController extends Controller
 
     public function store(Request $request)
     {
+        \Validator::make($request->all(), [
+            'name' => 'required|min:5|max:100',
+            'email' => 'required|email|unique:users',
+            'username' => 'required|min:5|max:50|unique:users',
+            'role' => 'required',
+            'password' => 'required|min:8|max:50',
+            'password_confirmation' => 'required|same:password'
+        ])->validate();
+
         $new_user =  new User;
         $new_user->name = $request->get('name');
         $new_user->email = $request->get('email');
@@ -66,6 +75,15 @@ class SuperUserController extends Controller
 
     public function update(Request $request, $id)
     {
+        \Validator::make($request->all(), [
+            'name' => 'required|min:5|max:100',
+            'email' => 'required|email|unique:users',
+            'username' => 'required|min:5|max:50|unique:users',
+            'role' => 'required',
+            'password' => 'required|min:8|max:50',
+            'password_confirmation' => 'required|same:password'
+        ])->validate();
+
         $user = User::findOrFail($id);
 
         $user->name = $request->get('name');

@@ -11,10 +11,15 @@
 @section('content')
 
 <table class="table table-bordered">
-    <thead>
-        <th>Tanggal Rekam Medis</th>
-        <th width="100px">Action</th>
-    </thead>
+    <div hidden>{{$check = $igd->first()}}</div>
+    @if(isset($check)) 
+        <thead>
+            <th>Tanggal Rekam Medis</th>
+            <th width="100px">Action</th>
+        </thead>
+    @else
+        No data
+    @endif
     <tbody>
         @foreach ($igd as $i)
         <tr>

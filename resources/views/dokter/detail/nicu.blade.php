@@ -64,12 +64,12 @@
         </div>
         <div class="tab-pane fade" id="pnj" role="tabpanel" aria-labelledby="pnj-tab">
             @if ($nicu->penunjang() != '[]')
-            @foreach ($nicu->penunjang() as $p)
-            <p>{{$p->p_name}}</p>
-            <object data="{{asset("storage/$p->p_file")}}" type="application/pdf" width="100%" height="700px"></object>
-            @endforeach
+                @foreach ($nicu->penunjang() as $p)
+                    <p>{{$p->p_name}}</p>
+                    <object data="{{asset("storage/$p->p_file")}}" type="application/pdf" width="100%" height="700px"></object>
+                @endforeach
             @else
-            <h3>Data Tidak Tersedia</h3>
+                <h3>Data Tidak Tersedia</h3>
             @endif
         </div>
     </div>
