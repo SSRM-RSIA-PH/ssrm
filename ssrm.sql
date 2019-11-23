@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: mysql
--- Generation Time: Nov 21, 2019 at 03:21 PM
+-- Generation Time: Nov 23, 2019 at 08:03 PM
 -- Server version: 5.7.28
 -- PHP Version: 7.2.23
 
@@ -48,7 +48,10 @@ INSERT INTO `igd` (`igd_id`, `igd_ctt_perkembangan`, `igd_resume`, `igd_datetime
 (15, 'Rekmed/PC0A01/IGD/Catatan_Perkembangan/AJLa860JAFhFrH1ckNRztNAezMqhScIjxi4de7gt.pdf', NULL, '2019-11-12 11:11:00', '2019-11-20 15:16:57', '2019-11-20 15:16:57', 112, 'PC0A01'),
 (16, 'Rekmed/PC0A01/IGD/Catatan_Perkembangan/20iHWmcI4mxpJvVHJZzgIBtMdszSsG1cIQzVVuqg.pdf', NULL, '2019-11-13 11:11:00', '2019-11-20 15:19:37', '2019-11-20 15:19:37', 112, 'PC0A01'),
 (17, 'Rekmed/PC0A01/IGD/Catatan_Perkembangan/ZFZcRoXpIhJUTSGuZpDSTqSeh2UEyYoAHZk08qdc.pdf', NULL, '2019-11-05 12:22:00', '2019-11-20 15:21:52', '2019-11-20 15:21:52', 112, 'PC0A01'),
-(18, NULL, 'Rekmed/PC0A01/IGD/Resume/gd8TWHcOXBhgslTXjYWfoMe0med4vXelVwFqL4E9.pdf', '2019-11-12 11:11:00', '2019-11-20 15:23:01', '2019-11-20 15:23:01', 112, 'PC0A01');
+(18, NULL, 'Rekmed/PC0A01/IGD/Resume/gd8TWHcOXBhgslTXjYWfoMe0med4vXelVwFqL4E9.pdf', '2019-11-12 11:11:00', '2019-11-20 15:23:01', '2019-11-20 15:23:01', 112, 'PC0A01'),
+(19, 'Rekmed/PH0A01/IGD/Catatan_Perkembangan/OyyP8JVZqhu67JgIo0qMD7yuw0MjMxUBBqkwuBil.pdf', 'Rekmed/PH0A01/IGD/Resume/21LezAmgQwe9wmtWBUe8gbUEwxR5SNkKRKWKDDVk.pdf', '2019-11-07 11:11:00', '2019-11-21 16:28:49', '2019-11-23 19:43:19', 3, 'PH0A01'),
+(20, NULL, NULL, '2019-11-06 11:11:00', '2019-11-23 15:33:30', '2019-11-23 15:33:30', 112, 'PH0A05'),
+(21, NULL, NULL, '2019-11-06 11:11:00', '2019-11-23 15:33:36', '2019-11-23 15:33:36', 112, 'PH0A05');
 
 --
 -- Triggers `igd`
@@ -85,7 +88,12 @@ CREATE TABLE `igd_penunjang` (
 --
 
 INSERT INTO `igd_penunjang` (`id`, `p_name`, `p_file`, `igd_id`) VALUES
-(39, 'usg', 'Rekmed/PH0A01/IGD/Penunjang/usg/t3zMAtID9CumTDhLFZeENuy1icwYuaF10dp18BLg.pdf', 14);
+(39, 'usg', 'Rekmed/PH0A01/IGD/Penunjang/usg/t3zMAtID9CumTDhLFZeENuy1icwYuaF10dp18BLg.pdf', 14),
+(40, 'usg', 'Rekmed/PH0A01/IGD/Penunjang/usg/SAC9iLSRlJeQ0Fu206H7TYiAi8j67vKb15eihojo.pdf', 19),
+(41, 'ctg', 'Rekmed/PH0A01/IGD/Penunjang/ctg/d7eWZeNVhVCbBqOzJn7NZz2X8xaRbyXnDvDBT90S.pdf', 19),
+(42, 'xray', 'Rekmed/PH0A01/IGD/Penunjang/xray/icLRexjBVrN6lSBhtJXQ02i4M6byXjMTUbYb9D3c.pdf', 19),
+(43, 'ekg', 'Rekmed/PH0A01/IGD/Penunjang/ekg/Iv7R4OldQs1etrtGM8nijRH6fU8kRUrIa3roZ2UY.pdf', 19),
+(44, 'lab', 'Rekmed/PH0A01/IGD/Penunjang/lab/Neut0pN2gCSv3IpmExz5EsnAGBlNhZO1AqsgvWAH.pdf', 19);
 
 -- --------------------------------------------------------
 
@@ -109,7 +117,10 @@ CREATE TABLE `log` (
 --
 
 INSERT INTO `log` (`log_id`, `log_user`, `log_do`, `rek_id`, `ctg`, `id_ctg`, `created_at`, `updated_at`) VALUES
-(7, '112', 'upload igd', 'PC0A01', 'igd', 18, '2019-11-20 15:23:01', '2019-11-20 15:23:01');
+(7, '112', 'upload igd', 'PC0A01', 'igd', 18, '2019-11-20 15:23:01', '2019-11-20 15:23:01'),
+(8, '112', 'Upload IGD', 'PH0A01', 'igd', 19, '2019-11-21 16:28:49', '2019-11-21 16:28:49'),
+(9, '112', 'Upload IGD', 'PH0A05', 'igd', 20, '2019-11-23 15:33:30', '2019-11-23 15:33:30'),
+(10, '112', 'Upload IGD', 'PH0A05', 'igd', 21, '2019-11-23 15:33:36', '2019-11-23 15:33:36');
 
 -- --------------------------------------------------------
 
@@ -292,7 +303,9 @@ CREATE TABLE `rekmed` (
 
 INSERT INTO `rekmed` (`rek_id`, `rek_name`, `created_at`, `updated_at`, `u_id`) VALUES
 ('PC0A01', 'rima', '2019-11-20 15:16:19', '2019-11-20 15:16:19', 112),
-('PH0A01', 'Yuna Chan', '2019-11-20 00:21:37', '2019-11-20 00:26:16', 112);
+('PH0A01', 'Yuna Chan', '2019-11-20 00:21:37', '2019-11-20 00:26:16', 112),
+('PH0A02', 'Yudi', '2019-11-21 16:25:56', '2019-11-21 16:25:56', 112),
+('PH0A05', 'Subaru', '2019-11-23 15:31:10', '2019-11-23 15:31:10', 112);
 
 -- --------------------------------------------------------
 
@@ -381,11 +394,11 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `name`, `email`, `email_verified_at`, `password`, `remember_token`, `created_at`, `updated_at`, `username`, `role`) VALUES
-(3, 'Agung Saputra', 'agung@ssrm.com', NULL, '$2y$10$2AennWrtV5MLIr0pekY0Je753b5NiNAv9sMuKKi1GHoQhl8nlQh4q', 'H3B25ElBgS3pfe8xWzrzMK4qD1gtaiTZXGVcGrqscVuoYEo9vIO09NH716wH', '2019-10-29 06:01:10', '2019-10-30 14:54:45', 'agungsptr', 'SUPERVISOR'),
-(7, 'Gilang Restu Alam', 'gilang@gmail.com', NULL, '$2y$10$L.H.rBVXPJlMW9kPBuBJ9ONGY6XGYJfuKkdD6kf7/cudCykWga6rK', 'uSMffr4x4k6PzK6pZXRX5i8RvUPSWNN2hQfmeqwtbQeKa2pCo7Tlha4LHnyM', '2019-10-30 15:40:00', '2019-10-30 15:42:52', 'gilang', 'DOKTER'),
+(3, 'Agung Saputra', 'agung@ssrm.com', NULL, '$2y$10$2AennWrtV5MLIr0pekY0Je753b5NiNAv9sMuKKi1GHoQhl8nlQh4q', 'qvlB9rGm2xl84poY0QfRsrcFdcZ2xY3xparfMevyu9d4vMCZFx7TCgJ0Ue8Z', '2019-10-29 06:01:10', '2019-10-30 14:54:45', 'agungsptr', 'SUPERVISOR'),
+(7, 'Gilang Restu Alam', 'gilang@gmail.com', NULL, '$2y$10$L.H.rBVXPJlMW9kPBuBJ9ONGY6XGYJfuKkdD6kf7/cudCykWga6rK', 'H89lb4w4vNBwQrL4Zc30TSJFJirgqW9Ws1gT9ZoJpIHNkq4rITGvkevMvgeB', '2019-10-30 15:40:00', '2019-10-30 15:42:52', 'gilang', 'DOKTER'),
 (8, 'Farasut Widodo Malik', 'dodo@gmail.com', NULL, '$2y$10$3KBt.ZnlnUeJ5r03/6gHpu3MF08leEtMKQkU8n5pE2lc2cDhCHZGu', NULL, '2019-10-30 15:40:30', '2019-10-30 15:43:11', 'dodo', 'DOKTER'),
 (9, 'L Yuda Rahmani Karnaen', 'yuda@ssrm.com', NULL, '$2y$10$BTVOjh9yaiwMAxIctoXhwO643s8ettMQVN/2FXamHiuqBA9.9iqDa', 'e36geDWfjTWfIZXwsZN26Wyyv0mrHyobowhbIgomME9hNxpfBprQVBptySWt', '2019-10-30 15:40:52', '2019-10-30 15:43:28', 'yuda', 'SUPERVISOR'),
-(112, 'admin', 'admin@ssrm.com', NULL, '$2y$10$tvsyb7wwv.vxA/0q1V9E4OpQb57YyNETlDTn8D/2lXV56pYtPmGd.', 'Dvc9L85nmbzbe4oUMbJYimS9ijhneoQY8ZymbYWKLJJcuwSQwLuRWqP9SVDP', '2019-10-31 07:55:25', '2019-11-16 14:03:38', 'admin', 'ADMIN'),
+(112, 'admin', 'admin@ssrm.com', NULL, '$2y$10$tvsyb7wwv.vxA/0q1V9E4OpQb57YyNETlDTn8D/2lXV56pYtPmGd.', 'i0CGlN8bz78Ad6s1luvHLRORxFG35cAOukYdNfPIGFzOT8N3tQS4zZjyScKE', '2019-10-31 07:55:25', '2019-11-16 14:03:38', 'admin', 'ADMIN'),
 (113, 'user100', 'usradm100@ssrm.com', NULL, '$2y$10$lAoy5FZNZestJMwNZURLtu64/BDQN53HnmKFmD2Nz.qxEmm/udmDu', 'qkCDB7oUQeWfc3zSIEcIzqgHfFQuDqhuoMO0W47ob1pgytiNyODyCCb7H5cG', '2019-10-31 07:55:25', '2019-10-31 07:55:25', 'usradm100', 'ADMIN'),
 (114, 'user0', 'usradm0@ssrm.com', NULL, '$2y$10$OqQgjYXqstE/jSOjBd5Aq./BJEYt5vUYg1Y27qQy6ssw6K9trYvi6', NULL, '2019-11-03 10:06:57', '2019-11-03 10:06:57', 'seed0', 'ADMIN'),
 (115, 'user1', 'usradm1@ssrm.com', NULL, '$2y$10$x/eGr4WpC4K0OpBFpfOS5.Ejd9hw96aZv.NAARwLUGCTt9HQCmZG6', NULL, '2019-11-03 10:06:58', '2019-11-03 10:06:58', 'seed1', 'ADMIN'),
@@ -512,19 +525,19 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `igd`
 --
 ALTER TABLE `igd`
-  MODIFY `igd_id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
+  MODIFY `igd_id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
 
 --
 -- AUTO_INCREMENT for table `igd_penunjang`
 --
 ALTER TABLE `igd_penunjang`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=40;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=45;
 
 --
 -- AUTO_INCREMENT for table `log`
 --
 ALTER TABLE `log`
-  MODIFY `log_id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `log_id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT for table `migrations`
