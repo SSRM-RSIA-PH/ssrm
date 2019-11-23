@@ -13,10 +13,10 @@
     <div class="col-8">
         <form action="{{route('dokter.index')}}">
             <div class="input-group input-group-lg mb-3">
-                <input name="search" type="text" class="form-control" placeholder="Search No Rekam Medis"
-            aria-label="Search No Rekam Medis" aria-describedby="button-addon2" value="{{Request::get('search')}}">
+                <input name="search" type="text" class="form-control" style="border-bottom-left-radius: 30px;border-top-left-radius: 30px" placeholder="Search Rekam Medis"
+                    aria-label="Search No Rekam Medis" aria-describedby="button-addon2" value="{{Request::get('search')}}">
                 <div class="input-group-append">
-                    <input class="btn btn-outline-primary" type="submit" id="button-addon2" value="Search">
+                    <input class="btn btn-outline-primary" style="border-bottom-right-radius: 30px;border-top-right-radius: 30px" type="submit" id="button-addon2" value="Search">
                 </div>
             </div>
         </form>

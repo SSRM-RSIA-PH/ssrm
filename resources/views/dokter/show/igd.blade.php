@@ -10,30 +10,30 @@
 @endsection
 @section('content')
 
+@if ($igd != '[]')
 <table class="table table-bordered">
-    <div hidden>{{$check = $igd->first()}}</div>
-    @if(isset($check)) 
-        <thead>
-            <th>Tanggal Rekam Medis</th>
-            <th width="100px">Action</th>
-        </thead>
-    @else
-        No data
-    @endif
+    <thead>
+        <th>Tanggal Rekam Medis</th>
+        <th width="100px"></th>
+    </thead>
     <tbody>
         @foreach ($igd as $i)
         <tr>
             <td>{{$i->igd_datetime}}</td>
             <td>
                 <a href="{{route('dokter.detail.igd', [
-                            'rek_id'=>$i->rek_id, 
-                            'id'=>$i->igd_id,
-                            'ctg'=>'c'
+                        'rek_id'=>$i->rek_id, 
+                        'id'=>$i->igd_id,
+                        'ctg'=>'c'
                         ])}}" class="btn btn-info btn-sm">View</a>
             </td>
         </tr>
         @endforeach
     </tbody>
 </table>
+@endif
+@if($igd == null)
+<h3>Data tidak tersedia!</h3>
+@endif
 {{$igd->links()}}
 @endsection

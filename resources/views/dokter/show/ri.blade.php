@@ -13,7 +13,7 @@
     <table class="table table-bordered">
         <thead>
             <th>Tanggal Rekam Medis</th>
-            <th width="100px">Action</th>
+            <th width="100px"></th>
         </thead>
         <tbody>
             @foreach ($ri as $r)

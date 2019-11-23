@@ -9,27 +9,30 @@
 <a class="nav-link" href="{{route('dokter.show.ri', ['rek_id'=>$rek_id])}}">RAWAT INAP</a>
 @endsection
 @section('content')
-
-    <table class="table table-bordered">
-        <thead>
-            <th>Tanggal Rekam Medis</th>
-            <th width="100px">Action</th>
-        </thead>
-        <tbody>
-            @foreach ($nicu as $n)
-            <tr>
-                <td>{{$n->nicu_datetime}}</td>
-                <td>
-                    <a href="{{route('dokter.detail.nicu', [
+@if($nicu != '[]')
+<table class="table table-bordered">
+    <thead>
+        <th>Tanggal Rekam Medis</th>
+        <th width="100px"></th>
+    </thead>
+    <tbody>
+        @foreach ($nicu as $n)
+        <tr>
+            <td>{{$n->nicu_datetime}}</td>
+            <td>
+                <a href="{{route('dokter.detail.nicu', [
                             'rek_id'=>$n->rek_id,
                             'id'=>$n->nicu_id,
                             'ctg'=>'c'
                         ])}}" class="btn btn-info btn-sm">View</a>
-                </td>
-            </tr>
-            @endforeach
-        </tbody>
-    </table>
-    {{$nicu->links()}}
+            </td>
+        </tr>
+        @endforeach
+    </tbody>
+</table>
+{{$nicu->links()}}
+@else
+<h3>Data tidak tersedia!</h3>
+@endif
 
 @endsection

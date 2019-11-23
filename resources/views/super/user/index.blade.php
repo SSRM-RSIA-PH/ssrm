@@ -13,29 +13,39 @@ List User
 @section('content')
 
 <div class="row">
-    <div class="col-6">
+    <div class="col-10">
         <form action="{{route('user.index')}}">
-            <div class="input-group mb-3">
-            <input class="form-control col-md-9" type="text" name="search" placeholder="Search" value="{{Request::get('search')}}">
-                <div class="input-group-append">
-                    <input type="submit" value="Search" class="btn btn-primary">
+            <div class="row">
+                <div class="col-6">
+                    <div class="input-group mb-3">
+                        <input class="form-control" type="text" name="search" placeholder="Search"
+                            value="{{Request::get('search')}}">
+                        <div class="input-group-append">
+                            <input type="submit" value="Search" class="btn btn-primary">
+                        </div>
+                    </div>
                 </div>
-
-                <select class="form-control col-md-3" name="filter">
-                    <option value="">All</option>
-                    <option value="SUPERVISOR" {{Request::get('filter') == 'SUPERVISOR' ? 'selected' : ''}}>Supervisor
-                    </option>
-                    <option value="ADMIN" {{Request::get('filter') == 'ADMIN' ? 'selected' : ''}}>Admin</option>
-                    <option value="DOKTER" {{Request::get('filter') == 'DOKTER' ? 'selected' : ''}}>Dokter</option>
-                </select>
-                <div class="input-group-append">
-                    <input type="submit" value="Filter" class="btn btn-primary">
+                <div class="col-6">
+                    <div class="input-group mb-3">
+                        <select class="form-control" name="filter">
+                            <option value="">All</option>
+                            <option value="SUPERVISOR" {{Request::get('filter') == 'SUPERVISOR' ? 'selected' : ''}}>
+                                Supervisor
+                            </option>
+                            <option value="ADMIN" {{Request::get('filter') == 'ADMIN' ? 'selected' : ''}}>Admin</option>
+                            <option value="DOKTER" {{Request::get('filter') == 'DOKTER' ? 'selected' : ''}}>Dokter
+                            </option>
+                        </select>
+                        <div class="input-group-append">
+                            <input type="submit" value="Filter" class="btn btn-primary">
+                        </div>
+                    </div>
                 </div>
             </div>
         </form>
     </div>
 
-    <div class="col-6 text-right">
+    <div class="col-2 text-right">
         <a href="{{route('user.create')}}" class="btn btn-primary text-right">Add User</a>
     </div>
 </div>

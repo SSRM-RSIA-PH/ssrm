@@ -8,9 +8,9 @@
     <title>SSRM @yield('title')</title>
     <link rel="stylesheet" href="{{asset('css/bootstrap.min.css')}}">
     <style>
-    .active {
-        border-bottom: 2px solid gray
-    }
+        .active {
+            border-bottom: 2px solid gray
+        }
     </style>
 </head>
 
@@ -55,7 +55,7 @@
 
     <div class="container">
         {{-- <div class="row"> --}}
-            @yield("content")
+        @yield("content")
 
         {{-- </div> --}}
     </div>
