@@ -29,15 +29,17 @@ class AdminPoliController extends Controller
         $poli = new Poli;
         $poli->rek_id = $rek_id;
         $poli->u_id = $request->get('u_id');
+        $poli->save();
+
         $poli->poli_datetime = $request->get('date');
 
         if ($request->file('ct')) {
-            $file = $request->file('ct')->store("Rekmed/$rek_id/POLI/Catatan_Terintegrasi", 'public');
+            $file = $request->file('ct')->store("Rekmed/$rek_id/POLI/$poli->poli_id/Catatan_Terintegrasi", 'public');
             $poli->poli_ctt_integ = $file;
         }
 
         if ($request->file('resume')) {
-            $file = $request->file('resume')->store("Rekmed/$rek_id/POLI/Resume", 'public');
+            $file = $request->file('resume')->store("Rekmed/$rek_id/POLI/$poli->poli_id/Resume", 'public');
             $poli->poli_resume = $file;
         }
 
@@ -47,7 +49,7 @@ class AdminPoliController extends Controller
         foreach ($penunjang_names as $p_name) {
             if ($request->file($p_name)) {
                 $penunjang = new PoliPenunjang;
-                $file = $request->file($p_name)->store("Rekmed/$rek_id/POLI/Penunjang/$p_name", 'public');
+                $file = $request->file($p_name)->store("Rekmed/$rek_id/POLI/$poli->poli_id/Penunjang/$p_name", 'public');
                 $penunjang->p_name = $p_name;
                 $penunjang->p_file = $file;
                 $penunjang->poli_id = $poli->poli_id;

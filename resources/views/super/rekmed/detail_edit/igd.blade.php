@@ -246,9 +246,9 @@ Edit Detail
                             <div class="col pl-0">
                                 @if ($igd->igd_ctt_perkembangan)
                                 <form onsubmit="return confirm('Delete Catatan Perkembangan permanently ?')" action="{{route('super.rekmed.destroy_detail', [
-                                'id' => $igd->igd_id,
-                                'ctg' => 'igd'
-                            ])}}" method="POST">
+                                    'id' => $igd->igd_id,
+                                    'ctg' => 'igd'
+                                ])}}" method="POST">
                                     @csrf
                                     <input type="hidden" name="_method" value="DELETE">
 
@@ -262,9 +262,9 @@ Edit Detail
                             <div class="col pl-0">
                                 @if ($igd->igd_resume)
                                 <form onsubmit="return confirm('Delete Resume permanently ?')" action="{{route('super.rekmed.destroy_detail', [
-                                'id' => $igd->igd_id,
-                                'ctg' => 'igd'
-                            ])}}" method="POST">
+                                    'id' => $igd->igd_id,
+                                    'ctg' => 'igd'
+                                ])}}" method="POST">
                                     @csrf
                                     <input type="hidden" name="_method" value="DELETE">
 
@@ -278,9 +278,9 @@ Edit Detail
                             <div class="col pl-0">
                                 @if ($usg)
                                 <form onsubmit="return confirm('Delete USG permanently ?')" action="{{route('super.rekmed.destroy_penunjang', [
-                            'id' => $usg->id,
-                            'ctg' => 'igd'
-                        ])}}" method="POST">
+                                    'id' => $usg->id,
+                                    'ctg' => 'igd'
+                                ])}}" method="POST">
                                     @csrf
                                     <input type="hidden" name="_method" value="DELETE">
 
@@ -297,9 +297,9 @@ Edit Detail
 
                                 @if ($ctg)
                                 <form onsubmit="return confirm('Delete CTG permanently ?')" action="{{route('super.rekmed.destroy_penunjang', [
-                            'id' => $ctg->id,
-                            'ctg' => 'igd'
-                        ])}}" method="POST">
+                                    'id' => $ctg->id,
+                                    'ctg' => 'igd'
+                                ])}}" method="POST">
                                     @csrf
                                     <input type="hidden" name="_method" value="DELETE">
 
@@ -316,9 +316,9 @@ Edit Detail
 
                                 @if ($xray)
                                 <form onsubmit="return confirm('Delete XRAY permanently ?')" action="{{route('super.rekmed.destroy_penunjang', [
-                            'id' => $xray->id,
-                            'ctg' => 'igd'
-                        ])}}" method="POST">
+                                    'id' => $xray->id,
+                                    'ctg' => 'igd'
+                                ])}}" method="POST">
                                     @csrf
                                     <input type="hidden" name="_method" value="DELETE">
 
@@ -334,9 +334,9 @@ Edit Detail
 
                                 @if ($ekg)
                                 <form onsubmit="return confirm('Delete EKG permanently ?')" action="{{route('super.rekmed.destroy_penunjang', [
-                            'id' => $ekg->id,
-                            'ctg' => 'igd'
-                        ])}}" method="POST">
+                                    'id' => $ekg->id,
+                                    'ctg' => 'igd'
+                                ])}}" method="POST">
                                     @csrf
                                     <input type="hidden" name="_method" value="DELETE">
 
@@ -352,9 +352,9 @@ Edit Detail
 
                                 @if ($lab)
                                 <form onsubmit="return confirm('Delete LAB permanently ?')" action="{{route('super.rekmed.destroy_penunjang', [
-                            'id' => $lab->id,
-                            'ctg' => 'igd'
-                        ])}}" method="POST">
+                                    'id' => $lab->id,
+                                    'ctg' => 'igd'
+                                ])}}" method="POST">
                                     @csrf
                                     <input type="hidden" name="_method" value="DELETE">
 

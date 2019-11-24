@@ -28,12 +28,14 @@
                     <td>{{$log->rek_id}}</td>
                     <td>{{strtoupper($log->ctg)}}</td>
                     <th>
-                        @if ($log->id_ctg && $log->rek_id)
+                        @if ($log->id_ctg)
                             <a href="{{route("super.rekmed.detail.$log->ctg", [
                                 'rek_id'=>$log->rek_id,
                                 'id'=>$log->id_ctg
                             ])}}" class="btn btn-primary">View</a>
                             </th>
+                        @else
+                            <a href="" class="btn btn-danger">Deleted</a>
                         @endif
                 </tr>
             @endforeach

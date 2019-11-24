@@ -32,6 +32,14 @@
                             'rek_id'=>$p->rek_id, 
                             'id'=>$p->poli_id
                         ])}}" class="btn btn-sm btn-primary">Edit</a>
+                <form class="d-inline" onsubmit="return confirm('Delete {{$p->poli_datetime}} permanently ?')" action="{{route('super.rekmed.destroy_ctg', [
+                    'id'=>$p->poli_id,
+                    'ctg'=>'poli'
+                ])}}" method="POST">
+                    @csrf
+                    <input type="hidden" name="_method" value="DELETE">
+                    <input type="submit" value="Delete" class="btn btn-sm btn-danger">
+                </form>
             </td>
         </tr>
         @endforeach

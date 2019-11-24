@@ -31,36 +31,41 @@ Route::group(['prefix' => '/supervisor'], function () {
         Route::get('/{rek_id}/edit', 'SuperRekmedController@edit_rekmed')->name('super.rekmed.edit');
         Route::put('/{rek_id}/update', 'SuperRekmedController@update_rekmed')->name('super.rekmed.update');
 
-        //delete
-        Route::delete('/{rek_id}/destroy', 'SuperRekmedController@destroy_rekmed')->name('super.rekmed.destroy');
-        
         //show detail
         Route::get('/{rek_id}/igd/{id}', 'SuperRekmedController@detail_igd')->name('super.rekmed.detail.igd');
         Route::get('/{rek_id}/nicu/{id}', 'SuperRekmedController@detail_nicu')->name('super.rekmed.detail.nicu');
         Route::get('/{rek_id}/poli/{id}', 'SuperRekmedController@detail_poli')->name('super.rekmed.detail.poli');
         Route::get('/{rek_id}/ri/{id}', 'SuperRekmedController@detail_ri')->name('super.rekmed.detail.ri');
-
+        
         //edit detail igd
         Route::get('/{rek_id}/igd/{id}/edit', 'SuperRekmedController@edit_detail_igd')->name('super.rekmed.igd.edit');
         Route::put('/{rek_id}/igd/{id}/update', 'SuperRekmedController@update_detail_igd')->name('super.rekmed.igd.update');
-
+        
         //edit detail nicu
         Route::get('/{rek_id}/nicu/{id}/edit', 'SuperRekmedController@edit_detail_nicu')->name('super.rekmed.nicu.edit');
         Route::put('/{rek_id}/nicu/{id}/update', 'SuperRekmedController@update_detail_nicu')->name('super.rekmed.nicu.update');
-
+        
         //edit detail rawat inap
         Route::get('/{rek_id}/ri/{id}/edit', 'SuperRekmedController@edit_detail_ri')->name('super.rekmed.ri.edit');
         Route::put('/{rek_id}/ri/{id}/update', 'SuperRekmedController@update_detail_ri')->name('super.rekmed.ri.update');
-
+        
         //edit detail poli
         Route::get('/{rek_id}/poli/{id}/edit', 'SuperRekmedController@edit_detail_poli')->name('super.rekmed.poli.edit');
         Route::put('/{rek_id}/poli/{id}/update', 'SuperRekmedController@update_detail_poli')->name('super.rekmed.poli.update');
-
+        
+        //delete
+        Route::delete('/{rek_id}/destroy', 'SuperRekmedController@destroy_rekmed')->name('super.rekmed.destroy');
+        
+        //delete ctg
+        Route::delete('/{id}/{ctg}/destroy', 'SuperRekmedController@destroy_ctg')->name('super.rekmed.destroy_ctg');
+        
         //delete detail
         Route::delete('/{id}/{ctg}/destroy_detail', 'SuperRekmedController@destroy_detail')->name('super.rekmed.destroy_detail');
 
         //delete detail penunjang
-        Route::delete('/{id}/{ctg}/destroy_penunjang', "SuperRekmedController@destroy_detail_penunjang")->name('super.rekmed.destroy_penunjang');
+        Route::delete('/{id}/{ctg}/destroy_penunjang', 'SuperRekmedController@destroy_detail_penunjang')->name('super.rekmed.destroy_penunjang');
+
+        
     });
 
     Route::get('/log', 'SuperLogController@index')->name('super.log');

@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\Gate;
 use \App\Rekmed;
 use \App\Igd;
 use App\IgdPenunjang;
+use App\Log;
 use \App\Nicu;
 use App\NicuPenunjang;
 use \App\Poli;
@@ -173,7 +174,7 @@ class SuperRekmedController extends Controller
                 \Storage::delete('public/' . $dbfile);
             }
 
-            $file = $request->file('cp')->store("Rekmed/$rek_id/IGD/Catatan_Perkembangan", 'public');
+            $file = $request->file('cp')->store("Rekmed/$rek_id/IGD/$id/Catatan_Perkembangan", 'public');
             $igd->igd_ctt_perkembangan = $file;
         }
 
@@ -183,7 +184,7 @@ class SuperRekmedController extends Controller
                 \Storage::delete('public/' . $dbfile);
             }
 
-            $file = $request->file('resume')->store("Rekmed/$rek_id/IGD/Resume", 'public');
+            $file = $request->file('resume')->store("Rekmed/$rek_id/IGD/$id/Resume", 'public');
             $igd->igd_resume = $file;
         }
         $igd->save();
@@ -203,7 +204,7 @@ class SuperRekmedController extends Controller
                 $igd_p->igd_id = $id;
             }
 
-            $file = $request->file('usg')->store("Rekmed/$rek_id/IGD/Penunjang/usg", 'public');
+            $file = $request->file('usg')->store("Rekmed/$rek_id/IGD/$id/Penunjang/usg", 'public');
             $igd_p->p_file = $file;
             $igd_p->save();
         }
@@ -222,7 +223,7 @@ class SuperRekmedController extends Controller
                 $igd_p->igd_id = $id;
             }
 
-            $file = $request->file('ctg')->store("Rekmed/$rek_id/IGD/Penunjang/ctg", 'public');
+            $file = $request->file('ctg')->store("Rekmed/$rek_id/IGD/$id/Penunjang/ctg", 'public');
             $igd_p->p_file = $file;
             $igd_p->save();
         }
@@ -241,7 +242,7 @@ class SuperRekmedController extends Controller
                 $igd_p->igd_id = $id;
             }
 
-            $file = $request->file('xray')->store("Rekmed/$rek_id/IGD/Penunjang/xray", 'public');
+            $file = $request->file('xray')->store("Rekmed/$rek_id/IGD/$id/Penunjang/xray", 'public');
             $igd_p->p_file = $file;
             $igd_p->save();
         }
@@ -260,7 +261,7 @@ class SuperRekmedController extends Controller
                 $igd_p->igd_id = $id;
             }
 
-            $file = $request->file('ekg')->store("Rekmed/$rek_id/IGD/Penunjang/ekg", 'public');
+            $file = $request->file('ekg')->store("Rekmed/$rek_id/IGD/$id/Penunjang/ekg", 'public');
             $igd_p->p_file = $file;
             $igd_p->save();
         }
@@ -279,7 +280,7 @@ class SuperRekmedController extends Controller
                 $igd_p->igd_id = $id;
             }
 
-            $file = $request->file('lab')->store("Rekmed/$rek_id/IGD/Penunjang/lab", 'public');
+            $file = $request->file('lab')->store("Rekmed/$rek_id/IGD/$id/Penunjang/lab", 'public');
             $igd_p->p_file = $file;
             $igd_p->save();
         }
@@ -323,7 +324,7 @@ class SuperRekmedController extends Controller
                 \Storage::delete('public/' . $dbfile);
             }
 
-            $file = $request->file('cp')->store("Rekmed/$rek_id/POLI/Catatan_Terintegrasi", 'public');
+            $file = $request->file('cp')->store("Rekmed/$rek_id/POLI/$id/Catatan_Terintegrasi", 'public');
             $poli->poli_ctt_integ = $file;
         }
 
@@ -333,7 +334,7 @@ class SuperRekmedController extends Controller
                 \Storage::delete('public/' . $dbfile);
             }
 
-            $file = $request->file('resume')->store("Rekmed/$rek_id/POLI/Resume", 'public');
+            $file = $request->file('resume')->store("Rekmed/$rek_id/POLI/$id/Resume", 'public');
             $poli->poli_resume = $file;
         }
         $poli->save();
@@ -353,7 +354,7 @@ class SuperRekmedController extends Controller
                 $poli_p->poli_id = $id;
             }
 
-            $file = $request->file('usg')->store("Rekmed/$rek_id/POLI/Penunjang/usg", 'public');
+            $file = $request->file('usg')->store("Rekmed/$rek_id/POLI/$id/Penunjang/usg", 'public');
             $poli_p->p_file = $file;
             $poli_p->save();
         }
@@ -372,7 +373,7 @@ class SuperRekmedController extends Controller
                 $poli_p->poli_id = $id;
             }
 
-            $file = $request->file('ctg')->store("Rekmed/$rek_id/POLI/Penunjang/ctg", 'public');
+            $file = $request->file('ctg')->store("Rekmed/$rek_id/POLI/$id/Penunjang/ctg", 'public');
             $poli_p->p_file = $file;
             $poli_p->save();
         }
@@ -391,7 +392,7 @@ class SuperRekmedController extends Controller
                 $poli_p->poli_id = $id;
             }
 
-            $file = $request->file('xray')->store("Rekmed/$rek_id/POLI/Penunjang/xray", 'public');
+            $file = $request->file('xray')->store("Rekmed/$rek_id/POLI/$id/Penunjang/xray", 'public');
             $poli_p->p_file = $file;
             $poli_p->save();
         }
@@ -410,7 +411,7 @@ class SuperRekmedController extends Controller
                 $poli_p->poli_id = $id;
             }
 
-            $file = $request->file('ekg')->store("Rekmed/$rek_id/POLI/Penunjang/ekg", 'public');
+            $file = $request->file('ekg')->store("Rekmed/$rek_id/POLI/$id/Penunjang/ekg", 'public');
             $poli_p->p_file = $file;
             $poli_p->save();
         }
@@ -429,7 +430,7 @@ class SuperRekmedController extends Controller
                 $poli_p->poli_id = $id;
             }
 
-            $file = $request->file('lab')->store("Rekmed/$rek_id/POLI/Penunjang/lab", 'public');
+            $file = $request->file('lab')->store("Rekmed/$rek_id/POLI/$id/Penunjang/lab", 'public');
             $poli_p->p_file = $file;
             $poli_p->save();
         }
@@ -473,7 +474,7 @@ class SuperRekmedController extends Controller
                 \Storage::delete('public/' . $dbfile);
             }
 
-            $file = $request->file('cp')->store("Rekmed/$rek_id/NICU/Catatan_Terintegrasi", 'public');
+            $file = $request->file('cp')->store("Rekmed/$rek_id/NICU/$id/Catatan_Terintegrasi", 'public');
             $nicu->nicu_ctt_integ = $file;
         }
 
@@ -483,7 +484,7 @@ class SuperRekmedController extends Controller
                 \Storage::delete('public/' . $dbfile);
             }
 
-            $file = $request->file('resume')->store("Rekmed/$rek_id/NICU/Resume", 'public');
+            $file = $request->file('resume')->store("Rekmed/$rek_id/NICU/$id/Resume", 'public');
             $nicu->nicu_resume = $file;
         }
 
@@ -493,7 +494,7 @@ class SuperRekmedController extends Controller
                 \Storage::delete('public/' . $dbfile);
             }
 
-            $file = $request->file('pengkajian')->store("Rekmed/$rek_id/NICU/Pengkajian_Awal", 'public');
+            $file = $request->file('pengkajian')->store("Rekmed/$rek_id/NICU/$id/Pengkajian_Awal", 'public');
             $nicu->nicu_pengkajian = $file;
         }
 
@@ -503,7 +504,7 @@ class SuperRekmedController extends Controller
                 \Storage::delete('public/' . $dbfile);
             }
 
-            $file = $request->file('grafik')->store("Rekmed/$rek_id/NICU/Grafik", 'public');
+            $file = $request->file('grafik')->store("Rekmed/$rek_id/NICU/$id/Grafik", 'public');
             $nicu->nicu_grafik = $file;
         }
         $nicu->save();
@@ -523,7 +524,7 @@ class SuperRekmedController extends Controller
                 $nicu_p->nicu_id = $id;
             }
 
-            $file = $request->file('xray')->store("Rekmed/$rek_id/NICU/Penunjang/xray", 'public');
+            $file = $request->file('xray')->store("Rekmed/$rek_id/NICU/$id/Penunjang/xray", 'public');
             $nicu_p->p_file = $file;
             $nicu_p->save();
         }
@@ -542,7 +543,7 @@ class SuperRekmedController extends Controller
                 $nicu_p->nicu_id = $id;
             }
 
-            $file = $request->file('lab')->store("Rekmed/$rek_id/NICU/Penunjang/lab", 'public');
+            $file = $request->file('lab')->store("Rekmed/$rek_id/NICU/$id/Penunjang/lab", 'public');
             $nicu_p->p_file = $file;
             $nicu_p->save();
         }
@@ -586,7 +587,7 @@ class SuperRekmedController extends Controller
                 \Storage::delete('public/' . $dbfile);
             }
 
-            $file = $request->file('cp')->store("Rekmed/$rek_id/Rawar_Inap/Catatan_Perkembangan_Terintegrasi", 'public');
+            $file = $request->file('cp')->store("Rekmed/$rek_id/Rawat_Inap/$id/Catatan_Perkembangan_Terintegrasi", 'public');
             $ri->ri_ctt_integ = $file;
         }
 
@@ -596,7 +597,7 @@ class SuperRekmedController extends Controller
                 \Storage::delete('public/' . $dbfile);
             }
 
-            $file = $request->file('resume')->store("Rekmed/$rek_id/Rawar_Inap/Resume_Inap", 'public');
+            $file = $request->file('resume')->store("Rekmed/$rek_id/Rawat_Inap/$id/Resume_Inap", 'public');
             $ri->ri_resume = $file;
         }
 
@@ -606,7 +607,7 @@ class SuperRekmedController extends Controller
                 \Storage::delete('public/' . $dbfile);
             }
 
-            $file = $request->file('cto')->store("Rekmed/$rek_id/Rawar_Inap/Catatan_Tindakan-Operasi", 'public');
+            $file = $request->file('cto')->store("Rekmed/$rek_id/Rawat_Inap/$id/Catatan_Tindakan-Operasi", 'public');
             $ri->ri_ctt_oper = $file;
         }
 
@@ -616,7 +617,7 @@ class SuperRekmedController extends Controller
                 \Storage::delete('public/' . $dbfile);
             }
 
-            $file = $request->file('bayi')->store("Rekmed/$rek_id/Rawar_Inap/Bayi", 'public');
+            $file = $request->file('bayi')->store("Rekmed/$rek_id/Rawat_Inap/$id/Bayi", 'public');
             $ri->ri_bayi = $file;
         }
         $ri->save();
@@ -636,7 +637,7 @@ class SuperRekmedController extends Controller
                 $ri_p->ri_id = $id;
             }
 
-            $file = $request->file('xray')->store("Rekmed/$rek_id/Rawar_Inap/Penunjang/xray", 'public');
+            $file = $request->file('xray')->store("Rekmed/$rek_id/Rawat_Inap/$id/Penunjang/xray", 'public');
             $ri_p->p_file = $file;
             $ri_p->save();
         }
@@ -655,7 +656,7 @@ class SuperRekmedController extends Controller
                 $ri_p->ri_id = $id;
             }
 
-            $file = $request->file('lab')->store("Rekmed/$rek_id/Rawar_Inap/Penunjang/lab", 'public');
+            $file = $request->file('lab')->store("Rekmed/$rek_id/Rawat_Inap/$id/Penunjang/lab", 'public');
             $ri_p->p_file = $file;
             $ri_p->save();
         }
@@ -672,8 +673,51 @@ class SuperRekmedController extends Controller
     public function destroy_rekmed($rek_id)
     {
         $rekmed = Rekmed::findOrFail($rek_id);
+        
+        \Storage::deleteDirectory("public/Rekmed/$rek_id/");
+
         $rekmed->delete();
         return redirect()->route('super.rekmed');
+    }
+
+    //destroy ctg
+    public function destroy_ctg($id, $ctg)
+    {
+        switch ($ctg) {
+            case 'igd':
+                $db = Igd::findOrFail($id);
+                $ctgdb = 'IGD';
+                break;
+
+            case 'nicu':
+                $db = Nicu::findOrFail($id);
+                $ctgdb = 'NICU';
+                break;
+
+            case 'poli':
+                $db = Poli::findOrFail($id);
+                $ctgdb = 'POLI';
+                break;
+
+            case 'ri':
+                $db = RawatInap::findOrFail($id);
+                $ctgdb = 'Rawat_Inap';
+                break;
+
+            default:
+                break;
+        }
+
+        $log = Log::where('ctg', $ctg)->where('id_ctg', $id)->first();
+        $log->id_ctg =  NULL;
+        $log->save();
+
+        $rek_id = $db->rek_id;
+        \Storage::deleteDirectory("public/Rekmed/$rek_id/$ctgdb/$id");
+
+        $db->delete();
+
+        return redirect()->route("super.rekmed.show.$ctg", ['rek_id'=>$rek_id]);
     }
 
     //destroy detail
@@ -741,7 +785,6 @@ class SuperRekmedController extends Controller
         if (file_exists(storage_path('app/public/' . $db->p_file))) {
             \Storage::delete('public/' . $db->p_file);
         }
-
         $db->delete();
 
         return redirect()->route("super.rekmed.$ctg.edit", [

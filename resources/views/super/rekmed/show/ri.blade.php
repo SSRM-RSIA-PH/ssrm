@@ -25,13 +25,22 @@
             <td>{{$r->user()->name}}</td>
             <td>
                 <a href="{{route('super.rekmed.detail.ri', [
-                            'rek_id'=>$r->rek_id,
-                            'id'=>$r->ri_id
-                        ])}}" class="btn btn-sm btn-info">View</a>
+                        'rek_id'=>$r->rek_id,
+                        'id'=>$r->ri_id
+                    ])}}" class="btn btn-sm btn-info">View</a>
                 <a href="{{route('super.rekmed.ri.edit', [
-                            'rek_id'=>$r->rek_id, 
-                            'id'=>$r->ri_id
-                        ])}}" class="btn btn-sm btn-primary">Edit</a>
+                        'rek_id'=>$r->rek_id, 
+                        'id'=>$r->ri_id
+                    ])}}" class="btn btn-sm btn-primary">Edit</a>
+                <form class="d-inline" onsubmit="return confirm('Delete {{$r->ri_datetime}} permanently ?')"
+                    action="{{route('super.rekmed.destroy_ctg', [
+                        'id'=>$r->ri_id,
+                        'ctg'=>'ri'
+                    ])}}" method="POST">
+                    @csrf
+                    <input type="hidden" name="_method" value="DELETE">
+                    <input type="submit" value="Delete" class="btn btn-sm btn-danger">
+                </form>
             </td>
         </tr>
         @endforeach
