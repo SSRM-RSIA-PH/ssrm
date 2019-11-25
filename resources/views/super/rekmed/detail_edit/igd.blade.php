@@ -68,9 +68,9 @@ Edit Detail
                 <div class="row">
                     <div class="col-11">
                         <form enctype="multipart/form-data" action="{{route('super.rekmed.igd.update', [
-                        'rek_id'=>$rek_id,
-                        'id'=>$igd->igd_id
-                    ])}}" method="POST">
+                            'rek_id'=>$rek_id,
+                            'id'=>$igd->igd_id
+                            ])}}" method="POST">
                             @csrf
                             <input type="hidden" value="PUT" name="_method">
 
@@ -253,7 +253,7 @@ Edit Detail
                                     <input type="hidden" name="_method" value="DELETE">
 
                                     <input type="hidden" name="field" value="igd_ctt_perkembangan">
-                                    <input type="submit" class="btn btn-danger" value="CTP">
+                                    <input type="submit" class="btn btn-danger" value="Delete">
                                 </form>
                                 @endif
                             </div>
@@ -269,12 +269,12 @@ Edit Detail
                                     <input type="hidden" name="_method" value="DELETE">
 
                                     <input type="hidden" name="field" value="igd_resume">
-                                    <input type="submit" class="btn btn-danger" value="RSM">
+                                    <input type="submit" class="btn btn-danger" value="Delete">
                                 </form>
                                 @endif
                             </div>
                         </div>
-                        <div class="row align-items-end" style="height:170px">
+                        <div class="row align-items-end" style="height:167px">
                             <div class="col pl-0">
                                 @if ($usg)
                                 <form onsubmit="return confirm('Delete USG permanently ?')" action="{{route('super.rekmed.destroy_penunjang', [
@@ -286,13 +286,13 @@ Edit Detail
 
                                     <input type="hidden" name="rek_id" value="{{$rek_id}}">
                                     <input type="hidden" name="id" value={{$igd->igd_id}}>
-                                    <input type="submit" class="btn btn-danger" value="USG">
+                                    <input type="submit" class="btn btn-danger" value="Delete">
                                 </form>
                                 @endif
                             </div>
                         </div>
 
-                        <div class="row align-items-end" style="height:75px">
+                        <div class="row align-items-end" style="height:77px">
                             <div class="col pl-0">
 
                                 @if ($ctg)
@@ -305,13 +305,13 @@ Edit Detail
 
                                     <input type="hidden" name="rek_id" value="{{$rek_id}}">
                                     <input type="hidden" name="id" value={{$igd->igd_id}}>
-                                    <input type="submit" class="btn btn-danger" value="CTG">
+                                    <input type="submit" class="btn btn-danger" value="Delete">
                                 </form>
                                 @endif
                             </div>
                         </div>
 
-                        <div class="row align-items-end" style="height:75px">
+                        <div class="row align-items-end" style="height:78px">
                             <div class="col pl-0">
 
                                 @if ($xray)
@@ -324,12 +324,12 @@ Edit Detail
 
                                     <input type="hidden" name="rek_id" value="{{$rek_id}}">
                                     <input type="hidden" name="id" value={{$igd->igd_id}}>
-                                    <input type="submit" class="btn btn-danger" value="XRAY">
+                                    <input type="submit" class="btn btn-danger" value="Delete">
                                 </form>
                                 @endif
                             </div>
                         </div>
-                        <div class="row align-items-end" style="height:75px">
+                        <div class="row align-items-end" style="height:79px">
                             <div class="col pl-0">
 
                                 @if ($ekg)
@@ -342,7 +342,7 @@ Edit Detail
 
                                     <input type="hidden" name="rek_id" value="{{$rek_id}}">
                                     <input type="hidden" name="id" value={{$igd->igd_id}}>
-                                    <input type="submit" class="btn btn-danger" value="EKG">
+                                    <input type="submit" class="btn btn-danger" value="Delete">
                                 </form>
                                 @endif
                             </div>
@@ -360,7 +360,7 @@ Edit Detail
 
                                     <input type="hidden" name="rek_id" value="{{$rek_id}}">
                                     <input type="hidden" name="id" value={{$igd->igd_id}}>
-                                    <input type="submit" class="btn btn-danger" value="LAB">
+                                    <input type="submit" class="btn btn-danger" value="Delete">
                                 </form>
                                 @endif
                             </div>
@@ -372,6 +372,3 @@ Edit Detail
     </div>
 </div>
 @endsection
-
-{{-- link back --}}
-{{-- <a class="btn btn-primary" href="{{route('super.rekmed.show.igd', ['rek_id'=>$rek_id])}}">Back</a> --}}
