@@ -15,7 +15,7 @@
         <th>Tanggal Rekam Medis</th>
         <th>Kategori</th>
         <th>User</th>
-        <th width="120px"></th>
+        <th width="200px"></th>
     </thead>
     <tbody>
         @foreach ($poli as $p)
