@@ -31,7 +31,6 @@
     <div class="tab-content" id="myTabContent">
         <div class="tab-pane fade show active" id="cpt" role="tabpanel" aria-labelledby="cpt-tab">
             @if ($ri->ri_ctt_integ)
-            <b>Catatan Perkembangan Terintegrasi</b><br>
             <object data="{{asset("storage/$ri->ri_ctt_integ")}}" type="application/pdf" width="100%"
                 height="700px"></object>
             @else
@@ -39,9 +38,7 @@
             @endif
         </div>
         <div class="tab-pane fade" id="cot" role="tabpanel" aria-labelledby="cot-tab">
-
             @if ($ri->ri_ctt_oper)
-            <b>Catatan Tindakan/Operasi</b><br>
             <object data="{{asset("storage/$ri->ri_ctt_oper")}}" type="application/pdf" width="100%"
                 height="700px"></object>
             @else
@@ -51,7 +48,6 @@
         <div class="tab-pane fade" id="byi" role="tabpanel" aria-labelledby="byi-tab">
 
             @if ($ri->ri_bayi)
-            <b>Bayi</b><br>
             <object data="{{asset("storage/$ri->ri_bayi")}}" type="application/pdf" width="100%"
                 height="700px"></object>
             @else
@@ -60,7 +56,6 @@
         </div>
         <div class="tab-pane fade" id="rsm" role="tabpanel" aria-labelledby="rsm-tab">
             @if ($ri->ri_resume)
-            <b>Resume</b><br>
             <object data="{{asset("storage/$ri->ri_resume")}}" type="application/pdf" width="100%"
                 height="700px"></object>
             @else
@@ -69,8 +64,6 @@
         </div>
         <div class="tab-pane fade" id="pnj" role="tabpanel" aria-labelledby="pnj-tab">
             @if ($ri->penunjang() != '[]')
-            <hr>
-            <b>Penunjang</b><br>
             @foreach ($ri->penunjang() as $p)
             <p>{{$p->p_name}}</p>
             <object data="{{asset("storage/$p->p_file")}}" type="application/pdf" width="100%" height="700px"></object>

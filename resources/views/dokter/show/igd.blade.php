@@ -9,8 +9,9 @@
 <a class="nav-link" href="{{route('dokter.show.ri', ['rek_id'=>$rek_id])}}">RAWAT INAP</a>
 @endsection
 @section('content')
+<div hidden>{{$check = $igd->first()}}</div>
 
-@if ($igd != '[]')
+@if (isset($check))
 <table class="table table-bordered">
     <thead>
         <th>Tanggal Rekam Medis</th>
@@ -31,8 +32,7 @@
         @endforeach
     </tbody>
 </table>
-@endif
-@if($igd == null)
+@else
 <h3>Data tidak tersedia!</h3>
 @endif
 {{$igd->links()}}

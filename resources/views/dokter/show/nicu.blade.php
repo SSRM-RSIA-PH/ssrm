@@ -9,7 +9,9 @@
 <a class="nav-link" href="{{route('dokter.show.ri', ['rek_id'=>$rek_id])}}">RAWAT INAP</a>
 @endsection
 @section('content')
-@if($nicu != '[]')
+<div hidden>{{$check = $nicu->first()}}</div>
+
+@if (isset($check))
 <table class="table table-bordered">
     <thead>
         <th>Tanggal Rekam Medis</th>

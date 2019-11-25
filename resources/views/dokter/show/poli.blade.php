@@ -9,6 +9,9 @@
 <a class="nav-link" href="{{route('dokter.show.ri', ['rek_id'=>$rek_id])}}">RAWAT INAP</a>
 @endsection
 @section('content')
+<div hidden>{{$check = $poli->first()}}</div>
+
+@if (isset($check))
     <table class="table table-bordered">
         <thead>
             <th>Tanggal Rekam Medis</th>
@@ -30,5 +33,7 @@
         </tbody>
     </table>
     {{$poli->links()}}
-
+@else
+<h3>Data tidak tersedia!</h3>
+@endif
 @endsection

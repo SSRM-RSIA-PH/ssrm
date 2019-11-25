@@ -9,27 +9,31 @@
 <a class="nav-link active" href="{{route('dokter.show.ri', ['rek_id'=>$rek_id])}}">RAWAT INAP</a>
 @endsection
 @section('content')
+<div hidden>{{$check = $ri->first()}}</div>
 
-    <table class="table table-bordered">
-        <thead>
-            <th>Tanggal Rekam Medis</th>
-            <th width="100px"></th>
-        </thead>
-        <tbody>
-            @foreach ($ri as $r)
-            <tr>
-                <td>{{$r->ri_datetime}}</td>
-                <td>
-                    <a href="{{route('dokter.detail.ri', [
+@if (isset($check))
+<table class="table table-bordered">
+    <thead>
+        <th>Tanggal Rekam Medis</th>
+        <th width="100px"></th>
+    </thead>
+    <tbody>
+        @foreach ($ri as $r)
+        <tr>
+            <td>{{$r->ri_datetime}}</td>
+            <td>
+                <a href="{{route('dokter.detail.ri', [
                             'rek_id'=>$r->rek_id,
                             'id'=>$r->ri_id,
                             'ctg'=>'c'
                         ])}}" class="btn btn-info btn-sm">View</a>
-                </td>
-            </tr>
-            @endforeach
-        </tbody>
-    </table>
-    {{$ri->links()}}
-
+            </td>
+        </tr>
+        @endforeach
+    </tbody>
+</table>
+{{$ri->links()}}
+@else
+<h3>Data tidak tersedia!</h3>
+@endif
 @endsection

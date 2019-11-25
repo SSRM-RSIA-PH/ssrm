@@ -41,7 +41,6 @@
         </div>
         <div class="tab-pane fade" id="pnj" role="tabpanel" aria-labelledby="pnj-tab">
             @if ($igd->penunjang() != '[]')
-            <b>Penunjang</b><br>
             @foreach ($igd->penunjang() as $p)
             <hr>
             <p>{{$p->p_name}}</p>
