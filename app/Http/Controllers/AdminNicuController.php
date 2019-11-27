@@ -19,7 +19,7 @@ class AdminNicuController extends Controller
 
     public function create($rek_id)
     {
-        return view('admin.nicu.create', ['rek_id'=>$rek_id]);
+        return view('admin.nicu.create', ['rek_id' => $rek_id]);
     }
 
     public function store(Request $request)
@@ -34,23 +34,35 @@ class AdminNicuController extends Controller
         $nicu->nicu_datetime = $request->get('date');
 
         if ($request->file('ct')) {
-            $file = $request->file('ct')->store("Rekmed/$rek_id/NICU/$nicu->nicu_id/Catatan_Perkembangan_Terintegrasi", 'public');
-            $nicu->nicu_ctt_integ = $file;
+            $dir = "Rekmed/$rek_id/NICU/$nicu->nicu_id/Catatan_Perkembangan_Terintegrasi/";
+            $file = $nicu->nicu_id . "_nicu_cpt.pdf";
+
+            $request->file('ct')->storeAs("public/$dir", $file);
+            $nicu->nicu_ctt_integ = $dir . $file;
         }
 
         if ($request->file('resume')) {
-            $file = $request->file('resume')->store("Rekmed/$rek_id/NICU/$nicu->nicu_id/Resume", 'public');
-            $nicu->nicu_resume = $file;
+            $dir = "Rekmed/$rek_id/NICU/$nicu->nicu_id/Resume/";
+            $file = $nicu->nicu_id . "_nicu_r.pdf";
+
+            $request->file('resume')->storeAs("public/$dir", $file);
+            $nicu->nicu_resume = $dir . $file;
         }
 
         if ($request->file('pengkajian')) {
-            $file = $request->file('pengkajian')->store("Rekmed/$rek_id/NICU/$nicu->nicu_id/Pengkajian_Awal", 'public');
-            $nicu->nicu_pengkajian = $file;
+            $dir = "Rekmed/$rek_id/NICU/$nicu->nicu_id/Pengkajian_Awal/";
+            $file = $nicu->nicu_id . "_nicu_pa.pdf";
+
+            $request->file('pengkajian')->storeAs("public/$dir", $file);
+            $nicu->nicu_pengkajian = $dir . $file;
         }
-        
+
         if ($request->file('gp')) {
-            $file = $request->file('gp')->store("Rekmed/$rek_id/NICU/$nicu->nicu_id/Grafik", 'public');
-            $nicu->nicu_grafik = $file;
+            $dir = "Rekmed/$rek_id/NICU/$nicu->nicu_id/Grafik/";
+            $file = $nicu->nicu_id . "_nicu_g.pdf";
+
+            $request->file('gp')->storeAs("public/$dir", $file);
+            $nicu->nicu_grafik = $dir . $file;
         }
 
         $nicu->save();
@@ -58,22 +70,27 @@ class AdminNicuController extends Controller
 
         foreach ($penunjang_names as $p_name) {
             if ($request->file($p_name)) {
+                $dir = "Rekmed/$rek_id/NICU/$nicu->nicu_id/Penunjang/";
+                $file = $nicu->nicu_id . "_nicu_p-$p_name.pdf";
+
                 $penunjang = new NicuPenunjang;
-                $file = $request->file($p_name)->store("Rekmed/$rek_id/NICU/$nicu->nicu_id/Penunjang/$p_name", 'public');
+
+                $request->file($p_name)->storeAs("public/$dir", $file);
+
                 $penunjang->p_name = $p_name;
-                $penunjang->p_file = $file;
+                $penunjang->p_file = $dir . $file;
                 $penunjang->nicu_id = $nicu->nicu_id;
                 $penunjang->save();
             }
         }
 
         return redirect()->route('admin.create.nicu', ['rek_id' => $rek_id])->with('status', $nicu->nicu_id);
-    }   
+    }
 
     public function validation($id)
     {
         $data = Nicu::findOrFail($id);
-        return view('admin.nicu.validation', ['nicu'=>$data]);
+        return view('admin.nicu.validation', ['nicu' => $data]);
     }
 
     public function cancel(Request $request)
@@ -81,6 +98,6 @@ class AdminNicuController extends Controller
         $nicu_id = $request->get('nicu_id');
         $nicu = Nicu::findOrFail($nicu_id);
         $nicu->delete();
-        return redirect()->route('admin.show.rek', ['rek_id'=>$nicu->rek_id]);
+        return redirect()->route('admin.show.rek', ['rek_id' => $nicu->rek_id]);
     }
 }

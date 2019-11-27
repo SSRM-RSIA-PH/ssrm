@@ -19,7 +19,7 @@ class AdminRiController extends Controller
 
     public function create($rek_id)
     {
-        return view('admin.ri.create', ['rek_id'=>$rek_id]);
+        return view('admin.ri.create', ['rek_id' => $rek_id]);
     }
 
     public function store(Request $request)
@@ -34,23 +34,35 @@ class AdminRiController extends Controller
         $ri->ri_datetime = $request->get('date');
 
         if ($request->file('ct')) {
-            $file = $request->file('ct')->store("Rekmed/$rek_id/Rawat_Inap/$ri->ri_id/Catatan_Perkembangan_Terintegrasi", 'public');
-            $ri->ri_ctt_integ = $file;
+            $dir = "Rekmed/$rek_id/Rawat_Inap/$ri->ri_id/Catatan_Perkembangan_Terintegrasi/";
+            $file = $ri->ri_id . "_ri_cpt.pdf";
+
+            $request->file('ct')->storeAs("public/$dir", $file);
+            $ri->ri_ctt_integ = $dir . $file;
         }
 
         if ($request->file('resume')) {
-            $file = $request->file('resume')->store("Rekmed/$rek_id/Rawat_Inap/$ri->ri_id/Resume_Inap", 'public');
-            $ri->ri_resume = $file;
+            $dir = "Rekmed/$rek_id/Rawat_Inap/$ri->ri_id/Resume_Inap/";
+            $file = $ri->ri_id . "_ri_r.pdf";
+
+            $request->file('resume')->storeAs("public/$dir", $file);
+            $ri->ri_resume = $dir . $file;
         }
 
         if ($request->file('cto')) {
-            $file = $request->file('cto')->store("Rekmed/$rek_id/Rawat_Inap/$ri->ri_id/Catatan_Tindakan-Operasi", 'public');
-            $ri->ri_ctt_oper = $file;
+            $dir = "Rekmed/$rek_id/Rawat_Inap/$ri->ri_id/Catatan_Tindakan-Operasi/";
+            $file = $ri->ri_id . "_ri_cto.pdf";
+
+            $request->file('cto')->storeAs("public/$dir", $file);
+            $ri->ri_ctt_oper = $dir . $file;
         }
-        
+
         if ($request->file('bayi')) {
-            $file = $request->file('bayi')->store("Rekmed/$rek_id/Rawat_Inap/$ri->ri_id/Bayi", 'public');
-            $ri->ri_bayi = $file;
+            $dir = "Rekmed/$rek_id/Rawat_Inap/$ri->ri_id/Bayi/";
+            $file = $ri->ri_id . "_ri_b.pdf";
+
+            $request->file('bayi')->storeAs("public/$dir", $file);
+            $ri->ri_bayi = $dir . $file;
         }
 
         $ri->save();
@@ -58,22 +70,27 @@ class AdminRiController extends Controller
 
         foreach ($penunjang_names as $p_name) {
             if ($request->file($p_name)) {
+                $dir = "Rekmed/$rek_id/Rawat_Inap/$ri->ri_id/Penunjang/";
+                $file = $ri->ri_id . "_ri_p-$p_name.pdf";
+
                 $penunjang = new RawatInapPenunjang;
-                $file = $request->file($p_name)->store("Rekmed/$rek_id/Rawat_Inap/$ri->ri_id/Penunjang/$p_name", 'public');
+
+                $request->file($p_name)->storeAs("public/$dir", $file);
+                
                 $penunjang->p_name = $p_name;
-                $penunjang->p_file = $file;
+                $penunjang->p_file = $dir . $file;
                 $penunjang->ri_id = $ri->ri_id;
                 $penunjang->save();
             }
         }
 
         return redirect()->route('admin.create.ri', ['rek_id' => $rek_id])->with('status', $ri->ri_id);
-    }   
+    }
 
     public function validation($id)
     {
         $data = RawatInap::findOrFail($id);
-        return view('admin.ri.validation', ['ri'=>$data]);
+        return view('admin.ri.validation', ['ri' => $data]);
     }
 
     public function cancel(Request $request)
@@ -81,6 +98,6 @@ class AdminRiController extends Controller
         $ri_id = $request->get('ri_id');
         $ri = RawatInap::findOrFail($ri_id);
         $ri->delete();
-        return redirect()->route('admin.show.rek', ['rek_id'=>$ri->rek_id]);
+        return redirect()->route('admin.show.rek', ['rek_id' => $ri->rek_id]);
     }
 }

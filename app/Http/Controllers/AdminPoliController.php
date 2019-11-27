@@ -19,7 +19,7 @@ class AdminPoliController extends Controller
 
     public function create($rek_id)
     {
-        return view('admin.poli.create', ['rek_id'=>$rek_id]);
+        return view('admin.poli.create', ['rek_id' => $rek_id]);
     }
 
     public function store(Request $request)
@@ -34,13 +34,19 @@ class AdminPoliController extends Controller
         $poli->poli_datetime = $request->get('date');
 
         if ($request->file('ct')) {
-            $file = $request->file('ct')->store("Rekmed/$rek_id/POLI/$poli->poli_id/Catatan_Terintegrasi", 'public');
-            $poli->poli_ctt_integ = $file;
+            $dir = "Rekmed/$rek_id/POLI/$poli->poli_id/Catatan_Terintegrasi/";
+            $file = $poli->poli_id . "_poli_ct.pdf";
+
+            $request->file('ct')->storeAs("public/$dir", $file);
+            $poli->poli_ctt_integ = $dir . $file;
         }
 
         if ($request->file('resume')) {
-            $file = $request->file('resume')->store("Rekmed/$rek_id/POLI/$poli->poli_id/Resume", 'public');
-            $poli->poli_resume = $file;
+            $dir = "Rekmed/$rek_id/POLI/$poli->poli_id/Resume/";
+            $file = $poli->poli_id . "_poli_r.pdf";
+
+            $request->file('resume')->storeAs("public/$dir", $file);
+            $poli->poli_resume = $dir . $file;
         }
 
         $poli->save();
@@ -48,10 +54,15 @@ class AdminPoliController extends Controller
 
         foreach ($penunjang_names as $p_name) {
             if ($request->file($p_name)) {
+                $dir = "Rekmed/$rek_id/POLI/$poli->poli_id/Penunjang/";
+                $file = $poli->poli_id . "_poli_p-$p_name.pdf";
+
                 $penunjang = new PoliPenunjang;
-                $file = $request->file($p_name)->store("Rekmed/$rek_id/POLI/$poli->poli_id/Penunjang/$p_name", 'public');
+
+                $request->file($p_name)->storeAs("public/$dir", $file);
+                
                 $penunjang->p_name = $p_name;
-                $penunjang->p_file = $file;
+                $penunjang->p_file = $dir . $file;
                 $penunjang->poli_id = $poli->poli_id;
                 $penunjang->save();
             }
@@ -63,7 +74,7 @@ class AdminPoliController extends Controller
     public function validation($id)
     {
         $data = Poli::findOrFail($id);
-        return view('admin.poli.validation', ['poli'=>$data]);
+        return view('admin.poli.validation', ['poli' => $data]);
     }
 
     public function cancel(Request $request)
@@ -71,6 +82,6 @@ class AdminPoliController extends Controller
         $poli_id = $request->get('poli_id');
         $poli = Poli::findOrFail($poli_id);
         $poli->delete();
-        return redirect()->route('admin.show.rek', ['rek_id'=>$poli->rek_id]);
+        return redirect()->route('admin.show.rek', ['rek_id' => $poli->rek_id]);
     }
 }

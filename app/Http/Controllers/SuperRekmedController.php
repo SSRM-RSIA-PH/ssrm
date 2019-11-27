@@ -170,22 +170,28 @@ class SuperRekmedController extends Controller
 
         if ($request->file('cp')) {
             $dbfile = $igd->igd_ctt_perkembangan;
-            if ($dbfile && file_exists(storage_path('app/public/' . $dbfile))) {
-                \Storage::delete('public/' . $dbfile);
+            if ($dbfile && file_exists(storage_path("app/public/$dbfile"))) {
+                \Storage::delete("public/$dbfile");
             }
 
-            $file = $request->file('cp')->store("Rekmed/$rek_id/IGD/$id/Catatan_Perkembangan", 'public');
-            $igd->igd_ctt_perkembangan = $file;
+            $dir = "Rekmed/$rek_id/IGD/$id/Catatan_Perkembangan/";
+            $file = $id . "_igd_cp.pdf";
+
+            $request->file('cp')->storeAs("public/$dir", $file);
+            $igd->igd_ctt_perkembangan =  $dir . $file;
         }
 
         if ($request->file('resume')) {
             $dbfile = $igd->igd_resume;
-            if ($dbfile && file_exists(storage_path('app/public/' . $dbfile))) {
-                \Storage::delete('public/' . $dbfile);
+            if ($dbfile && file_exists(storage_path("app/public/$dbfile"))) {
+                \Storage::delete("public/$dbfile");
             }
 
-            $file = $request->file('resume')->store("Rekmed/$rek_id/IGD/$id/Resume", 'public');
-            $igd->igd_resume = $file;
+            $dir = "Rekmed/$rek_id/IGD/$id/Resume/";
+            $file = $id . "_igd_r.pdf";
+
+            $request->file('resume')->storeAs("public/$dir", $file);
+            $igd->igd_resume = $dir . $file;
         }
         $igd->save();
 
@@ -195,17 +201,19 @@ class SuperRekmedController extends Controller
                 $igd_p = IgdPenunjang::findOrFail($request->get('id_usg'));
 
                 $dbfile = $igd_p->p_file;
-                if ($dbfile && file_exists(storage_path('app/public/' . $dbfile))) {
-                    \Storage::delete('public/' . $dbfile);
+                if ($dbfile && file_exists(storage_path("app/public/$dbfile"))) {
+                    \Storage::delete("public/$dbfile");
                 }
             } else {
                 $igd_p = new IgdPenunjang;
                 $igd_p->p_name = "usg";
                 $igd_p->igd_id = $id;
             }
+            $dir = "Rekmed/$rek_id/IGD/$id/Penunjang/";
+            $file = $id . "_igd_p-usg.pdf";
 
-            $file = $request->file('usg')->store("Rekmed/$rek_id/IGD/$id/Penunjang/usg", 'public');
-            $igd_p->p_file = $file;
+            $request->file('usg')->storeAs("public/$dir", $file);
+            $igd_p->p_file = $dir . $file;
             $igd_p->save();
         }
 
@@ -214,17 +222,19 @@ class SuperRekmedController extends Controller
                 $igd_p = IgdPenunjang::findOrFail($request->get('id_ctg'));
 
                 $dbfile = $igd_p->p_file;
-                if ($dbfile && file_exists(storage_path('app/public/' . $dbfile))) {
-                    \Storage::delete('public/' . $dbfile);
+                if ($dbfile && file_exists(storage_path("app/public/$dbfile"))) {
+                    \Storage::delete("public/$dbfile");
                 }
             } else {
                 $igd_p = new IgdPenunjang;
                 $igd_p->p_name = "ctg";
                 $igd_p->igd_id = $id;
             }
+            $dir = "Rekmed/$rek_id/IGD/$id/Penunjang/";
+            $file = $id . "_igd_p-ctg.pdf";
 
-            $file = $request->file('ctg')->store("Rekmed/$rek_id/IGD/$id/Penunjang/ctg", 'public');
-            $igd_p->p_file = $file;
+            $request->file('ctg')->storeAs("public/$dir", $file);
+            $igd_p->p_file = $dir . $file;
             $igd_p->save();
         }
 
@@ -233,17 +243,19 @@ class SuperRekmedController extends Controller
                 $igd_p = IgdPenunjang::findOrFail($request->get('id_xray'));
 
                 $dbfile = $igd_p->p_file;
-                if ($dbfile && file_exists(storage_path('app/public/' . $dbfile))) {
-                    \Storage::delete('public/' . $dbfile);
+                if ($dbfile && file_exists(storage_path("app/public/$dbfile"))) {
+                    \Storage::delete("public/$dbfile");
                 }
             } else {
                 $igd_p = new IgdPenunjang;
                 $igd_p->p_name = "xray";
                 $igd_p->igd_id = $id;
             }
+            $dir = "Rekmed/$rek_id/IGD/$id/Penunjang/";
+            $file = $id . "_igd_p-xray.pdf";
 
-            $file = $request->file('xray')->store("Rekmed/$rek_id/IGD/$id/Penunjang/xray", 'public');
-            $igd_p->p_file = $file;
+            $request->file('xray')->storeAs("public/$dir", $file);
+            $igd_p->p_file = $dir . $file;
             $igd_p->save();
         }
 
@@ -252,17 +264,19 @@ class SuperRekmedController extends Controller
                 $igd_p = IgdPenunjang::findOrFail($request->get('id_ekg'));
 
                 $dbfile = $igd_p->p_file;
-                if ($dbfile && file_exists(storage_path('app/public/' . $dbfile))) {
-                    \Storage::delete('public/' . $dbfile);
+                if ($dbfile && file_exists(storage_path("app/public/$dbfile"))) {
+                    \Storage::delete("public/$dbfile");
                 }
             } else {
                 $igd_p = new IgdPenunjang;
                 $igd_p->p_name = "ekg";
                 $igd_p->igd_id = $id;
             }
+            $dir = "Rekmed/$rek_id/IGD/$id/Penunjang/";
+            $file = $id . "_igd_p-ekg.pdf";
 
-            $file = $request->file('ekg')->store("Rekmed/$rek_id/IGD/$id/Penunjang/ekg", 'public');
-            $igd_p->p_file = $file;
+            $request->file('ekg')->storeAs("public/$dir", $file);
+            $igd_p->p_file = $dir . $file;
             $igd_p->save();
         }
 
@@ -271,17 +285,19 @@ class SuperRekmedController extends Controller
                 $igd_p = IgdPenunjang::findOrFail($request->get('id_lab'));
 
                 $dbfile = $igd_p->p_file;
-                if ($dbfile && file_exists(storage_path('app/public/' . $dbfile))) {
-                    \Storage::delete('public/' . $dbfile);
+                if ($dbfile && file_exists(storage_path("app/public/$dbfile"))) {
+                    \Storage::delete("public/$dbfile");
                 }
             } else {
                 $igd_p = new IgdPenunjang;
                 $igd_p->p_name = "lab";
                 $igd_p->igd_id = $id;
             }
+            $dir = "Rekmed/$rek_id/IGD/$id/Penunjang/";
+            $file = $id . "_igd_p-lab.pdf";
 
-            $file = $request->file('lab')->store("Rekmed/$rek_id/IGD/$id/Penunjang/lab", 'public');
-            $igd_p->p_file = $file;
+            $request->file('lab')->storeAs("public/$dir", $file);
+            $igd_p->p_file = $dir . $file;
             $igd_p->save();
         }
 
@@ -320,22 +336,28 @@ class SuperRekmedController extends Controller
 
         if ($request->file('cp')) {
             $dbfile = $poli->poli_ctt_integ;
-            if ($dbfile && file_exists(storage_path('app/public/' . $dbfile))) {
-                \Storage::delete('public/' . $dbfile);
+            if ($dbfile && file_exists(storage_path("app/public/$dbfile"))) {
+                \Storage::delete("public/$dbfile");
             }
 
-            $file = $request->file('cp')->store("Rekmed/$rek_id/POLI/$id/Catatan_Terintegrasi", 'public');
-            $poli->poli_ctt_integ = $file;
+            $dir = "Rekmed/$rek_id/POLI/$id/Catatan_Terintegrasi/";
+            $file = $id . "_poli_ct.pdf";
+
+            $request->file('cp')->storeAs("public/$dir", $file);
+            $poli->poli_ctt_integ = $dir . $file;
         }
 
         if ($request->file('resume')) {
             $dbfile = $poli->poli_resume;
-            if ($dbfile && file_exists(storage_path('app/public/' . $dbfile))) {
-                \Storage::delete('public/' . $dbfile);
+            if ($dbfile && file_exists(storage_path("app/public/$dbfile"))) {
+                \Storage::delete("public/$dbfile");
             }
 
-            $file = $request->file('resume')->store("Rekmed/$rek_id/POLI/$id/Resume", 'public');
-            $poli->poli_resume = $file;
+            $dir = "Rekmed/$rek_id/POLI/$id/Resume/";
+            $file = $id . "_poli_r.pdf";
+
+            $request->file('resume')->storeAs("public/$dir", $file);
+            $poli->poli_resume = $dir . $file;
         }
         $poli->save();
 
@@ -345,17 +367,19 @@ class SuperRekmedController extends Controller
                 $poli_p = PoliPenunjang::findOrFail($request->get('id_usg'));
 
                 $dbfile = $poli_p->p_file;
-                if ($dbfile && file_exists(storage_path('app/public/' . $dbfile))) {
-                    \Storage::delete('public/' . $dbfile);
+                if ($dbfile && file_exists(storage_path("app/public/$dbfile"))) {
+                    \Storage::delete("public/$dbfile");
                 }
             } else {
                 $poli_p = new PoliPenunjang;
                 $poli_p->p_name = "usg";
                 $poli_p->poli_id = $id;
             }
+            $dir = "Rekmed/$rek_id/POLI/$id/Penunjang/";
+            $file = $id . "_poli_p-usg.pdf";
 
-            $file = $request->file('usg')->store("Rekmed/$rek_id/POLI/$id/Penunjang/usg", 'public');
-            $poli_p->p_file = $file;
+            $request->file('usg')->storeAs("public/$dir", $file);
+            $poli_p->p_file = $dir . $file;
             $poli_p->save();
         }
 
@@ -364,17 +388,19 @@ class SuperRekmedController extends Controller
                 $poli_p = PoliPenunjang::findOrFail($request->get('id_ctg'));
 
                 $dbfile = $poli_p->p_file;
-                if ($dbfile && file_exists(storage_path('app/public/' . $dbfile))) {
-                    \Storage::delete('public/' . $dbfile);
+                if ($dbfile && file_exists(storage_path("app/public/$dbfile"))) {
+                    \Storage::delete("public/$dbfile");
                 }
             } else {
                 $poli_p = new PoliPenunjang;
                 $poli_p->p_name = "ctg";
                 $poli_p->poli_id = $id;
             }
+            $dir = "Rekmed/$rek_id/POLI/$id/Penunjang/";
+            $file = $id . "_poli_p-ctg.pdf";
 
-            $file = $request->file('ctg')->store("Rekmed/$rek_id/POLI/$id/Penunjang/ctg", 'public');
-            $poli_p->p_file = $file;
+            $request->file('ctg')->storeAs("public/$dir", $file);
+            $poli_p->p_file = $dir . $file;
             $poli_p->save();
         }
 
@@ -383,17 +409,19 @@ class SuperRekmedController extends Controller
                 $poli_p = PoliPenunjang::findOrFail($request->get('id_xray'));
 
                 $dbfile = $poli_p->p_file;
-                if ($dbfile && file_exists(storage_path('app/public/' . $dbfile))) {
-                    \Storage::delete('public/' . $dbfile);
+                if ($dbfile && file_exists(storage_path("app/public/$dbfile"))) {
+                    \Storage::delete("public/$dbfile");
                 }
             } else {
                 $poli_p = new PoliPenunjang;
                 $poli_p->p_name = "xray";
                 $poli_p->poli_id = $id;
             }
+            $dir = "Rekmed/$rek_id/POLI/$id/Penunjang/";
+            $file = $id . "_poli_p-xray.pdf";
 
-            $file = $request->file('xray')->store("Rekmed/$rek_id/POLI/$id/Penunjang/xray", 'public');
-            $poli_p->p_file = $file;
+            $request->file('xray')->storeAs("public/$dir", $file);
+            $poli_p->p_file = $dir . $file;
             $poli_p->save();
         }
 
@@ -402,17 +430,19 @@ class SuperRekmedController extends Controller
                 $poli_p = PoliPenunjang::findOrFail($request->get('id_ekg'));
 
                 $dbfile = $poli_p->p_file;
-                if ($dbfile && file_exists(storage_path('app/public/' . $dbfile))) {
-                    \Storage::delete('public/' . $dbfile);
+                if ($dbfile && file_exists(storage_path("app/public/$dbfile"))) {
+                    \Storage::delete("public/$dbfile");
                 }
             } else {
                 $poli_p = new PoliPenunjang;
                 $poli_p->p_name = "ekg";
                 $poli_p->poli_id = $id;
             }
+            $dir = "Rekmed/$rek_id/POLI/$id/Penunjang/";
+            $file = $id . "_poli_p-ekg.pdf";
 
-            $file = $request->file('ekg')->store("Rekmed/$rek_id/POLI/$id/Penunjang/ekg", 'public');
-            $poli_p->p_file = $file;
+            $request->file('ekg')->storeAs("public/$dir", $file);
+            $poli_p->p_file = $dir . $file;
             $poli_p->save();
         }
 
@@ -421,17 +451,19 @@ class SuperRekmedController extends Controller
                 $poli_p = PoliPenunjang::findOrFail($request->get('id_lab'));
 
                 $dbfile = $poli_p->p_file;
-                if ($dbfile && file_exists(storage_path('app/public/' . $dbfile))) {
-                    \Storage::delete('public/' . $dbfile);
+                if ($dbfile && file_exists(storage_path("app/public/$dbfile"))) {
+                    \Storage::delete("public/$dbfile");
                 }
             } else {
                 $poli_p = new PoliPenunjang;
                 $poli_p->p_name = "lab";
                 $poli_p->poli_id = $id;
             }
+            $dir = "Rekmed/$rek_id/POLI/$id/Penunjang/";
+            $file = $id . "_poli_p-lab.pdf";
 
-            $file = $request->file('lab')->store("Rekmed/$rek_id/POLI/$id/Penunjang/lab", 'public');
-            $poli_p->p_file = $file;
+            $request->file('lab')->storeAs("public/$dir", $file);
+            $poli_p->p_file = $dir . $file;
             $poli_p->save();
         }
 
@@ -470,42 +502,50 @@ class SuperRekmedController extends Controller
 
         if ($request->file('cp')) {
             $dbfile = $nicu->nicu_ctt_integ;
-            if ($dbfile && file_exists(storage_path('app/public/' . $dbfile))) {
-                \Storage::delete('public/' . $dbfile);
+            if ($dbfile && file_exists(storage_path("app/public/$dbfile"))) {
+                \Storage::delete("public/$dbfile");
             }
+            $dir = "Rekmed/$rek_id/NICU/$id/Catatan_Perkembangan_Terintegrasi/";
+            $file = $id . "_nicu_cpt.pdf";
 
-            $file = $request->file('cp')->store("Rekmed/$rek_id/NICU/$id/Catatan_Terintegrasi", 'public');
-            $nicu->nicu_ctt_integ = $file;
+            $request->file('cp')->storeAs("public/$dir", $file);
+            $nicu->nicu_ctt_integ = $dir . $file;
         }
 
         if ($request->file('resume')) {
             $dbfile = $nicu->nicu_resume;
-            if ($dbfile && file_exists(storage_path('app/public/' . $dbfile))) {
-                \Storage::delete('public/' . $dbfile);
+            if ($dbfile && file_exists(storage_path("app/public/$dbfile"))) {
+                \Storage::delete("public/$dbfile");
             }
+            $dir = "Rekmed/$rek_id/NICU/$id/Resume/";
+            $file = $id . "_nicu_r.pdf";
 
-            $file = $request->file('resume')->store("Rekmed/$rek_id/NICU/$id/Resume", 'public');
-            $nicu->nicu_resume = $file;
+            $request->file('resume')->storeAs("public/$dir", $file);
+            $nicu->nicu_resume = $dir . $file;
         }
 
         if ($request->file('pengkajian')) {
             $dbfile = $nicu->nicu_pengkajian;
-            if ($dbfile && file_exists(storage_path('app/public/' . $dbfile))) {
-                \Storage::delete('public/' . $dbfile);
+            if ($dbfile && file_exists(storage_path("app/public/$dbfile"))) {
+                \Storage::delete("public/$dbfile");
             }
+            $dir = "Rekmed/$rek_id/NICU/$id/Pengkajian_Awal/";
+            $file = $id . "_nicu_pa.pdf";
 
-            $file = $request->file('pengkajian')->store("Rekmed/$rek_id/NICU/$id/Pengkajian_Awal", 'public');
-            $nicu->nicu_pengkajian = $file;
+            $request->file('pengkajian')->storeAs("public/$dir", $file);
+            $nicu->nicu_pengkajian = $dir . $file;
         }
 
         if ($request->file('grafik')) {
             $dbfile = $nicu->nicu_grafik;
-            if ($dbfile && file_exists(storage_path('app/public/' . $dbfile))) {
-                \Storage::delete('public/' . $dbfile);
+            if ($dbfile && file_exists(storage_path("app/public/$dbfile"))) {
+                \Storage::delete("public/$dbfile");
             }
+            $dir = "Rekmed/$rek_id/NICU/$id/Grafik/";
+            $file = $id . "_nicu_g.pdf";
 
-            $file = $request->file('grafik')->store("Rekmed/$rek_id/NICU/$id/Grafik", 'public');
-            $nicu->nicu_grafik = $file;
+            $request->file('grafik')->storeAs("public/$dir", $file);
+            $nicu->nicu_grafik = $dir . $file;
         }
         $nicu->save();
 
@@ -515,17 +555,19 @@ class SuperRekmedController extends Controller
                 $nicu_p = NicuPenunjang::findOrFail($request->get('id_xray'));
 
                 $dbfile = $nicu_p->p_file;
-                if ($dbfile && file_exists(storage_path('app/public/' . $dbfile))) {
-                    \Storage::delete('public/' . $dbfile);
+                if ($dbfile && file_exists(storage_path("app/public/$dbfile"))) {
+                    \Storage::delete("public/$dbfile");
                 }
             } else {
                 $nicu_p = new NicuPenunjang;
                 $nicu_p->p_name = "xray";
                 $nicu_p->nicu_id = $id;
             }
+            $dir = "Rekmed/$rek_id/NICU/$id/Penunjang/";
+            $file = $id . "_nicu_p-xray.pdf";
 
-            $file = $request->file('xray')->store("Rekmed/$rek_id/NICU/$id/Penunjang/xray", 'public');
-            $nicu_p->p_file = $file;
+            $request->file('xray')->storeAs("public/$dir", $file);
+            $nicu_p->p_file = $dir . $file;
             $nicu_p->save();
         }
 
@@ -534,17 +576,19 @@ class SuperRekmedController extends Controller
                 $nicu_p = NicuPenunjang::findOrFail($request->get('id_lab'));
 
                 $dbfile = $nicu_p->p_file;
-                if ($dbfile && file_exists(storage_path('app/public/' . $dbfile))) {
-                    \Storage::delete('public/' . $dbfile);
+                if ($dbfile && file_exists(storage_path("app/public/$dbfile"))) {
+                    \Storage::delete("public/$dbfile");
                 }
             } else {
                 $nicu_p = new NicuPenunjang;
                 $nicu_p->p_name = "lab";
                 $nicu_p->nicu_id = $id;
             }
+            $dir = "Rekmed/$rek_id/NICU/$id/Penunjang/";
+            $file = $id . "_nicu_p-lab.pdf";
 
-            $file = $request->file('lab')->store("Rekmed/$rek_id/NICU/$id/Penunjang/lab", 'public');
-            $nicu_p->p_file = $file;
+            $request->file('lab')->storeAs("public/$dir", $file);
+            $nicu_p->p_file = $dir . $file;
             $nicu_p->save();
         }
 
@@ -583,42 +627,47 @@ class SuperRekmedController extends Controller
 
         if ($request->file('cp')) {
             $dbfile = $ri->ri_ctt_integ;
-            if ($dbfile && file_exists(storage_path('app/public/' . $dbfile))) {
-                \Storage::delete('public/' . $dbfile);
+            if ($dbfile && file_exists(storage_path("app/public/$dbfile"))) {
+                \Storage::delete("public/$dbfile");
             }
+            $dir = "Rekmed/$rek_id/Rawat_Inap/$id/Catatan_Perkembangan_Terintegrasi/";
+            $file = $id . "_ri_cpt.pdf";
 
-            $file = $request->file('cp')->store("Rekmed/$rek_id/Rawat_Inap/$id/Catatan_Perkembangan_Terintegrasi", 'public');
-            $ri->ri_ctt_integ = $file;
+            $request->file('cp')->storeAs("public/$dir", $file);
+            $ri->ri_ctt_integ = $dir . $file;
         }
 
         if ($request->file('resume')) {
             $dbfile = $ri->ri_resume;
-            if ($dbfile && file_exists(storage_path('app/public/' . $dbfile))) {
-                \Storage::delete('public/' . $dbfile);
-            }
+            $dir = "Rekmed/$rek_id/Rawat_Inap/$id/Resume_Inap/";
+            $file = $id . "_ri_r.pdf";
 
-            $file = $request->file('resume')->store("Rekmed/$rek_id/Rawat_Inap/$id/Resume_Inap", 'public');
-            $ri->ri_resume = $file;
+            $request->file('resume')->storeAs("public/$dir", $file);
+            $ri->ri_resume = $dir . $file;
         }
 
         if ($request->file('cto')) {
             $dbfile = $ri->ri_ctt_oper;
-            if ($dbfile && file_exists(storage_path('app/public/' . $dbfile))) {
-                \Storage::delete('public/' . $dbfile);
+            if ($dbfile && file_exists(storage_path("app/public/$dbfile"))) {
+                \Storage::delete("public/$dbfile");
             }
+            $dir = "Rekmed/$rek_id/Rawat_Inap/$id/Catatan_Tindakan-Operasi/";
+            $file = $id . "_ri_cto.pdf";
 
-            $file = $request->file('cto')->store("Rekmed/$rek_id/Rawat_Inap/$id/Catatan_Tindakan-Operasi", 'public');
-            $ri->ri_ctt_oper = $file;
+            $request->file('cto')->storeAs("public/$dir", $file);
+            $ri->ri_ctt_oper = $dir . $file;
         }
 
         if ($request->file('bayi')) {
             $dbfile = $ri->ri_bayi;
-            if ($dbfile && file_exists(storage_path('app/public/' . $dbfile))) {
-                \Storage::delete('public/' . $dbfile);
+            if ($dbfile && file_exists(storage_path("app/public/$dbfile"))) {
+                \Storage::delete("public/$dbfile");
             }
+            $dir = "Rekmed/$rek_id/Rawat_Inap/$id/Bayi/";
+            $file = $id . "_ri_b.pdf";
 
-            $file = $request->file('bayi')->store("Rekmed/$rek_id/Rawat_Inap/$id/Bayi", 'public');
-            $ri->ri_bayi = $file;
+            $request->file('bayi')->storeAs("public/$dir", $file);
+            $ri->ri_bayi = $dir . $file;
         }
         $ri->save();
 
@@ -628,17 +677,19 @@ class SuperRekmedController extends Controller
                 $ri_p = RawatInapPenunjang::findOrFail($request->get('id_xray'));
 
                 $dbfile = $ri_p->p_file;
-                if ($dbfile && file_exists(storage_path('app/public/' . $dbfile))) {
-                    \Storage::delete('public/' . $dbfile);
+                if ($dbfile && file_exists(storage_path("app/public/$dbfile"))) {
+                    \Storage::delete("public/$dbfile");
                 }
             } else {
                 $ri_p = new RawatInapPenunjang;
                 $ri_p->p_name = "xray";
                 $ri_p->ri_id = $id;
             }
+            $dir = "Rekmed/$rek_id/Rawat_Inap/$id/Penunjang/";
+            $file = $id . "_ri_p-xray.pdf";
 
-            $file = $request->file('xray')->store("Rekmed/$rek_id/Rawat_Inap/$id/Penunjang/xray", 'public');
-            $ri_p->p_file = $file;
+            $request->file('xray')->storeAs("public/$dir", $file);
+            $ri_p->p_file = $dir . $file;
             $ri_p->save();
         }
 
@@ -647,17 +698,19 @@ class SuperRekmedController extends Controller
                 $ri_p = RawatInapPenunjang::findOrFail($request->get('id_lab'));
 
                 $dbfile = $ri_p->p_file;
-                if ($dbfile && file_exists(storage_path('app/public/' . $dbfile))) {
-                    \Storage::delete('public/' . $dbfile);
+                if ($dbfile && file_exists(storage_path("app/public/$dbfile"))) {
+                    \Storage::delete("public/$dbfile");
                 }
             } else {
                 $ri_p = new RawatInapPenunjang;
                 $ri_p->p_name = "lab";
                 $ri_p->ri_id = $id;
             }
+            $dir = "Rekmed/$rek_id/Rawat_Inap/$id/Penunjang/";
+            $file = $id . "_ri_p-lab.pdf";
 
-            $file = $request->file('lab')->store("Rekmed/$rek_id/Rawat_Inap/$id/Penunjang/lab", 'public');
-            $ri_p->p_file = $file;
+            $request->file('lab')->storeAs("public/$dir", $file);
+            $ri_p->p_file = $dir . $file;
             $ri_p->save();
         }
 
@@ -673,8 +726,18 @@ class SuperRekmedController extends Controller
     public function destroy_rekmed($rek_id)
     {
         $rekmed = Rekmed::findOrFail($rek_id);
-        
+
         \Storage::deleteDirectory("public/Rekmed/$rek_id/");
+
+        $ctg = ['igd', 'nicu', 'poli', 'ri'];
+
+        foreach ($ctg as $c) {
+            $logs = Log::where('ctg', $c)->where('rek_id', $rek_id)->get();
+            foreach ($logs as $log) {
+                $log->id_ctg =  NULL;
+                $log->save();
+            }
+        }
 
         $rekmed->delete();
         return redirect()->route('super.rekmed');
@@ -717,7 +780,7 @@ class SuperRekmedController extends Controller
 
         $db->delete();
 
-        return redirect()->route("super.rekmed.show.$ctg", ['rek_id'=>$rek_id]);
+        return redirect()->route("super.rekmed.show.$ctg", ['rek_id' => $rek_id]);
     }
 
     //destroy detail
