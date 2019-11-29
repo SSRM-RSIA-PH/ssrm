@@ -32,7 +32,7 @@ List Rekmed
         <th>Nama Pasien</th>
         <th>Tanggal Upload</th>
         <th>User</th>
-        <th width="200px"></th>
+        <th width="245px"></th>
     </thead>
     <tbody>
         @foreach ($rekmed as $r)
@@ -43,6 +43,7 @@ List Rekmed
             <td>{{$r->user()->name}}</td>
             <td>
                 <a href="{{route('super.rekmed.show', ['rek_id'=>$r->rek_id])}}" class="btn btn-sm btn-info">Detail</a>
+                <a href="{{route('archive', ['rek_id'=>$r->rek_id])}}" class="btn btn-sm btn-success">Arsip</a>
                 <a href="{{route('super.rekmed.edit', ['rek_id'=>$r->rek_id])}}" class="btn btn-sm btn-primary">Edit</a>
                 <form onsubmit="return confirm('Delete {{$r->rek_id}} permanently ?')" class="d-inline"
                     action="{{route('super.rekmed.destroy', ['rek_id'=>$r->rek_id])}}" method="POST">

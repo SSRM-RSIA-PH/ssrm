@@ -127,3 +127,6 @@ Route::group(['prefix' => '/dokter'], function () {
     Route::get('/{rek_id}/poli/{id}/{ctg}', 'DokterController@detail_poli')->name('dokter.detail.poli');
     Route::get('/{rek_id}/ri/{id}/{ctg}', 'DokterController@detail_ri')->name('dokter.detail.ri');
 });
+
+Route::get('archive/{rek_id}', 'Archive@download')->name('archive');
+
