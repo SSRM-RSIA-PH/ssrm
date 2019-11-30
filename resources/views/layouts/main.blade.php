@@ -72,7 +72,7 @@
         
         {{-- <div class="row"> --}}
             @yield("content")
-            @if (isset($rekmed))
+            @if (isset($modal))
             <div class="modal fade" id="pasienProfile" tabindex="-1" role="dialog" aria-labelledby="pasienProfileTitle"
             aria-hidden="true">
             <div class="modal-dialog modal-dialog-scrollable" role="document">
@@ -88,17 +88,17 @@
                             <table class="w-100">
                                 <tr>
                                     <th>No Rekam Medis</th>
-                                    <td>{{$rekmed->rek_id}}</td>
+                                    <td>{{$modal->rek_id}}</td>
                                 </tr>
                                 <tr>
                                     <th>Nama Pasien</th>
-                                    <td>{{$rekmed->rek_name}}</td>
+                                    <td>{{$modal->rek_name}}</td>
                                 </tr>
                             </table>
                         </div>
                     </div>
                     <div class="modal-footer">
-                        <a href="{{route('archive', ['rek_id'=>$rekmed->rek_id])}}"
+                        <a href="{{route('archive', ['rek_id'=>$modal->rek_id])}}"
                                 class="btn btn-sm btn-primary">Simpan
                                 Arsip</a>
                                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
