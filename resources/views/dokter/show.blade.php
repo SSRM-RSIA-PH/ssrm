@@ -28,7 +28,7 @@
                         </tr>
                     </table>
                 </div>
-                <a href="{{route('archive', ['rek_id'=>$rekmed->rek_id])}}" class="btn btn-sm btn-primary">Simpan Arsip</a>
+                <a href="{{route('archive', ['rek_id'=>$rekmed->rek_id])}}" class="btn btn-sm btn-primarycd ">Simpan Arsip</a>
             </div>
         </div>
     </div>
