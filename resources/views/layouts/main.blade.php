@@ -9,7 +9,18 @@
     <link rel="stylesheet" href="{{asset('css/bootstrap.min.css')}}">
     <style>
         .active {
-            border-bottom: 2px solid gray
+            background: #eb7900;
+            border-radius: 3px
+        }
+
+        .nav-link {
+            margin-right: 5px
+        }
+
+        .nav-link:hover {
+            background: #eb7900;
+            opacity: 80%;
+            border-radius: 3px
         }
     </style>
 </head>
@@ -17,7 +28,7 @@
 <body>
     <!-- navbar -->
     <nav class="navbar navbar-expand-lg navbar-light bg-white shadow-sm sticky-top mb-3">
-        <div class="container">
+        <div class="container-fluid">
             <a class="navbar-brand" href="#"><img src="{{asset('img/logo-rsia-ph.png')}}" height="30"
                     class="d-inline-block align-top" alt="">
             </a>
@@ -26,16 +37,20 @@
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav">
+                <ul class="navbar-nav h5">
                     @yield("menu")
                 </ul>
 
             </div>
+            <div class="float-right mr-1">
+                @yield('pasien')
+            </div>
             <div class="dropdown float-right">
+                <span>|</span>
                 @if(Auth::user())
-                <button class="btn btn-link btn-link-primary dropdown-toggle" id="navbar-dropdown"
-                    data-toggle="dropdown">
-                    {{Auth::user()->name}}
+                <button class="btn btn-primary dropdown-toggle" id="navbar-dropdown" data-toggle="dropdown">
+                    {{-- {{Auth::user()->name}} --}}
+                    <img src="{{asset('img/account_circle-24px.svg')}}" alt="">
                 </button>
                 @endif
                 <div class="dropdown-menu dropdown-menu-right">
@@ -53,13 +68,48 @@
     </nav>
     <!-- end navbar -->
 
-    <div class="container">
+    <div class="container-fluid">
+        
         {{-- <div class="row"> --}}
-        @yield("content")
-
+            @yield("content")
+            @if (isset($rekmed))
+            <div class="modal fade" id="pasienProfile" tabindex="-1" role="dialog" aria-labelledby="pasienProfileTitle"
+            aria-hidden="true">
+            <div class="modal-dialog modal-dialog-scrollable" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="pasienProfileTitle">Nama Pasien</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="alert alert-success w-100">
+                            <table class="w-100">
+                                <tr>
+                                    <th>No Rekam Medis</th>
+                                    <td>{{$rekmed->rek_id}}</td>
+                                </tr>
+                                <tr>
+                                    <th>Nama Pasien</th>
+                                    <td>{{$rekmed->rek_name}}</td>
+                                </tr>
+                            </table>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <a href="{{route('archive', ['rek_id'=>$rekmed->rek_id])}}"
+                                class="btn btn-sm btn-primary">Simpan
+                                Arsip</a>
+                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                            </div>
+                        </div>
+            </div>
+            @endif
+        </div>
         {{-- </div> --}}
     </div>
-
+    
     <script src="{{asset('js/jquery.min.js')}}"></script>
     <script src="{{asset('js/bootstrap.min.js')}}"></script>
     <script src="{{asset('js/bscfi.js')}}"></script>

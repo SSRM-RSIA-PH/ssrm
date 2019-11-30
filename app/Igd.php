@@ -20,4 +20,9 @@ class Igd extends Model
     {
         return IgdPenunjang::where('igd_id', $this->igd_id)->get();
     }
+
+    public function rekmed()
+    {
+        return Rekmed::where('rek_id', $this->rek_id)->get()->first();
+    }
 }

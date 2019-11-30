@@ -20,4 +20,9 @@ class Poli extends Model
     {
         return PoliPenunjang::where('poli_id', $this->poli_id)->get();
     }
+
+    public function rekmed()
+    {
+        return Rekmed::where('rek_id', $this->rek_id)->get()->first();
+    }
 }
