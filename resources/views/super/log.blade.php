@@ -11,7 +11,7 @@
 
 @section('content')
     <div class="container">
-        <table class="table">
+        <table class="table table-bordered">
             <tr>
                 <th>Tanggal</th>
                 <th>User</th>
@@ -32,10 +32,10 @@
                             <a href="{{route("super.rekmed.detail.$log->ctg", [
                                 'rek_id'=>$log->rek_id,
                                 'id'=>$log->id_ctg
-                            ])}}" class="btn btn-primary">View</a>
+                            ])}}" class="btn btn-primary btn-sm">View</a>
                             </th>
                         @else
-                            <a href="" class="btn btn-danger">Deleted</a>
+                            <a href="" class="btn btn-sm btn-danger">Deleted</a>
                         @endif
                 </tr>
             @endforeach

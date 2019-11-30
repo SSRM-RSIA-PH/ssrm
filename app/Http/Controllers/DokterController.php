@@ -34,15 +34,19 @@ class DokterController extends Controller
     public function show($rek_id)
     {
         $data = Rekmed::findOrFail($rek_id);
-        return view('dokter.show', ['rekmed' => $data]);
+        return view('dokter.show', [
+            'rekmed' => $data
+        ]);
     }
 
 
     //show list
     public function show_igd($rek_id)
     {
+        $rekmed = Rekmed::find($rek_id);
         $igd = Igd::where('rek_id', $rek_id)->orderBy('igd_datetime', 'DESC')->paginate(10);
         return view('dokter.show.igd', [
+            'rekmed' => $rekmed,
             'rek_id' => $rek_id,
             'igd' => $igd
         ]);
@@ -50,8 +54,10 @@ class DokterController extends Controller
 
     public function show_nicu($rek_id)
     {
+        $rekmed = Rekmed::find($rek_id);       
         $nicu = Nicu::where('rek_id', $rek_id)->orderBy('nicu_datetime', 'DESC')->paginate(10);
         return view('dokter.show.nicu', [
+            'rekmed' => $rekmed,
             'rek_id' => $rek_id,
             'nicu' => $nicu
         ]);
@@ -59,8 +65,10 @@ class DokterController extends Controller
 
     public function show_poli($rek_id)
     {
+        $rekmed = Rekmed::find($rek_id);           
         $poli = Poli::where('rek_id', $rek_id)->orderBy('poli_datetime', 'DESC')->paginate(10);
         return view('dokter.show.poli', [
+            'rekmed' => $rekmed,
             'rek_id' => $rek_id,
             'poli' => $poli,
         ]);
@@ -68,8 +76,10 @@ class DokterController extends Controller
 
     public function show_ri($rek_id)
     {
+        $rekmed = Rekmed::find($rek_id);
         $ri = RawatInap::where('rek_id', $rek_id)->orderBy('ri_datetime', 'DESC')->paginate(10);
         return view('dokter.show.ri', [
+            'rekmed' => $rekmed,
             'rek_id' => $rek_id,
             'ri' => $ri,
         ]);

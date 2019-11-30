@@ -58,4 +58,10 @@
         </div>
     </div>
 </div>
+<div class="card-footer">
+    <a href="{{route('super.rekmed.igd.edit', [
+                    'rek_id'=>$rek_id, 
+                    'id'=>$igd->igd_id
+    ])}}" class="btn btn-sm btn-primary">Edit</a>
+</div>
 @endsection

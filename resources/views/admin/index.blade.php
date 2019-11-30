@@ -2,10 +2,14 @@
 @section('title') Admin @endsection
 @section('content')
 
-<div class="alert alert-success w-100">Welcome
+<div class="alert alert-success alert-dismissible fade show text-center" role="alert">
+    Selamat Datang Admin
     @if (Auth::user())
-    {{Auth::user()->name}}
+    <strong>{{Auth::user()->name}}</strong>
     @endif
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+    </button>
 </div>
 <div class="">
     <div class="row d-flex justify-content-center mb-3 pt-5">
@@ -15,10 +19,14 @@
         <div class="col-8">
             <form action="{{route('admin.index')}}">
                 <div class="input-group input-group-lg mb-3">
-                    <input name="search" type="text" class="form-control" style="border-bottom-left-radius: 30px;border-top-left-radius: 30px" placeholder="Search No Rekam Medis"
-                        aria-label="Search No Rekam Medis" aria-describedby="button-addon2" value="{{Request::get('search')}}">
+                    <input name="search" type="text" class="form-control"
+                        style="border-bottom-left-radius: 30px;border-top-left-radius: 30px"
+                        placeholder="Search No Rekam Medis" aria-label="Search No Rekam Medis"
+                        aria-describedby="button-addon2" value="{{Request::get('search')}}">
                     <div class="input-group-append">
-                        <input class="btn btn-outline-primary" style="border-bottom-right-radius: 30px;border-top-right-radius: 30px" type="submit" id="button-addon2" value="Search">
+                        <input class="btn btn-outline-primary"
+                            style="border-bottom-right-radius: 30px;border-top-right-radius: 30px" type="submit"
+                            id="button-addon2" value="Search">
                     </div>
                 </div>
             </form>
@@ -28,20 +36,20 @@
         <div class="col-8">
             <div class="list-group">
                 @isset($find)
-                    @if ($find == '[]')
-                        <small>Result : </small>
-                        <form action="{{route('admin.create.rek')}}" class="form-inline">
-                            <input type="hidden" name="id" value="{{Request::get('search')}}">
-                            <input type="submit" class="list-group-item list-group-item-action"
-                                value="Not Found [{{strtoupper(Request::get('search'))}}] Click to Create New">
-                        </form>
-                    @else
-                        <small>Result : </small>
-                        @foreach ($find as $f)
-                            <a href="{{route('admin.show.rek', ['rek_id'=>$f->rek_id])}}"
-                                class="list-group-item list-group-item-action">{{$f->rek_id}} - {{$f->rek_name}}</a>
-                        @endforeach
-                    @endif
+                @if ($find == '[]')
+                <small>Result : </small>
+                <form action="{{route('admin.create.rek')}}" class="form-inline">
+                    <input type="hidden" name="id" value="{{Request::get('search')}}">
+                    <input type="submit" class="list-group-item list-group-item-action"
+                        value="Not Found [{{strtoupper(Request::get('search'))}}] Click to Create New">
+                </form>
+                @else
+                <small>Result : </small>
+                @foreach ($find as $f)
+                <a href="{{route('admin.show.rek', ['rek_id'=>$f->rek_id])}}"
+                    class="list-group-item list-group-item-action">{{$f->rek_id}} - {{$f->rek_name}}</a>
+                @endforeach
+                @endif
                 @endisset
             </div>
         </div>

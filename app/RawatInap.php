@@ -19,4 +19,9 @@ class RawatInap extends Model
     {
         return RawatInapPenunjang::where('ri_id', $this->ri_id)->get();
     }
+
+    public function rekmed()
+    {
+        return Rekmed::where('rek_id', $this->rek_id)->get()->first();
+    }
 }

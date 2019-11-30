@@ -20,4 +20,9 @@ class Nicu extends Model
     {
         return NicuPenunjang::where('nicu_id', $this->nicu_id)->get();
     }
+
+    public function rekmed()
+    {
+        return Rekmed::where('rek_id', $this->rek_id)->get()->first();
+    }
 }
