@@ -1,7 +1,7 @@
 @extends('layouts.main')
 @section('title') Dokter @endsection
 @section('menu')
-<a href="{{route('dokter.index')}}" class="nav-item nav-link">Dashboard</a>
+<a href="{{route('dokter.index')}}" class="nav-item nav-link">Cari Pasien</a>
 <a href="{{route('dokter.show.igd', ['rek_id'=>$rek_id])}}" class="nav-link">Kembali</a>
 @endsection
 @section('pasien')

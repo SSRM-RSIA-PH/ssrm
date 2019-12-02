@@ -2,7 +2,6 @@
 @section('title') Show @endsection
 @section('menu')
 <a href="{{route('dokter.index')}}" class="nav-item nav-link">Cari Pasien</a>
-<span></span>
 <a class="nav-item nav-link" href="{{route('dokter.show', ['rek_id'=>$rek_id])}}">{{$rek_id}}</a>
 <a class="nav-link active" href="{{route('dokter.show.igd', ['rek_id'=>$rek_id])}}">IGD</a>
 <a class="nav-link" href="{{route('dokter.show.nicu', ['rek_id'=>$rek_id])}}">NICU</a>
