@@ -14,6 +14,7 @@
             IGD
         </div>
         <div class="card-body">
+            {{-- {{$igd->igd_ctt_perkembangan}} --}}
             @if ($igd->igd_ctt_perkembangan)
             <hr>
             <b>Catatan Perkembangan</b><br>
