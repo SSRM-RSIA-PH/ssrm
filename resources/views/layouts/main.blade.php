@@ -72,7 +72,7 @@
 
         {{-- <div class="row"> --}}
             @yield("content")
-            @if (isset($modal))
+            @if (isset($rekmed))
             <div class="modal fade" id="pasienProfile" tabindex="-1" role="dialog" aria-labelledby="pasienProfileTitle"
             aria-hidden="true">
             <div class="modal-dialog modal-dialog-scrollable" role="document">
@@ -88,11 +88,11 @@
                             <table class="w-100">
                                 <tr>
                                     <th>No Rekam Medis</th>
-                                    <td>{{$modal->rek_id}}</td>
+                                    <td>{{$rekmed->rek_id}}</td>
                                 </tr>
                                 <tr>
                                     <th>Nama Pasien</th>
-                                    <td>{{$modal->rek_name}}</td>
+                                    <td>{{$rekmed->rek_name}}</td>
                                 </tr>
                             </table>
                         </div>
