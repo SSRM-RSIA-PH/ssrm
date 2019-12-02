@@ -69,7 +69,7 @@
     <!-- end navbar -->
 
     <div class="container-fluid">
-        
+
         {{-- <div class="row"> --}}
             @yield("content")
             @if (isset($modal))
@@ -98,18 +98,15 @@
                         </div>
                     </div>
                     <div class="modal-footer">
-                        <a href="{{route('archive', ['rek_id'=>$modal->rek_id])}}"
-                                class="btn btn-sm btn-primary">Simpan
-                                Arsip</a>
-                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                            </div>
-                        </div>
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    </div>
+                </div>
             </div>
             @endif
         </div>
         {{-- </div> --}}
     </div>
-    
+
     <script src="{{asset('js/jquery.min.js')}}"></script>
     <script src="{{asset('js/bootstrap.min.js')}}"></script>
     <script src="{{asset('js/bscfi.js')}}"></script>

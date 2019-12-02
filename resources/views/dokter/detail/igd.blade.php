@@ -39,11 +39,11 @@
             <h3>Data Tidak Tersedia</h3>
             @endif
         </div>
-        <div class="tab-pane fade" id="pnj" role="tabpanel" aria-labelledby="pnj-tab">
+        <div class="tab-pane fade" id="pnj" role="tabpanel" aria-labelledby="pnj-tab" class="bg-white">
             @if ($igd->penunjang() != '[]')
             @foreach ($igd->penunjang() as $p)
             <hr>
-            <p>{{$p->p_name}}</p>
+            <h3 class="text-center">{{$p->p_name}}</h3>
             <object data="{{asset("storage/$p->p_file")}}" type="application/pdf" width="100%" height="700px"></object>
             @endforeach
             @else
