@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="{{asset('css/bootstrap.min.css')}}">
     <style>
         .active {
-            background: #eb7900;
+            background: #18a4e0;
             border-radius: 3px
         }
 

@@ -8,6 +8,11 @@
 <a class="nav-link active" href="{{route('dokter.show.poli', ['rek_id'=>$rek_id])}}">POLI</a>
 <a class="nav-link" href="{{route('dokter.show.ri', ['rek_id'=>$rek_id])}}">RAWAT INAP</a>
 @endsection
+@section('pasien')
+<button type="button" class="btn btn-success" data-toggle="modal" data-target="#pasienProfile">
+    {{$rekmed->rek_name}} ({{$rekmed->rek_id}})
+</button>
+@endsection
 @section('content')
 <div hidden>{{$check = $poli->first()}}</div>
 

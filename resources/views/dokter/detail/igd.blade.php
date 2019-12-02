@@ -4,9 +4,14 @@
 <a href="{{route('dokter.index')}}" class="nav-item nav-link">Dashboard</a>
 <a href="{{route('dokter.show.igd', ['rek_id'=>$rek_id])}}" class="nav-link">Kembali</a>
 @endsection
+@section('pasien')
+<button type="button" class="btn btn-success" data-toggle="modal" data-target="#pasienProfile">
+    {{$rekmed->rek_name}} ({{$rekmed->rek_id}})
+</button>
+@endsection
 
 @section('content')
-<ul class="nav nav-tabs" id="myTab" role="tablist">
+<ul class="nav nav-tabs font-weight-bold" id="myTab" role="tablist">
     <li class="nav-item">
         <a class="nav-link active" id="ctp-tab" data-toggle="tab" href="#ctp" role="tab" aria-controls="ctp"
             aria-selected="true">Catatan Perkembangan</a>
@@ -43,7 +48,7 @@
             @if ($igd->penunjang() != '[]')
             @foreach ($igd->penunjang() as $p)
             <hr>
-            <h3 class="text-center">{{$p->p_name}}</h3>
+            <h3 class="text-center">{{strtoupper($p->p_name)}}</h3>
             <object data="{{asset("storage/$p->p_file")}}" type="application/pdf" width="100%" height="700px"></object>
             @endforeach
             @else

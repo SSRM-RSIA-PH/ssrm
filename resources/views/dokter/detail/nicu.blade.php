@@ -4,9 +4,14 @@
 <a href="{{route('dokter.index')}}" class="nav-item nav-link">Dashboard</a>
 <a href="{{route('dokter.show.nicu', ['rek_id'=>$rek_id])}}" class="nav-link">Kembali</a>
 @endsection
+@section('pasien')
+<button type="button" class="btn btn-success" data-toggle="modal" data-target="#pasienProfile">
+    {{$rekmed->rek_name}} ({{$rekmed->rek_id}})
+</button>
+@endsection
 @section('content')
 
-<ul class="nav nav-tabs" id="myTab" role="tablist">
+<ul class="nav nav-tabs font-weight-bold" id="myTab" role="tablist">
     <li class="nav-item">
         <a class="nav-link active" id="cpt-tab" data-toggle="tab" href="#cpt" role="tab" aria-controls="cpt"
             aria-selected="true">Catatan Perkembangan Terintegrasi</a>
@@ -65,7 +70,8 @@
         <div class="tab-pane fade" id="pnj" role="tabpanel" aria-labelledby="pnj-tab">
             @if ($nicu->penunjang() != '[]')
                 @foreach ($nicu->penunjang() as $p)
-                    <p>{{$p->p_name}}</p>
+                <hr>
+                <h3 class="text-center">{{strtoupper($p->p_name)}}</h3>
                     <object data="{{asset("storage/$p->p_file")}}" type="application/pdf" width="100%" height="700px"></object>
                 @endforeach
             @else

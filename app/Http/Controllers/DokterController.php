@@ -89,8 +89,10 @@ class DokterController extends Controller
     //detail file
     public function detail_igd($rek_id, $id, $ctg)
     {
+        $modal = Rekmed::find($rek_id);
         $data = Igd::findOrFail($id);
         return view('dokter.detail.igd', [
+            'rekmed' => $modal,
             'rek_id' => $rek_id,
             'ctg' => $ctg,
             'igd' => $data
@@ -99,8 +101,10 @@ class DokterController extends Controller
 
     public function detail_nicu($rek_id, $id, $ctg)
     {
+        $modal = Rekmed::find($rek_id);
         $data = Nicu::findOrFail($id);
         return view('dokter.detail.nicu', [
+            'rekmed' => $modal,
             'rek_id' => $rek_id,
             'ctg' => $ctg,
             'nicu' => $data
@@ -109,8 +113,10 @@ class DokterController extends Controller
 
     public function detail_poli($rek_id, $id, $ctg)
     {
+        $modal = Rekmed::find($rek_id);
         $data = Poli::findOrFail($id);
         return view('dokter.detail.poli', [
+            'rekmed' => $modal,
             'rek_id' => $rek_id,
             'ctg' => $ctg,
             'poli' => $data
@@ -119,8 +125,10 @@ class DokterController extends Controller
 
     public function detail_ri($rek_id, $id, $ctg)
     {
+        $modal = Rekmed::find($rek_id);
         $data = RawatInap::findOrFail($id);
         return view('dokter.detail.ri', [
+            'rekmed' => $modal,
             'rek_id' => $rek_id,
             'ctg' => $ctg,
             'ri' => $data
