@@ -41,7 +41,7 @@ Add ID Rekam Medis
                     </div>
 
                     <div class="form-group">
-                        <label for="nik">NIK</label>
+                        <label for="rek_nik">NIK</label>
                         <input type="text" class="form-control" name="rek_nik" id="rek_nik" aria-describedby=""
                             placeholder="">
                     </div>
@@ -58,8 +58,8 @@ Add ID Rekam Medis
                     </div>
 
                     <div class="form-group">
-                        <label for="rek_tempat-lahir">Tempat Lahir</label>
-                        <input type="text" class="form-control" name="rek_tempat-lahir" id="rek_tempat-lahir"
+                        <label for="rek_tempat_lahir">Tempat Lahir</label>
+                        <input type="text" class="form-control" name="rek_tempat_lahir" id="rek_tempat_lahir"
                             aria-describedby="" placeholder="">
                     </div>
 
@@ -101,8 +101,6 @@ Add ID Rekam Medis
                             <option value="Anak">Anak</option>
                         </select>
                     </div>
-
-                    
 
                     @if (Auth::user())
                     <input name="u_id" type="text" hidden value="{{Auth::user()->id}}">

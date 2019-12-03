@@ -86,24 +86,3 @@ class AdminIgdController extends Controller
         return redirect()->route('admin.show.rek', ['rek_id' => $igd->rek_id]);
     }
 }
-
-// public function download($nameFile, $rek_id)
-//     {
-//         $zip = new ZipArchive;
-//         $fileName = "$rek_id-$nameFile.zip";
-        
-//         $create_zip = $zip->open(storage_path("app/public/Archive/$fileName"), ZipArchive::CREATE);
-
-//         if ($create_zip == TRUE) {
-//             $files = File::files(storage_path("app/public/Rekmed/$rek_id"));
-            
-//             foreach ($files as $key => $value) {
-//                 $relativeNameInZipFile = basename($value);
-//                 $zip->addFile($value, $relativeNameInZipFile);
-//             }
-
-//             $zip->close();
-//         }
-
-//         return response()->download(storage_path("app/public/$fileName"));
-//     }
