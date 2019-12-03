@@ -154,6 +154,41 @@ Add ID Rekam Medis
                 </div>
             </div>
         </div>
+
+        <hr>
+        
+        <div class="anak">
+            <div class="card" id="rp">
+                <div class="card-header">
+                    Orang Tua
+                </div>
+                <div class="card-body">
+                    <div class="form-group">
+                        <label for="rp_ibu">Nama Ibu</label>
+                        <input type="text" class="form-control" name="rp_ibu" id="rp_ibu"
+                            aria-describedby="rp_ibu" required autofocus value="{{old('rp_ibu')}}">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="rp_ibu_hp">No HP Ibu</label>
+                        <input type="text" class="form-control" name="rp_ibu_hp" id="rp_ibu_hp"
+                            aria-describedby="rp_ibu_hp" required autofocus value="{{old('rp_ibu_hp')}}">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="rp_ayah">Nama Ayah</label>
+                        <input type="text" class="form-control" name="rp_ayah" id="rp_ayah"
+                            aria-describedby="rp_ayah" required autofocus value="{{old('rp_ayah')}}">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="rp_ayah_hp">No HP Ayah</label>
+                        <input type="text" class="form-control" name="rp_ayah_hp" id="rp_ayah_hp"
+                            aria-describedby="rp_ayah_hp" required autofocus value="{{old('rp_ayah_hp')}}">
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 
     <div class="col-md-4">
