@@ -54,8 +54,8 @@
                 </button>
                 @endif
                 <div class="dropdown-menu dropdown-menu-right">
-                    <a class="dropdown-item" href="#">Profile</a>
-                    <div class="dropdown-divider"></div>
+                    {{-- <a class="dropdown-item" href="#">Profile</a> --}}
+                    {{-- <div class="dropdown-divider"></div> --}}
                     <li>
                         <form action="{{route("logout")}}" method="POST">
                             @csrf
