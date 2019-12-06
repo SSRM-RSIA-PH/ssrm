@@ -206,8 +206,10 @@
             $('#lab').val(null);
         });
         
-        // Navbar
-        
+        // create pasien
+        $('#rek_status').change(function() {
+            $(this).children('option:selected').val(2);
+        });
     </script>
 </body>
 
