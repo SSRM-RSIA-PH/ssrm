@@ -59,7 +59,7 @@
                                 </div>
                                 <div class="card-body" hidden id="perkembangan">
                                     <div class="custom-file">
-                                        <input type="file" class="custom-file-input" id="customFile" name="ct">
+                                        <input type="file" class="custom-file-input" id="customFile" name="ct" accept="application/pdf">
                                         <label class="custom-file-label" id="cfl1" for="customFile">Choose file</label>
                                     </div>
                                 </div>
@@ -75,7 +75,7 @@
                                 </div>
                                 <div class="card-body" hidden id="resume">
                                     <div class="custom-file">
-                                        <input type="file" class="custom-file-input" id="customFile" name="resume">
+                                        <input type="file" class="custom-file-input" id="customFile" name="resume" accept="application/pdf">
                                         <label class="custom-file-label" id="cfl2" for="customFile">Choose file</label>
                                     </div>
                                 </div>
@@ -102,7 +102,7 @@
                                         </div>
 
                                         <div class="custom-file" hidden id="fusg">
-                                            <input type="file" class="custom-file-input" id="customFile" name="usg">
+                                            <input type="file" class="custom-file-input" id="customFile" name="usg" accept="application/pdf">
                                             <label class="custom-file-label" id="cflp1" for="customFile">Choose
                                                 file</label>
                                         </div>
@@ -116,7 +116,7 @@
                                         </div>
 
                                         <div class="custom-file" hidden id="fctg">
-                                            <input type="file" class="custom-file-input" id="customFile" name="ctg">
+                                            <input type="file" class="custom-file-input" id="customFile" name="ctg" accept="application/pdf">
                                             <label class="custom-file-label" id="cflp2" for="customFile">Choose
                                                 file</label>
                                         </div>
@@ -130,7 +130,7 @@
                                         </div>
 
                                         <div class="custom-file" hidden id="fxray">
-                                            <input type="file" class="custom-file-input" id="customFile" name="xray">
+                                            <input type="file" class="custom-file-input" id="customFile" name="xray" accept="application/pdf">
                                             <label class="custom-file-label" id="cflp3" for="customFile">Choose
                                                 file</label>
                                         </div>
@@ -144,7 +144,7 @@
                                         </div>
 
                                         <div class="custom-file" hidden id="fekg">
-                                            <input type="file" class="custom-file-input" id="customFile" name="ekg">
+                                            <input type="file" class="custom-file-input" id="customFile" name="ekg" accept="application/pdf">
                                             <label class="custom-file-label" id="cflp4" for="customFile">Choose
                                                 file</label>
                                         </div>
@@ -158,7 +158,7 @@
                                         </div>
 
                                         <div class="custom-file" hidden id="flab">
-                                            <input type="file" class="custom-file-input" id="customFile" name="lab">
+                                            <input type="file" class="custom-file-input" id="customFile" name="lab" accept="application/pdf">
                                             <label class="custom-file-label" id="cflp5" for="customFile">Choose
                                                 file</label>
                                         </div>
