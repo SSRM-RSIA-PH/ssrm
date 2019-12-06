@@ -96,11 +96,11 @@ Add ID Rekam Medis
                     <div class="form-group">
                         <label for="rek_status">Status</label>
                         <div class="custom-control custom-radio">
-                            <input type="radio" id="ribu" name="customRadio" class="custom-control-input">
+                            <input type="radio" id="ribu" name="customRadio" class="custom-control-input" value="ibu">
                             <label class="custom-control-label" for="ribu">Ibu</label>
                         </div>
                         <div class="custom-control custom-radio">
-                            <input type="radio" id="ranak" name="customRadio" class="custom-control-input">
+                            <input type="radio" id="ranak" name="customRadio" class="custom-control-input" value="anak">
                             <label class="custom-control-label" for="ranak">Anak</label>
                         </div>
                     </div>
