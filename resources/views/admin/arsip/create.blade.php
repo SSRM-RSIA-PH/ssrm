@@ -10,6 +10,13 @@
 @endsection
 @section('content')
 <div class="container">
+
+@if (session('status'))
+<div class="alert alert-success">
+    Berhasil menambahkan file Arsip <br>
+</div>
+@endif
+
     <div class="row">
         <div class="col-3">
             <div class="alert alert-primary text-center">{{$rek_id}}</div>
@@ -40,7 +47,7 @@
                         <div class="col">
                             <div class="card mb-3">
                                 <div class="card-header">
-
+                                    File Arsip
                                 </div>
                                 <div class="card-body">
                                     <div class="custom-file">
@@ -48,7 +55,7 @@
                                         <input type="file"
                                             class="custom-file-input {{$errors->first('arsip') ? 'is-invalid':''}}"
                                             value="{{old('arsip')}}" id="arsip" name="arsip">
-                                            
+
                                         @if ($errors->first('arsip'))
                                         <div class="invalid-feedback">
                                             {{$errors->first('arsip')}}

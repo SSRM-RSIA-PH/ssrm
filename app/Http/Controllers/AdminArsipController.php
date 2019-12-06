@@ -43,6 +43,6 @@ class AdminArsipController extends Controller
             $arsip->save();
         }
 
-        return redirect()->route('admin.create.arsip', ['rek_id'=>$rek_id]);
+        return redirect()->route('admin.create.arsip', ['rek_id'=>$rek_id])->with('status', 'yey');
     }
 }
