@@ -160,9 +160,7 @@ class SuperRekmedController extends Controller
         //catatan & resume
         $igd = Igd::findOrFail($id);
 
-        if ($request->get('u_id')) {
-            $igd->u_id = $request->get('u_id');
-        }
+        $igd->u_id = $request->user()->id;
 
         if ($request->get('date')) {
             $igd->igd_datetime = $request->get('date');
@@ -326,9 +324,7 @@ class SuperRekmedController extends Controller
         //catatan & resume
         $poli = Poli::findOrFail($id);
 
-        if ($request->get('u_id')) {
-            $poli->u_id = $request->get('u_id');
-        }
+        $poli->u_id = $request->user()->id;
 
         if ($request->get('date')) {
             $poli->poli_datetime = $request->get('date');
@@ -492,9 +488,7 @@ class SuperRekmedController extends Controller
         //catatan & resume
         $nicu = Nicu::findOrFail($id);
 
-        if ($request->get('u_id')) {
-            $nicu->u_id = $request->get('u_id');
-        }
+        $nicu->u_id = $request->user()->id;
 
         if ($request->get('date')) {
             $nicu->nicu_datetime = $request->get('date');
@@ -617,9 +611,7 @@ class SuperRekmedController extends Controller
         //catatan & resume
         $ri = RawatInap::findOrFail($id);
 
-        if ($request->get('u_id')) {
-            $ri->u_id = $request->get('u_id');
-        }
+        $ri->u_id = $request->user()->id;
 
         if ($request->get('date')) {
             $ri->ri_datetime = $request->get('date');

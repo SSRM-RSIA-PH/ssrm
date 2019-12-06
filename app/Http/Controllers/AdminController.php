@@ -58,7 +58,7 @@ class AdminController extends Controller
         $rekmed->rek_alamat = $request->get('rek_alamat');
         $rekmed->rek_status = $request->get('rek_status');
 
-        $rekmed->u_id = $request->get('u_id');
+        $rekmed->u_id = $request->user()->id;
         $rekmed->save();
 
         if ($request->get('rs_name')) {

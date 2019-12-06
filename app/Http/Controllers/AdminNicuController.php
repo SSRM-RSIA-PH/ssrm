@@ -28,7 +28,7 @@ class AdminNicuController extends Controller
 
         $nicu = new Nicu;
         $nicu->rek_id = $rek_id;
-        $nicu->u_id = $request->get('u_id');
+        $nicu->u_id = $request->user()->id;
         $nicu->save();
 
         $nicu->nicu_datetime = $request->get('date');

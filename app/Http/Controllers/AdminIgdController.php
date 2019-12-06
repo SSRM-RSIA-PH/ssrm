@@ -28,7 +28,7 @@ class AdminIgdController extends Controller
 
         $igd = new Igd;
         $igd->rek_id = $rek_id;
-        $igd->u_id = $request->get('u_id');
+        $igd->u_id = $request->user()->id;
         $igd->save();
 
         $igd->igd_datetime = $request->get('date');

@@ -28,7 +28,7 @@ class AdminRiController extends Controller
 
         $ri = new RawatInap;
         $ri->rek_id = $rek_id;
-        $ri->u_id = $request->get('u_id');
+        $ri->u_id = $request->user()->id;
         $ri->save();
 
         $ri->ri_datetime = $request->get('date');

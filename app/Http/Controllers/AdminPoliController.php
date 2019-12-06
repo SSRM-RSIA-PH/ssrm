@@ -28,7 +28,7 @@ class AdminPoliController extends Controller
 
         $poli = new Poli;
         $poli->rek_id = $rek_id;
-        $poli->u_id = $request->get('u_id');
+        $poli->u_id = $request->user()->id;
         $poli->save();
 
         $poli->poli_datetime = $request->get('date');

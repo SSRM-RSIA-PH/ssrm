@@ -102,10 +102,6 @@ Add ID Rekam Medis
                         </select>
                     </div>
 
-                    @if (Auth::user())
-                    <input name="u_id" type="text" hidden value="{{Auth::user()->id}}">
-                    @endif
-
             </div>
         </div>
     </div>

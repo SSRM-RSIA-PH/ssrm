@@ -44,9 +44,6 @@
 
 
                         <input type="text" name="rek_id" value="{{$rek_id}}" hidden>
-                        @if (Auth::user())
-                        <input name="u_id" type="text" hidden value="{{Auth::user()->id}}">
-                        @endif
 
                         {{-- catatan perkembangan terintegrasi --}}
                         <div class="card mb-3">

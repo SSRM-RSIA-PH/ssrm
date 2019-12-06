@@ -25,9 +25,6 @@ Edit
                 <form action="{{route('super.rekmed.update', ['rek_id'=>$rekmed->rek_id])}}" method="POST">
                     @csrf
                     <input type="hidden" value="PUT" name="_method">
-                    @if (Auth::user())
-                        <input type="hidden" name="u_id" value="{{Auth::user()->id}}">
-                    @endif
 
                     <label for="">ID Rekam Medis</label><br>
                     <input class="form-control" type="text" name="rek_id" value="{{$rekmed->rek_id}}" required readonly>
