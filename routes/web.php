@@ -71,7 +71,7 @@ Route::group(['prefix' => '/supervisor'], function () {
         //delete detail penunjang
         Route::delete('/{id}/{ctg}/destroy_penunjang', 'SuperRekmedController@destroy_detail_penunjang')->name('super.rekmed.destroy_penunjang');
     });
-
+    
     Route::get('/log', 'SuperLogController@index')->name('super.log');
 });
 
@@ -107,6 +107,10 @@ Route::group(['prefix' => '/admin'], function () {
     Route::post('/ri/upload/s', 'AdminRiController@store')->name('admin.store.ri');
     Route::get('/ri/{id}/validation', 'AdminRiController@validation')->name('admin.validation.ri');
     Route::post('/ri/validation/cancel', 'AdminRiController@cancel')->name('admin.validation.ri.cancel');
+
+    //admin arsip
+    Route::get('/arsip/{rek_id}/upload', 'AdminArsipController@create')->name('admin.create.arsip');
+    Route::post('/arsip/upload/s', 'AdminArsipController@store')->name('admin.store.arsip');
 });
 
 
