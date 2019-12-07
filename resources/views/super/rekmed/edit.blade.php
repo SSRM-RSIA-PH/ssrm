@@ -29,9 +29,32 @@ Edit
                     <label for="">ID Rekam Medis</label><br>
                     <input class="form-control" type="text" name="rek_id" value="{{$rekmed->rek_id}}" required readonly>
                     <br>
+
                     <label for="">Nama Pasien</label><br>
                     <input class="form-control" type="text" name="rek_name" value="{{$rekmed->rek_name}}" required>
                     <br>
+
+                    {{-- <label for="">NIK</label><br>
+                    <input class="form-control" type="text" name="rek_name" value="{{$rekmed->rek_name}}" required>
+                    <br>
+
+                    <label for="">Nama Pasien</label><br>
+                    <input class="form-control" type="text" name="rek_name" value="{{$rekmed->rek_name}}" required>
+                    <br>
+
+                    <label for="">Nama Pasien</label><br>
+                    <input class="form-control" type="text" name="rek_name" value="{{$rekmed->rek_name}}" required>
+                    <br>
+
+                    darah
+
+                    <label for="">Nama Pasien</label><br>
+                    <input class="form-control" type="text" name="rek_name" value="{{$rekmed->rek_name}}" required>
+                    <br> --}}
+
+
+
+
                     <input type="submit" value="Simpan" class="btn btn-sm btn-primary">
                 </form>
             </div>
