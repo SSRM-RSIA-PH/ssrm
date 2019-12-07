@@ -41,7 +41,8 @@ class AdminController extends Controller
     {
         \Validator::make($request->all(), [
             'rek_id' => 'required|min:6|max:6|unique:rekmed',
-            'rek_nik' => 'unique:rekmed'
+            'rek_nik' => 'unique:rekmed',
+            'rek_status' => 'required'
         ])->validate();
 
         $rek_id = strtoupper($request->get('rek_id'));
@@ -57,6 +58,7 @@ class AdminController extends Controller
         $rekmed->rek_darah = $request->get('rek_darah');
         $rekmed->rek_agama = $request->get('rek_agama');
         $rekmed->rek_job = $request->get('rek_job');
+        $rekmed->rek_hp = $request->get('rek_hp');
         $rekmed->rek_alamat = $request->get('rek_alamat');
         $rekmed->rek_status = $status;
 
@@ -65,11 +67,11 @@ class AdminController extends Controller
 
         switch ($status) {
             case 'ibu':
-                return redirect()->route('admin.create_suami.rek');
+                return redirect()->route('admin.create_suami.rek', ['rek_id'=>$rek_id]);
                 break;
 
             case 'anak':
-                return redirect()->route('admin.create_parent.rek');
+                return redirect()->route('admin.create_parent.rek', ['rek_id'=>$rek_id]);
                 break;
 
             default:
@@ -85,6 +87,8 @@ class AdminController extends Controller
 
     public function store_suami(Request $request)
     {
+        $rek_id = $request->get('rek_id');
+
         $suami = new RekmedSuami;
         $suami->rek_id = $rek_id;
 
@@ -109,6 +113,8 @@ class AdminController extends Controller
                 $anak->save();
             }
         }
+
+        return redirect()->route('admin.show.rek', ['rek_id'=>$rek_id]);
     }
 
     public function create_parent($rek_id)
@@ -118,14 +124,18 @@ class AdminController extends Controller
 
     public function store_parent(Request $request)
     {
+        $rek_id = $request->get('rek_id');
+        
         $parent = new RekmedParent;
         $parent->rp_ibu_name = $request->get('rp_ibu');
         $parent->rp_ibu_hp = $request->get('rp_ibu_hp');
         $parent->rp_ayah_name = $request->get('rp_ayah');
         $parent->rp_ayah_hp = $request->get('rp_ayah_hp');
-        $parent->rek_id = $request->get('rek_id');
+        $parent->rek_id = $rek_id;
 
         $parent->save();
+
+        return redirect()->route('admin.show.rek', ['rek_id'=>$rek_id]);
     }
 
     public function show($rek_id)

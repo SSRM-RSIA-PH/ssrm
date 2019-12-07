@@ -23,6 +23,6 @@ class Nicu extends Model
 
     public function rekmed()
     {
-        return Rekmed::where('rek_id', $this->rek_id)->get()->first();
+        return Rekmed::where('rek_id', $this->rek_id)->first();
     }
 }

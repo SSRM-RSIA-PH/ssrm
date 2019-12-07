@@ -19,7 +19,10 @@ Add ID Rekam Medis
                 Orang Tua
             </div>
             <div class="card-body">
-                <form action="">
+                <form action="{{route('admin.store_parent.rek')}}" method="POST">
+                    @csrf
+                    <input type="hidden" name="rek_id" value="{{$rek_id}}">
+
                     <div class="form-group">
                         <label for="rp_ibu">Nama Ibu</label>
                         <input type="text" class="form-control" name="rp_ibu" id="rp_ibu" aria-describedby="rp_ibu"
