@@ -32,6 +32,7 @@ class AdminArsipController extends Controller
         $arsip = new Arsip;
         $arsip->u_id = $request->user()->id;
         $arsip->rek_id = $request->get('rek_id');
+        $arsip->arsip_datetime = $request->get('date');
         $arsip->save();
 
         if ($request->file('arsip')) {
@@ -43,6 +44,6 @@ class AdminArsipController extends Controller
             $arsip->save();
         }
 
-        return redirect()->route('admin.create.arsip', ['rek_id'=>$rek_id])->with('status', 'yey');
+        return redirect()->route('admin.create.arsip', ['rek_id'=>$rek_id])->with('status', $arsip->created_at);
     }
 }

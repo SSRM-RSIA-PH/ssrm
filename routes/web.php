@@ -82,6 +82,10 @@ Route::group(['prefix' => '/admin'], function () {
     Route::get('/', 'AdminController@index')->name('admin.index');
     Route::get('/create', 'AdminController@create')->name('admin.create.rek');
     Route::post('/create/s', 'AdminController@store')->name('admin.store.rek');
+    Route::get('/create_suami', 'AdminController@create_suami')->name('admin.create_suami.rek');
+    Route::get('/create_suami/s', 'AdminController@store_suami')->name('admin.store_suami.rek');
+    Route::get('/create_parent', 'AdminController@create_parent')->name('admin.create_parent.rek');
+    Route::get('/create_parent/s', 'AdminController@store_parent')->name('admin.store_parent.rek');
     Route::get('/show/{rek_id}', 'AdminController@show')->name('admin.show.rek');
 
     //admin igd

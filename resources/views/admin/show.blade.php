@@ -7,7 +7,7 @@
 <a href="{{route('admin.create.poli', ['rek_id'=>$rekmed->rek_id])}}" class="nav-item nav-link">POLI</a>
 <a href="{{route('admin.create.nicu', ['rek_id'=>$rekmed->rek_id])}}" class="nav-item nav-link">NICU</a>
 <a href="{{route('admin.create.ri', ['rek_id'=>$rekmed->rek_id])}}" class="nav-item nav-link">RAWAT INAP</a>
-<a href="{{route('admin.create.arsip', ['rek_id'=>$rek_id])}}" class="nav-item nav-link active">ARSIP</a>
+<a href="{{route('admin.create.arsip', ['rek_id'=>$rekmed->rek_id])}}" class="nav-item nav-link">ARSIP</a>
 @endsection
 @section('content')
 
