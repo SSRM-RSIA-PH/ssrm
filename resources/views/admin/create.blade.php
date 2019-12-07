@@ -96,6 +96,90 @@ Add ID Rekam Medis
                 <div class="form-group">
                     <label for="rek_status">Status</label>
                     <div class="custom-control custom-radio">
+                        <input type="radio" id="ribu" name="customRadio" class="custom-control-input" value="ibu">
+                        <label class="custom-control-label" for="ribu">Ibu</label>
+                    </div>
+                    <div class="custom-control custom-radio">
+                        <input type="radio" id="ranak" name="customRadio" class="custom-control-input" value="anak">
+                        <label class="custom-control-label" for="ranak">Anak</label>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="rek_id">Rekam Medis ID</label>
+                    <input type="text" class="form-control {{$errors->first('rek_id') ? 'is-invalid':''}}" name="rek_id"
+                        id="rek_id" aria-describedby="rek_id" placeholder=""
+                        value="{{$errors->first('rek_id') ? old('rek_id'):$id}}" required
+                        {{$errors->first('rek_id') ? 'autofocus':''}}>
+                    @if ($errors->first('rek_id'))
+                    <div class="invalid-feedback">
+                        {{$errors->first('rek_id')}}
+                    </div>
+                    @endif
+                </div>
+
+                <div class="form-group">
+                    <label for="rek_name">Nama Pasien</label>
+                    <input type="text" class="form-control" name="rek_name" id="rek_name" aria-describedby="rek_name"
+                        required autofocus value="{{old('rek_name')}}">
+                </div>
+
+                <div class="form-group">
+                    <label for="rek_nik">NIK</label>
+                    <input type="text" class="form-control" name="rek_nik" id="rek_nik" aria-describedby=""
+                        placeholder="">
+                </div>
+
+                <div class="form-group">
+                    <label for="rek_darah">Golongan Darah</label>
+                    <select class="form-control" name="rek_darah" id="rek_darah">
+                        <option>Pilih</option>
+                        <option value="A">A</option>
+                        <option value="B">B</option>
+                        <option value="AB">AB</option>
+                        <option value="O">O</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="rek_tempat_lahir">Tempat Lahir</label>
+                    <input type="text" class="form-control" name="rek_tempat_lahir" id="rek_tempat_lahir"
+                        aria-describedby="" placeholder="">
+                </div>
+
+                <div class="form-group">
+                    <label for="rek_tanggal_lahir">Tanggal Lahir</label>
+                    <input type="date" class="form-control" name="rek_tanggal_lahir" id="rek_tanggal_lahir"
+                        aria-describedby="" placeholder="">
+                </div>
+
+                <div class="form-group">
+                    <label for="rek_agama">Agama</label>
+                    <input type="text" class="form-control" name="rek_agama" id="rek_agama" aria-describedby=""
+                        placeholder="">
+                </div>
+
+                <div class="form-group">
+                    <label for="rek_job">Pekerjaan</label>
+                    <input type="text" class="form-control" name="rek_job" id="rek_job" aria-describedby=""
+                        placeholder="">
+                </div>
+
+                <div class="form-group">
+                    <label for="rek_hp">No HP</label>
+                    <input type="text" class="form-control" name="rek_hp" id="rek_hp" aria-describedby=""
+                        placeholder="">
+                </div>
+
+                <div class="form-group">
+                    <label for="rek_alamat">Alamat</label>
+                    <input type="text" class="form-control" name="rek_alamat" id="rek_alamat" aria-describedby=""
+                        placeholder="">
+                </div>
+
+                <div class="form-group">
+                    <label for="rek_status">Status</label>
+                    <div class="custom-control custom-radio">
                         <input type="radio" id="ribu" name="customRadio" class="custom-control-input">
                         <label class="custom-control-label" for="ribu">Ibu</label>
                     </div>

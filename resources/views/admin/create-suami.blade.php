@@ -13,59 +13,62 @@ Add ID Rekam Medis
         <a href="{{route('admin.show.rek', ['rek_id'=>session('status')])}}">Rekam Medis</a>
     </div><br>
     @endif
-    <div class="col-md-4 mb-3" id="div1">
-        <div id="ibu" hidden>
+    <div class="col-md-6 mb-3" id="div1">
+        <div id="ibu">
             <div class="card">
                 <div class="card-header">
                     Suami
                 </div>
                 <div class="card-body">
-                    <div class="form-group">
-                        <label for="rs_name">Nama Suami</label>
-                        <input type="text" class="form-control" name="rs_name" id="rs_name" aria-describedby=""
-                            placeholder="">
-                    </div>
+                    <form action="">
+                        <div class="form-group">
+                            <label for="rs_name">Nama Suami</label>
+                            <input type="text" class="form-control" name="rs_name" id="rs_name" aria-describedby=""
+                                placeholder="">
+                        </div>
 
-                    <div class="form-group">
-                        <label for="rs_job">Pekerjaan Suami</label>
-                        <input type="text" class="form-control" name="rs_job" id="rs_job" aria-describedby="helpId"
-                            placeholder="">
-                    </div>
+                        <div class="form-group">
+                            <label for="rs_job">Pekerjaan Suami</label>
+                            <input type="text" class="form-control" name="rs_job" id="rs_job" aria-describedby="helpId"
+                                placeholder="">
+                        </div>
 
-                    <div class="form-group">
-                        <label for="rs_darah">Golongan Darah Suami</label>
-                        <select class="form-control" name="rs_darah" id="rs_darah">
-                            <option>Pilih</option>
-                            <option value="A">A</option>
-                            <option value="B">B</option>
-                            <option value="AB">AB</option>
-                            <option value="O">O</option>
-                        </select>
-                    </div>
+                        <div class="form-group">
+                            <label for="rs_darah">Golongan Darah Suami</label>
+                            <select class="form-control" name="rs_darah" id="rs_darah">
+                                <option>Pilih</option>
+                                <option value="A">A</option>
+                                <option value="B">B</option>
+                                <option value="AB">AB</option>
+                                <option value="O">O</option>
+                            </select>
+                        </div>
 
-                    <div class="form-group">
-                        <label for="rs_hp">No HP Suami</label>
-                        <input type="text" class="form-control" name="rs_hp" id="rs_hp" aria-describedby=""
-                            placeholder="">
-                    </div>
+                        <div class="form-group">
+                            <label for="rs_hp">No HP Suami</label>
+                            <input type="text" class="form-control" name="rs_hp" id="rs_hp" aria-describedby=""
+                                placeholder="">
+                        </div>
 
-                    <div class="form-group">
-                        <label for="rs_alamat">Alamat Suami</label>
-                        <input type="text" class="form-control" name="rs_alamat" id="rs_alamat" aria-describedby=""
-                            placeholder="">
-                    </div>
+                        <div class="form-group">
+                            <label for="rs_alamat">Alamat Suami</label>
+                            <input type="text" class="form-control" name="rs_alamat" id="rs_alamat" aria-describedby=""
+                                placeholder="">
+                        </div>
                 </div>
             </div>
-            <hr>
         </div>
     </div>
-    
-    <div class="col-md-4" id="div2">
-        <div class="card" id="a1">
+
+    <div class="col-md-6" id="div2">
+        <div class="card">
             <div class="card-header">
-                Anak Pertama
+                <div class="custom-control custom-checkbox">
+                    <input type="checkbox" class="custom-control-input" id="ca1">
+                    <label class="custom-control-label" for="ca1">Anak Pertama</label>
+                </div>
             </div>
-            <div class="card-body">
+            <div class="card-body" hidden id="ba1">
                 <div class="form-group">
                     <label for="ra_name1">Nama Anak</label>
                     <input type="text" class="form-control" name="ra_name1" id="ra_name1" aria-describedby=""
@@ -98,11 +101,14 @@ Add ID Rekam Medis
         </div>
 
         <hr>
-        <div class="card" id="a2">
+        <div class="card">
             <div class="card-header">
-                Anak Kedua
+                <div class="custom-control custom-checkbox">
+                    <input type="checkbox" class="custom-control-input" id="ca2">
+                    <label class="custom-control-label" for="ca2">Anak Kedua</label>
+                </div>
             </div>
-            <div class="card-body">
+            <div class="card-body" hidden id="ba2">
                 <div class="form-group">
                     <label for="ra_name2">Nama Anak</label>
                     <input type="text" class="form-control" name="ra_name2" id="ra_name2" aria-describedby=""
@@ -137,9 +143,12 @@ Add ID Rekam Medis
         <hr>
         <div class="card" id="a3">
             <div class="card-header">
-                Anak Ketiga
+                <div class="custom-control custom-checkbox">
+                    <input type="checkbox" class="custom-control-input" id="ca3">
+                    <label class="custom-control-label" for="ca3">Anak Ketiga</label>
+                </div>
             </div>
-            <div class="card-body">
+            <div class="card-body" hidden id="ba3">
                 <div class="form-group">
                     <label for="ra_name3">Nama Anak</label>
                     <input type="text" class="form-control" name="ra_name3" id="ra_name3" aria-describedby=""
@@ -174,9 +183,12 @@ Add ID Rekam Medis
         <hr>
         <div class="card" id="a4">
             <div class="card-header">
-                Anak Empat
+                <div class="custom-control custom-checkbox">
+                    <input type="checkbox" class="custom-control-input" id="ca4">
+                    <label class="custom-control-label" for="ca4">Anak Keempat</label>
+                </div>
             </div>
-            <div class="card-body">
+            <div class="card-body" hidden id="ba4">
                 <div class="form-group">
                     <label for="ra_name4">Nama Anak</label>
                     <input type="text" class="form-control" name="ra_name4" id="ra_name4" aria-describedby=""
@@ -211,9 +223,12 @@ Add ID Rekam Medis
         <hr>
         <div class="card" id="a5">
             <div class="card-header">
-                Anak Kelima
+                <div class="custom-control custom-checkbox">
+                    <input type="checkbox" class="custom-control-input" id="ca5">
+                    <label class="custom-control-label" for="ca5">Anak Kelima</label>
+                </div>
             </div>
-            <div class="card-body">
+            <div class="card-body" hidden id="ba5">
                 <div class="form-group">
                     <label for="ra_name5">Nama Anak</label>
                     <input type="text" class="form-control" name="ra_name5" id="ra_name5" aria-describedby=""
@@ -243,10 +258,11 @@ Add ID Rekam Medis
                     </select>
                 </div>
             </div>
-            <div class="card-footer">
-                <button id="simpan" type="submit" class="btn btn-primary">Simpan</button></form>
-            </div>
         </div>
+        <div class="mt-3 mb-3">
+            <input type="submit" value="Simpan" class="btn btn-primary">
+        </div>
+        </form>
     </div>
 </div>
 @endsection

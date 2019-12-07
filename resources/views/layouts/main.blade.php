@@ -54,8 +54,8 @@
                 </button>
                 @endif
                 <div class="dropdown-menu dropdown-menu-right">
-                    <a class="dropdown-item" href="#">Profile</a>
-                    <div class="dropdown-divider"></div>
+                    {{-- <a class="dropdown-item" href="#">Profile</a> --}}
+                    {{-- <div class="dropdown-divider"></div> --}}
                     <li>
                         <form action="{{route("logout")}}" method="POST">
                             @csrf
@@ -207,8 +207,29 @@
         });
         
         // create pasien
-        $('#rek_status').change(function() {
-            $(this).children('option:selected').val(2);
+        $('#ca1').click(function() {
+            $('#ba1').toggle();
+            $('#ba1').attr('hidden', false);
+        });
+
+        $('#ca2').click(function() {
+            $('#ba2').toggle();
+            $('#ba2').attr('hidden', false);
+        });
+
+        $('#ca3').click(function() {
+            $('#ba3').toggle();
+            $('#ba3').attr('hidden', false);
+        });
+
+        $('#ca4').click(function() {
+            $('#ba4').toggle();
+            $('#ba4').attr('hidden', false);
+        });
+
+        $('#ca5').click(function() {
+            $('#ba5').toggle();
+            $('#ba5').attr('hidden', false);
         });
     </script>
 </body>
