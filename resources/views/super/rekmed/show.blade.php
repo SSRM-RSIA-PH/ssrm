@@ -1,4 +1,4 @@
-@extends('layouts.main')
+@extends('layouts.super')
 @section('title','Detail')
 @section('menu')
 <a href="{{route('super.index')}}" class="nav-item nav-link">Dashboard</a>

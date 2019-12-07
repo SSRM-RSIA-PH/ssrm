@@ -1,4 +1,4 @@
-@extends('layouts.main')
+@extends('layouts.super')
 @section('title')
 Edit Detail
 @endsection
