@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Dec 03, 2019 at 02:24 AM
+-- Generation Time: Dec 07, 2019 at 12:17 PM
 -- Server version: 10.4.8-MariaDB
 -- PHP Version: 7.1.32
 
@@ -25,6 +25,22 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `arsip_tahunan`
+--
+
+CREATE TABLE `arsip_tahunan` (
+  `arsip_id` bigint(20) UNSIGNED NOT NULL,
+  `arsip_file` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `arsip_datetime` timestamp NULL DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
+  `u_id` bigint(20) UNSIGNED DEFAULT NULL,
+  `rek_id` char(6) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `igd`
 --
 
@@ -35,7 +51,7 @@ CREATE TABLE `igd` (
   `igd_datetime` timestamp NULL DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
-  `u_id` bigint(20) UNSIGNED NOT NULL,
+  `u_id` bigint(20) UNSIGNED DEFAULT NULL,
   `rek_id` char(6) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
@@ -123,7 +139,7 @@ CREATE TABLE `nicu` (
   `nicu_datetime` timestamp NULL DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
-  `u_id` bigint(20) UNSIGNED NOT NULL,
+  `u_id` bigint(20) UNSIGNED DEFAULT NULL,
   `rek_id` char(6) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
@@ -182,7 +198,7 @@ CREATE TABLE `poli` (
   `poli_datetime` timestamp NULL DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
-  `u_id` bigint(20) UNSIGNED NOT NULL,
+  `u_id` bigint(20) UNSIGNED DEFAULT NULL,
   `rek_id` char(6) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
@@ -233,21 +249,11 @@ CREATE TABLE `rekmed` (
   `rek_job` varchar(32) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `rek_hp` varchar(15) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `rek_alamat` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `rek_status` varchar(10) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `rek_status` varchar(10) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
-  `u_id` bigint(20) UNSIGNED NOT NULL
+  `u_id` bigint(20) UNSIGNED DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Dumping data for table `rekmed`
---
-
-INSERT INTO `rekmed` (`rek_id`, `rek_name`, `rek_nik`, `rek_tempat_lahir`, `rek_tanggal_lahir`, `rek_darah`, `rek_agama`, `rek_job`, `rek_hp`, `rek_alamat`, `rek_status`, `created_at`, `updated_at`, `u_id`) VALUES
-('PH0A03', 'Pansy', '1710520118', 'Mataram', '2019-12-03 00:00:00', 'O', 'Islam', 'Dosen', NULL, 'Mataram', 'Ibu', '2019-12-03 01:11:56', '2019-12-03 01:11:56', 112),
-('PH0A04', 'Agung', '1234567890', 'wertyu', NULL, 'Pilih', 'Islam', '21sqewwe', NULL, '2321432', 'Ibu', '2019-12-03 01:15:55', '2019-12-03 01:15:55', 112),
-('PH0A05', 'Moe', '1234124321', 'wfa', '2019-12-03 00:00:00', 'A', 'Islam', 'sadads', NULL, 'adsa', 'Ibu', '2019-12-03 01:20:16', '2019-12-03 01:20:16', 112),
-('PH0A07', 'Moewq', '1234124321wq1', 'wfa', '2019-12-03 00:00:00', 'A', 'Islam', 'sadads', NULL, 'adsa', 'Ibu', '2019-12-03 01:23:33', '2019-12-03 01:23:33', 112);
 
 -- --------------------------------------------------------
 
@@ -266,17 +272,6 @@ CREATE TABLE `rekmed_anak` (
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
---
--- Dumping data for table `rekmed_anak`
---
-
-INSERT INTO `rekmed_anak` (`ra_id`, `ra_name`, `ra_tempat_lahir`, `ra_tanggal_lahir`, `ra_darah`, `rek_id`, `created_at`, `updated_at`) VALUES
-(1, 'anak1', 'mtr', '2019-11-29 00:00:00', 'O', 'PH0A03', '2019-12-03 01:11:57', '2019-12-03 01:11:57'),
-(2, 'anak2', 'mtr', '2019-11-30 00:00:00', 'O', 'PH0A03', '2019-12-03 01:11:57', '2019-12-03 01:11:57'),
-(3, 'anak3', 'mtr', '2019-12-01 00:00:00', 'O', 'PH0A03', '2019-12-03 01:11:57', '2019-12-03 01:11:57'),
-(4, 'anak4', 'mtr', '2019-12-02 00:00:00', 'O', 'PH0A03', '2019-12-03 01:11:57', '2019-12-03 01:11:57'),
-(5, 'anak5', 'mtr', '2019-12-03 00:00:00', 'O', 'PH0A03', '2019-12-03 01:11:57', '2019-12-03 01:11:57');
-
 -- --------------------------------------------------------
 
 --
@@ -286,9 +281,9 @@ INSERT INTO `rekmed_anak` (`ra_id`, `ra_name`, `ra_tempat_lahir`, `ra_tanggal_la
 CREATE TABLE `rekmed_parent` (
   `rp_id` bigint(20) UNSIGNED NOT NULL,
   `rp_ibu_name` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `rp_ibu_no` varchar(15) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `rp_ibu_hp` varchar(15) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `rp_ayah_name` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `rp_ayah_no` varchar(15) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `rp_ayah_hp` varchar(15) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `rek_id` char(6) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
@@ -312,13 +307,6 @@ CREATE TABLE `rekmed_suami` (
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
---
--- Dumping data for table `rekmed_suami`
---
-
-INSERT INTO `rekmed_suami` (`rs_id`, `rs_name`, `rs_job`, `rs_darah`, `rs_hp`, `rs_alamat`, `rek_id`, `created_at`, `updated_at`) VALUES
-(1, 'Joro', 'Dokter', 'O', '08312828208', 'Mataram', 'PH0A03', '2019-12-03 01:11:57', '2019-12-03 01:11:57');
-
 -- --------------------------------------------------------
 
 --
@@ -334,7 +322,7 @@ CREATE TABLE `ri` (
   `ri_datetime` timestamp NULL DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
-  `u_id` bigint(20) UNSIGNED NOT NULL,
+  `u_id` bigint(20) UNSIGNED DEFAULT NULL,
   `rek_id` char(6) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
@@ -392,11 +380,10 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `name`, `email`, `email_verified_at`, `password`, `remember_token`, `created_at`, `updated_at`, `username`, `role`) VALUES
-(3, 'Agung Saputra', 'agung@ssrm.com', NULL, '$2y$10$2AennWrtV5MLIr0pekY0Je753b5NiNAv9sMuKKi1GHoQhl8nlQh4q', 'qvlB9rGm2xl84poY0QfRsrcFdcZ2xY3xparfMevyu9d4vMCZFx7TCgJ0Ue8Z', '2019-10-29 06:01:10', '2019-10-30 14:54:45', 'agungsptr', 'SUPERVISOR'),
+(3, 'Agung Saputra', 'agung@ssrm.com', NULL, '$2y$10$2AennWrtV5MLIr0pekY0Je753b5NiNAv9sMuKKi1GHoQhl8nlQh4q', 'l72A6XIyEXqXZQHdOJSgYnjiEKN7kcmoFIpeUkHuHc00LWf2zOH5Fr3IPOvz', '2019-10-29 06:01:10', '2019-10-30 14:54:45', 'agungsptr', 'SUPERVISOR'),
 (7, 'Gilang Restu Alam', 'gilang@gmail.com', NULL, '$2y$10$L.H.rBVXPJlMW9kPBuBJ9ONGY6XGYJfuKkdD6kf7/cudCykWga6rK', 'H89lb4w4vNBwQrL4Zc30TSJFJirgqW9Ws1gT9ZoJpIHNkq4rITGvkevMvgeB', '2019-10-30 15:40:00', '2019-10-30 15:42:52', 'gilang', 'DOKTER'),
 (8, 'Farasut Widodo Malik', 'dodo@gmail.com', NULL, '$2y$10$3KBt.ZnlnUeJ5r03/6gHpu3MF08leEtMKQkU8n5pE2lc2cDhCHZGu', NULL, '2019-10-30 15:40:30', '2019-10-30 15:43:11', 'dodo', 'DOKTER'),
 (9, 'L Yuda Rahmani Karnaen', 'yuda@ssrm.com', NULL, '$2y$10$BTVOjh9yaiwMAxIctoXhwO643s8ettMQVN/2FXamHiuqBA9.9iqDa', 'e36geDWfjTWfIZXwsZN26Wyyv0mrHyobowhbIgomME9hNxpfBprQVBptySWt', '2019-10-30 15:40:52', '2019-10-30 15:43:28', 'yuda', 'SUPERVISOR'),
-(112, 'admin', 'admin@ssrm.com', NULL, '$2y$10$tvsyb7wwv.vxA/0q1V9E4OpQb57YyNETlDTn8D/2lXV56pYtPmGd.', 'i0CGlN8bz78Ad6s1luvHLRORxFG35cAOukYdNfPIGFzOT8N3tQS4zZjyScKE', '2019-10-31 07:55:25', '2019-11-16 14:03:38', 'admin', 'ADMIN'),
 (113, 'user100', 'usradm100@ssrm.com', NULL, '$2y$10$lAoy5FZNZestJMwNZURLtu64/BDQN53HnmKFmD2Nz.qxEmm/udmDu', 'qkCDB7oUQeWfc3zSIEcIzqgHfFQuDqhuoMO0W47ob1pgytiNyODyCCb7H5cG', '2019-10-31 07:55:25', '2019-10-31 07:55:25', 'usradm100', 'ADMIN'),
 (114, 'user0', 'usradm0@ssrm.com', NULL, '$2y$10$OqQgjYXqstE/jSOjBd5Aq./BJEYt5vUYg1Y27qQy6ssw6K9trYvi6', NULL, '2019-11-03 10:06:57', '2019-11-03 10:06:57', 'seed0', 'ADMIN'),
 (115, 'user1', 'usradm1@ssrm.com', NULL, '$2y$10$x/eGr4WpC4K0OpBFpfOS5.Ejd9hw96aZv.NAARwLUGCTt9HQCmZG6', NULL, '2019-11-03 10:06:58', '2019-11-03 10:06:58', 'seed1', 'ADMIN'),
@@ -416,11 +403,19 @@ INSERT INTO `users` (`id`, `name`, `email`, `email_verified_at`, `password`, `re
 (131, 'user17', 'usradm17@ssrm.com', NULL, '$2y$10$b748GQ7aOGeknABLPae3GuR1y1J48ktjIOfDUSsYqcdL2ztcnB6vC', NULL, '2019-11-03 10:06:59', '2019-11-03 10:06:59', 'seed17', 'ADMIN'),
 (132, 'user18', 'usradm18@ssrm.com', NULL, '$2y$10$/AdHtowOzPpeO7Vwzb1dS.TpbCYjXw/e2zLyjOfHuktErXEjzEdu6', NULL, '2019-11-03 10:06:59', '2019-11-03 10:06:59', 'seed18', 'ADMIN'),
 (133, 'user19', 'usradm19@ssrm.com', NULL, '$2y$10$N7AwXXRMHR38/gnwjf.5Z.bAmQIZTIGVNKbwOIfl8q6swFaE62lgS', NULL, '2019-11-03 10:06:59', '2019-11-03 10:06:59', 'seed19', 'ADMIN'),
-(134, 'tus', 'tus@tus.tus', NULL, '$2y$10$3TeBdQKdfPmW.udqscgGd.Cwey4Ab7KxZlAqeEtUzYbzDELHmT9fq', NULL, '2019-11-16 14:15:11', '2019-11-16 14:15:11', 'tus', 'SUPERVISOR');
+(135, 'admin', 'admin@m.com', NULL, '$2y$10$/qiay8FasxshFpE09FF9YOH.cnGILwGDHSysclWGPAj.P/cKW6iqy', NULL, '2019-12-06 14:16:30', '2019-12-06 14:16:30', 'admin', 'ADMIN');
 
 --
 -- Indexes for dumped tables
 --
+
+--
+-- Indexes for table `arsip_tahunan`
+--
+ALTER TABLE `arsip_tahunan`
+  ADD PRIMARY KEY (`arsip_id`),
+  ADD KEY `u_id` (`u_id`),
+  ADD KEY `rek_id` (`rek_id`);
 
 --
 -- Indexes for table `igd`
@@ -505,7 +500,7 @@ ALTER TABLE `rekmed_anak`
 --
 ALTER TABLE `rekmed_parent`
   ADD PRIMARY KEY (`rp_id`),
-  ADD KEY `rek_id` (`rek_id`);
+  ADD UNIQUE KEY `rek_id` (`rek_id`) USING BTREE;
 
 --
 -- Indexes for table `rekmed_suami`
@@ -542,10 +537,16 @@ ALTER TABLE `users`
 --
 
 --
+-- AUTO_INCREMENT for table `arsip_tahunan`
+--
+ALTER TABLE `arsip_tahunan`
+  MODIFY `arsip_id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+
+--
 -- AUTO_INCREMENT for table `igd`
 --
 ALTER TABLE `igd`
-  MODIFY `igd_id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
+  MODIFY `igd_id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
 
 --
 -- AUTO_INCREMENT for table `igd_penunjang`
@@ -557,7 +558,7 @@ ALTER TABLE `igd_penunjang`
 -- AUTO_INCREMENT for table `log`
 --
 ALTER TABLE `log`
-  MODIFY `log_id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `log_id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
 -- AUTO_INCREMENT for table `migrations`
@@ -593,19 +594,19 @@ ALTER TABLE `poli_penunjang`
 -- AUTO_INCREMENT for table `rekmed_anak`
 --
 ALTER TABLE `rekmed_anak`
-  MODIFY `ra_id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `ra_id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT for table `rekmed_parent`
 --
 ALTER TABLE `rekmed_parent`
-  MODIFY `rp_id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `rp_id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `rekmed_suami`
 --
 ALTER TABLE `rekmed_suami`
-  MODIFY `rs_id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `rs_id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `ri`
@@ -623,18 +624,25 @@ ALTER TABLE `ri_penunjang`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=135;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=136;
 
 --
 -- Constraints for dumped tables
 --
 
 --
+-- Constraints for table `arsip_tahunan`
+--
+ALTER TABLE `arsip_tahunan`
+  ADD CONSTRAINT `arsip_tahunan_ibfk_1` FOREIGN KEY (`u_id`) REFERENCES `users` (`id`) ON DELETE SET NULL ON UPDATE SET NULL,
+  ADD CONSTRAINT `arsip_tahunan_ibfk_2` FOREIGN KEY (`rek_id`) REFERENCES `rekmed` (`rek_id`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
 -- Constraints for table `igd`
 --
 ALTER TABLE `igd`
-  ADD CONSTRAINT `igd_ibfk_1` FOREIGN KEY (`u_id`) REFERENCES `users` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `igd_ibfk_2` FOREIGN KEY (`rek_id`) REFERENCES `rekmed` (`rek_id`) ON DELETE CASCADE ON UPDATE CASCADE;
+  ADD CONSTRAINT `igd_ibfk_2` FOREIGN KEY (`rek_id`) REFERENCES `rekmed` (`rek_id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `igd_ibfk_3` FOREIGN KEY (`u_id`) REFERENCES `users` (`id`) ON DELETE SET NULL ON UPDATE NO ACTION;
 
 --
 -- Constraints for table `igd_penunjang`
@@ -646,8 +654,8 @@ ALTER TABLE `igd_penunjang`
 -- Constraints for table `nicu`
 --
 ALTER TABLE `nicu`
-  ADD CONSTRAINT `nicu_ibfk_1` FOREIGN KEY (`u_id`) REFERENCES `users` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `nicu_ibfk_2` FOREIGN KEY (`rek_id`) REFERENCES `rekmed` (`rek_id`) ON DELETE CASCADE ON UPDATE CASCADE;
+  ADD CONSTRAINT `nicu_ibfk_2` FOREIGN KEY (`rek_id`) REFERENCES `rekmed` (`rek_id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `nicu_ibfk_3` FOREIGN KEY (`u_id`) REFERENCES `users` (`id`) ON DELETE SET NULL ON UPDATE SET NULL;
 
 --
 -- Constraints for table `nicu_penunjang`
@@ -659,7 +667,7 @@ ALTER TABLE `nicu_penunjang`
 -- Constraints for table `poli`
 --
 ALTER TABLE `poli`
-  ADD CONSTRAINT `poli_ibfk_1` FOREIGN KEY (`u_id`) REFERENCES `users` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `poli_ibfk_1` FOREIGN KEY (`u_id`) REFERENCES `users` (`id`) ON DELETE SET NULL ON UPDATE SET NULL,
   ADD CONSTRAINT `poli_ibfk_2` FOREIGN KEY (`rek_id`) REFERENCES `rekmed` (`rek_id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
@@ -672,7 +680,7 @@ ALTER TABLE `poli_penunjang`
 -- Constraints for table `rekmed`
 --
 ALTER TABLE `rekmed`
-  ADD CONSTRAINT `rekmed_ibfk_1` FOREIGN KEY (`u_id`) REFERENCES `users` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
+  ADD CONSTRAINT `rekmed_ibfk_1` FOREIGN KEY (`u_id`) REFERENCES `users` (`id`) ON DELETE SET NULL ON UPDATE SET NULL;
 
 --
 -- Constraints for table `rekmed_anak`
@@ -696,7 +704,7 @@ ALTER TABLE `rekmed_suami`
 -- Constraints for table `ri`
 --
 ALTER TABLE `ri`
-  ADD CONSTRAINT `ri_ibfk_1` FOREIGN KEY (`u_id`) REFERENCES `users` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `ri_ibfk_1` FOREIGN KEY (`u_id`) REFERENCES `users` (`id`) ON DELETE SET NULL ON UPDATE SET NULL,
   ADD CONSTRAINT `ri_ibfk_2` FOREIGN KEY (`rek_id`) REFERENCES `rekmed` (`rek_id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
