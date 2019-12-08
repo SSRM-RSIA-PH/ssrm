@@ -1,7 +1,7 @@
 @extends('layouts.super')
 @section('title') Supervisor @endsection
 @section('menu')
-<a href="{{route('super.index')}}" class="nav-item nav-link active">Dashboard</a>
+<a href="{{route('super.index')}}" class="nav-item nav-link active">Home</a>
 <a class="nav-link" href="{{route('super.log')}}">Log Upload</a>
 <a class="nav-link" href="{{route('user.index')}}">Manage Users</a>
 <a class="nav-link" href="{{route('super.rekmed')}}">Rekam Medis</a>
