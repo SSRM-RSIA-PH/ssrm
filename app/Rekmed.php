@@ -19,6 +19,6 @@ class Rekmed extends Model
 
     public function anak()
     {
-        return RekmedAnak::where('rek_id', $this->rek_id)->get();
+        return RekmedAnak::where('rek_id', $this->rek_id)->orderBy('ra_anak_ke')->get();
     }
 }

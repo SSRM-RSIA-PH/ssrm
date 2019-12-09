@@ -103,6 +103,10 @@
                                         <td>{{$anak->ra_name}}</td>
                                     </tr>
                                     <tr>
+                                        <th>Nama Anak Ke</th>
+                                        <td>{{$anak->ra_anak_ke}}</td>
+                                    </tr>
+                                    <tr>
                                         <th>Tempat Lahir</th>
                                         <td>{{$anak->ra_tempat_lahir}}</td>
                                     </tr>

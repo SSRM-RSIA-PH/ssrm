@@ -221,6 +221,7 @@ class SuperRekmedController extends Controller
 
         return redirect()->route('super.rekmed.edit', ['rek_id'=>$rek_id])->with('status', "Berhasil Mengedit Rekam Medis $rek_id");
     }
+    
 
     //edit update detail igd
     public function edit_detail_igd($rek_id, $id)
