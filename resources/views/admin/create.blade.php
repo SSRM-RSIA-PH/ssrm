@@ -48,7 +48,7 @@ Add ID Rekam Medis
                         <label for="rek_nik">NIK</label>
                         <input type="text" class="form-control {{$errors->first('rek_nik') ? 'is-invalid':''}}"
                             name="rek_nik" id="rek_nik" aria-describedby="" placeholder="" value="{{old('rek_nik')}}"
-                            required>
+                            required maxlength="16">
 
                         @if ($errors->first('rek_nik'))
                         <div class="invalid-feedback">
