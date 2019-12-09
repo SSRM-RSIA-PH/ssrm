@@ -41,6 +41,10 @@ Route::group(['prefix' => '/supervisor'], function () {
         Route::get('/{rek_id}/edit', 'SuperRekmedController@edit_rekmed')->name('super.rekmed.edit');
         Route::put('/{rek_id}/update', 'SuperRekmedController@update_rekmed')->name('super.rekmed.update');
 
+        Route::get('/{rek_id}/edit_anak', 'SuperRekmedController@edit_rekmed_anak')->name('super.rekmed.edit-anak');
+        Route::put('/{rek_id}/update_anak', 'SuperRekmedController@update_rekmed_anak')->name('super.rekmed.update-anak');
+
+
         //edit detail igd
         Route::get('/{rek_id}/igd/{id}/edit', 'SuperRekmedController@edit_detail_igd')->name('super.rekmed.igd.edit');
         Route::put('/{rek_id}/igd/{id}/update', 'SuperRekmedController@update_detail_igd')->name('super.rekmed.igd.update');
@@ -82,10 +86,8 @@ Route::group(['prefix' => '/admin'], function () {
     Route::get('/', 'AdminController@index')->name('admin.index');
     Route::get('/create', 'AdminController@create')->name('admin.create.rek');
     Route::post('/create/s', 'AdminController@store')->name('admin.store.rek');
-    Route::get('/create_suami/{rek_id}', 'AdminController@create_suami')->name('admin.create_suami.rek');
-    Route::post('/create_suami/s', 'AdminController@store_suami')->name('admin.store_suami.rek');
-    Route::get('/create_parent/{rek_id}', 'AdminController@create_parent')->name('admin.create_parent.rek');
-    Route::post('/create_parent/s', 'AdminController@store_parent')->name('admin.store_parent.rek');
+    Route::get('/create_anak/{rek_id}', 'AdminController@create_anak')->name('admin.create_anak.rek');
+    Route::post('/create_anak/s', 'AdminController@store_anak')->name('admin.store_anak.rek');
     Route::get('/show/{rek_id}', 'AdminController@show')->name('admin.show.rek');
 
     //admin igd

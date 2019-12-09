@@ -6,14 +6,15 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Gate;
 use \App\Rekmed;
 use \App\Igd;
-use App\IgdPenunjang;
-use App\Log;
+use \App\IgdPenunjang;
+use \App\Log;
 use \App\Nicu;
-use App\NicuPenunjang;
+use \App\NicuPenunjang;
 use \App\Poli;
-use App\PoliPenunjang;
+use \App\PoliPenunjang;
 use \App\RawatInap;
-use App\RawatInapPenunjang;
+use \App\RawatInapPenunjang;
+use \App\RekmedAnak;
 
 class SuperRekmedController extends Controller
 {
@@ -134,12 +135,101 @@ class SuperRekmedController extends Controller
     public function update_rekmed(Request $request, $rek_id)
     {
         $rekmed = Rekmed::findOrFail($rek_id);
-        $rekmed->rek_id = $request->get('rek_id');
+
+        if ($request->get('rek_nik') != $rekmed->rek_nik) {
+            \Validator::make($request->all(), [
+                'rek_nik' => 'unique:rekmed'
+            ])->validate();
+        }
+
+        $rekmed->u_id = $request->user()->id;
         $rekmed->rek_name = $request->get('rek_name');
+
+        $rekmed->rek_nik = $request->get('rek_nik');
+        $rekmed->rek_tempat_lahir = $request->get('rek_tempat_lahir');
+        $rekmed->rek_tanggal_lahir = $request->get('rek_tanggal_lahir');
+        $rekmed->rek_darah = $request->get('rek_darah');
+        $rekmed->rek_agama = $request->get('rek_agama');
+        $rekmed->rek_job = $request->get('rek_job');
+        $rekmed->rek_hp = $request->get('rek_hp');
+        $rekmed->rek_alamat = $request->get('rek_alamat');
+        
+        $rekmed->s_name = $request->get('rs_name');
+        $rekmed->s_job = $request->get('rs_job');
+        $rekmed->s_darah = $request->get('rs_darah');
+        $rekmed->s_hp = $request->get('rs_hp');
+        $rekmed->s_alamat = $request->get('rs_alamat');
+
+        $rekmed->p_ibu = $request->get('rp_ibu');
+        $rekmed->p_ibu_hp = $request->get('rp_ibu_hp');
+        $rekmed->p_bpk = $request->get('rp_ayah');
+        $rekmed->p_bpk_hp = $request->get('rp_ayah_hp');
+
         $rekmed->save();
 
-        return redirect()->route('super.rekmed.edit', ['rek_id' => $rekmed->rek_id])->with('status', 'Berhasil');
+        if ($rekmed->rek_status == 'ibu') {
+            return redirect()->route('super.rekmed.edit-anak', ['rek_id'=>$rek_id]);
+        } else {
+            return redirect()->route('super.rekmed.edit', ['rek_id'=>$rek_id])->with('status', "Berhasil Mengedit Rekam Medis $rek_id");
+        }
     }
+
+    public function edit_rekmed_anak($rek_id)
+    {
+        $rekmed = Rekmed::findOrFail($rek_id);
+        $data_anak = RekmedAnak::where('rek_id', $rek_id)->get();
+
+        $anak1 = $data_anak->where('ra_anak_ke', 1)->first();
+        $anak2 = $data_anak->where('ra_anak_ke', 2)->first();
+        $anak3 = $data_anak->where('ra_anak_ke', 3)->first();
+        $anak4 = $data_anak->where('ra_anak_ke', 4)->first();
+        $anak5 = $data_anak->where('ra_anak_ke', 5)->first();
+
+            return view('super.rekmed.edit-anak', [
+                'rek_id' => $rek_id,
+                'anak1' => $anak1,
+                'anak2' => $anak2,
+                'anak3' => $anak3,
+                'anak4' => $anak4,
+                'anak5' => $anak5
+            ]);
+    }
+
+    public function update_rekmed_anak(Request $request, $rek_id)
+    {
+        for ($i=1; $i < 6; $i++) { 
+            if ($request->get("id$i")) {
+                $anak = RekmedAnak::find($request->get("id$i"));
+                $anak->ra_name = $request->get("ra_name$i");
+                $anak->ra_tempat_lahir = $request->get("ra_tempat_lahir$i");
+                $anak->ra_tanggal_lahir = $request->get("ra_tanggal_lahir$i");
+                $anak->ra_darah = $request->get("ra_darah$i");
+                $anak->ra_anak_ke = $i;
+                $anak->rek_id = $rek_id;
+                $anak->save();
+            } else {
+                $anak = new RekmedAnak;
+                $anak->ra_name = $request->get("ra_name$i");
+                $anak->ra_tempat_lahir = $request->get("ra_tempat_lahir$i");
+                $anak->ra_tanggal_lahir = $request->get("ra_tanggal_lahir$i");
+                $anak->ra_darah = $request->get("ra_darah$i");
+                $anak->ra_anak_ke = $i;
+                $anak->rek_id = $rek_id;
+                $anak->save();
+            }
+        }
+
+        return redirect()->route('super.rekmed.edit', ['rek_id'=>$rek_id])->with('status', "Berhasil Mengedit Rekam Medis $rek_id");
+    }
+
+
+
+
+
+
+
+
+
 
 
     //edit update detail igd

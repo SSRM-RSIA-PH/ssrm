@@ -73,23 +73,23 @@
                                     {{-- suami --}}
                                     <tr>
                                         <th>Nama Suami</th>
-                                        <td>{{$rekmed->suami()->rs_name}}</td>
+                                        <td>{{$rekmed->s_name}}</td>
                                     </tr>
                                     <tr>
                                         <th>Pekerjaan</th>
-                                        <td>{{$rekmed->suami()->rs_job}}</td>
+                                        <td>{{$rekmed->s_job}}</td>
                                     </tr>
                                     <tr>
                                         <th>Golongan Darah</th>
-                                        <td>{{$rekmed->suami()->rs_darah}}</td>
+                                        <td>{{$rekmed->s_darah}}</td>
                                     </tr>
                                     <tr>
                                         <th>No Telp</th>
-                                        <td>{{$rekmed->suami()->rs_hp}}</td>
+                                        <td>{{$rekmed->s_hp}}</td>
                                     </tr>
                                     <tr>
                                         <th>Alamat</th>
-                                        <td>{{$rekmed->suami()->rs_alamat}}</td>
+                                        <td>{{$rekmed->s_alamat}}</td>
                                     </tr>
                                     <tr>
                                         <th>--------------------</th>
@@ -125,19 +125,19 @@
                                 @case('anak')
                                     <tr>
                                         <th>Nama Ibu</th>
-                                        <td>{{$rekmed->parent()->rp_ibu_name}}</td>
+                                        <td>{{$rekmed->p_ibu}}</td>
                                     </tr>
                                     <tr>
                                         <th>No Telp Ibu</th>
-                                        <td>{{$rekmed->parent()->rp_ibu_hp}}</td>
+                                        <td>{{$rekmed->p_ibu_hp}}</td>
                                     </tr>
                                     <tr>
                                         <th>Nama Ayah</th>
-                                        <td>{{$rekmed->parent()->rp_ayah_name}}</td>
+                                        <td>{{$rekmed->p_bpk}}</td>
                                     </tr>
                                     <tr>
                                         <th>Nama Telp Ayah</th>
-                                        <td>{{$rekmed->parent()->rp_ayah_hp}}</td>
+                                        <td>{{$rekmed->p_bpk_hp}}</td>
                                     </tr>
 
                                     @break

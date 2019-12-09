@@ -6,8 +6,6 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Gate;
 use \App\Rekmed;
 use \App\RekmedAnak;
-use \App\RekmedSuami;
-use \App\RekmedParent;
 
 class AdminController extends Controller
 {
@@ -62,48 +60,45 @@ class AdminController extends Controller
         $rekmed->rek_alamat = $request->get('rek_alamat');
         $rekmed->rek_status = $status;
 
+        $rekmed->s_name = $request->get('rs_name');
+        $rekmed->s_job = $request->get('rs_job');
+        $rekmed->s_darah = $request->get('rs_darah');
+        $rekmed->s_hp = $request->get('rs_hp');
+        $rekmed->s_alamat = $request->get('rs_alamat');
+
+        $rekmed->p_ibu = $request->get('rp_ibu');
+        $rekmed->p_ibu_hp = $request->get('rp_ibu_hp');
+        $rekmed->p_bpk = $request->get('rp_ayah');
+        $rekmed->p_bpk_hp = $request->get('rp_ayah_hp');
+
         $rekmed->u_id = $request->user()->id;
         $rekmed->save();
 
         switch ($status) {
             case 'ibu':
-                return redirect()->route('admin.create_suami.rek', ['rek_id'=>$rek_id]);
-                break;
-
-            case 'anak':
-                return redirect()->route('admin.create_parent.rek', ['rek_id'=>$rek_id]);
+                return redirect()->route('admin.create_anak.rek', ['rek_id'=>$rek_id]);
                 break;
 
             default:
-                return redirect()->route('admin.create.rek');
+                return redirect()->route('admin.create.rek')->with('status', $rek_id);
                 break;
         }
     }
 
-    public function create_suami($rek_id)
+    public function create_anak($rek_id)
     {
-        return view('admin.create-suami', ['rek_id' => $rek_id]);
+        return view('admin.create-anak', ['rek_id' => $rek_id]);
     }
 
-    public function store_suami(Request $request)
+    public function store_anak(Request $request)
     {
         $rek_id = $request->get('rek_id');
 
-        $suami = new RekmedSuami;
-        $suami->rek_id = $rek_id;
-
-        $suami->rs_name = $request->get('rs_name');
-        $suami->rs_job = $request->get('rs_job');
-        $suami->rs_darah = $request->get('rs_darah');
-        $suami->rs_hp = $request->get('rs_hp');
-        $suami->rs_alamat = $request->get('rs_alamat');
-
-        $suami->save();
-
-        for ($i = 1; $i <= 5; $i++) {
+        for ($i = 1; $i < 6; $i++) {
             if ($request->get("ra_name$i")) {
                 $anak = new RekmedAnak;
                 $anak->rek_id = $rek_id;
+                $anak->ra_anak_ke = $i;
 
                 $anak->ra_name = $request->get("ra_name$i");
                 $anak->ra_tempat_lahir = $request->get("ra_tempat_lahir$i");
@@ -114,28 +109,7 @@ class AdminController extends Controller
             }
         }
 
-        return redirect()->route('admin.show.rek', ['rek_id'=>$rek_id]);
-    }
-
-    public function create_parent($rek_id)
-    {
-        return view('admin.create-parent', ['rek_id' => $rek_id]);
-    }
-
-    public function store_parent(Request $request)
-    {
-        $rek_id = $request->get('rek_id');
-        
-        $parent = new RekmedParent;
-        $parent->rp_ibu_name = $request->get('rp_ibu');
-        $parent->rp_ibu_hp = $request->get('rp_ibu_hp');
-        $parent->rp_ayah_name = $request->get('rp_ayah');
-        $parent->rp_ayah_hp = $request->get('rp_ayah_hp');
-        $parent->rek_id = $rek_id;
-
-        $parent->save();
-
-        return redirect()->route('admin.show.rek', ['rek_id'=>$rek_id]);
+        return redirect()->route('admin.create.rek')->with('status', $rek_id);
     }
 
     public function show($rek_id)
