@@ -71,9 +71,9 @@
     <div class="container-fluid">
 
         {{-- <div class="row"> --}}
-            @yield("content")
-            @if (isset($rekmed))
-            <div class="modal fade" id="pasienProfile" tabindex="-1" role="dialog" aria-labelledby="pasienProfileTitle"
+        @yield("content")
+        @if (isset($rekmed))
+        <div class="modal fade" id="pasienProfile" tabindex="-1" role="dialog" aria-labelledby="pasienProfileTitle"
             aria-hidden="true">
             <div class="modal-dialog modal-dialog-scrollable" role="document">
                 <div class="modal-content">
@@ -207,6 +207,18 @@
         });
         
         // create pasien
+        $('#ortu').hide();
+        $('#suami').hide();
+        $('#ribu').click(function() {
+            $('#suami').show();
+            $('#ortu').hide();
+        });
+        $('#ranak').click(function() {
+            $('#suami').hide();
+            $('#ortu').show();
+        });
+
+        // anak pasien
         $('#ca1').click(function() {
             $('#ba1').toggle();
             $('#ba1').attr('hidden', false);

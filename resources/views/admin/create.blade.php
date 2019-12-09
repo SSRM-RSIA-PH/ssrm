@@ -7,7 +7,7 @@ Add ID Rekam Medis
 @endsection
 @section('content')
 <div class="row d-flex justify-content-center">
-    <div class="col-md-4">
+    <div class="col-md-6">
 
         @if (session('status'))
         <div class="alert alert-success">
@@ -115,70 +115,75 @@ Add ID Rekam Medis
                             <label class="custom-control-label" for="ranak">Anak</label>
                         </div>
 
-                        @if ($errors->first('rek_status'))
+                        {{-- @if ($errors->first('rek_status'))
                         <p class="small" style="color: red; padding-top: 3px">Silahkan pilih status terlebih dahulu</p>
-                        @endif
+                        @endif --}}
                     </div>
 
-                    {{-- profile suami --}}
-                    <div class="form-group">
-                        <label for="rs_name">Nama Suami</label>
-                        <input type="text" class="form-control" name="rs_name" id="rs_name" aria-describedby=""
-                            placeholder="">
+                    <div id="suami">
+                        {{-- profile suami --}}
+                        <div class="form-group">
+                            <label for="rs_name">Nama Suami</label>
+                            <input type="text" class="form-control" name="rs_name" id="rs_name" aria-describedby=""
+                                placeholder="">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="rs_job">Pekerjaan Suami</label>
+                            <input type="text" class="form-control" name="rs_job" id="rs_job" aria-describedby="helpId"
+                                placeholder="">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="rs_darah">Golongan Darah Suami</label>
+                            <select class="form-control" name="rs_darah" id="rs_darah">
+                                <option value="">Pilih</option>
+                                <option value="A">A</option>
+                                <option value="B">B</option>
+                                <option value="AB">AB</option>
+                                <option value="O">O</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="rs_hp">No HP Suami</label>
+                            <input type="text" class="form-control" name="rs_hp" id="rs_hp" aria-describedby=""
+                                placeholder="">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="rs_alamat">Alamat Suami</label>
+                            <input type="text" class="form-control" name="rs_alamat" id="rs_alamat" aria-describedby=""
+                                placeholder="">
+                        </div>
                     </div>
 
-                    <div class="form-group">
-                        <label for="rs_job">Pekerjaan Suami</label>
-                        <input type="text" class="form-control" name="rs_job" id="rs_job" aria-describedby="helpId"
-                            placeholder="">
-                    </div>
+                    <div id="ortu">
+                        {{-- profile orangtua --}}
+                        <div class="form-group">
+                            <label for="rp_ibu">Nama Ibu</label>
+                            <input type="text" class="form-control" name="rp_ibu" id="rp_ibu" aria-describedby="rp_ibu">
+                        </div>
 
-                    <div class="form-group">
-                        <label for="rs_darah">Golongan Darah Suami</label>
-                        <select class="form-control" name="rs_darah" id="rs_darah">
-                            <option value="">Pilih</option>
-                            <option value="A">A</option>
-                            <option value="B">B</option>
-                            <option value="AB">AB</option>
-                            <option value="O">O</option>
-                        </select>
-                    </div>
+                        <div class="form-group">
+                            <label for="rp_ibu_hp">No Telp Ibu</label>
+                            <input type="text" class="form-control" name="rp_ibu_hp" id="rp_ibu_hp"
+                                aria-describedby="rp_ibu_hp">
+                        </div>
 
-                    <div class="form-group">
-                        <label for="rs_hp">No HP Suami</label>
-                        <input type="text" class="form-control" name="rs_hp" id="rs_hp" aria-describedby=""
-                            placeholder="">
-                    </div>
+                        <div class="form-group">
+                            <label for="rp_ayah">Nama Ayah</label>
+                            <input type="text" class="form-control" name="rp_ayah" id="rp_ayah"
+                                aria-describedby="rp_ayah">
+                        </div>
 
-                    <div class="form-group">
-                        <label for="rs_alamat">Alamat Suami</label>
-                        <input type="text" class="form-control" name="rs_alamat" id="rs_alamat" aria-describedby=""
-                            placeholder="">
+                        <div class="form-group">
+                            <label for="rp_ayah_hp">No Telp Ayah</label>
+                            <input type="text" class="form-control" name="rp_ayah_hp" id="rp_ayah_hp"
+                                aria-describedby="rp_ayah_hp">
+                        </div>
                     </div>
-
-                    {{-- profile orangtua --}}
-                    <div class="form-group">
-                        <label for="rp_ibu">Nama Ibu</label>
-                        <input type="text" class="form-control" name="rp_ibu" id="rp_ibu" aria-describedby="rp_ibu">
-                    </div>
-
-                    <div class="form-group">
-                        <label for="rp_ibu_hp">No Telp Ibu</label>
-                        <input type="text" class="form-control" name="rp_ibu_hp" id="rp_ibu_hp"
-                            aria-describedby="rp_ibu_hp">
-                    </div>
-
-                    <div class="form-group">
-                        <label for="rp_ayah">Nama Ayah</label>
-                        <input type="text" class="form-control" name="rp_ayah" id="rp_ayah" aria-describedby="rp_ayah">
-                    </div>
-
-                    <div class="form-group">
-                        <label for="rp_ayah_hp">No Telp Ayah</label>
-                        <input type="text" class="form-control" name="rp_ayah_hp" id="rp_ayah_hp"
-                            aria-describedby="rp_ayah_hp">
-                    </div>
-
+                
             </div>
             <div class="card-footer">
                 <button id="simpan" type="submit" class="btn btn-primary">Simpan</button>
