@@ -15,13 +15,13 @@
 <div class="container">
     <div class="row d-flex justify-content-center">
         <div class="col-10">
-            <div class="card">
+            <div class="card mb-3">
                 <div class="card-header">
                     Profile Pasien
                 </div>
                 <div class="card-body">
-                    <div class="alert alert-success w-100">
-                        <table class="w-100">
+                    <div>
+                        <table class="table table-hover table-info">
                             <tr>
                                 <th>No Rekam Medis</th>
                                 <td>{{$rekmed->rek_id}}</td>

@@ -1,7 +1,7 @@
 @extends('layouts.main')
 @section('title') Admin @endsection
 @section('menu')
-<a href="{{route('admin.index')}}" class="nav-item nav-link">Dashboard</a>
+<a href="{{route('admin.index')}}" class="nav-item nav-link">Cari Pasien</a>
 @endsection
 @section('content')
 

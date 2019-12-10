@@ -1,7 +1,7 @@
 @extends('layouts.super')
 @section('title') Detail @endsection
 @section('menu')
-<a href="{{route('super.index')}}" class="nav-link">Dashboard</a>
+<a href="{{route('super.index')}}" class="nav-link">Home</a>
 <a href="{{route('super.rekmed.show.igd', ['rek_id'=>$rek_id])}}" class="nav-link">Kembali</a>
 @endsection
 @section('content')

@@ -3,7 +3,7 @@
 Edit Detail
 @endsection
 @section('menu')
-<a href="{{route('super.index')}}" class="nav-link">Dashboard</a>
+<a href="{{route('super.index')}}" class="nav-link">Home</a>
 <a href="{{route('super.rekmed.show.poli', ['rek_id'=>$rek_id])}}" class="nav-link">Kembali</a>
 @endsection
 @section('content')
