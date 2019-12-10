@@ -2,7 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use App\Rekmed;
+use \App\Rekmed;
+use \App\Arsip;
 use Illuminate\Http\Request;
 use ZipArchive;
 use \RecursiveIteratorIterator;
@@ -35,5 +36,12 @@ class Archive extends Controller
         $zip->close();
 
         return response()->download(storage_path("app/public/$filename"))->deleteFileAfterSend(true);
+    }
+
+    public function download_arsip_tahunan($id_arsip)
+    {
+        $file = Arsip::findOrFail($id_arsip);
+        $file = $file->arsip_file;
+        return response()->download(storage_path("app/public/$file"));
     }
 }

@@ -15,6 +15,7 @@ use \App\PoliPenunjang;
 use \App\RawatInap;
 use \App\RawatInapPenunjang;
 use \App\RekmedAnak;
+use \App\Arsip;
 
 class SuperRekmedController extends Controller
 {
@@ -82,6 +83,15 @@ class SuperRekmedController extends Controller
         $ri = RawatInap::where('rek_id', $rek_id)->orderBy('ri_datetime', 'DESC')->paginate(10);
         return view('super.rekmed.show.ri', [
             'ri' => $ri,
+            'rek_id' => $rek_id
+        ]);
+    }
+
+    public function show_arsip($rek_id)
+    {
+        $arsip = Arsip::where('rek_id', $rek_id)->orderBy('arsip_datetime', 'DESC')->paginate(10);
+        return view('super.rekmed.show.arsip', [
+            'arsip' => $arsip,
             'rek_id' => $rek_id
         ]);
     }
@@ -791,6 +801,40 @@ class SuperRekmedController extends Controller
             'rek_id' => $rek_id,
             'id' => $id
         ])->with('status', 'Berhasil Diubah');
+    }
+
+    //edit update arsip tahunan
+    public function edit_arsip_tahunan($rek_id, $id)
+    {
+        $arsip = Arsip::findOrFail($id);
+        return view('super.rekmed.detail_edit.arsip', [
+            'rek_id'=>$rek_id,
+            'arsip'=>$arsip
+        ]);
+    }
+
+    public function update_arsip_tahunan(Request $request)
+    {
+        $id = $request->get('id');
+
+        $arsip = Arsip::find($id);
+        $arsip->arsip_datetime = $request->get('date');
+        $rek_id = $arsip->rek_id;
+
+        if ($request->file('arsip_file')) {
+            $dbfile = $arsip->arsip_file;
+            if ($dbfile && file_exists(storage_path("app/public/$dbfile"))) {
+                \Storage::delete("public/$dbfile");
+            }
+            $dir = "Rekmed/$rek_id/Arsip/";
+            $file = $arsip->created_at . "_arsip.zip";
+
+            $request->file('arsip_file')->storeAs("public/$dir", $file);
+            $arsip->arsip_file =  $dir . $file;
+        }
+        $arsip->save();
+
+        return redirect()->route('super.rekmed.arsip.edit', ['rek_id'=>$rek_id, 'id'=>$id])->with('status', "Berhasil Mengedit Arsip $arsip->created_at");
     }
 
 

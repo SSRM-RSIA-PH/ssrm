@@ -1,21 +1,19 @@
-@extends('layouts.main')
+@extends('layouts.super')
+@section('title')
+Edit Arsip Tahunan
+@endsection
 @section('menu')
-<a href="{{route('admin.index')}}" class="nav-item nav-link">Dashboard</a>
-<a href="{{route('admin.show.rek', ['rek_id'=>$rek_id])}}" class="nav-item nav-link">{{$rek_id}}</a>
-<a href="{{route('admin.create.igd', ['rek_id'=>$rek_id])}}" class="nav-item nav-link">IGD</a>
-<a href="{{route('admin.create.poli', ['rek_id'=>$rek_id])}}" class="nav-item nav-link">POLI</a>
-<a href="{{route('admin.create.nicu', ['rek_id'=>$rek_id])}}" class="nav-item nav-link">NICU</a>
-<a href="{{route('admin.create.ri', ['rek_id'=>$rek_id])}}" class="nav-item nav-link">RAWAT INAP</a>
-<a href="{{route('admin.create.arsip', ['rek_id'=>$rek_id])}}" class="nav-item nav-link active">ARSIP</a>
+<a href="{{route('super.index')}}" class="nav-link">Dashboard</a>
+<a href="{{route('super.show.arsip', ['rek_id'=>$rek_id])}}" class="nav-link">Kembali</a>
 @endsection
 @section('content')
 <div class="container">
 
-@if (session('status'))
-<div class="alert alert-success">
-    Berhasil menambahkan file Arsip <br>
-</div>
-@endif
+    @if (session('status'))
+    <div class="alert alert-success">
+        {{session('status')}}
+    </div>
+    @endif
 
     <div class="row">
         <div class="col-3">
@@ -24,12 +22,14 @@
         <div class="col-9">
             <div class="card mb-3">
                 <div class="card-header">
-                    Upload Arsip Tahunan
+                    Arsip Tahunan
                 </div>
                 <div class="card-body">
-                    <form action="{{route('admin.store.arsip')}}" enctype="multipart/form-data" method="POST">
+                    <form action="{{route('super.rekmed.arsip.update', ['rek_id'=>$rek_id, 'id'=>$arsip->arsip_id])}}"
+                        enctype="multipart/form-data" method="POST">
                         @csrf
-                        <input type="text" name="rek_id" value="{{$rek_id}}" hidden>
+                        <input type="hidden" value="PUT" name="_method">
+                        <input type="hidden" value="{{$arsip->arsip_id}}" name="id">
 
                         <div class="col">
                             <div class="input-group pt-2">
@@ -39,7 +39,7 @@
                                 <div class="custom-file">
                                     <input name="date" type="datetime-local" class="form-control"
                                         style="border-top-left-radius:0px;border-bottom-left-radius:0px;" required
-                                        autofocus>
+                                        value="{{str_replace(" ","T",$arsip->arsip_datetime)}}">
                                 </div>
                             </div>
                         </div><br>
@@ -47,20 +47,18 @@
                         <div class="col">
                             <div class="card mb-3">
                                 <div class="card-header">
-                                    File Arsip
+                                    Arsip Tahunan
                                 </div>
-                                <div class="card-body">
+                                <div class="card-body" id="perkembangan">
                                     <div class="custom-file">
-                                        <label class="custom-file-label" id="cfl1" for="arsip">Choose file</label>
-                                        <input type="file"
-                                            class="custom-file-input {{$errors->first('arsip') ? 'is-invalid':''}}"
-                                            value="{{old('arsip')}}" id="arsip" name="arsip" accept="application/zip">
-
-                                        @if ($errors->first('arsip'))
-                                        <div class="invalid-feedback">
-                                            File harus berformat zip
-                                        </div>
-                                        @endif
+                                        <input type="file" class="custom-file-input" id="arsip_file" name="arsip_file">
+                                        <label class="custom-file-label" id="cfl1" for="arsip_file">
+                                            @if ($arsip->arsip_file)
+                                            <strong>File Arsip Tahunan</strong>
+                                            @else
+                                            Choose file
+                                            @endif
+                                        </label>
                                     </div>
                                 </div>
                             </div>

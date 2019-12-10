@@ -8,6 +8,8 @@
 <a class="nav-link" href="{{route('super.rekmed.show.nicu', ['rek_id'=>$rek_id])}}">NICU</a>
 <a class="nav-link" href="{{route('super.rekmed.show.poli', ['rek_id'=>$rek_id])}}">POLI</a>
 <a class="nav-link" href="{{route('super.rekmed.show.ri', ['rek_id'=>$rek_id])}}">RAWAT INAP</a>
+<a class="nav-link" href="{{route('super.show.arsip', ['rek_id'=>$rek_id])}}">ARSIP</a>
+
 @endsection
 @section('content')
 

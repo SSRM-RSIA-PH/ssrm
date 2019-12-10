@@ -9,6 +9,7 @@ use \App\Igd;
 use \App\Poli;
 use \App\Nicu;
 use \App\RawatInap;
+use \App\Arsip;
 
 class DokterController extends Controller
 {
@@ -82,6 +83,17 @@ class DokterController extends Controller
             'rekmed' => $modal,
             'rek_id' => $rek_id,
             'ri' => $ri,
+        ]);
+    }
+
+    public function show_arsip($rek_id)
+    {
+        $modal = Rekmed::find($rek_id);
+        $arsip = Arsip::where('rek_id', $rek_id)->orderBy('arsip_datetime', 'DESC')->paginate(10);
+        return view('dokter.show.arsip', [
+            'rekmed' => $modal,
+            'rek_id' => $rek_id,
+            'arsip' => $arsip
         ]);
     }
 

@@ -121,7 +121,7 @@ Edit Detail
                                                 @if ($igd->igd_resume)
                                                 <strong>File Resume</strong>
                                                 @else
-                                                Choose file
+                                                Choose file 
                                                 @endif
                                             </label>
                                         </div>

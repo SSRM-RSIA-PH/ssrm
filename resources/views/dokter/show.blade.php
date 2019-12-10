@@ -6,6 +6,8 @@
 <a class="nav-link" href="{{route('dokter.show.nicu', ['rek_id'=>$rekmed->rek_id])}}">NICU</a>
 <a class="nav-link" href="{{route('dokter.show.poli', ['rek_id'=>$rekmed->rek_id])}}">POLI</a>
 <a class="nav-link" href="{{route('dokter.show.ri', ['rek_id'=>$rekmed->rek_id])}}">RAWAT INAP</a>
+<a class="nav-link" href="{{route('dokter.show.arsip', ['rek_id'=>$rekmed->rek_id])}}">ARSIP</a>
+
 @endsection
 @section('pasien')
 <button type="button" class="btn btn-success" data-toggle="modal" data-target="#pasienProfile">
