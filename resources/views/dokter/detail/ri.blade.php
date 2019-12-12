@@ -84,7 +84,7 @@
             style="background-color: white">
             <ul class="nav nav-tabs font-weight-bold" id="myTab" role="tablist">
                 <li class="nav-item">
-                    <a class="nav-link" id="pnj-xray" data-toggle="tab" href="#xray" role="tab" aria-controls="xray"
+                    <a class="nav-link active" id="pnj-xray" data-toggle="tab" href="#xray" role="tab" aria-controls="xray"
                         aria-selected="false">X RAY</a>
                 </li>
                 <li class="nav-item">

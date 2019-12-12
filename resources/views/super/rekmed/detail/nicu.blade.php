@@ -6,7 +6,20 @@
 @endsection
 @section('content')
 
-<ul class="nav nav-tabs" id="myTab" role="tablist">
+
+@foreach ($nicu->penunjang() as $p)
+@switch($p->p_name)
+@case('lab')
+<div hidden>{{$lab = $p}}</div>
+@break
+@case('xray')
+<div hidden>{{$xray = $p}}</div>
+@break
+@default
+@endswitch
+@endforeach
+
+<ul class="nav nav-tabs font-weight-bold" id="myTab" role="tablist">
     <li class="nav-item">
         <a class="nav-link active" id="cpt-tab" data-toggle="tab" href="#cpt" role="tab" aria-controls="cpt"
             aria-selected="true">Catatan Perkembangan Terintegrasi</a>
@@ -62,16 +75,46 @@
             <h3>Data Tidak Tersedia</h3>
             @endif
         </div>
-        <div class="tab-pane fade" id="pnj" role="tabpanel" aria-labelledby="pnj-tab">
-            @if ($nicu->penunjang() != '[]')
-            @foreach ($nicu->penunjang() as $p)
-            <p>{{$p->p_name}}</p>
-            <object data="{{asset("storage/$p->p_file")}}" type="application/pdf" width="100%" height="700px"></object>
-            @endforeach
-            @else
-            <h3>Data Tidak Tersedia</h3>
-            @endif
+        <div class="tab-pane fade" id="pnj" role="tabpanel" aria-labelledby="pnj-tab" class="bg-white"
+            style="background-color: white">
+            <ul class="nav nav-tabs font-weight-bold" id="myTab" role="tablist">
+                <li class="nav-item">
+                    <a class="nav-link" id="pnj-xray" data-toggle="tab" href="#xray" role="tab" aria-controls="xray"
+                        aria-selected="false">X RAY</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" id="pnj-lab" data-toggle="tab" href="#lab" role="tab" aria-controls="lab"
+                        aria-selected="false">LAB</a>
+                </li>
+            </ul>
+
+            <div class="card-body">
+                <div class="tab-content" id="myTabContent2">
+                    <div class="tab-pane fade show active" id="xray" role="tabpanel" aria-labelledby="pnj-xray">
+                        @if (isset($xray))
+                        <object data="{{asset("storage/$xray->p_file")}}" type="application/pdf" width="100%"
+                            height="700px"></object>
+                        @else
+                        <h3>Data Tidak Tersedia</h3>
+                        @endif
+                    </div>
+                    <div class="tab-pane fade show" id="lab" role="tabpanel" aria-labelledby="pnj-lab">
+                        @if (isset($lab))
+                        <object data="{{asset("storage/$lab->p_file")}}" type="application/pdf" width="100%"
+                            height="700px"></object>
+                        @else
+                        <h3>Data Tidak Tersedia</h3>
+                        @endif
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
+</div>
+<div class="card-footer">
+    <a href="{{route('super.rekmed.nicu.edit', [
+                    'rek_id'=>$rek_id, 
+                    'id'=>$nicu->nicu_id
+    ])}}" class="btn btn-primary">Edit</a>
 </div>
 @endsection
