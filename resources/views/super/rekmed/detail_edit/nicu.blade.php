@@ -297,6 +297,24 @@ Edit Detail
                                 </div>
                             </div>
 
+                            {{-- delete file lengkap --}}
+                            <div class="row align-items-end" style="height:145px">
+                                <div class="col pl-0">
+                                    @if ($nicu->nicu_file_lengkap)
+                                    <form onsubmit="return confirm('Delete File Lengkap permanently ?')" action="{{route('super.rekmed.destroy_detail', [
+                                    'id' => $nicu->nicu_id,
+                                    'ctg' => 'nicu'
+                                ])}}" method="POST">
+                                        @csrf
+                                        <input type="hidden" name="_method" value="DELETE">
+
+                                        <input type="hidden" name="field" value="nicu_file_lengkap">
+                                        <input type="submit" class="btn btn-danger" value="Delete File Lengkap">
+                                    </form>
+                                    @endif
+                                </div>
+                            </div>
+
                             <div class="row align-items-end" style="height:167px">
                                 <div class="col pl-0">
                                     @if ($xray)
@@ -332,27 +350,6 @@ Edit Detail
                                     @endif
                                 </div>
                             </div>
-
-
-                            {{-- delete file lengkap --}}
-                            <div class="row align-items-end" style="height:180px">
-                                <div class="col pl-0">
-                                    @if ($nicu->nicu_file_lengkap)
-                                    <form onsubmit="return confirm('Delete File Lengkap permanently ?')" action="{{route('super.rekmed.destroy_detail', [
-                                    'id' => $nicu->nicu_id,
-                                    'ctg' => 'nicu'
-                                ])}}" method="POST">
-                                        @csrf
-                                        <input type="hidden" name="_method" value="DELETE">
-
-                                        <input type="hidden" name="field" value="nicu_file_lengkap">
-                                        <input type="submit" class="btn btn-danger" value="Delete File Lengkap">
-                                    </form>
-                                    @endif
-                                </div>
-                            </div>
-
-
                         </div>
                     </div>
                 </div>
