@@ -10,6 +10,29 @@
 </button>
 @endsection
 @section('content')
+
+@section('content')
+@foreach ($poli->penunjang() as $p)
+@switch($p->p_name)
+@case('usg')
+<div hidden>{{$usg = $p}}</div>
+@break
+@case('ctg')
+<div hidden>{{$ctgd = $p}}</div>
+@break
+@case('ekg')
+<div hidden>{{$ekg = $p}}</div>
+@break
+@case('lab')
+<div hidden>{{$lab = $p}}</div>
+@break
+@case('xray')
+<div hidden>{{$xray = $p}}</div>
+@break
+@default
+@endswitch
+@endforeach
+
 <ul class="nav nav-tabs font-weight-bold" id="myTab" role="tablist">
     <li class="nav-item">
         <a class="nav-link active" id="ctp-tab" data-toggle="tab" href="#ctp" role="tab" aria-controls="ctp"
@@ -43,16 +66,75 @@
             <h3>Data Tidak Tersedia</h3>
             @endif
         </div>
-        <div class="tab-pane fade" id="pnj" role="tabpanel" aria-labelledby="pnj-tab">
-            @if ($poli->penunjang() != '[]')
-            @foreach ($poli->penunjang() as $p)
-            <hr>
-            <h3 class="text-center">{{strtoupper($p->p_name)}}</h3>
-            <object data="{{asset("storage/$p->p_file")}}" type="application/pdf" width="100%" height="700px"></object>
-            @endforeach
-            @else
-            <h3>Data Tidak Tersedia</h3>
-            @endif
+        <div class="tab-pane fade" id="pnj" role="tabpanel" aria-labelledby="pnj-tab" class="bg-white"
+            style="background-color: white">
+            <ul class="nav nav-tabs font-weight-bold" id="myTab" role="tablist">
+                <li class="nav-item">
+                    <a class="nav-link active" id="pnj-usg" data-toggle="tab" href="#usg" role="tab" aria-controls="usg"
+                        aria-selected="true">USG</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" id="pnj-ctg" data-toggle="tab" href="#ctg" role="tab" aria-controls="ctg"
+                        aria-selected="false">CTG</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" id="pnj-xray" data-toggle="tab" href="#xray" role="tab" aria-controls="xray"
+                        aria-selected="false">X RAY</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" id="pnj-ekg" data-toggle="tab" href="#ekg" role="tab" aria-controls="ekg"
+                        aria-selected="false">EKG</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" id="pnj-lab" data-toggle="tab" href="#lab" role="tab" aria-controls="lab"
+                        aria-selected="false">LAB</a>
+                </li>
+            </ul>
+
+            <div class="card-body">
+                <div class="tab-content" id="myTabContent2">
+                    <div class="tab-pane fade show active" id="usg" role="tabpanel" aria-labelledby="pnj-usg">
+                        @if (isset($usg))
+                        <object data="{{asset("storage/$usg->p_file")}}" type="application/pdf" width="100%"
+                            height="700px"></object>
+                        @else
+                        <h3>Data Tidak Tersedia</h3>
+                        @endif
+                    </div>
+                    <div class="tab-pane fade show" id="ctg" role="tabpanel" aria-labelledby="pnj-ctg">
+                        @if (isset($ctgd))
+                        <object data="{{asset("storage/$ctgd->p_file")}}" type="application/pdf" width="100%"
+                            height="700px"></object>
+                        @else
+                        <h3>Data Tidak Tersedia</h3>
+                        @endif
+                    </div>
+                    <div class="tab-pane fade show" id="xray" role="tabpanel" aria-labelledby="pnj-xray">
+                        @if (isset($xray))
+                        <object data="{{asset("storage/$xray->p_file")}}" type="application/pdf" width="100%"
+                            height="700px"></object>
+                        @else
+                        <h3>Data Tidak Tersedia</h3>
+                        @endif
+                    </div>
+                    <div class="tab-pane fade show" id="ekg" role="tabpanel" aria-labelledby="pnj-ekg">
+                        @if (isset($ekg))
+                        <object data="{{asset("storage/$ekg->p_file")}}" type="application/pdf" width="100%"
+                            height="700px"></object>
+                        @else
+                        <h3>Data Tidak Tersedia</h3>
+                        @endif
+                    </div>
+                    <div class="tab-pane fade show" id="lab" role="tabpanel" aria-labelledby="pnj-lab">
+                        @if (isset($lab))
+                        <object data="{{asset("storage/$lab->p_file")}}" type="application/pdf" width="100%"
+                            height="700px"></object>
+                        @else
+                        <h3>Data Tidak Tersedia</h3>
+                        @endif
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 </div>
