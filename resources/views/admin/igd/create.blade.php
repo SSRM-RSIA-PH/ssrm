@@ -164,12 +164,29 @@
                                     </div>
                                 </div>
                             </div>
+                        </div>
+
+                            {{-- file lengkap --}}
+                            <br>
+                            <div class="card mb-3">
+                                <div class="card-header">
+                                    <div class="custom-control custom-checkbox">
+                                        <input type="checkbox" class="custom-control-input" id="customCheck4">
+                                        <label class="custom-control-label" for="customCheck4">File Lengkap</label>
+                                    </div>
+                                </div>
+                                <div class="card-body" hidden id="filelengkap">
+                                    <div class="custom-file">
+                                        <input type="file" class="custom-file-input" id="fl" name="fl" accept="application/pdf">
+                                        <label class="custom-file-label" id="cfl2" for="fl">Choose file</label>
+                                    </div>
+                                </div>
+                            </div>
 
                             <div class="form-group mt-3">
                                 <input type="submit" value="Simpan" class="btn btn-primary float-right">
                                 <button type="reset" class="btn btn-danger float-right mr-2">Reset</button>
                             </div>
-                        </div>
                     </form>
                 </div>
             </div>

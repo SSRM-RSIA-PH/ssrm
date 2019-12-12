@@ -76,6 +76,9 @@ Route::group(['prefix' => '/supervisor'], function () {
 
         //delete detail penunjang
         Route::delete('/{id}/{ctg}/destroy_penunjang', 'SuperRekmedController@destroy_detail_penunjang')->name('super.rekmed.destroy_penunjang');
+
+        //delete arsip tahunan
+        Route::delete('{id}/destroy_arsip_tahunan', 'SuperRekmedController@destroy_arsip_tahunan')->name('super.rekmed.destroy_arsip_tahunan');
     });
     
     Route::get('/log', 'SuperLogController@index')->name('super.log');

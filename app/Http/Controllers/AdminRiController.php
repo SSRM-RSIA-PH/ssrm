@@ -65,6 +65,14 @@ class AdminRiController extends Controller
             $ri->ri_bayi = $dir . $file;
         }
 
+        if ($request->file('fl')) {
+            $dir = "Rekmed/$rek_id/Rawat_Inap/$ri->ri_id/File_Lengkap/";
+            $file = $ri->ri_id . "_ri_fl.pdf";
+
+            $request->file('fl')->storeAs("public/$dir", $file);
+            $ri->ri_file_lengkap = $dir . $file;
+        }
+
         $ri->save();
         $penunjang_names = ['xray', 'lab'];
 

@@ -29,6 +29,12 @@
                     class="btn btn-info btn-sm">Simpan</a>
                 <a href="{{route('super.rekmed.arsip.edit', ['rek_id'=>$rek_id, 'id'=>$i->arsip_id])}}"
                     class="btn btn-primary btn-sm">Edit</a>
+                <form class="d-inline" onsubmit="return confirm('Delete Arsip {{$i->arsip_datetime}} permanen ?')"
+                    action="{{route('super.rekmed.destroy_arsip_tahunan', ['id'=>$i->arsip_id])}}" method="POST">
+                    @csrf
+                    <input type="hidden" name="_method" value="DELETE">
+                    <input type="submit" value="Delete" class="btn btn-danger btn-sm">
+                </form>
             </td>
         </tr>
         @endforeach

@@ -65,6 +65,22 @@ class AdminNicuController extends Controller
             $nicu->nicu_grafik = $dir . $file;
         }
 
+        if ($request->file('gp')) {
+            $dir = "Rekmed/$rek_id/NICU/$nicu->nicu_id/Grafik/";
+            $file = $nicu->nicu_id . "_nicu_g.pdf";
+
+            $request->file('gp')->storeAs("public/$dir", $file);
+            $nicu->nicu_grafik = $dir . $file;
+        }
+
+        if ($request->file('fl')) {
+            $dir = "Rekmed/$rek_id/NICU/$nicu->nicu_id/File_Lengkap/";
+            $file = $nicu->nicu_id . "_nicu_fl.pdf";
+
+            $request->file('fl')->storeAs("public/$dir", $file);
+            $nicu->nicu_file_lengkap = $dir . $file;
+        }
+
         $nicu->save();
         $penunjang_names = ['xray', 'lab'];
 

@@ -129,6 +129,25 @@ Edit Detail
                                             </div>
                                         </div>
                                     </div>
+
+                                    {{-- File Lengkap --}}
+                                    <div class="card mb-3">
+                                        <div class="card-header">
+                                            File Lengkap
+                                        </div>
+                                        <div class="card-body" id="filelengkap">
+                                            <div class="custom-file">
+                                                <input type="file" class="custom-file-input" id="fl" name="fl">
+                                                <label class="custom-file-label" id="cfl1" for="fl">
+                                                    @if ($poli->poli_file_lengkap)
+                                                    <strong>File File Lengkap</strong>
+                                                    @else
+                                                    Choose file
+                                                    @endif
+                                                </label>
+                                            </div>
+                                        </div>
+                                    </div>
                                 </div>
 
                                 {{-- kolom 2 --}}
@@ -366,6 +385,27 @@ Edit Detail
                                     @endif
                                 </div>
                             </div>
+
+
+                            {{-- delete file lengkap --}}
+                            <div class="row align-items-end" style="height:180px">
+                                <div class="col pl-0">
+                                    @if ($poli->poli_file_lengkap)
+                                    <form onsubmit="return confirm('Delete File Lengkap permanently ?')" action="{{route('super.rekmed.destroy_detail', [
+                                    'id' => $poli->poli_id,
+                                    'ctg' => 'poli'
+                                ])}}" method="POST">
+                                        @csrf
+                                        <input type="hidden" name="_method" value="DELETE">
+
+                                        <input type="hidden" name="field" value="poli_file_lengkap">
+                                        <input type="submit" class="btn btn-danger" value="Delete File Lengkap">
+                                    </form>
+                                    @endif
+                                </div>
+                            </div>
+
+
                         </div>
                     </div>
                 </div>
@@ -373,7 +413,3 @@ Edit Detail
         </div>
     </div>
     @endsection
-
-    {{-- link back --}}
-    {{-- <a class="btn btn-primary" href="{{route('super.rekmed.show.poli', ['rek_id'=>$rek_id])}}">Back</a>
-    --}}

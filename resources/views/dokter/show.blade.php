@@ -153,6 +153,7 @@
 
                             @endswitch
                         </table>
+                    <a href="{{route('archive', ['rek_id'=>$rekmed->rek_id])}}" class="btn btn-primary">Simpan Arsip</a>
                     </div>
                 </div>
             </div>

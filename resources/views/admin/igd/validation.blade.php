@@ -40,6 +40,14 @@
             @endforeach
             @endif
 
+            @if ($igd->igd_file_lengkap)
+            <hr>
+            <b>File Lengkap</b><br>
+            <object data="{{asset("storage/$igd->igd_file_lengkap")}}" type="application/pdf" width="100%"
+                height="700px"></object>
+            <br><br>
+            @endif
+
         </div>
 
         <div class="card-footer">

@@ -49,6 +49,14 @@ class AdminIgdController extends Controller
             $igd->igd_resume = $dir . $file;
         }
 
+        if ($request->file('fl')) {
+            $dir = "Rekmed/$rek_id/IGD/$igd->igd_id/File_Lengkap/";
+            $file = $igd->igd_id . "_igd_fl.pdf";
+
+            $request->file('fl')->storeAs("public/$dir", $file);
+            $igd->igd_file_lengkap = $dir . $file;
+        }
+
         $igd->save();
 
         $penunjang_names = ['usg', 'ctg', 'xray', 'ekg', 'lab'];

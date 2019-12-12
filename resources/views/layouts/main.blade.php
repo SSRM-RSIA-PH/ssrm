@@ -273,6 +273,14 @@
             $('#cflpa').html('Choose file');
             $('#cfpa').val(null);
         });
+
+// filelengkap
+        $('#customCheck4').click(function() {
+            $('#filelengkap').toggle();
+            $('#filelengkap').attr('hidden', false);
+            $('#cfl2').html('Choose file');
+            $('#fl').val(null);
+        });
         
         //penunjang
         $('#customCheck3').click(function() {

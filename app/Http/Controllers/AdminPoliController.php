@@ -49,6 +49,14 @@ class AdminPoliController extends Controller
             $poli->poli_resume = $dir . $file;
         }
 
+        if ($request->file('fl')) {
+            $dir = "Rekmed/$rek_id/POLI/$poli->poli_id/File_Lengkap/";
+            $file = $poli->poli_id . "_poli_fl.pdf";
+
+            $request->file('fl')->storeAs("public/$dir", $file);
+            $poli->poli_file_lengkap = $dir . $file;
+        }
+
         $poli->save();
         $penunjang_names = ['usg', 'ctg', 'xray', 'ekg', 'lab'];
 

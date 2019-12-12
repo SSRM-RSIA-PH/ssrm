@@ -8,9 +8,20 @@ use Illuminate\Http\Request;
 use ZipArchive;
 use \RecursiveIteratorIterator;
 use \RecursiveDirectoryIterator;
+use \Illuminate\Support\Facades\Gate;
 
 class Archive extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware(function ($request, $next) {
+            if (Gate::allows('supervisor')) return $next($request);
+            if (Gate::allows('admin')) return $next($request);
+            if (Gate::allows('dokter')) return $next($request);
+            abort(403, 'Anda tidak memiliki cukup hak akses');
+        });
+    }
+
     public function download($rek_id)
     {
         $rekmed = Rekmed::findOrFail($rek_id);
@@ -44,4 +55,7 @@ class Archive extends Controller
         $file = $file->arsip_file;
         return response()->download(storage_path("app/public/$file"));
     }
+
+    
+
 }

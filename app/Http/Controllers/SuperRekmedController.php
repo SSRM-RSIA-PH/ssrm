@@ -972,4 +972,18 @@ class SuperRekmedController extends Controller
             'id' => $request->get('id')
         ]);
     }
+
+    //destroy arsip tahunan
+    public function destroy_arsip_tahunan($id)
+    {
+        $arsip = Arsip::findOrFail($id);
+        $rek_id = $arsip->rek_id;
+
+        if (file_exists(storage_path('app/public/' . $arsip->arsip_file))) {
+            \Storage::delete('public/' . $arsip->arsip_file);
+        }
+        $arsip->delete();
+
+        return redirect()->route('super.show.arsip', ['rek_id'=>$rek_id]);
+    }
 }

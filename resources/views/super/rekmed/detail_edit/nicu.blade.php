@@ -149,6 +149,25 @@ Edit Detail
                                             </div>
                                         </div>
                                     </div>
+
+                                    {{-- File Lengkap --}}
+                                    <div class="card mb-3">
+                                        <div class="card-header">
+                                            File Lengkap
+                                        </div>
+                                        <div class="card-body" id="filelengkap">
+                                            <div class="custom-file">
+                                                <input type="file" class="custom-file-input" id="fl" name="fl">
+                                                <label class="custom-file-label" id="cfl1" for="fl">
+                                                    @if ($nicu->nicu_file_lengkap)
+                                                    <strong>File File Lengkap</strong>
+                                                    @else
+                                                    Choose file
+                                                    @endif
+                                                </label>
+                                            </div>
+                                        </div>
+                                    </div>
                                 </div>
 
                                 {{-- kolom 2 --}}
@@ -207,112 +226,134 @@ Edit Detail
                             </form>
                         </div>
                         {{-- ini buat button delete --}}
-            <div class="col-1 pl-0">
-                <div class="row align-items-end" style="height:180px">
-                    <div class="col pl-0">
-                        @if ($nicu->nicu_ctt_integ)
-                        <form onsubmit="return confirm('Delete Catatan Perkembangan Terintegrasi permanently ?')"
-                            action="{{route('super.rekmed.destroy_detail', [
+                        <div class="col-1 pl-0">
+                            <div class="row align-items-end" style="height:180px">
+                                <div class="col pl-0">
+                                    @if ($nicu->nicu_ctt_integ)
+                                    <form
+                                        onsubmit="return confirm('Delete Catatan Perkembangan Terintegrasi permanently ?')"
+                                        action="{{route('super.rekmed.destroy_detail', [
                             'id' => $nicu->nicu_id,
                             'ctg' => 'nicu'
                             ])}}" method="POST">
-                            @csrf
-                            <input type="hidden" name="_method" value="DELETE">
+                                        @csrf
+                                        <input type="hidden" name="_method" value="DELETE">
 
-                            <input type="hidden" name="field" value="nicu_ctt_integ">
-                            <input type="submit" class="btn btn-danger" value="Delete">
-                        </form>
-                        @endif
-                    </div>
-                </div>
+                                        <input type="hidden" name="field" value="nicu_ctt_integ">
+                                        <input type="submit" class="btn btn-danger" value="Delete">
+                                    </form>
+                                    @endif
+                                </div>
+                            </div>
 
-                <div class="row align-items-end" style="height:145px">
-                    <div class="col pl-0">
-                        @if ($nicu->nicu_resume)
-                        <form onsubmit="return confirm('Delete Resume permanently ?')" action="{{route('super.rekmed.destroy_detail', [
+                            <div class="row align-items-end" style="height:145px">
+                                <div class="col pl-0">
+                                    @if ($nicu->nicu_resume)
+                                    <form onsubmit="return confirm('Delete Resume permanently ?')" action="{{route('super.rekmed.destroy_detail', [
                             'id' => $nicu->nicu_id,
                             'ctg' => 'nicu'
                             ])}}" method="POST">
-                            @csrf
-                            <input type="hidden" name="_method" value="DELETE">
+                                        @csrf
+                                        <input type="hidden" name="_method" value="DELETE">
 
-                            <input type="hidden" name="field" value="nicu_resume">
-                            <input type="submit" class="btn btn-danger" value="Delete">
-                        </form>
-                        @endif
-                    </div>
-                </div>
+                                        <input type="hidden" name="field" value="nicu_resume">
+                                        <input type="submit" class="btn btn-danger" value="Delete">
+                                    </form>
+                                    @endif
+                                </div>
+                            </div>
 
-                <div class="row align-items-end" style="height:145px">
-                    <div class="col pl-0">
-                        @if ($nicu->nicu_pengkajian)
-                        <form onsubmit="return confirm('Delete Pengkajian Awal permanently ?')" action="{{route('super.rekmed.destroy_detail', [
+                            <div class="row align-items-end" style="height:145px">
+                                <div class="col pl-0">
+                                    @if ($nicu->nicu_pengkajian)
+                                    <form onsubmit="return confirm('Delete Pengkajian Awal permanently ?')" action="{{route('super.rekmed.destroy_detail', [
                             'id' => $nicu->nicu_id,
                             'ctg' => 'nicu'
                             ])}}" method="POST">
-                            @csrf
-                            <input type="hidden" name="_method" value="DELETE">
+                                        @csrf
+                                        <input type="hidden" name="_method" value="DELETE">
 
-                            <input type="hidden" name="field" value="nicu_pengkajian">
-                            <input type="submit" class="btn btn-danger" value="Delete">
-                        </form>
-                        @endif
-                    </div>
-                </div>
+                                        <input type="hidden" name="field" value="nicu_pengkajian">
+                                        <input type="submit" class="btn btn-danger" value="Delete">
+                                    </form>
+                                    @endif
+                                </div>
+                            </div>
 
-                <div class="row align-items-end" style="height:145px">
-                    <div class="col pl-0">
-                        @if ($nicu->nicu_grafik)
-                        <form onsubmit="return confirm('Delete Grafik permanently ?')" action="{{route('super.rekmed.destroy_detail', [
+                            <div class="row align-items-end" style="height:145px">
+                                <div class="col pl-0">
+                                    @if ($nicu->nicu_grafik)
+                                    <form onsubmit="return confirm('Delete Grafik permanently ?')" action="{{route('super.rekmed.destroy_detail', [
                             'id' => $nicu->nicu_id,
                             'ctg' => 'nicu'
                             ])}}" method="POST">
-                            @csrf
-                            <input type="hidden" name="_method" value="DELETE">
+                                        @csrf
+                                        <input type="hidden" name="_method" value="DELETE">
 
-                            <input type="hidden" name="field" value="nicu_grafik">
-                            <input type="submit" class="btn btn-danger" value="Delete">
-                        </form>
-                        @endif
-                    </div>
-                </div>
+                                        <input type="hidden" name="field" value="nicu_grafik">
+                                        <input type="submit" class="btn btn-danger" value="Delete">
+                                    </form>
+                                    @endif
+                                </div>
+                            </div>
 
-                <div class="row align-items-end" style="height:167px">
-                    <div class="col pl-0">
-                        @if ($xray)
-                        <form onsubmit="return confirm('Delete XRAY permanently ?')" action="{{route('super.rekmed.destroy_penunjang', [
+                            <div class="row align-items-end" style="height:167px">
+                                <div class="col pl-0">
+                                    @if ($xray)
+                                    <form onsubmit="return confirm('Delete XRAY permanently ?')" action="{{route('super.rekmed.destroy_penunjang', [
                             'id' => $xray->id,
                             'ctg' => 'nicu'
                             ])}}" method="POST">
-                            @csrf
-                            <input type="hidden" name="_method" value="DELETE">
+                                        @csrf
+                                        <input type="hidden" name="_method" value="DELETE">
 
-                            <input type="hidden" name="rek_id" value="{{$rek_id}}">
-                            <input type="hidden" name="id" value={{$nicu->nicu_id}}>
-                            <input type="submit" class="btn btn-danger" value="Delete">
-                        </form>
-                        @endif
-                    </div>
-                </div>
+                                        <input type="hidden" name="rek_id" value="{{$rek_id}}">
+                                        <input type="hidden" name="id" value={{$nicu->nicu_id}}>
+                                        <input type="submit" class="btn btn-danger" value="Delete">
+                                    </form>
+                                    @endif
+                                </div>
+                            </div>
 
-                <div class="row align-items-end" style="height:75px">
-                    <div class="col pl-0">
-                        @if ($lab)
-                        <form onsubmit="return confirm('Delete LAB permanently ?')" action="{{route('super.rekmed.destroy_penunjang', [
+                            <div class="row align-items-end" style="height:75px">
+                                <div class="col pl-0">
+                                    @if ($lab)
+                                    <form onsubmit="return confirm('Delete LAB permanently ?')" action="{{route('super.rekmed.destroy_penunjang', [
                             'id' => $lab->id,
                             'ctg' => 'nicu'
                             ])}}" method="POST">
-                            @csrf
-                            <input type="hidden" name="_method" value="DELETE">
+                                        @csrf
+                                        <input type="hidden" name="_method" value="DELETE">
 
-                            <input type="hidden" name="rek_id" value="{{$rek_id}}">
-                            <input type="hidden" name="id" value={{$nicu->nicu_id}}>
-                            <input type="submit" class="btn btn-danger" value="Delete">
-                        </form>
-                        @endif
-                    </div>
-                </div>
-            </div>
+                                        <input type="hidden" name="rek_id" value="{{$rek_id}}">
+                                        <input type="hidden" name="id" value={{$nicu->nicu_id}}>
+                                        <input type="submit" class="btn btn-danger" value="Delete">
+                                    </form>
+                                    @endif
+                                </div>
+                            </div>
+
+
+                            {{-- delete file lengkap --}}
+                            <div class="row align-items-end" style="height:180px">
+                                <div class="col pl-0">
+                                    @if ($nicu->nicu_file_lengkap)
+                                    <form onsubmit="return confirm('Delete File Lengkap permanently ?')" action="{{route('super.rekmed.destroy_detail', [
+                                    'id' => $nicu->nicu_id,
+                                    'ctg' => 'nicu'
+                                ])}}" method="POST">
+                                        @csrf
+                                        <input type="hidden" name="_method" value="DELETE">
+
+                                        <input type="hidden" name="field" value="nicu_file_lengkap">
+                                        <input type="submit" class="btn btn-danger" value="Delete File Lengkap">
+                                    </form>
+                                    @endif
+                                </div>
+                            </div>
+
+
+                        </div>
                     </div>
                 </div>
             </div>
