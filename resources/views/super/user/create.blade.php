@@ -15,6 +15,7 @@
             {{session('status')}}
         </div>
         @endif
+        <a href="{{route('user.index')}}" class="btn btn-primary mb-3">Kembali</a>
         <div class="card">
             <div class="card-header">Tambah User</div>
             <div class="card-body">
