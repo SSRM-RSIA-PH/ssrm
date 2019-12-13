@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Dec 09, 2019 at 11:50 PM
+-- Generation Time: Dec 13, 2019 at 09:34 PM
 -- Server version: 10.4.8-MariaDB
 -- PHP Version: 7.1.32
 
@@ -49,11 +49,19 @@ CREATE TABLE `igd` (
   `igd_ctt_perkembangan` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `igd_resume` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `igd_datetime` timestamp NULL DEFAULT NULL,
+  `igd_file_lengkap` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   `u_id` bigint(20) UNSIGNED DEFAULT NULL,
   `rek_id` char(6) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `igd`
+--
+
+INSERT INTO `igd` (`igd_id`, `igd_ctt_perkembangan`, `igd_resume`, `igd_datetime`, `igd_file_lengkap`, `created_at`, `updated_at`, `u_id`, `rek_id`) VALUES
+(31, 'Rekmed/PH0A03/IGD/31/Catatan_Perkembangan/31_igd_cp.pdf', NULL, '2019-12-13 12:02:00', NULL, '2019-12-13 20:22:34', '2019-12-13 20:22:35', 113, 'PH0A03');
 
 --
 -- Triggers `igd`
@@ -102,6 +110,15 @@ CREATE TABLE `log` (
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+--
+-- Dumping data for table `log`
+--
+
+INSERT INTO `log` (`log_id`, `log_user`, `log_do`, `rek_id`, `ctg`, `id_ctg`, `created_at`, `updated_at`) VALUES
+(24, '113', 'Upload IGD', 'PH0A03', 'igd', 31, '2019-12-13 20:22:34', '2019-12-13 20:22:34'),
+(25, '113', 'Upload POLI', 'PH0A03', 'poli', 6, '2019-12-13 20:23:10', '2019-12-13 20:23:10'),
+(26, '113', 'Upload NICU', 'PH0A03', 'nicu', 3, '2019-12-13 20:23:29', '2019-12-13 20:23:29');
+
 -- --------------------------------------------------------
 
 --
@@ -137,11 +154,19 @@ CREATE TABLE `nicu` (
   `nicu_pengkajian` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `nicu_grafik` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `nicu_datetime` timestamp NULL DEFAULT NULL,
+  `nicu_file_lengkap` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   `u_id` bigint(20) UNSIGNED DEFAULT NULL,
   `rek_id` char(6) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `nicu`
+--
+
+INSERT INTO `nicu` (`nicu_id`, `nicu_ctt_integ`, `nicu_resume`, `nicu_pengkajian`, `nicu_grafik`, `nicu_datetime`, `nicu_file_lengkap`, `created_at`, `updated_at`, `u_id`, `rek_id`) VALUES
+(3, 'Rekmed/PH0A03/NICU/3/Catatan_Perkembangan_Terintegrasi/3_nicu_cpt.pdf', NULL, NULL, NULL, '2019-12-13 12:02:00', NULL, '2019-12-13 20:23:29', '2019-12-13 20:23:29', 113, 'PH0A03');
 
 --
 -- Triggers `nicu`
@@ -196,11 +221,19 @@ CREATE TABLE `poli` (
   `poli_ctt_integ` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `poli_resume` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `poli_datetime` timestamp NULL DEFAULT NULL,
+  `poli_file_lengkap` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   `u_id` bigint(20) UNSIGNED DEFAULT NULL,
   `rek_id` char(6) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `poli`
+--
+
+INSERT INTO `poli` (`poli_id`, `poli_ctt_integ`, `poli_resume`, `poli_datetime`, `poli_file_lengkap`, `created_at`, `updated_at`, `u_id`, `rek_id`) VALUES
+(6, 'Rekmed/PH0A03/POLI/6/Catatan_Terintegrasi/6_poli_ct.pdf', NULL, '2019-12-13 11:01:00', NULL, '2019-12-13 20:23:10', '2019-12-13 20:23:11', 113, 'PH0A03');
 
 --
 -- Triggers `poli`
@@ -264,6 +297,15 @@ CREATE TABLE `rekmed` (
   `u_id` bigint(20) UNSIGNED DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+--
+-- Dumping data for table `rekmed`
+--
+
+INSERT INTO `rekmed` (`rek_id`, `rek_name`, `rek_nik`, `rek_tempat_lahir`, `rek_tanggal_lahir`, `rek_darah`, `rek_agama`, `rek_job`, `rek_hp`, `rek_alamat`, `rek_status`, `s_name`, `s_job`, `s_darah`, `s_hp`, `s_alamat`, `p_ibu`, `p_ibu_hp`, `p_bpk`, `p_bpk_hp`, `created_at`, `updated_at`, `u_id`) VALUES
+('PH0A01', 'Kartarina', '1234567890', 'Mataram', '2019-12-13', 'O', 'Islam', 'Dosen', '1234567890', 'Mataram', 'ibu', 'Kartaroni', 'Dosen', 'O', '1234567890', 'Mataram', NULL, NULL, NULL, NULL, '2019-12-13 19:22:30', '2019-12-13 19:23:22', 3),
+('PH0A02', 'Anissa', '1111111111111111', 'matar', '2019-12-13', 'A', 'Islam', 'dosen', '1234567890', 'mtr', 'ibu', 'jon', '1234567890', 'O', '1234567890', 'mtr', NULL, NULL, NULL, NULL, '2019-12-13 20:15:23', '2019-12-13 20:15:23', 113),
+('PH0A03', 'qwe', NULL, 'qwe', '2019-12-13', 'Pilih', 'qw', NULL, NULL, 'qw', 'anak', NULL, NULL, NULL, NULL, NULL, 'qw', 'qw', 'qw', 'qw', '2019-12-13 20:18:51', '2019-12-13 20:18:51', 113);
+
 -- --------------------------------------------------------
 
 --
@@ -282,6 +324,14 @@ CREATE TABLE `rekmed_anak` (
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+--
+-- Dumping data for table `rekmed_anak`
+--
+
+INSERT INTO `rekmed_anak` (`ra_id`, `ra_name`, `ra_tempat_lahir`, `ra_tanggal_lahir`, `ra_darah`, `ra_anak_ke`, `rek_id`, `created_at`, `updated_at`) VALUES
+(33, 'qwert', 'qw', NULL, NULL, 1, 'PH0A01', '2019-12-13 19:45:54', '2019-12-13 19:45:54'),
+(34, 'yu', 'aj', '2019-12-13', NULL, 5, 'PH0A02', '2019-12-13 20:15:41', '2019-12-13 20:15:41');
+
 -- --------------------------------------------------------
 
 --
@@ -295,6 +345,7 @@ CREATE TABLE `ri` (
   `ri_resume` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `ri_bayi` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `ri_datetime` timestamp NULL DEFAULT NULL,
+  `ri_file_lengkap` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   `u_id` bigint(20) UNSIGNED DEFAULT NULL,
@@ -355,30 +406,12 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `name`, `email`, `email_verified_at`, `password`, `remember_token`, `created_at`, `updated_at`, `username`, `role`) VALUES
-(3, 'Agung Saputra', 'agung@ssrm.com', NULL, '$2y$10$2AennWrtV5MLIr0pekY0Je753b5NiNAv9sMuKKi1GHoQhl8nlQh4q', 'MWd5tCF2IJBB8Ntrm7AvfJrMZWqMv7rm5aJEiIqWbfwhUDWdDfSeQhWUxcZq', '2019-10-29 06:01:10', '2019-10-30 14:54:45', 'agungsptr', 'SUPERVISOR'),
-(7, 'Gilang Restu Alam', 'gilang@gmail.com', NULL, '$2y$10$L.H.rBVXPJlMW9kPBuBJ9ONGY6XGYJfuKkdD6kf7/cudCykWga6rK', '9wkjaes5NPgd9EtPMmh5jFexCpyzryTNB0V6EnVaMLGJXhOJRz8LQ7kS9sQP', '2019-10-30 15:40:00', '2019-10-30 15:42:52', 'gilang', 'DOKTER'),
+(3, 'Agung Saputra', 'agung@ssrm.com', NULL, '$2y$10$2AennWrtV5MLIr0pekY0Je753b5NiNAv9sMuKKi1GHoQhl8nlQh4q', 'iFq71RHxlrq8wwenMeAQmFAtghqEcuCCs9qctO7AIyymkyr6yEOXTLfCyqlk', '2019-10-29 06:01:10', '2019-10-30 14:54:45', 'agungsptr', 'SUPERVISOR'),
+(7, 'Gilang Restu Alam', 'gilang@gmail.com', NULL, '$2y$10$L.H.rBVXPJlMW9kPBuBJ9ONGY6XGYJfuKkdD6kf7/cudCykWga6rK', '7lg1DsThep4kysVunqOTh68LGIzKv2KPzqqHfsHUkKapyT9YdcYRTzjBB2AI', '2019-10-30 15:40:00', '2019-10-30 15:42:52', 'gilang', 'DOKTER'),
 (8, 'Farasut Widodo Malik', 'dodo@gmail.com', NULL, '$2y$10$3KBt.ZnlnUeJ5r03/6gHpu3MF08leEtMKQkU8n5pE2lc2cDhCHZGu', NULL, '2019-10-30 15:40:30', '2019-10-30 15:43:11', 'dodo', 'DOKTER'),
-(9, 'L Yuda Rahmani Karnaen', 'yuda@ssrm.com', NULL, '$2y$10$BTVOjh9yaiwMAxIctoXhwO643s8ettMQVN/2FXamHiuqBA9.9iqDa', 'e36geDWfjTWfIZXwsZN26Wyyv0mrHyobowhbIgomME9hNxpfBprQVBptySWt', '2019-10-30 15:40:52', '2019-10-30 15:43:28', 'yuda', 'SUPERVISOR'),
-(113, 'user100', 'usradm100@ssrm.com', NULL, '$2y$10$lAoy5FZNZestJMwNZURLtu64/BDQN53HnmKFmD2Nz.qxEmm/udmDu', 'qkCDB7oUQeWfc3zSIEcIzqgHfFQuDqhuoMO0W47ob1pgytiNyODyCCb7H5cG', '2019-10-31 07:55:25', '2019-10-31 07:55:25', 'usradm100', 'ADMIN'),
-(114, 'user0', 'usradm0@ssrm.com', NULL, '$2y$10$OqQgjYXqstE/jSOjBd5Aq./BJEYt5vUYg1Y27qQy6ssw6K9trYvi6', NULL, '2019-11-03 10:06:57', '2019-11-03 10:06:57', 'seed0', 'ADMIN'),
-(115, 'user1', 'usradm1@ssrm.com', NULL, '$2y$10$x/eGr4WpC4K0OpBFpfOS5.Ejd9hw96aZv.NAARwLUGCTt9HQCmZG6', NULL, '2019-11-03 10:06:58', '2019-11-03 10:06:58', 'seed1', 'ADMIN'),
-(116, 'user2', 'usradm2@ssrm.com', NULL, '$2y$10$HQFqgmnGOet1Xj8h2NJVeuNS2CFkXKGFWlET/DK1wFFkpUIp5TGuy', NULL, '2019-11-03 10:06:58', '2019-11-03 10:06:58', 'seed2', 'ADMIN'),
-(119, 'user5', 'usradm5@ssrm.com', NULL, '$2y$10$nhgrrLYqWMSoneDMK35Die8fujEDJRnwu/ZP685axjQIAxeUEt7ty', NULL, '2019-11-03 10:06:58', '2019-11-03 10:06:58', 'seed5', 'ADMIN'),
-(120, 'user6', 'usradm6@ssrm.com', NULL, '$2y$10$H.d91mu3Ol4ghL0vS7aS8e2RAuFpF.3gAFKCjE.rKFvacrAWhiBLK', NULL, '2019-11-03 10:06:58', '2019-11-03 10:06:58', 'seed6', 'ADMIN'),
-(121, 'user7', 'usradm7@ssrm.com', NULL, '$2y$10$tJUtQnCxEJwklTJredrdKO5rBmmHIppBWM4pqQSMrbuJ/eD82dcnm', NULL, '2019-11-03 10:06:58', '2019-11-03 10:06:58', 'seed7', 'ADMIN'),
-(122, 'user8', 'usradm8@ssrm.com', NULL, '$2y$10$Ezvz4MjV5OPhmry497eXHOixtfpr21O7V3Khz3Sa6Qo8vWejidz36', NULL, '2019-11-03 10:06:58', '2019-11-03 10:06:58', 'seed8', 'ADMIN'),
-(123, 'user9', 'usradm9@ssrm.com', NULL, '$2y$10$bIRXL36Iy8NT9tDVmWibsOWcrJwkosgOWZUdnRp0TNQ4N30c1UvzG', NULL, '2019-11-03 10:06:58', '2019-11-03 10:06:58', 'seed9', 'ADMIN'),
-(124, 'user10', 'usradm10@ssrm.com', NULL, '$2y$10$OU4wjXmiQ0wLkPAVvkfUXeOWy1nKL3OAQ5N8QUWeEpl1Qinot4jCa', NULL, '2019-11-03 10:06:59', '2019-11-03 10:06:59', 'seed10', 'ADMIN'),
-(125, 'user11', 'usradm11@ssrm.com', NULL, '$2y$10$ivNId58jhYlEtRGushXYp.HtnCwyRoFD.yQPetfdMxjU499g15W/S', NULL, '2019-11-03 10:06:59', '2019-11-03 10:06:59', 'seed11', 'ADMIN'),
-(126, 'user12', 'usradm12@ssrm.com', NULL, '$2y$10$hqHoaUDvbGOPuKYox7ucxul/Tw.TcQbGu0Pk6h9pd6PQhk2Gd1Wdi', NULL, '2019-11-03 10:06:59', '2019-11-03 10:06:59', 'seed12', 'ADMIN'),
-(127, 'user13', 'usradm13@ssrm.com', NULL, '$2y$10$DkV664d/Un57MUtKsLtuhuEs9RTmrTMfV2SbPh1tALjU7WAxa2O26', NULL, '2019-11-03 10:06:59', '2019-11-03 10:06:59', 'seed13', 'ADMIN'),
-(128, 'user14', 'usradm14@ssrm.com', NULL, '$2y$10$L8hVP9W/Es/ozPuL5xr7uOQHNtaO3WtQf3fwlzt35HbaFn2G1RgIu', NULL, '2019-11-03 10:06:59', '2019-11-03 10:06:59', 'seed14', 'ADMIN'),
-(129, 'user15', 'usradm15@ssrm.com', NULL, '$2y$10$zCqlMO7nyMzMvSh99WYvreTOp43qz07qAKJz4FWtL/bim2szizfKC', NULL, '2019-11-03 10:06:59', '2019-11-03 10:06:59', 'seed15', 'ADMIN'),
-(130, 'user16', 'usradm16@ssrm.com', NULL, '$2y$10$qpyRtUujK90qjZL7iT31m.1b4vl49/wDGeUVx8ee1EDlwMnAMl0.q', NULL, '2019-11-03 10:06:59', '2019-11-03 10:06:59', 'seed16', 'ADMIN'),
-(131, 'user17', 'usradm17@ssrm.com', NULL, '$2y$10$b748GQ7aOGeknABLPae3GuR1y1J48ktjIOfDUSsYqcdL2ztcnB6vC', NULL, '2019-11-03 10:06:59', '2019-11-03 10:06:59', 'seed17', 'ADMIN'),
-(132, 'user18', 'usradm18@ssrm.com', NULL, '$2y$10$/AdHtowOzPpeO7Vwzb1dS.TpbCYjXw/e2zLyjOfHuktErXEjzEdu6', NULL, '2019-11-03 10:06:59', '2019-11-03 10:06:59', 'seed18', 'ADMIN'),
-(133, 'user19', 'usradm19@ssrm.com', NULL, '$2y$10$N7AwXXRMHR38/gnwjf.5Z.bAmQIZTIGVNKbwOIfl8q6swFaE62lgS', NULL, '2019-11-03 10:06:59', '2019-11-03 10:06:59', 'seed19', 'ADMIN'),
-(135, 'admin', 'admin@m.com', NULL, '$2y$10$/qiay8FasxshFpE09FF9YOH.cnGILwGDHSysclWGPAj.P/cKW6iqy', NULL, '2019-12-06 14:16:30', '2019-12-06 14:16:30', 'admin', 'ADMIN');
+(9, 'L Yuda Rahmani Karnaen', 'yuda@ssrm.com', NULL, '$2y$10$Q53oo6JJgqxFMCIOIDtlretGrfgG9RBxWACYmW5Tcy1mxF6prZUAG', 'e36geDWfjTWfIZXwsZN26Wyyv0mrHyobowhbIgomME9hNxpfBprQVBptySWt', '2019-10-30 15:40:52', '2019-12-13 16:17:25', 'yudak', 'SUPERVISOR'),
+(113, 'admin', 'admin@ssrm.com', NULL, '$2y$10$tgK8lco3UvKx5EekFwotuuvJO5jM6PGJ9529jc9ecYWSV3o/yu/Fi', 'sbPpUSReaV3xN50v3LcfjMXpbbbdYub9h9BCbMNuOfHFwgOM5miEnWzJZ0dJ', '2019-10-31 07:55:25', '2019-12-13 16:19:47', 'admin', 'ADMIN'),
+(136, 'Arifu', 'arip@m.com', NULL, '$2y$10$scjSm5zs24kteZF6p.p5DOzN0yUoKau6OKfF2rRTakMfmJbqBaxKq', NULL, '2019-12-13 20:12:59', '2019-12-13 20:12:59', 'aripu', 'SUPERVISOR');
 
 --
 -- Indexes for dumped tables
@@ -501,25 +534,25 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `arsip_tahunan`
 --
 ALTER TABLE `arsip_tahunan`
-  MODIFY `arsip_id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `arsip_id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 
 --
 -- AUTO_INCREMENT for table `igd`
 --
 ALTER TABLE `igd`
-  MODIFY `igd_id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
+  MODIFY `igd_id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=32;
 
 --
 -- AUTO_INCREMENT for table `igd_penunjang`
 --
 ALTER TABLE `igd_penunjang`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=45;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=46;
 
 --
 -- AUTO_INCREMENT for table `log`
 --
 ALTER TABLE `log`
-  MODIFY `log_id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+  MODIFY `log_id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=27;
 
 --
 -- AUTO_INCREMENT for table `migrations`
@@ -531,7 +564,7 @@ ALTER TABLE `migrations`
 -- AUTO_INCREMENT for table `nicu`
 --
 ALTER TABLE `nicu`
-  MODIFY `nicu_id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `nicu_id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `nicu_penunjang`
@@ -543,7 +576,7 @@ ALTER TABLE `nicu_penunjang`
 -- AUTO_INCREMENT for table `poli`
 --
 ALTER TABLE `poli`
-  MODIFY `poli_id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `poli_id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT for table `poli_penunjang`
@@ -555,13 +588,13 @@ ALTER TABLE `poli_penunjang`
 -- AUTO_INCREMENT for table `rekmed_anak`
 --
 ALTER TABLE `rekmed_anak`
-  MODIFY `ra_id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=28;
+  MODIFY `ra_id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=35;
 
 --
 -- AUTO_INCREMENT for table `ri`
 --
 ALTER TABLE `ri`
-  MODIFY `ri_id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `ri_id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `ri_penunjang`
@@ -573,7 +606,7 @@ ALTER TABLE `ri_penunjang`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=136;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=137;
 
 --
 -- Constraints for dumped tables
