@@ -12,6 +12,10 @@ class Log extends Model
 
     public function user()
     {
-        return User::findOrFail($this->log_user);
+        $user = User::find($this->log_user);
+        if ($user) {
+            return $user->name;
+        }
+        return NULL;
     }
 }

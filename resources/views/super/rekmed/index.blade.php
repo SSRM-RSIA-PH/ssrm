@@ -40,7 +40,7 @@ List Rekmed
             <td>{{$r->rek_id}}</td>
             <td>{{$r->rek_name}}</td>
             <td>{{$r->updated_at}}</td>
-            <td>{{$r->user()->name}}</td>
+            <td>{{$r->user()}}</td>
             <td>
                 <a href="{{route('super.rekmed.show', ['rek_id'=>$r->rek_id])}}" class="btn btn-sm btn-info">Detail</a>
                 <a href="{{route('archive', ['rek_id'=>$r->rek_id])}}" class="btn btn-sm btn-success">Arsip</a>

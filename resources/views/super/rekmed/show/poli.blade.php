@@ -24,7 +24,7 @@
         <tr>
             <td>{{$p->poli_datetime}}</td>
             <td>Poli</td>
-            <td>{{$p->user()->name}}</td>
+            <td>{{$p->user()}}</td>
             <td>
                 <a href="{{route('super.rekmed.detail.poli', [
                             'rek_id'=>$p->rek_id,

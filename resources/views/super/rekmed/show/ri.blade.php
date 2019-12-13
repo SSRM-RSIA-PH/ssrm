@@ -24,7 +24,7 @@
         <tr>
             <td>{{$r->ri_datetime}}</td>
             <td>Rawat Inap</td>
-            <td>{{$r->user()->name}}</td>
+            <td>{{$r->user()}}</td>
             <td>
                 <a href="{{route('super.rekmed.detail.ri', [
                         'rek_id'=>$r->rek_id,

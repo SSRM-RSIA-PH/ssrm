@@ -135,7 +135,7 @@ Edit Detail
                                     </div>
                                     <div class="card-body" id="filelengkap">
                                         <div class="custom-file">
-                                            <input type="file" class="custom-file-input" id="fl" name="fl">
+                                            <input type="file" class="custom-file-input" id="fl" name="fl" accept="application/pdf">
                                             <label class="custom-file-label" id="cfl1" for="fl">
                                                 @if ($igd->igd_file_lengkap)
                                                 <strong>File File Lengkap</strong>

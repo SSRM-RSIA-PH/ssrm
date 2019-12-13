@@ -22,7 +22,7 @@ Log
     @foreach ($logs as $log)
     <tr>
         <td>{{$log->created_at}}</td>
-        <td>{{$log->user()->name}}</td>
+        <td>{{$log->user()}}</td>
         <td>{{$log->log_do}}</td>
         <td>{{$log->rek_id}}</td>
         <td>{{strtoupper($log->ctg)}}</td>

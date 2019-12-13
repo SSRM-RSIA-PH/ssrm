@@ -282,6 +282,19 @@ class SuperRekmedController extends Controller
             $request->file('resume')->storeAs("public/$dir", $file);
             $igd->igd_resume = $dir . $file;
         }
+
+        if ($request->file('fl')) {
+            $dbfile = $igd->igd_file_lengkap;
+            if ($dbfile && file_exists(storage_path("app/public/$dbfile"))) {
+                \Storage::delete("public/$dbfile");
+            }
+
+            $dir = "Rekmed/$rek_id/IGD/$id/File_Lengkap/";
+            $file = $id . "_igd_fl.pdf";
+
+            $request->file('fl')->storeAs("public/$dir", $file);
+            $igd->igd_file_lengkap = $dir . $file;
+        }
         $igd->save();
 
         //penunjang
@@ -445,6 +458,19 @@ class SuperRekmedController extends Controller
 
             $request->file('resume')->storeAs("public/$dir", $file);
             $poli->poli_resume = $dir . $file;
+        }
+
+        if ($request->file('fl')) {
+            $dbfile = $poli->poli_file_lengkap;
+            if ($dbfile && file_exists(storage_path("app/public/$dbfile"))) {
+                \Storage::delete("public/$dbfile");
+            }
+
+            $dir = "Rekmed/$rek_id/POLI/$id/File_Lengkap/";
+            $file = $id . "_poli_fl.pdf";
+
+            $request->file('fl')->storeAs("public/$dir", $file);
+            $poli->poli_file_lengkap = $dir . $file;
         }
         $poli->save();
 
@@ -632,6 +658,18 @@ class SuperRekmedController extends Controller
             $request->file('grafik')->storeAs("public/$dir", $file);
             $nicu->nicu_grafik = $dir . $file;
         }
+
+        if ($request->file('fl')) {
+            $dbfile = $nicu->nicu_file_lengkap;
+            if ($dbfile && file_exists(storage_path("app/public/$dbfile"))) {
+                \Storage::delete("public/$dbfile");
+            }
+            $dir = "Rekmed/$rek_id/NICU/$id/File_Lengkap/";
+            $file = $id . "_nicu_fl.pdf";
+
+            $request->file('fl')->storeAs("public/$dir", $file);
+            $nicu->nicu_file_lengkap = $dir . $file;
+        }
         $nicu->save();
 
         //penunjang
@@ -751,6 +789,18 @@ class SuperRekmedController extends Controller
 
             $request->file('bayi')->storeAs("public/$dir", $file);
             $ri->ri_bayi = $dir . $file;
+        }
+
+        if ($request->file('fl')) {
+            $dbfile = $ri->ri_file_lengkap;
+            if ($dbfile && file_exists(storage_path("app/public/$dbfile"))) {
+                \Storage::delete("public/$dbfile");
+            }
+            $dir = "Rekmed/$rek_id/Rawat_Inap/$id/File_Lengkap/";
+            $file = $id . "_ri_fl.pdf";
+
+            $request->file('fl')->storeAs("public/$dir", $file);
+            $ri->ri_file_lengkap = $dir . $file;
         }
         $ri->save();
 

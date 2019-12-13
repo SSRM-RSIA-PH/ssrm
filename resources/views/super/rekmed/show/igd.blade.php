@@ -24,7 +24,7 @@
         <tr>
             <td>{{$i->igd_datetime}}</td>
             <td>IGD</td>
-            <td>{{$i->user()->name}}</td>
+            <td>{{$i->user()}}</td>
             <td>
                 <a href="{{route('super.rekmed.detail.igd', [
                     'rek_id'=>$i->rek_id, 

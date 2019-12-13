@@ -13,7 +13,11 @@ class Nicu extends Model
 
     public function user()
     {
-        return User::findOrFail($this->u_id);
+        $user = User::find($this->u_id);
+        if ($user) {
+            return $user->name;
+        }
+        return NULL;
     }
 
     public function penunjang()

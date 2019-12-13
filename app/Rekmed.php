@@ -14,7 +14,11 @@ class Rekmed extends Model
 
     public function user()
     {
-        return User::where('id' ,$this->u_id)->first();
+        $user = User::find($this->u_id);
+        if ($user) {
+            return $user->name;
+        }
+        return NULL;
     }
 
     public function anak()

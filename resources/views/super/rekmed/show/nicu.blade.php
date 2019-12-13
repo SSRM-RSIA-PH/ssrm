@@ -23,7 +23,7 @@
         <tr>
             <td>{{$n->nicu_datetime}}</td>
             <td>NICU</td>
-            <td>{{$n->user()->name}}</td>
+            <td>{{$n->user()}}</td>
             <td>
                 <a href="{{route('super.rekmed.detail.nicu', [
                             'rek_id'=>$n->rek_id,

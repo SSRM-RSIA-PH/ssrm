@@ -81,7 +81,7 @@ Edit Detail
                                         </div>
                                         <div class="card-body" id="perkembangan">
                                             <div class="custom-file">
-                                                <input type="file" class="custom-file-input" id="cp" name="cp">
+                                                <input type="file" class="custom-file-input" id="cp" name="cp" accept="application/pdf">
                                                 <label class="custom-file-label" id="cfl1" for="cp">
                                                     @if ($ri->ri_ctt_integ)
                                                     <strong>File Catatan Perkembangan</strong>
