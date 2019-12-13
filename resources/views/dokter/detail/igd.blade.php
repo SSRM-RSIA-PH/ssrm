@@ -71,7 +71,7 @@
             @endif
         </div>
         <div class="tab-pane fade bg-white" id="bru" role="tabpanel" aria-labelledby="bru-tab">
-            @if ($igd->igd_resume)
+            @if ($igd->igd_file_lengkap)
             <object data="{{asset("storage/$igd->igd_file_lengkap")}}" type="application/pdf" width="100%"
                 height="700px"></object>
             @else

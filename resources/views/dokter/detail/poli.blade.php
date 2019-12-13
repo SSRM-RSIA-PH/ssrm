@@ -46,6 +46,10 @@
         <a class="nav-link" id="pnj-tab" data-toggle="tab" href="#pnj" role="tab" aria-controls="pnj"
             aria-selected="false">Penunjang</a>
     </li>
+    <li class="nav-item">
+        <a class="nav-link" id="bru-tab" data-toggle="tab" href="#bru" role="tab" aria-controls="bru"
+            aria-selected="false">File Lengkap</a>
+    </li>
 </ul>
 
 <div class="card-body">
@@ -135,6 +139,14 @@
                     </div>
                 </div>
             </div>
+        </div>
+        <div class="tab-pane fade bg-white" id="bru" role="tabpanel" aria-labelledby="bru-tab">
+            @if ($poli->poli_file_lengkap)
+            <object data="{{asset("storage/$poli->poli_file_lengkap")}}" type="application/pdf" width="100%"
+                height="700px"></object>
+            @else
+            <h3>Data Tidak Tersedia</h3>
+            @endif
         </div>
     </div>
 </div>
