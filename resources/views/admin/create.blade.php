@@ -10,7 +10,8 @@ Add ID Rekam Medis
     <div class="col-md-6">
         @if (session('status'))
         <div class="alert alert-success">
-            Berhasil Menambahkan Rekam Medis <a class="btn btn-sm btn-success" href="{{route('admin.show.rek', ['rek_id'=>session('status')])}}">{{session('status')}}</a>
+            Berhasil Menambahkan Rekam Medis <a class="btn btn-sm btn-success"
+                href="{{route('admin.show.rek', ['rek_id'=>session('status')])}}">{{session('status')}}</a>
         </div>
         @endif
 
@@ -45,7 +46,7 @@ Add ID Rekam Medis
                         <label for="rek_nik">NIK</label>
                         <input type="text" class="form-control {{$errors->first('rek_nik') ? 'is-invalid':''}}"
                             name="rek_nik" id="rek_nik" aria-describedby="" placeholder="" value="{{old('rek_nik')}}"
-                            required maxlength="16">
+                            maxlength="16">
 
                         @if ($errors->first('rek_nik'))
                         <div class="error-message">
@@ -180,7 +181,7 @@ Add ID Rekam Medis
                                 aria-describedby="rp_ayah_hp">
                         </div>
                     </div>
-                
+
             </div>
             <div class="card-footer">
                 <button id="simpan" type="submit" class="btn btn-primary">Simpan</button>
