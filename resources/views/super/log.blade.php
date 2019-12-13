@@ -28,7 +28,7 @@ Log
         <td>{{strtoupper($log->ctg)}}</td>
         <th>
             @if ($log->id_ctg)
-            <a href="{{route("super.rekmed.detail.$log->ctg", [
+            <a href="{{route("super.log.detail.$log->ctg", [
                                 'rek_id'=>$log->rek_id,
                                 'id'=>$log->id_ctg
                             ])}}" class="btn btn-primary btn-sm">View</a>

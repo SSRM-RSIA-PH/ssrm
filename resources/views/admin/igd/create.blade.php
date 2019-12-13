@@ -52,7 +52,8 @@
                             <div class="card mb-3">
                                 <div class="card-header">
                                     <div class="custom-control custom-checkbox">
-                                        <input type="checkbox" class="custom-control-input" id="customCheck1">
+                                        <input type="checkbox" class="custom-control-input" id="customCheck1"
+                                            {{$errors->first('cp') ? 'CHECKED':''}}>
                                         <label class="custom-control-label" for="customCheck1">Catatan
                                             Perkembangan</label>
                                     </div>
@@ -95,7 +96,7 @@
                                         <label class="custom-control-label" for="customCheck3">Penunjang</label>
                                     </div>
                                 </div>
-                                <div class="card-body" hidden id="penunjang">
+                                <div class="card-body" {{$errors->first('resume') ? '':'hidden'}} id="penunjang">
                                     {{-- 1 --}}
                                     <div class="form-group">
                                         <div class="custom-control custom-checkbox">

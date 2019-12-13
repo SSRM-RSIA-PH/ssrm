@@ -24,6 +24,17 @@ class AdminIgdController extends Controller
 
     public function store(Request $request)
     {
+        \Validator::make($request->all(), [
+            'cp' => 'mimetypes:application/pdf',
+            'resume' => 'mimetypes:application/pdf',
+            'fl' => 'mimetypes:application/pdf',
+            'usg' => 'mimetypes:application/pdf',
+            'ctg' => 'mimetypes:application/pdf',
+            'lab' => 'mimetypes:application/pdf',
+            'xray' => 'mimetypes:application/pdf',
+            'ekg' => 'mimetypes:application/pdf'
+        ])->validate();
+
         $rek_id = $request->get('rek_id');
 
         $igd = new Igd;

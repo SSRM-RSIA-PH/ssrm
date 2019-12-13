@@ -77,7 +77,7 @@ class SuperUserController extends Controller
     {
         \Validator::make($request->all(), [
             'name' => 'required|min:5|max:100',
-            'email' => 'required|email|unique:users',
+            // 'email' => 'required|email|unique:users',
             'username' => 'required|min:5|max:50|unique:users',
             'role' => 'required',
             'password' => 'required|min:8|max:50',
@@ -88,7 +88,7 @@ class SuperUserController extends Controller
 
         $user->name = $request->get('name');
         $user->username = $request->get('username');
-        $user->email = $request->get('email');
+        // $user->email = $request->get('email');
         $user->role = $request->get('role');
 
         if ($request->get('password')) {
@@ -97,7 +97,7 @@ class SuperUserController extends Controller
 
         $user->save();
 
-        return redirect()->route('user.edit', ['id' => $id])->with('status', 'User successfully updated');
+        return redirect()->route('user.edit', ['id' => $id])->with('status', $user->name);
     }
 
     public function destroy($id)

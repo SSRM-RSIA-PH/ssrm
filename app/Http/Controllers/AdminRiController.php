@@ -24,6 +24,16 @@ class AdminRiController extends Controller
 
     public function store(Request $request)
     {
+        \Validator::make($request->all(), [
+            'ct' => 'mimetypes:application/pdf',
+            'resume' => 'mimetypes:application/pdf',
+            'cto' => 'mimetypes:application/pdf',
+            'bayi' => 'mimetypes:application/pdf',
+            'fl' => 'mimetypes:application/pdf',
+            'lab' => 'mimetypes:application/pdf',
+            'xray' => 'mimetypes:application/pdf'
+        ])->validate();
+
         $rek_id = $request->get('rek_id');
 
         $ri = new RawatInap;

@@ -22,6 +22,13 @@
             opacity: 80%;
             border-radius: 3px
         }
+
+        .error-message {
+            color: red;
+            padding-top: 3px;
+            font-size: 80%;
+            font-weight: 400
+        }
     </style>
 </head>
 

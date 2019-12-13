@@ -81,7 +81,14 @@ Route::group(['prefix' => '/supervisor'], function () {
         Route::delete('{id}/destroy_arsip_tahunan', 'SuperRekmedController@destroy_arsip_tahunan')->name('super.rekmed.destroy_arsip_tahunan');
     });
     
-    Route::get('/log', 'SuperLogController@index')->name('super.log');
+    Route::group(['prefix' => '/log'], function () {
+        Route::get('/', 'SuperLogController@index')->name('super.log');
+
+        Route::get('/{rek_id}/igd/{id}', 'SuperLogController@detail_igd')->name('super.log.detail.igd');
+        Route::get('/{rek_id}/nicu/{id}', 'SuperLogController@detail_nicu')->name('super.log.detail.nicu');
+        Route::get('/{rek_id}/poli/{id}', 'SuperLogController@detail_poli')->name('super.log.detail.poli');
+        Route::get('/{rek_id}/ri/{id}', 'SuperLogController@detail_ri')->name('super.log.detail.ri');
+    });
 });
 
 

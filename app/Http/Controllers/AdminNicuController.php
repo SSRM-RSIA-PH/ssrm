@@ -24,6 +24,16 @@ class AdminNicuController extends Controller
 
     public function store(Request $request)
     {
+        \Validator::make($request->all(), [
+            'ct' => 'mimetypes:application/pdf',
+            'resume' => 'mimetypes:application/pdf',
+            'pengkajian' => 'mimetypes:application/pdf',
+            'gp' => 'mimetypes:application/pdf',
+            'fl' => 'mimetypes:application/pdf',
+            'lab' => 'mimetypes:application/pdf',
+            'xray' => 'mimetypes:application/pdf'
+        ])->validate();
+
         $rek_id = $request->get('rek_id');
 
         $nicu = new Nicu;

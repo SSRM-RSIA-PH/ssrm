@@ -29,7 +29,7 @@ Add ID Rekam Medis
                             {{$errors->first('rek_id') ? 'autofocus':''}}>
 
                         @if ($errors->first('rek_id'))
-                        <div class="invalid-feedback">
+                        <div class="error-message">
                             ID Rekam Medis sudah terdaftar
                         </div>
                         @endif
@@ -48,7 +48,7 @@ Add ID Rekam Medis
                             required maxlength="16">
 
                         @if ($errors->first('rek_nik'))
-                        <div class="invalid-feedback">
+                        <div class="error-message">
                             NIK sudah terdaftar
                         </div>
                         @endif
@@ -112,9 +112,9 @@ Add ID Rekam Medis
                             <label class="custom-control-label" for="ranak">Anak</label>
                         </div>
 
-                        {{-- @if ($errors->first('rek_status'))
-                        <p class="small" style="color: red; padding-top: 3px">Silahkan pilih status terlebih dahulu</p>
-                        @endif --}}
+                        @if ($errors->first('rek_status'))
+                        <p class="error-message">Silahkan pilih status terlebih dahulu</p>
+                        @endif
                     </div>
 
                     <div id="suami">
