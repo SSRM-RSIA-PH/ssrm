@@ -48,5 +48,9 @@
         @endforeach
     </tbody>
 </table>
-{{$ri->links()}}
+<div class="row ">
+    <div class="col d-flex justify-content-center">
+        {{$ri->links()}}
+    </div>
+</div>
 @endsection

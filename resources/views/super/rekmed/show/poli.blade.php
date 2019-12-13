@@ -47,5 +47,9 @@
         @endforeach
     </tbody>
 </table>
-{{$poli->links()}}
+<div class="row ">
+    <div class="col d-flex justify-content-center">
+        {{$poli->links()}}
+    </div>
+</div>
 @endsection

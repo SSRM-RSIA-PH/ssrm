@@ -76,5 +76,9 @@ List User
         @endforeach
     </tbody>
 </table>
-{{$users->appends(Request::all())->links()}}
+<div class="row ">
+    <div class="col d-flex justify-content-center">
+        {{$users->appends(Request::all())->links()}}
+    </div>
+</div>
 @endsection

@@ -19,27 +19,31 @@
 <div hidden>{{$check = $poli->first()}}</div>
 
 @if (isset($check))
-    <table class="table table-bordered">
-        <thead>
-            <th>Tanggal Rekam Medis</th>
-            <th width="100px"></th>
-        </thead>
-        <tbody>
-            @foreach ($poli as $p)
-            <tr>
-                <td>{{$p->poli_datetime}}</td>
-                <td>
-                    <a href="{{route('dokter.detail.poli', [
+<table class="table table-bordered">
+    <thead>
+        <th>Tanggal Rekam Medis</th>
+        <th width="100px"></th>
+    </thead>
+    <tbody>
+        @foreach ($poli as $p)
+        <tr>
+            <td>{{$p->poli_datetime}}</td>
+            <td>
+                <a href="{{route('dokter.detail.poli', [
                             'rek_id'=>$p->rek_id,
                             'id'=>$p->poli_id,
                             'ctg'=>'c'
                         ])}}" class="btn btn-info btn-sm">View</a>
-                </td>
-            </tr>
-            @endforeach
-        </tbody>
-    </table>
-    {{$poli->links()}}
+            </td>
+        </tr>
+        @endforeach
+    </tbody>
+</table>
+<div class="row ">
+    <div class="col d-flex justify-content-center">
+        {{$poli->links()}}
+    </div>
+</div>
 @else
 <h3>Data tidak tersedia!</h3>
 @endif

@@ -39,8 +39,12 @@
         @endforeach
     </tbody>
 </table>
+<div class="row ">
+    <div class="col d-flex justify-content-center">
+        {{$igd->links()}}
+    </div>
+</div>
 @else
 <h3>Data tidak tersedia!</h3>
 @endif
-{{$igd->links()}}
 @endsection

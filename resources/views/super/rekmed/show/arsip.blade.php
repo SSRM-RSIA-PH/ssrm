@@ -43,5 +43,9 @@
 @else
 <h3>Data tidak tersedia!</h3>
 @endif
-{{$arsip->links()}}
+<div class="row ">
+    <div class="col d-flex justify-content-center">
+        {{$arsip->links()}}
+    </div>
+</div>
 @endsection

@@ -47,5 +47,9 @@
         @endforeach
     </tbody>
 </table>
-{{$nicu->links()}}
+<div class="row ">
+    <div class="col d-flex justify-content-center">
+        {{$nicu->links()}}
+    </div>
+</div>
 @endsection

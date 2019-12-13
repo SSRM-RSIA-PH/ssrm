@@ -47,5 +47,9 @@
         @endforeach
     </tbody>
 </table>
-{{$igd->links()}}
+<div class="row ">
+    <div class="col d-flex justify-content-center">
+        {{$igd->links()}}
+    </div>
+</div>
 @endsection
