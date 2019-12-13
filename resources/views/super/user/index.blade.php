@@ -46,7 +46,7 @@ List User
     </div>
 
     <div class="col-2 text-right">
-        <a href="{{route('user.create')}}" class="btn btn-primary text-right">Add User</a>
+        <a href="{{route('user.create')}}" class="btn btn-primary text-right">Tambah User</a>
     </div>
 </div>
 

@@ -43,7 +43,7 @@
 </ul>
 <div class="card-body">
     <div class="tab-content" id="myTabContent">
-        <div class="tab-pane fade show active" id="cpt" role="tabpanel" aria-labelledby="cpt-tab">
+        <div class="tab-pane fade show active bg-white" id="cpt" role="tabpanel" aria-labelledby="cpt-tab">
             @if ($nicu->nicu_ctt_integ)
             <object data="{{asset("storage/$nicu->nicu_ctt_integ")}}" type="application/pdf" width="100%"
                 height="700px"></object>
@@ -51,7 +51,7 @@
             <h3>Data Tidak Tersedia</h3>
             @endif
         </div>
-        <div class="tab-pane fade" id="rsm" role="tabpanel" aria-labelledby="rsm-tab">
+        <div class="tab-pane fade bg-white" id="rsm" role="tabpanel" aria-labelledby="rsm-tab">
             @if ($nicu->nicu_resume)
             <object data="{{asset("storage/$nicu->nicu_resume")}}" type="application/pdf" width="100%"
                 height="700px"></object>
@@ -59,7 +59,7 @@
             <h3>Data Tidak Tersedia</h3>
             @endif
         </div>
-        <div class="tab-pane fade" id="pka" role="tabpanel" aria-labelledby="pka-tab">
+        <div class="tab-pane fade bg-white bg-white" id="pka" role="tabpanel" aria-labelledby="pka-tab">
             @if ($nicu->nicu_pengkajian)
             <object data="{{asset("storage/$nicu->nicu_pengkajian")}}" type="application/pdf" width="100%"
                 height="700px"></object>
@@ -67,7 +67,7 @@
             <h3>Data Tidak Tersedia</h3>
             @endif
         </div>
-        <div class="tab-pane fade" id="gfp" role="tabpanel" aria-labelledby="gfp-tab">
+        <div class="tab-pane fade bg-white" id="gfp" role="tabpanel" aria-labelledby="gfp-tab">
             @if ($nicu->nicu_grafik)
             <object data="{{asset("storage/$nicu->nicu_grafik")}}" type="application/pdf" width="100%"
                 height="700px"></object>
@@ -75,7 +75,7 @@
             <h3>Data Tidak Tersedia</h3>
             @endif
         </div>
-        <div class="tab-pane fade" id="pnj" role="tabpanel" aria-labelledby="pnj-tab" class="bg-white"
+        <div class="tab-pane fade bg-white" id="pnj" role="tabpanel" aria-labelledby="pnj-tab" class="bg-white"
             style="background-color: white">
             <ul class="nav nav-tabs font-weight-bold" id="myTab" role="tablist">
                 <li class="nav-item">
@@ -90,7 +90,7 @@
 
             <div class="card-body">
                 <div class="tab-content" id="myTabContent2">
-                    <div class="tab-pane fade show active" id="xray" role="tabpanel" aria-labelledby="pnj-xray">
+                    <div class="tab-pane fade bg-white show active" id="xray" role="tabpanel" aria-labelledby="pnj-xray">
                         @if (isset($xray))
                         <object data="{{asset("storage/$xray->p_file")}}" type="application/pdf" width="100%"
                             height="700px"></object>
@@ -98,7 +98,7 @@
                         <h3>Data Tidak Tersedia</h3>
                         @endif
                     </div>
-                    <div class="tab-pane fade show" id="lab" role="tabpanel" aria-labelledby="pnj-lab">
+                    <div class="tab-pane fade bg-white show" id="lab" role="tabpanel" aria-labelledby="pnj-lab">
                         @if (isset($lab))
                         <object data="{{asset("storage/$lab->p_file")}}" type="application/pdf" width="100%"
                             height="700px"></object>

@@ -11,16 +11,14 @@ Edit User
 @endsection
 
 @section('content')
-<div class="container">
-
-    @if (session('status'))
-    <div class="alert alert-success">
-        User {{session('status')}} berhasil diedit
-    </div>
-    @endif
-
+<div class="row d-flex justify-content-center">
     <div class="col-md-8 mb-3">
-        <a href="{{route('user.index')}}" class="btn btn-primary mb-3">Back</a>
+        @if (session('status'))
+        <div class="alert alert-success">
+            User {{session('status')}} berhasil diedit
+        </div>
+        @endif
+        <a href="{{route('user.index')}}" class="btn btn-primary mb-3">Kembali</a>
         <div class="card">
             <div class="card-header">
                 Edit User

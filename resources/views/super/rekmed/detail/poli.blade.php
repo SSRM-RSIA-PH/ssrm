@@ -44,7 +44,7 @@
 
 <div class="card-body">
     <div class="tab-content" id="myTabContent">
-        <div class="tab-pane fade show active" id="ctp" role="tabpanel" aria-labelledby="ctp-tab">
+        <div class="tab-pane fade bg-white show active" id="ctp" role="tabpanel" aria-labelledby="ctp-tab">
             @if ($poli->poli_ctt_integ)
             <object data="{{asset("storage/$poli->poli_ctt_integ")}}" type="application/pdf" width="100%"
                 height="700px"></object>
@@ -52,7 +52,7 @@
             <h3>Data Tidak Tersedia</h3>
             @endif
         </div>
-        <div class="tab-pane fade" id="rsm" role="tabpanel" aria-labelledby="rsm-tab">
+        <div class="tab-pane fade bg-white" id="rsm" role="tabpanel" aria-labelledby="rsm-tab">
             @if ($poli->poli_resume)
             <object data="{{asset("storage/$poli->poli_resume")}}" type="application/pdf" width="100%"
                 height="700px"></object>
@@ -60,7 +60,7 @@
             <h3>Data Tidak Tersedia</h3>
             @endif
         </div>
-        <div class="tab-pane fade" id="pnj" role="tabpanel" aria-labelledby="pnj-tab" class="bg-white"
+        <div class="tab-pane fade bg-white" id="pnj" role="tabpanel" aria-labelledby="pnj-tab" class="bg-white"
             style="background-color: white">
             <ul class="nav nav-tabs font-weight-bold" id="myTab" role="tablist">
                 <li class="nav-item">
@@ -87,7 +87,7 @@
 
             <div class="card-body">
                 <div class="tab-content" id="myTabContent2">
-                    <div class="tab-pane fade show active" id="usg" role="tabpanel" aria-labelledby="pnj-usg">
+                    <div class="tab-pane fade bg-white show active" id="usg" role="tabpanel" aria-labelledby="pnj-usg">
                         @if (isset($usg))
                         <object data="{{asset("storage/$usg->p_file")}}" type="application/pdf" width="100%"
                             height="700px"></object>
@@ -95,7 +95,7 @@
                         <h3>Data Tidak Tersedia</h3>
                         @endif
                     </div>
-                    <div class="tab-pane fade show" id="ctg" role="tabpanel" aria-labelledby="pnj-ctg">
+                    <div class="tab-pane fade bg-white show" id="ctg" role="tabpanel" aria-labelledby="pnj-ctg">
                         @if (isset($ctgd))
                         <object data="{{asset("storage/$ctgd->p_file")}}" type="application/pdf" width="100%"
                             height="700px"></object>
@@ -103,7 +103,7 @@
                         <h3>Data Tidak Tersedia</h3>
                         @endif
                     </div>
-                    <div class="tab-pane fade show" id="xray" role="tabpanel" aria-labelledby="pnj-xray">
+                    <div class="tab-pane fade bg-white show" id="xray" role="tabpanel" aria-labelledby="pnj-xray">
                         @if (isset($xray))
                         <object data="{{asset("storage/$xray->p_file")}}" type="application/pdf" width="100%"
                             height="700px"></object>
@@ -111,7 +111,7 @@
                         <h3>Data Tidak Tersedia</h3>
                         @endif
                     </div>
-                    <div class="tab-pane fade show" id="ekg" role="tabpanel" aria-labelledby="pnj-ekg">
+                    <div class="tab-pane fade bg-white show" id="ekg" role="tabpanel" aria-labelledby="pnj-ekg">
                         @if (isset($ekg))
                         <object data="{{asset("storage/$ekg->p_file")}}" type="application/pdf" width="100%"
                             height="700px"></object>
@@ -119,7 +119,7 @@
                         <h3>Data Tidak Tersedia</h3>
                         @endif
                     </div>
-                    <div class="tab-pane fade show" id="lab" role="tabpanel" aria-labelledby="pnj-lab">
+                    <div class="tab-pane fade bg-white show" id="lab" role="tabpanel" aria-labelledby="pnj-lab">
                         @if (isset($lab))
                         <object data="{{asset("storage/$lab->p_file")}}" type="application/pdf" width="100%"
                             height="700px"></object>
