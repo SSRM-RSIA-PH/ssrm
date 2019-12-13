@@ -24,6 +24,7 @@ class AdminArsipController extends Controller
     public function store(Request $request)
     {
         \Validator::make($request->all(), [
+            'date' => 'date_format:Y-m-d H:i',
             'arsip' => 'required|mimetypes:application/zip'
         ])->validate();
 

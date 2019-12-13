@@ -248,6 +248,18 @@ class SuperRekmedController extends Controller
 
     public function update_detail_igd(Request $request, $rek_id, $id)
     {
+        \Validator::make($request->all(), [
+            'date' => 'date_format:Y-m-d H:i',
+            'cp' => 'mimetypes:application/pdf',
+            'resume' => 'mimetypes:application/pdf',
+            'fl' => 'mimetypes:application/pdf',
+            'usg' => 'mimetypes:application/pdf',
+            'ctg' => 'mimetypes:application/pdf',
+            'lab' => 'mimetypes:application/pdf',
+            'xray' => 'mimetypes:application/pdf',
+            'ekg' => 'mimetypes:application/pdf'
+        ])->validate();
+
         //catatan & resume
         $igd = Igd::findOrFail($id);
 
@@ -425,6 +437,18 @@ class SuperRekmedController extends Controller
 
     public function update_detail_poli(Request $request, $rek_id, $id)
     {
+        \Validator::make($request->all(), [
+            'date' => 'date_format:Y-m-d H:i',
+            'ct' => 'mimetypes:application/pdf',
+            'resume' => 'mimetypes:application/pdf',
+            'fl' => 'mimetypes:application/pdf',
+            'usg' => 'mimetypes:application/pdf',
+            'ctg' => 'mimetypes:application/pdf',
+            'lab' => 'mimetypes:application/pdf',
+            'xray' => 'mimetypes:application/pdf',
+            'ekg' => 'mimetypes:application/pdf'
+        ])->validate();
+        
         //catatan & resume
         $poli = Poli::findOrFail($id);
 
@@ -602,6 +626,17 @@ class SuperRekmedController extends Controller
 
     public function update_detail_nicu(Request $request, $rek_id, $id)
     {
+        \Validator::make($request->all(), [
+            'date' => 'date_format:Y-m-d H:i',
+            'ct' => 'mimetypes:application/pdf',
+            'resume' => 'mimetypes:application/pdf',
+            'pengkajian' => 'mimetypes:application/pdf',
+            'gp' => 'mimetypes:application/pdf',
+            'fl' => 'mimetypes:application/pdf',
+            'lab' => 'mimetypes:application/pdf',
+            'xray' => 'mimetypes:application/pdf'
+        ])->validate();
+
         //catatan & resume
         $nicu = Nicu::findOrFail($id);
 
@@ -737,6 +772,17 @@ class SuperRekmedController extends Controller
 
     public function update_detail_ri(Request $request, $rek_id, $id)
     {
+        \Validator::make($request->all(), [
+            'date' => 'date_format:Y-m-d H:i',
+            'ct' => 'mimetypes:application/pdf',
+            'resume' => 'mimetypes:application/pdf',
+            'cto' => 'mimetypes:application/pdf',
+            'bayi' => 'mimetypes:application/pdf',
+            'fl' => 'mimetypes:application/pdf',
+            'lab' => 'mimetypes:application/pdf',
+            'xray' => 'mimetypes:application/pdf'
+        ])->validate();
+
         //catatan & resume
         $ri = RawatInap::findOrFail($id);
 
@@ -865,6 +911,11 @@ class SuperRekmedController extends Controller
 
     public function update_arsip_tahunan(Request $request)
     {
+        \Validator::make($request->all(), [
+            'date' => 'date_format:Y-m-d H:i',
+            'arsip' => 'required|mimetypes:application/zip'
+        ])->validate();
+
         $id = $request->get('id');
 
         $arsip = Arsip::find($id);

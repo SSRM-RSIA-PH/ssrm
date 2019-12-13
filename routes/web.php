@@ -83,7 +83,6 @@ Route::group(['prefix' => '/supervisor'], function () {
     
     Route::group(['prefix' => '/log'], function () {
         Route::get('/', 'SuperLogController@index')->name('super.log');
-
         Route::get('/{rek_id}/igd/{id}', 'SuperLogController@detail_igd')->name('super.log.detail.igd');
         Route::get('/{rek_id}/nicu/{id}', 'SuperLogController@detail_nicu')->name('super.log.detail.nicu');
         Route::get('/{rek_id}/poli/{id}', 'SuperLogController@detail_poli')->name('super.log.detail.poli');

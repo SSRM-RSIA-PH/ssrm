@@ -18,7 +18,7 @@
 <table class="table table-bordered">
     <thead>
         <th>Tanggal Rekam Medis</th>
-        <th width="100px"></th>
+        <th width="200px"></th>
     </thead>
     <tbody>
         @foreach ($arsip as $i)

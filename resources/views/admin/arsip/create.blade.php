@@ -11,11 +11,11 @@
 @section('content')
 <div class="container">
 
-@if (session('status'))
-<div class="alert alert-success">
-    Berhasil menambahkan file Arsip <br>
-</div>
-@endif
+    @if (session('status'))
+    <div class="alert alert-success">
+        Berhasil menambahkan file Arsip <br>
+    </div>
+    @endif
 
     <div class="row">
         <div class="col-3">
@@ -42,6 +42,13 @@
                                         autofocus>
                                 </div>
                             </div>
+
+                            @if ($errors->first('date'))
+                            <div class="error-message">
+                                Masukkan Tanggal dengan format <strong>YYYY-MM-DD HH-mm</strong> <br>
+                                atau gunakan <strong>Browser Google Chrome</strong>
+                            </div>
+                            @endif
                         </div><br>
 
                         <div class="col">

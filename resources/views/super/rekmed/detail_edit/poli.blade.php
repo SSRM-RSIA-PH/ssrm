@@ -87,6 +87,13 @@ Edit Detail
                                                 autofocus>
                                         </div>
                                     </div>
+
+                                    @if ($errors->first('date'))
+                                    <div class="error-message">
+                                        Masukkan Tanggal dengan format <strong>YYYY-MM-DD HH-mm</strong> <br>
+                                        atau gunakan <strong>Browser Google Chrome</strong>
+                                    </div>
+                                    @endif
                                 </div><br>
 
                                 <div class="col">
@@ -137,7 +144,8 @@ Edit Detail
                                         </div>
                                         <div class="card-body" id="filelengkap">
                                             <div class="custom-file">
-                                                <input type="file" class="custom-file-input" id="fl" name="fl" accept="application/pdf">
+                                                <input type="file" class="custom-file-input" id="fl" name="fl"
+                                                    accept="application/pdf">
                                                 <label class="custom-file-label" id="cfl1" for="fl">
                                                     @if ($poli->poli_file_lengkap)
                                                     <strong>File File Lengkap</strong>
