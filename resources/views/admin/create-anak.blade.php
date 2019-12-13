@@ -43,7 +43,7 @@ Add ID Rekam Medis
                     <div class="form-group">
                         <label for="ra_darah1">Golongan Darah Anak</label>
                         <select class="form-control" name="ra_darah1" id="ra_darah1">
-                            <option>Pilih</option>
+                            <option value="">Pilih</option>
                             <option value="A">A</option>
                             <option value="B">B</option>
                             <option value="AB">AB</option>
@@ -83,7 +83,7 @@ Add ID Rekam Medis
                     <div class="form-group">
                         <label for="ra_darah2">Golongan Darah Anak</label>
                         <select class="form-control" name="ra_darah2" id="ra_darah2">
-                            <option>Pilih</option>
+                            <option value="">Pilih</option>
                             <option value="A">A</option>
                             <option value="B">B</option>
                             <option value="AB">AB</option>
@@ -123,7 +123,7 @@ Add ID Rekam Medis
                     <div class="form-group">
                         <label for="ra_darah3">Golongan Darah Anak</label>
                         <select class="form-control" name="ra_darah3" id="ra_darah3">
-                            <option>Pilih</option>
+                            <option value="">Pilih</option>
                             <option value="A">A</option>
                             <option value="B">B</option>
                             <option value="AB">AB</option>
@@ -163,7 +163,7 @@ Add ID Rekam Medis
                     <div class="form-group">
                         <label for="ra_darah4">Golongan Darah Anak</label>
                         <select class="form-control" name="ra_darah4" id="ra_darah4">
-                            <option>Pilih</option>
+                            <option value="">Pilih</option>
                             <option value="A">A</option>
                             <option value="B">B</option>
                             <option value="AB">AB</option>
@@ -203,7 +203,7 @@ Add ID Rekam Medis
                     <div class="form-group">
                         <label for="ra_darah5">Golongan Darah Anak</label>
                         <select class="form-control" name="ra_darah5" id="ra_darah5">
-                            <option>Pilih</option>
+                            <option value="">Pilih</option>
                             <option value="A">A</option>
                             <option value="B">B</option>
                             <option value="AB">AB</option>
