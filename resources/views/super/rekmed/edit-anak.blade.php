@@ -10,6 +10,12 @@ Edit
 @section('content')
 <div class="row d-flex justify-content-center">
 
+    {{isset($anak1) ? 'ada':'takde'}}
+    {{isset($anak2) ? 'ada':'takde'}}
+    {{isset($anak3) ? 'ada':'takde'}}
+    {{isset($anak4) ? 'ada':'takde'}}
+    {{isset($anak5) ? 'ada':'takde'}}
+
     <div class="col-md-6" id="div2">
         <form action="{{route('super.rekmed.update-anak', ['rek_id'=>$rek_id])}}" method="POST">
             @csrf

@@ -208,25 +208,32 @@ class SuperRekmedController extends Controller
     public function update_rekmed_anak(Request $request, $rek_id)
     {
         for ($i=1; $i < 6; $i++) { 
+
+            if ($request->get("ra_name$i")) {
+
             if ($request->get("id$i")) {
                 $anak = RekmedAnak::find($request->get("id$i"));
-                $anak->ra_name = $request->get("ra_name$i");
-                $anak->ra_tempat_lahir = $request->get("ra_tempat_lahir$i");
-                $anak->ra_tanggal_lahir = $request->get("ra_tanggal_lahir$i");
-                $anak->ra_darah = $request->get("ra_darah$i");
-                $anak->ra_anak_ke = $i;
-                $anak->rek_id = $rek_id;
-                $anak->save();
             } else {
                 $anak = new RekmedAnak;
-                $anak->ra_name = $request->get("ra_name$i");
-                $anak->ra_tempat_lahir = $request->get("ra_tempat_lahir$i");
-                $anak->ra_tanggal_lahir = $request->get("ra_tanggal_lahir$i");
-                $anak->ra_darah = $request->get("ra_darah$i");
-                $anak->ra_anak_ke = $i;
-                $anak->rek_id = $rek_id;
-                $anak->save();
             }
+
+            if ($request->get("ra_name$i")) {
+                $anak->ra_name = $request->get("ra_name$i") ;
+            }
+            if ($request->get("ra_tempat_lahir$i")) {
+                $anak->ra_tempat_lahir = $request->get("ra_tempat_lahir$i");
+            }
+            if ($request->get("ra_tanggal_lahir$i")) {
+                $anak->ra_tanggal_lahir = $request->get("ra_tanggal_lahir$i");
+            }
+            if ($request->get("ra_darah$i")) {
+                $anak->ra_darah = $request->get("ra_darah$i");
+            }
+        
+            $anak->ra_anak_ke = $i;
+            $anak->rek_id = $rek_id;
+            $anak->save();
+        }
         }
 
         return redirect()->route('super.rekmed.edit', ['rek_id'=>$rek_id])->with('status', "Berhasil Mengedit Rekam Medis $rek_id");

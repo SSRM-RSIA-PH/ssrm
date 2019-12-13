@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Database\Seeder;
+// use Faker\Factory;
 
 class UserSeeder extends Seeder
 {
@@ -11,14 +12,16 @@ class UserSeeder extends Seeder
      */
     public function run()
     {
-        for ($i = 0; $i < 20; $i++) {
-            \App\User::create([
-                'name' => 'user'.$i,
-                'username' => 'seed'.$i,
-                'email' => 'usradm'.$i.'@ssrm.com',
-                'role' => 'ADMIN',
-                'password' => \Hash::make('1234567890')
-            ]);
-        }
+        // $faker = Faker::create('id_ID');
+
+        // for ($i = 0; $i < 10; $i++) {
+        //     \App\User::create([
+        //         'name' => $faker->name,
+        //         'username' => $faker->name,
+        //         'email' => $faker->email,
+        //         'role' => 'ADMIN',
+        //         'password' => \Hash::make('1234567890')
+        //     ]);
+        // }
     }
 }
