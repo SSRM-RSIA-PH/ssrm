@@ -46,6 +46,10 @@
         <a class="nav-link" id="pnj-tab" data-toggle="tab" href="#pnj" role="tab" aria-controls="pnj"
             aria-selected="false">Penunjang</a>
     </li>
+    <li class="nav-item">
+        <a class="nav-link" id="bru-tab" data-toggle="tab" href="#bru" role="tab" aria-controls="bru"
+            aria-selected="false">File Lengkap</a>
+    </li>
 </ul>
 
 <div class="card-body">
@@ -61,6 +65,14 @@
         <div class="tab-pane fade bg-white" id="rsm" role="tabpanel" aria-labelledby="rsm-tab">
             @if ($igd->igd_resume)
             <object data="{{asset("storage/$igd->igd_resume")}}" type="application/pdf" width="100%"
+                height="700px"></object>
+            @else
+            <h3>Data Tidak Tersedia</h3>
+            @endif
+        </div>
+        <div class="tab-pane fade bg-white" id="bru" role="tabpanel" aria-labelledby="bru-tab">
+            @if ($igd->igd_resume)
+            <object data="{{asset("storage/$igd->igd_file_lengkap")}}" type="application/pdf" width="100%"
                 height="700px"></object>
             @else
             <h3>Data Tidak Tersedia</h3>
