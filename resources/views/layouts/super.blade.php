@@ -77,6 +77,11 @@
     <script src="{{asset('js/bscfi.js')}}"></script>
     <script src="{{asset('js/sweetalert2.all.min.js')}}"></script>
     <script src="{{asset('js/sweetalert2.min.js')}}"></script>
+    <script>
+        $(document).ready(function () {
+            bsCustomFileInput.init()
+        });
+    </script>
 
 </body>
 
