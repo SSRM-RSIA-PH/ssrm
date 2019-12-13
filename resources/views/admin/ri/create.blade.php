@@ -42,7 +42,14 @@
                                     style="border-top-left-radius:0px;border-bottom-left-radius:0px;" required
                                     autofocus>
                             </div>
-                        </div><br>
+                        </div>
+                        @if ($errors->first('date'))
+                        <div class="error-message">
+                            Masukkan Tanggal dengan format <strong>YYYY-MM-DD HH-mm</strong> <br>
+                            atau gunakan <strong>Browser Google Chrome</strong>
+                        </div>
+                        @endif
+                        <br>
 
 
                         <input type="text" name="rek_id" value="{{$rek_id}}" hidden>

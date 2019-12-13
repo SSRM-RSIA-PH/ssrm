@@ -25,6 +25,7 @@ class AdminRiController extends Controller
     public function store(Request $request)
     {
         \Validator::make($request->all(), [
+            'date' => 'date_format:Y-m-d H:i',
             'ct' => 'mimetypes:application/pdf',
             'resume' => 'mimetypes:application/pdf',
             'cto' => 'mimetypes:application/pdf',

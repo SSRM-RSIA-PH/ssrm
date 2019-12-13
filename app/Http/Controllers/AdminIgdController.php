@@ -25,6 +25,7 @@ class AdminIgdController extends Controller
     public function store(Request $request)
     {
         \Validator::make($request->all(), [
+            'date' => 'date_format:Y-m-d H:i',
             'cp' => 'mimetypes:application/pdf',
             'resume' => 'mimetypes:application/pdf',
             'fl' => 'mimetypes:application/pdf',

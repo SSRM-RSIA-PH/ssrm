@@ -44,6 +44,13 @@
                                         autofocus>
                                 </div>
                             </div>
+                            
+                            @if ($errors->first('date'))
+                            <div class="error-message">
+                                Masukkan Tanggal dengan format <strong>YYYY-MM-DD HH-mm</strong> <br>
+                                atau gunakan <strong>Browser Google Chrome</strong>
+                            </div>
+                            @endif
                         </div><br>
 
                         <div class="col">
