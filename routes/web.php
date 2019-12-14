@@ -16,7 +16,7 @@ Route::group(['prefix' => '/supervisor'], function () {
     Route::get('/', 'SuperController@index')->name('super.index');
 
     Route::resource('/user', 'SuperUserController');
-    
+
     Route::group(['prefix' => '/rekmed'], function () {
         Route::get('/', 'SuperRekmedController@index')->name('super.rekmed');
         Route::get('/{rek_id}', 'SuperRekmedController@show')->name('super.rekmed.show');
@@ -35,7 +35,7 @@ Route::group(['prefix' => '/supervisor'], function () {
         Route::get('/{rek_id}/nicu/{id}', 'SuperRekmedController@detail_nicu')->name('super.rekmed.detail.nicu');
         Route::get('/{rek_id}/poli/{id}', 'SuperRekmedController@detail_poli')->name('super.rekmed.detail.poli');
         Route::get('/{rek_id}/ri/{id}', 'SuperRekmedController@detail_ri')->name('super.rekmed.detail.ri');
-        
+
 
         //edit
         //edit rekmed
@@ -47,15 +47,15 @@ Route::group(['prefix' => '/supervisor'], function () {
         //edit detail igd
         Route::get('/{rek_id}/igd/{id}/edit', 'SuperRekmedController@edit_detail_igd')->name('super.rekmed.igd.edit');
         Route::put('/{rek_id}/igd/{id}/update', 'SuperRekmedController@update_detail_igd')->name('super.rekmed.igd.update');
-        
+
         //edit detail nicu
         Route::get('/{rek_id}/nicu/{id}/edit', 'SuperRekmedController@edit_detail_nicu')->name('super.rekmed.nicu.edit');
         Route::put('/{rek_id}/nicu/{id}/update', 'SuperRekmedController@update_detail_nicu')->name('super.rekmed.nicu.update');
-        
+
         //edit detail rawat inap
         Route::get('/{rek_id}/ri/{id}/edit', 'SuperRekmedController@edit_detail_ri')->name('super.rekmed.ri.edit');
         Route::put('/{rek_id}/ri/{id}/update', 'SuperRekmedController@update_detail_ri')->name('super.rekmed.ri.update');
-        
+
         //edit detail poli
         Route::get('/{rek_id}/poli/{id}/edit', 'SuperRekmedController@edit_detail_poli')->name('super.rekmed.poli.edit');
         Route::put('/{rek_id}/poli/{id}/update', 'SuperRekmedController@update_detail_poli')->name('super.rekmed.poli.update');
@@ -64,13 +64,14 @@ Route::group(['prefix' => '/supervisor'], function () {
         Route::get('/{rek_id}/arsip/{id}/edit', 'SuperRekmedController@edit_arsip_tahunan')->name('super.rekmed.arsip.edit');
         Route::put('/{rek_id}/arsip/{id}/update', 'SuperRekmedController@update_arsip_tahunan')->name('super.rekmed.arsip.update');
 
+
         //delete
         //delete rekmed
         Route::delete('/{rek_id}/destroy', 'SuperRekmedController@destroy_rekmed')->name('super.rekmed.destroy');
-        
+
         //delete ctg
         Route::delete('/{id}/{ctg}/destroy', 'SuperRekmedController@destroy_ctg')->name('super.rekmed.destroy_ctg');
-        
+
         //delete detail
         Route::delete('/{id}/{ctg}/destroy_detail', 'SuperRekmedController@destroy_detail')->name('super.rekmed.destroy_detail');
 
@@ -80,7 +81,7 @@ Route::group(['prefix' => '/supervisor'], function () {
         //delete arsip tahunan
         Route::delete('{id}/destroy_arsip_tahunan', 'SuperRekmedController@destroy_arsip_tahunan')->name('super.rekmed.destroy_arsip_tahunan');
     });
-    
+
     Route::group(['prefix' => '/log'], function () {
         Route::get('/', 'SuperLogController@index')->name('super.log');
         Route::get('/{rek_id}/igd/{id}', 'SuperLogController@detail_igd')->name('super.log.detail.igd');
@@ -142,7 +143,7 @@ Route::group(['prefix' => '/dokter'], function () {
     Route::get('/{rek_id}/poli', 'DokterController@show_poli')->name('dokter.show.poli');
     Route::get('/{rek_id}/ri', 'DokterController@show_ri')->name('dokter.show.ri');
     Route::get('/{rek_id}/arsip', 'DokterController@show_arsip')->name('dokter.show.arsip');
-    
+
     //show detail
     Route::get('/{rek_id}/igd/{id}/{ctg}', 'DokterController@detail_igd')->name('dokter.detail.igd');
     Route::get('/{rek_id}/nicu/{id}/{ctg}', 'DokterController@detail_nicu')->name('dokter.detail.nicu');
@@ -152,4 +153,3 @@ Route::group(['prefix' => '/dokter'], function () {
 
 Route::get('/download/arsip_tahunan/{id_arsip}', 'Archive@download_arsip_tahunan')->name('download.arsip-tahunan');
 Route::get('archive/{rek_id}', 'Archive@download')->name('archive');
-
