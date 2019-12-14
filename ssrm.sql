@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Dec 13, 2019 at 09:34 PM
+-- Generation Time: Dec 14, 2019 at 10:20 PM
 -- Server version: 10.4.8-MariaDB
 -- PHP Version: 7.1.32
 
@@ -57,13 +57,6 @@ CREATE TABLE `igd` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `igd`
---
-
-INSERT INTO `igd` (`igd_id`, `igd_ctt_perkembangan`, `igd_resume`, `igd_datetime`, `igd_file_lengkap`, `created_at`, `updated_at`, `u_id`, `rek_id`) VALUES
-(31, 'Rekmed/PH0A03/IGD/31/Catatan_Perkembangan/31_igd_cp.pdf', NULL, '2019-12-13 12:02:00', NULL, '2019-12-13 20:22:34', '2019-12-13 20:22:35', 113, 'PH0A03');
-
---
 -- Triggers `igd`
 --
 DELIMITER $$
@@ -110,15 +103,6 @@ CREATE TABLE `log` (
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
---
--- Dumping data for table `log`
---
-
-INSERT INTO `log` (`log_id`, `log_user`, `log_do`, `rek_id`, `ctg`, `id_ctg`, `created_at`, `updated_at`) VALUES
-(24, '113', 'Upload IGD', 'PH0A03', 'igd', 31, '2019-12-13 20:22:34', '2019-12-13 20:22:34'),
-(25, '113', 'Upload POLI', 'PH0A03', 'poli', 6, '2019-12-13 20:23:10', '2019-12-13 20:23:10'),
-(26, '113', 'Upload NICU', 'PH0A03', 'nicu', 3, '2019-12-13 20:23:29', '2019-12-13 20:23:29');
-
 -- --------------------------------------------------------
 
 --
@@ -160,13 +144,6 @@ CREATE TABLE `nicu` (
   `u_id` bigint(20) UNSIGNED DEFAULT NULL,
   `rek_id` char(6) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Dumping data for table `nicu`
---
-
-INSERT INTO `nicu` (`nicu_id`, `nicu_ctt_integ`, `nicu_resume`, `nicu_pengkajian`, `nicu_grafik`, `nicu_datetime`, `nicu_file_lengkap`, `created_at`, `updated_at`, `u_id`, `rek_id`) VALUES
-(3, 'Rekmed/PH0A03/NICU/3/Catatan_Perkembangan_Terintegrasi/3_nicu_cpt.pdf', NULL, NULL, NULL, '2019-12-13 12:02:00', NULL, '2019-12-13 20:23:29', '2019-12-13 20:23:29', 113, 'PH0A03');
 
 --
 -- Triggers `nicu`
@@ -227,13 +204,6 @@ CREATE TABLE `poli` (
   `u_id` bigint(20) UNSIGNED DEFAULT NULL,
   `rek_id` char(6) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Dumping data for table `poli`
---
-
-INSERT INTO `poli` (`poli_id`, `poli_ctt_integ`, `poli_resume`, `poli_datetime`, `poli_file_lengkap`, `created_at`, `updated_at`, `u_id`, `rek_id`) VALUES
-(6, 'Rekmed/PH0A03/POLI/6/Catatan_Terintegrasi/6_poli_ct.pdf', NULL, '2019-12-13 11:01:00', NULL, '2019-12-13 20:23:10', '2019-12-13 20:23:11', 113, 'PH0A03');
 
 --
 -- Triggers `poli`
@@ -297,15 +267,6 @@ CREATE TABLE `rekmed` (
   `u_id` bigint(20) UNSIGNED DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
---
--- Dumping data for table `rekmed`
---
-
-INSERT INTO `rekmed` (`rek_id`, `rek_name`, `rek_nik`, `rek_tempat_lahir`, `rek_tanggal_lahir`, `rek_darah`, `rek_agama`, `rek_job`, `rek_hp`, `rek_alamat`, `rek_status`, `s_name`, `s_job`, `s_darah`, `s_hp`, `s_alamat`, `p_ibu`, `p_ibu_hp`, `p_bpk`, `p_bpk_hp`, `created_at`, `updated_at`, `u_id`) VALUES
-('PH0A01', 'Kartarina', '1234567890', 'Mataram', '2019-12-13', 'O', 'Islam', 'Dosen', '1234567890', 'Mataram', 'ibu', 'Kartaroni', 'Dosen', 'O', '1234567890', 'Mataram', NULL, NULL, NULL, NULL, '2019-12-13 19:22:30', '2019-12-13 19:23:22', 3),
-('PH0A02', 'Anissa', '1111111111111111', 'matar', '2019-12-13', 'A', 'Islam', 'dosen', '1234567890', 'mtr', 'ibu', 'jon', '1234567890', 'O', '1234567890', 'mtr', NULL, NULL, NULL, NULL, '2019-12-13 20:15:23', '2019-12-13 20:15:23', 113),
-('PH0A03', 'qwe', NULL, 'qwe', '2019-12-13', 'Pilih', 'qw', NULL, NULL, 'qw', 'anak', NULL, NULL, NULL, NULL, NULL, 'qw', 'qw', 'qw', 'qw', '2019-12-13 20:18:51', '2019-12-13 20:18:51', 113);
-
 -- --------------------------------------------------------
 
 --
@@ -323,14 +284,6 @@ CREATE TABLE `rekmed_anak` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- Dumping data for table `rekmed_anak`
---
-
-INSERT INTO `rekmed_anak` (`ra_id`, `ra_name`, `ra_tempat_lahir`, `ra_tanggal_lahir`, `ra_darah`, `ra_anak_ke`, `rek_id`, `created_at`, `updated_at`) VALUES
-(33, 'qwert', 'qw', NULL, NULL, 1, 'PH0A01', '2019-12-13 19:45:54', '2019-12-13 19:45:54'),
-(34, 'yu', 'aj', '2019-12-13', NULL, 5, 'PH0A02', '2019-12-13 20:15:41', '2019-12-13 20:15:41');
 
 -- --------------------------------------------------------
 
@@ -406,12 +359,7 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `name`, `email`, `email_verified_at`, `password`, `remember_token`, `created_at`, `updated_at`, `username`, `role`) VALUES
-(3, 'Agung Saputra', 'agung@ssrm.com', NULL, '$2y$10$2AennWrtV5MLIr0pekY0Je753b5NiNAv9sMuKKi1GHoQhl8nlQh4q', 'iFq71RHxlrq8wwenMeAQmFAtghqEcuCCs9qctO7AIyymkyr6yEOXTLfCyqlk', '2019-10-29 06:01:10', '2019-10-30 14:54:45', 'agungsptr', 'SUPERVISOR'),
-(7, 'Gilang Restu Alam', 'gilang@gmail.com', NULL, '$2y$10$L.H.rBVXPJlMW9kPBuBJ9ONGY6XGYJfuKkdD6kf7/cudCykWga6rK', '7lg1DsThep4kysVunqOTh68LGIzKv2KPzqqHfsHUkKapyT9YdcYRTzjBB2AI', '2019-10-30 15:40:00', '2019-10-30 15:42:52', 'gilang', 'DOKTER'),
-(8, 'Farasut Widodo Malik', 'dodo@gmail.com', NULL, '$2y$10$3KBt.ZnlnUeJ5r03/6gHpu3MF08leEtMKQkU8n5pE2lc2cDhCHZGu', NULL, '2019-10-30 15:40:30', '2019-10-30 15:43:11', 'dodo', 'DOKTER'),
-(9, 'L Yuda Rahmani Karnaen', 'yuda@ssrm.com', NULL, '$2y$10$Q53oo6JJgqxFMCIOIDtlretGrfgG9RBxWACYmW5Tcy1mxF6prZUAG', 'e36geDWfjTWfIZXwsZN26Wyyv0mrHyobowhbIgomME9hNxpfBprQVBptySWt', '2019-10-30 15:40:52', '2019-12-13 16:17:25', 'yudak', 'SUPERVISOR'),
-(113, 'admin', 'admin@ssrm.com', NULL, '$2y$10$tgK8lco3UvKx5EekFwotuuvJO5jM6PGJ9529jc9ecYWSV3o/yu/Fi', 'sbPpUSReaV3xN50v3LcfjMXpbbbdYub9h9BCbMNuOfHFwgOM5miEnWzJZ0dJ', '2019-10-31 07:55:25', '2019-12-13 16:19:47', 'admin', 'ADMIN'),
-(136, 'Arifu', 'arip@m.com', NULL, '$2y$10$scjSm5zs24kteZF6p.p5DOzN0yUoKau6OKfF2rRTakMfmJbqBaxKq', NULL, '2019-12-13 20:12:59', '2019-12-13 20:12:59', 'aripu', 'SUPERVISOR');
+(0, 'rooting', 'root@ssrm.test', NULL, '$2y$10$BG9xAHqJwZaoEFsK0ToTnOXVoyIubXL.jc.0jFrpMFpTQ6BASfYqi', 'S22eZsZmeDwSlBMhrKaDYPBITS1Pr1kh9IV30RWcKi6cAqeovvuvgLOtPYc8', '2019-10-29 06:01:10', '2019-12-14 21:18:42', 'rooting', 'SUPERVISOR');
 
 --
 -- Indexes for dumped tables
