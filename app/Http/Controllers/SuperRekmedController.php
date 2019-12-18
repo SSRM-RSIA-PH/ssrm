@@ -256,7 +256,7 @@ class SuperRekmedController extends Controller
     public function update_detail_igd(Request $request, $rek_id, $id)
     {
         \Validator::make($request->all(), [
-            'date' => 'date_format:Y-m-d H:i',
+            // 'date' => 'date_format:Y-m-d H:i',
             'cp' => 'mimetypes:application/pdf',
             'resume' => 'mimetypes:application/pdf',
             'fl' => 'mimetypes:application/pdf',
@@ -445,7 +445,7 @@ class SuperRekmedController extends Controller
     public function update_detail_poli(Request $request, $rek_id, $id)
     {
         \Validator::make($request->all(), [
-            'date' => 'date_format:Y-m-d H:i',
+            // 'date' => 'date_format:Y-m-d H:i',
             'ct' => 'mimetypes:application/pdf',
             'resume' => 'mimetypes:application/pdf',
             'fl' => 'mimetypes:application/pdf',
@@ -634,7 +634,7 @@ class SuperRekmedController extends Controller
     public function update_detail_nicu(Request $request, $rek_id, $id)
     {
         \Validator::make($request->all(), [
-            'date' => 'date_format:Y-m-d H:i',
+            // 'date' => 'date_format:Y-m-d H:i',
             'ct' => 'mimetypes:application/pdf',
             'resume' => 'mimetypes:application/pdf',
             'pengkajian' => 'mimetypes:application/pdf',
@@ -780,7 +780,7 @@ class SuperRekmedController extends Controller
     public function update_detail_ri(Request $request, $rek_id, $id)
     {
         \Validator::make($request->all(), [
-            'date' => 'date_format:Y-m-d H:i',
+            // 'date' => 'date_format:Y-m-d H:i',
             'ct' => 'mimetypes:application/pdf',
             'resume' => 'mimetypes:application/pdf',
             'cto' => 'mimetypes:application/pdf',
@@ -919,7 +919,7 @@ class SuperRekmedController extends Controller
     public function update_arsip_tahunan(Request $request)
     {
         \Validator::make($request->all(), [
-            'date' => 'date_format:Y-m-d H:i',
+            // 'date' => 'date_format:Y-m-d H:i',
             'arsip' => 'required|mimetypes:application/zip'
         ])->validate();
 
