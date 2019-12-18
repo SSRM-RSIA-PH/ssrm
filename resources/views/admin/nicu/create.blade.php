@@ -12,6 +12,32 @@
 @section('content')
 
 <div class="container">
+    @if ($errors->count() > 0)
+    <div class="alert alert-danger">
+        @if ($errors->first('ct'))
+        File pdf pada <strong>Catatan Perkembangan</strong> tidak valid <br>
+        @endif
+        @if ($errors->first('resume'))
+        File pdf pada <strong>Resume</strong> tidak valid <br>
+        @endif
+        @if ($errors->first('pengkajian'))
+        File pdf pada <strong>Pengkajian Awal</strong> tidak valid <br>
+        @endif
+        @if ($errors->first('gp'))
+        File pdf pada <strong>Grafik Perkembangan</strong> tidak valid <br>
+        @endif
+        @if ($errors->first('lab'))
+        File pdf pada <strong>LAB</strong> tidak valid <br>
+        @endif
+        @if ($errors->first('xray'))
+        File pdf pada <strong>X-RAY</strong> tidak valid <br>
+        @endif
+        @if ($errors->first('fl'))
+        File pdf pada <strong>File Lengkap</strong> tidak valid <br>
+        @endif
+    </div>
+    @endif
+
     @if (session('status'))
     <div class="alert alert-success">
         Berhasil ditambahkan <br>

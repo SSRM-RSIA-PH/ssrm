@@ -16,7 +16,7 @@
         <img src="img/logo-rsia-ph.png" width="300px" alt="rsia-ph">
     </div>
     <div class="row d-flex justify-content-center">
-        <div class="col-8">
+        <div class="col-7">
             <form action="{{route('admin.index')}}">
                 <div class="input-group input-group-lg mb-3">
                     <input name="search" type="text" class="form-control"
@@ -29,6 +29,12 @@
                             id="button-addon2" value="Search">
                     </div>
                 </div>
+            </form>
+        </div>
+        <div class="col-1">
+            <form action="{{route('admin.create.rek')}}" class="form-inline">
+                <input type="submit" class= "btn btn-primary btn-lg"
+                    value="Tambah">
             </form>
         </div>
     </div>
@@ -58,5 +64,4 @@
         </div>
     </div>
 </div>
-
 @endsection

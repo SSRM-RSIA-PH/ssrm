@@ -11,6 +11,35 @@
 @section('content')
 
 <div class="container">
+    @if ($errors->count() > 0)
+    <div class="alert alert-danger">
+        @if ($errors->first('cp'))
+        File pdf pada <strong>Catatan Perkembangan</strong> tidak valid <br>
+        @endif
+        @if ($errors->first('resume'))
+        File pdf pada <strong>Resume</strong> tidak valid <br>
+        @endif
+        @if ($errors->first('usg'))
+        File pdf pada <strong>USG</strong> tidak valid <br>
+        @endif
+        @if ($errors->first('ctg'))
+        File pdf pada <strong>CTG</strong> tidak valid <br>
+        @endif
+        @if ($errors->first('ekg'))
+        File pdf pada <strong>EKG</strong> tidak valid <br>
+        @endif
+        @if ($errors->first('lab'))
+        File pdf pada <strong>LAB</strong> tidak valid <br>
+        @endif
+        @if ($errors->first('xray'))
+        File pdf pada <strong>X-RAY</strong> tidak valid <br>
+        @endif
+        @if ($errors->first('fl'))
+        File pdf pada <strong>File Lengkap</strong> tidak valid <br>
+        @endif
+    </div>
+    @endif
+
     @if (session('status'))
     <div class="alert alert-success">
         Berhasil ditambahkan <br>
@@ -58,8 +87,7 @@
                             <div class="card mb-3">
                                 <div class="card-header">
                                     <div class="custom-control custom-checkbox">
-                                        <input type="checkbox" class="custom-control-input" id="customCheck1"
-                                            {{$errors->first('cp') ? 'CHECKED':''}}>
+                                        <input type="checkbox" class="custom-control-input" id="customCheck1">
                                         <label class="custom-control-label" for="customCheck1">Catatan
                                             Perkembangan</label>
                                     </div>
@@ -91,7 +119,6 @@
                             </div>
                         </div>
 
-
                         {{-- kolom 2 --}}
                         <div class="col">
                             {{-- penunjang --}}
@@ -102,7 +129,7 @@
                                         <label class="custom-control-label" for="customCheck3">Penunjang</label>
                                     </div>
                                 </div>
-                                <div class="card-body" {{$errors->first('resume') ? '':'hidden'}} id="penunjang">
+                                <div class="card-body" hidden id="penunjang">
                                     {{-- 1 --}}
                                     <div class="form-group">
                                         <div class="custom-control custom-checkbox">

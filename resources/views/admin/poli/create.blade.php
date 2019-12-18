@@ -12,6 +12,35 @@
 @section('content')
 
 <div class="container">
+    @if ($errors->count() > 0)
+    <div class="alert alert-danger">
+        @if ($errors->first('ct'))
+        File pdf pada <strong>Catatan Perkembangan</strong> tidak valid <br>
+        @endif
+        @if ($errors->first('resume'))
+        File pdf pada <strong>Resume</strong> tidak valid <br>
+        @endif
+        @if ($errors->first('usg'))
+        File pdf pada <strong>USG</strong> tidak valid <br>
+        @endif
+        @if ($errors->first('ctg'))
+        File pdf pada <strong>CTG</strong> tidak valid <br>
+        @endif
+        @if ($errors->first('ekg'))
+        File pdf pada <strong>EKG</strong> tidak valid <br>
+        @endif
+        @if ($errors->first('lab'))
+        File pdf pada <strong>LAB</strong> tidak valid <br>
+        @endif
+        @if ($errors->first('xray'))
+        File pdf pada <strong>X-RAY</strong> tidak valid <br>
+        @endif
+        @if ($errors->first('fl'))
+        File pdf pada <strong>File Lengkap</strong> tidak valid <br>
+        @endif
+    </div>
+    @endif
+
     @if (session('status'))
     <div class="alert alert-success">
         Berhasil ditambahkan <br>
@@ -44,7 +73,7 @@
                                         autofocus>
                                 </div>
                             </div>
-                            
+
                             @if ($errors->first('date'))
                             <div class="error-message">
                                 Masukkan Tanggal dengan format <strong>YYYY-MM-DD HH-mm</strong> <br>
