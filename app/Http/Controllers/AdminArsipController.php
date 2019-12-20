@@ -37,8 +37,8 @@ class AdminArsipController extends Controller
         $arsip->save();
 
         if ($request->file('arsip')) {
-            $dir = "Rekmed/$rek_id/Arsip/";
-            $file = $arsip->created_at . "_arsip.zip";
+            $dir = "Arsip_Tahunan/$rek_id/";
+            $file = $arsip->rek_id . '_' . str_replace(' ', '_', $arsip->created_at) . "_arsip.zip";
 
             $request->file('arsip')->storeAs("public/$dir", $file);
             $arsip->arsip_file =  $dir . $file;

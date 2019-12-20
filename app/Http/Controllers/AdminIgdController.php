@@ -44,26 +44,27 @@ class AdminIgdController extends Controller
         $igd->save();
 
         $igd->igd_datetime = $request->get('date');
+        $created_at = str_replace(' ', '_', $igd->created_at);
 
         if ($request->file('cp')) {
-            $dir = "Rekmed/$rek_id/IGD/$igd->igd_id/Catatan_Perkembangan/";
-            $file = $igd->igd_id . "_igd_cp.pdf";
+            $dir = "Rekmed/$rek_id/IGD/$created_at/Catatan_Perkembangan/";
+            $file = $rek_id . '_' . $created_at . "_igd_cp.pdf";
 
             $request->file('cp')->storeAs("public/$dir", $file);
             $igd->igd_ctt_perkembangan =  $dir . $file;
         }
 
         if ($request->file('resume')) {
-            $dir = "Rekmed/$rek_id/IGD/$igd->igd_id/Resume/";
-            $file = $igd->igd_id . "_igd_r.pdf";
+            $dir = "Rekmed/$rek_id/IGD/$created_at/Resume/";
+            $file = $rek_id . '_' . $created_at . "_igd_r.pdf";
 
             $request->file('resume')->storeAs("public/$dir", $file);
             $igd->igd_resume = $dir . $file;
         }
 
         if ($request->file('fl')) {
-            $dir = "Rekmed/$rek_id/IGD/$igd->igd_id/File_Lengkap/";
-            $file = $igd->igd_id . "_igd_fl.pdf";
+            $dir = "Rekmed/$rek_id/IGD/$created_at/File_Lengkap/";
+            $file = $rek_id . '_' . $created_at . "_igd_fl.pdf";
 
             $request->file('fl')->storeAs("public/$dir", $file);
             $igd->igd_file_lengkap = $dir . $file;
@@ -75,8 +76,8 @@ class AdminIgdController extends Controller
 
         foreach ($penunjang_names as $p_name) {
             if ($request->file($p_name)) {
-                $dir = "Rekmed/$rek_id/IGD/$igd->igd_id/Penunjang/";
-                $file = $igd->igd_id . "_igd_p-$p_name.pdf";
+                $dir = "Rekmed/$rek_id/IGD/$created_at/Penunjang/";
+                $file = $rek_id . '_' . $created_at . "_igd_p-$p_name.pdf";
 
                 $penunjang = new IgdPenunjang;
 

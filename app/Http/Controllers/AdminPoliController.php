@@ -44,26 +44,27 @@ class AdminPoliController extends Controller
         $poli->save();
 
         $poli->poli_datetime = $request->get('date');
+        $created_at = str_replace(' ', '_', $poli->created_at);
 
         if ($request->file('ct')) {
-            $dir = "Rekmed/$rek_id/POLI/$poli->poli_id/Catatan_Terintegrasi/";
-            $file = $poli->poli_id . "_poli_ct.pdf";
+            $dir = "Rekmed/$rek_id/POLI/$created_at/Catatan_Terintegrasi/";
+            $file = $rek_id . '_' . $created_at . "_poli_ct.pdf";
 
             $request->file('ct')->storeAs("public/$dir", $file);
             $poli->poli_ctt_integ = $dir . $file;
         }
 
         if ($request->file('resume')) {
-            $dir = "Rekmed/$rek_id/POLI/$poli->poli_id/Resume/";
-            $file = $poli->poli_id . "_poli_r.pdf";
+            $dir = "Rekmed/$rek_id/POLI/$created_at/Resume/";
+            $file = $rek_id . '_' . $created_at . "_poli_r.pdf";
 
             $request->file('resume')->storeAs("public/$dir", $file);
             $poli->poli_resume = $dir . $file;
         }
 
         if ($request->file('fl')) {
-            $dir = "Rekmed/$rek_id/POLI/$poli->poli_id/File_Lengkap/";
-            $file = $poli->poli_id . "_poli_fl.pdf";
+            $dir = "Rekmed/$rek_id/POLI/$created_at/File_Lengkap/";
+            $file = $rek_id . '_' . $created_at . "_poli_fl.pdf";
 
             $request->file('fl')->storeAs("public/$dir", $file);
             $poli->poli_file_lengkap = $dir . $file;
@@ -74,13 +75,13 @@ class AdminPoliController extends Controller
 
         foreach ($penunjang_names as $p_name) {
             if ($request->file($p_name)) {
-                $dir = "Rekmed/$rek_id/POLI/$poli->poli_id/Penunjang/";
-                $file = $poli->poli_id . "_poli_p-$p_name.pdf";
+                $dir = "Rekmed/$rek_id/POLI/$created_at/Penunjang/";
+                $file = $rek_id . '_' . $created_at . "_poli_p-$p_name.pdf";
 
                 $penunjang = new PoliPenunjang;
 
                 $request->file($p_name)->storeAs("public/$dir", $file);
-                
+
                 $penunjang->p_name = $p_name;
                 $penunjang->p_file = $dir . $file;
                 $penunjang->poli_id = $poli->poli_id;

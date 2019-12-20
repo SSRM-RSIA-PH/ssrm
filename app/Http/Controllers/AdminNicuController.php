@@ -43,50 +43,51 @@ class AdminNicuController extends Controller
         $nicu->save();
 
         $nicu->nicu_datetime = $request->get('date');
+        $created_at = str_replace(' ', '_', $nicu->created_at);
 
         if ($request->file('ct')) {
-            $dir = "Rekmed/$rek_id/NICU/$nicu->nicu_id/Catatan_Perkembangan_Terintegrasi/";
-            $file = $nicu->nicu_id . "_nicu_cpt.pdf";
+            $dir = "Rekmed/$rek_id/NICU/$created_at/Catatan_Perkembangan_Terintegrasi/";
+            $file = $rek_id . '_' . $created_at . "_nicu_cpt.pdf";
 
             $request->file('ct')->storeAs("public/$dir", $file);
             $nicu->nicu_ctt_integ = $dir . $file;
         }
 
         if ($request->file('resume')) {
-            $dir = "Rekmed/$rek_id/NICU/$nicu->nicu_id/Resume/";
-            $file = $nicu->nicu_id . "_nicu_r.pdf";
+            $dir = "Rekmed/$rek_id/NICU/$created_at/Resume/";
+            $file = $rek_id . '_' . $created_at . "_nicu_r.pdf";
 
             $request->file('resume')->storeAs("public/$dir", $file);
             $nicu->nicu_resume = $dir . $file;
         }
 
         if ($request->file('pengkajian')) {
-            $dir = "Rekmed/$rek_id/NICU/$nicu->nicu_id/Pengkajian_Awal/";
-            $file = $nicu->nicu_id . "_nicu_pa.pdf";
+            $dir = "Rekmed/$rek_id/NICU/$created_at/Pengkajian_Awal/";
+            $file = $rek_id . '_' . $created_at . "_nicu_pa.pdf";
 
             $request->file('pengkajian')->storeAs("public/$dir", $file);
             $nicu->nicu_pengkajian = $dir . $file;
         }
 
         if ($request->file('gp')) {
-            $dir = "Rekmed/$rek_id/NICU/$nicu->nicu_id/Grafik/";
-            $file = $nicu->nicu_id . "_nicu_g.pdf";
+            $dir = "Rekmed/$rek_id/NICU/$created_at/Grafik/";
+            $file = $rek_id . '_' . $created_at . "_nicu_g.pdf";
 
             $request->file('gp')->storeAs("public/$dir", $file);
             $nicu->nicu_grafik = $dir . $file;
         }
 
         if ($request->file('gp')) {
-            $dir = "Rekmed/$rek_id/NICU/$nicu->nicu_id/Grafik/";
-            $file = $nicu->nicu_id . "_nicu_g.pdf";
+            $dir = "Rekmed/$rek_id/NICU/$created_at/Grafik/";
+            $file = $rek_id . '_' . $created_at . "_nicu_g.pdf";
 
             $request->file('gp')->storeAs("public/$dir", $file);
             $nicu->nicu_grafik = $dir . $file;
         }
 
         if ($request->file('fl')) {
-            $dir = "Rekmed/$rek_id/NICU/$nicu->nicu_id/File_Lengkap/";
-            $file = $nicu->nicu_id . "_nicu_fl.pdf";
+            $dir = "Rekmed/$rek_id/NICU/$created_at/File_Lengkap/";
+            $file = $rek_id . '_' . $created_at . "_nicu_fl.pdf";
 
             $request->file('fl')->storeAs("public/$dir", $file);
             $nicu->nicu_file_lengkap = $dir . $file;
@@ -97,8 +98,8 @@ class AdminNicuController extends Controller
 
         foreach ($penunjang_names as $p_name) {
             if ($request->file($p_name)) {
-                $dir = "Rekmed/$rek_id/NICU/$nicu->nicu_id/Penunjang/";
-                $file = $nicu->nicu_id . "_nicu_p-$p_name.pdf";
+                $dir = "Rekmed/$rek_id/NICU/$created_at/Penunjang/";
+                $file = $rek_id . '_' . $created_at . "_nicu_p-$p_name.pdf";
 
                 $penunjang = new NicuPenunjang;
 

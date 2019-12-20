@@ -43,42 +43,43 @@ class AdminRiController extends Controller
         $ri->save();
 
         $ri->ri_datetime = $request->get('date');
+        $created_at = str_replace(' ', '_', $ri->created_at);
 
         if ($request->file('ct')) {
-            $dir = "Rekmed/$rek_id/Rawat_Inap/$ri->ri_id/Catatan_Perkembangan_Terintegrasi/";
-            $file = $ri->ri_id . "_ri_cpt.pdf";
+            $dir = "Rekmed/$rek_id/Rawat_Inap/$created_at/Catatan_Perkembangan_Terintegrasi/";
+            $file = $rek_id . '_' . $created_at . "_ri_cpt.pdf";
 
             $request->file('ct')->storeAs("public/$dir", $file);
             $ri->ri_ctt_integ = $dir . $file;
         }
 
         if ($request->file('resume')) {
-            $dir = "Rekmed/$rek_id/Rawat_Inap/$ri->ri_id/Resume_Inap/";
-            $file = $ri->ri_id . "_ri_r.pdf";
+            $dir = "Rekmed/$rek_id/Rawat_Inap/$created_at/Resume_Inap/";
+            $file = $rek_id . '_' . $created_at . "_ri_r.pdf";
 
             $request->file('resume')->storeAs("public/$dir", $file);
             $ri->ri_resume = $dir . $file;
         }
 
         if ($request->file('cto')) {
-            $dir = "Rekmed/$rek_id/Rawat_Inap/$ri->ri_id/Catatan_Tindakan-Operasi/";
-            $file = $ri->ri_id . "_ri_cto.pdf";
+            $dir = "Rekmed/$rek_id/Rawat_Inap/$created_at/Catatan_Tindakan-Operasi/";
+            $file = $rek_id . '_' . $created_at . "_ri_cto.pdf";
 
             $request->file('cto')->storeAs("public/$dir", $file);
             $ri->ri_ctt_oper = $dir . $file;
         }
 
         if ($request->file('bayi')) {
-            $dir = "Rekmed/$rek_id/Rawat_Inap/$ri->ri_id/Bayi/";
-            $file = $ri->ri_id . "_ri_b.pdf";
+            $dir = "Rekmed/$rek_id/Rawat_Inap/$created_at/Bayi/";
+            $file = $rek_id . '_' . $created_at . "_ri_b.pdf";
 
             $request->file('bayi')->storeAs("public/$dir", $file);
             $ri->ri_bayi = $dir . $file;
         }
 
         if ($request->file('fl')) {
-            $dir = "Rekmed/$rek_id/Rawat_Inap/$ri->ri_id/File_Lengkap/";
-            $file = $ri->ri_id . "_ri_fl.pdf";
+            $dir = "Rekmed/$rek_id/Rawat_Inap/$created_at/File_Lengkap/";
+            $file = $rek_id . '_' . $created_at . "_ri_fl.pdf";
 
             $request->file('fl')->storeAs("public/$dir", $file);
             $ri->ri_file_lengkap = $dir . $file;
@@ -89,13 +90,13 @@ class AdminRiController extends Controller
 
         foreach ($penunjang_names as $p_name) {
             if ($request->file($p_name)) {
-                $dir = "Rekmed/$rek_id/Rawat_Inap/$ri->ri_id/Penunjang/";
-                $file = $ri->ri_id . "_ri_p-$p_name.pdf";
+                $dir = "Rekmed/$rek_id/Rawat_Inap/$created_at/Penunjang/";
+                $file = $rek_id . '_' . $created_at . "_ri_p-$p_name.pdf";
 
                 $penunjang = new RawatInapPenunjang;
 
                 $request->file($p_name)->storeAs("public/$dir", $file);
-                
+
                 $penunjang->p_name = $p_name;
                 $penunjang->p_file = $dir . $file;
                 $penunjang->ri_id = $ri->ri_id;

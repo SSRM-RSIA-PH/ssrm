@@ -163,7 +163,7 @@ class SuperRekmedController extends Controller
         $rekmed->rek_job = $request->get('rek_job');
         $rekmed->rek_hp = $request->get('rek_hp');
         $rekmed->rek_alamat = $request->get('rek_alamat');
-        
+
         $rekmed->s_name = $request->get('rs_name');
         $rekmed->s_job = $request->get('rs_job');
         $rekmed->s_darah = $request->get('rs_darah');
@@ -178,9 +178,9 @@ class SuperRekmedController extends Controller
         $rekmed->save();
 
         if ($rekmed->rek_status == 'ibu') {
-            return redirect()->route('super.rekmed.edit-anak', ['rek_id'=>$rek_id]);
+            return redirect()->route('super.rekmed.edit-anak', ['rek_id' => $rek_id]);
         } else {
-            return redirect()->route('super.rekmed.edit', ['rek_id'=>$rek_id])->with('status', "Berhasil Mengedit Rekam Medis $rek_id");
+            return redirect()->route('super.rekmed.edit', ['rek_id' => $rek_id])->with('status', "Berhasil Mengedit Rekam Medis $rek_id");
         }
     }
 
@@ -195,50 +195,50 @@ class SuperRekmedController extends Controller
         $anak4 = $data_anak->where('ra_anak_ke', 4)->first();
         $anak5 = $data_anak->where('ra_anak_ke', 5)->first();
 
-            return view('super.rekmed.edit-anak', [
-                'rek_id' => $rek_id,
-                'anak1' => $anak1,
-                'anak2' => $anak2,
-                'anak3' => $anak3,
-                'anak4' => $anak4,
-                'anak5' => $anak5
-            ]);
+        return view('super.rekmed.edit-anak', [
+            'rek_id' => $rek_id,
+            'anak1' => $anak1,
+            'anak2' => $anak2,
+            'anak3' => $anak3,
+            'anak4' => $anak4,
+            'anak5' => $anak5
+        ]);
     }
 
     public function update_rekmed_anak(Request $request, $rek_id)
     {
-        for ($i=1; $i < 6; $i++) { 
+        for ($i = 1; $i < 6; $i++) {
 
             if ($request->get("ra_name$i")) {
 
-            if ($request->get("id$i")) {
-                $anak = RekmedAnak::find($request->get("id$i"));
-            } else {
-                $anak = new RekmedAnak;
-            }
+                if ($request->get("id$i")) {
+                    $anak = RekmedAnak::find($request->get("id$i"));
+                } else {
+                    $anak = new RekmedAnak;
+                }
 
-            if ($request->get("ra_name$i")) {
-                $anak->ra_name = $request->get("ra_name$i") ;
+                if ($request->get("ra_name$i")) {
+                    $anak->ra_name = $request->get("ra_name$i");
+                }
+                if ($request->get("ra_tempat_lahir$i")) {
+                    $anak->ra_tempat_lahir = $request->get("ra_tempat_lahir$i");
+                }
+                if ($request->get("ra_tanggal_lahir$i")) {
+                    $anak->ra_tanggal_lahir = $request->get("ra_tanggal_lahir$i");
+                }
+                if ($request->get("ra_darah$i")) {
+                    $anak->ra_darah = $request->get("ra_darah$i");
+                }
+
+                $anak->ra_anak_ke = $i;
+                $anak->rek_id = $rek_id;
+                $anak->save();
             }
-            if ($request->get("ra_tempat_lahir$i")) {
-                $anak->ra_tempat_lahir = $request->get("ra_tempat_lahir$i");
-            }
-            if ($request->get("ra_tanggal_lahir$i")) {
-                $anak->ra_tanggal_lahir = $request->get("ra_tanggal_lahir$i");
-            }
-            if ($request->get("ra_darah$i")) {
-                $anak->ra_darah = $request->get("ra_darah$i");
-            }
-        
-            $anak->ra_anak_ke = $i;
-            $anak->rek_id = $rek_id;
-            $anak->save();
-        }
         }
 
-        return redirect()->route('super.rekmed.edit', ['rek_id'=>$rek_id])->with('status', "Berhasil Mengedit Rekam Medis $rek_id");
+        return redirect()->route('super.rekmed.edit', ['rek_id' => $rek_id])->with('status', "Berhasil Mengedit Rekam Medis $rek_id");
     }
-    
+
 
     //edit update detail igd
     public function edit_detail_igd($rek_id, $id)
@@ -271,6 +271,7 @@ class SuperRekmedController extends Controller
         $igd = Igd::findOrFail($id);
 
         $igd->u_id = $request->user()->id;
+        $created_at = $igd->created_at;
 
         if ($request->get('date')) {
             $igd->igd_datetime = $request->get('date');
@@ -282,8 +283,8 @@ class SuperRekmedController extends Controller
                 \Storage::delete("public/$dbfile");
             }
 
-            $dir = "Rekmed/$rek_id/IGD/$id/Catatan_Perkembangan/";
-            $file = $id . "_igd_cp.pdf";
+            $dir = "Rekmed/$rek_id/IGD/$created_at/Catatan_Perkembangan/";
+            $file = $rek_id . '_' . $created_at . "_igd_cp.pdf";
 
             $request->file('cp')->storeAs("public/$dir", $file);
             $igd->igd_ctt_perkembangan =  $dir . $file;
@@ -295,8 +296,8 @@ class SuperRekmedController extends Controller
                 \Storage::delete("public/$dbfile");
             }
 
-            $dir = "Rekmed/$rek_id/IGD/$id/Resume/";
-            $file = $id . "_igd_r.pdf";
+            $dir = "Rekmed/$rek_id/IGD/$created_at/Resume/";
+            $file = $rek_id . '_' . $created_at . "_igd_r.pdf";
 
             $request->file('resume')->storeAs("public/$dir", $file);
             $igd->igd_resume = $dir . $file;
@@ -308,8 +309,8 @@ class SuperRekmedController extends Controller
                 \Storage::delete("public/$dbfile");
             }
 
-            $dir = "Rekmed/$rek_id/IGD/$id/File_Lengkap/";
-            $file = $id . "_igd_fl.pdf";
+            $dir = "Rekmed/$rek_id/IGD/$created_at/File_Lengkap/";
+            $file = $rek_id . '_' . $created_at . "_igd_fl.pdf";
 
             $request->file('fl')->storeAs("public/$dir", $file);
             $igd->igd_file_lengkap = $dir . $file;
@@ -317,6 +318,8 @@ class SuperRekmedController extends Controller
         $igd->save();
 
         //penunjang
+        $dir = "Rekmed/$rek_id/IGD/$created_at/Penunjang/";
+
         if ($request->file('usg')) {
             if ($request->get('id_usg')) {
                 $igd_p = IgdPenunjang::findOrFail($request->get('id_usg'));
@@ -330,8 +333,8 @@ class SuperRekmedController extends Controller
                 $igd_p->p_name = "usg";
                 $igd_p->igd_id = $id;
             }
-            $dir = "Rekmed/$rek_id/IGD/$id/Penunjang/";
-            $file = $id . "_igd_p-usg.pdf";
+
+            $file = $rek_id . '_' . $created_at . "_igd_p-usg.pdf";
 
             $request->file('usg')->storeAs("public/$dir", $file);
             $igd_p->p_file = $dir . $file;
@@ -351,8 +354,8 @@ class SuperRekmedController extends Controller
                 $igd_p->p_name = "ctg";
                 $igd_p->igd_id = $id;
             }
-            $dir = "Rekmed/$rek_id/IGD/$id/Penunjang/";
-            $file = $id . "_igd_p-ctg.pdf";
+
+            $file = $rek_id . '_' . $created_at . "_igd_p-ctg.pdf";
 
             $request->file('ctg')->storeAs("public/$dir", $file);
             $igd_p->p_file = $dir . $file;
@@ -372,8 +375,8 @@ class SuperRekmedController extends Controller
                 $igd_p->p_name = "xray";
                 $igd_p->igd_id = $id;
             }
-            $dir = "Rekmed/$rek_id/IGD/$id/Penunjang/";
-            $file = $id . "_igd_p-xray.pdf";
+
+            $file = $rek_id . '_' . $created_at . "_igd_p-xray.pdf";
 
             $request->file('xray')->storeAs("public/$dir", $file);
             $igd_p->p_file = $dir . $file;
@@ -393,8 +396,8 @@ class SuperRekmedController extends Controller
                 $igd_p->p_name = "ekg";
                 $igd_p->igd_id = $id;
             }
-            $dir = "Rekmed/$rek_id/IGD/$id/Penunjang/";
-            $file = $id . "_igd_p-ekg.pdf";
+
+            $file = $rek_id . '_' . $created_at . "_igd_p-ekg.pdf";
 
             $request->file('ekg')->storeAs("public/$dir", $file);
             $igd_p->p_file = $dir . $file;
@@ -414,8 +417,8 @@ class SuperRekmedController extends Controller
                 $igd_p->p_name = "lab";
                 $igd_p->igd_id = $id;
             }
-            $dir = "Rekmed/$rek_id/IGD/$id/Penunjang/";
-            $file = $id . "_igd_p-lab.pdf";
+
+            $file = $rek_id . '_' . $created_at . "_igd_p-lab.pdf";
 
             $request->file('lab')->storeAs("public/$dir", $file);
             $igd_p->p_file = $dir . $file;
@@ -455,11 +458,12 @@ class SuperRekmedController extends Controller
             'xray' => 'mimetypes:application/pdf',
             'ekg' => 'mimetypes:application/pdf'
         ])->validate();
-        
+
         //catatan & resume
         $poli = Poli::findOrFail($id);
 
         $poli->u_id = $request->user()->id;
+        $created_at = str_replace(' ', '_', $poli->created_at);
 
         if ($request->get('date')) {
             $poli->poli_datetime = $request->get('date');
@@ -471,8 +475,8 @@ class SuperRekmedController extends Controller
                 \Storage::delete("public/$dbfile");
             }
 
-            $dir = "Rekmed/$rek_id/POLI/$id/Catatan_Terintegrasi/";
-            $file = $id . "_poli_ct.pdf";
+            $dir = "Rekmed/$rek_id/POLI/$created_at/Catatan_Terintegrasi/";
+            $file = $rek_id . '_' . $created_at . "_poli_ct.pdf";
 
             $request->file('cp')->storeAs("public/$dir", $file);
             $poli->poli_ctt_integ = $dir . $file;
@@ -484,8 +488,8 @@ class SuperRekmedController extends Controller
                 \Storage::delete("public/$dbfile");
             }
 
-            $dir = "Rekmed/$rek_id/POLI/$id/Resume/";
-            $file = $id . "_poli_r.pdf";
+            $dir = "Rekmed/$rek_id/POLI/$created_at/Resume/";
+            $file = $rek_id . '_' . $created_at . "_poli_r.pdf";
 
             $request->file('resume')->storeAs("public/$dir", $file);
             $poli->poli_resume = $dir . $file;
@@ -497,8 +501,8 @@ class SuperRekmedController extends Controller
                 \Storage::delete("public/$dbfile");
             }
 
-            $dir = "Rekmed/$rek_id/POLI/$id/File_Lengkap/";
-            $file = $id . "_poli_fl.pdf";
+            $dir = "Rekmed/$rek_id/POLI/$created_at/File_Lengkap/";
+            $file = $rek_id . '_' . $created_at . "_poli_fl.pdf";
 
             $request->file('fl')->storeAs("public/$dir", $file);
             $poli->poli_file_lengkap = $dir . $file;
@@ -506,6 +510,7 @@ class SuperRekmedController extends Controller
         $poli->save();
 
         //penunjang
+        $dir = "Rekmed/$rek_id/POLI/$created_at/Penunjang/";
         if ($request->file('usg')) {
             if ($request->get('id_usg')) {
                 $poli_p = PoliPenunjang::findOrFail($request->get('id_usg'));
@@ -519,8 +524,8 @@ class SuperRekmedController extends Controller
                 $poli_p->p_name = "usg";
                 $poli_p->poli_id = $id;
             }
-            $dir = "Rekmed/$rek_id/POLI/$id/Penunjang/";
-            $file = $id . "_poli_p-usg.pdf";
+
+            $file = $rek_id . '_' . $created_at . "_poli_p-usg.pdf";
 
             $request->file('usg')->storeAs("public/$dir", $file);
             $poli_p->p_file = $dir . $file;
@@ -540,8 +545,8 @@ class SuperRekmedController extends Controller
                 $poli_p->p_name = "ctg";
                 $poli_p->poli_id = $id;
             }
-            $dir = "Rekmed/$rek_id/POLI/$id/Penunjang/";
-            $file = $id . "_poli_p-ctg.pdf";
+
+            $file = $rek_id . '_' . $created_at . "_poli_p-ctg.pdf";
 
             $request->file('ctg')->storeAs("public/$dir", $file);
             $poli_p->p_file = $dir . $file;
@@ -561,8 +566,8 @@ class SuperRekmedController extends Controller
                 $poli_p->p_name = "xray";
                 $poli_p->poli_id = $id;
             }
-            $dir = "Rekmed/$rek_id/POLI/$id/Penunjang/";
-            $file = $id . "_poli_p-xray.pdf";
+
+            $file = $rek_id . '_' . $created_at . "_poli_p-xray.pdf";
 
             $request->file('xray')->storeAs("public/$dir", $file);
             $poli_p->p_file = $dir . $file;
@@ -582,8 +587,8 @@ class SuperRekmedController extends Controller
                 $poli_p->p_name = "ekg";
                 $poli_p->poli_id = $id;
             }
-            $dir = "Rekmed/$rek_id/POLI/$id/Penunjang/";
-            $file = $id . "_poli_p-ekg.pdf";
+
+            $file = $rek_id . '_' . $created_at . "_poli_p-ekg.pdf";
 
             $request->file('ekg')->storeAs("public/$dir", $file);
             $poli_p->p_file = $dir . $file;
@@ -603,8 +608,8 @@ class SuperRekmedController extends Controller
                 $poli_p->p_name = "lab";
                 $poli_p->poli_id = $id;
             }
-            $dir = "Rekmed/$rek_id/POLI/$id/Penunjang/";
-            $file = $id . "_poli_p-lab.pdf";
+
+            $file = $rek_id . '_' . $created_at . "_poli_p-lab.pdf";
 
             $request->file('lab')->storeAs("public/$dir", $file);
             $poli_p->p_file = $dir . $file;
@@ -648,6 +653,7 @@ class SuperRekmedController extends Controller
         $nicu = Nicu::findOrFail($id);
 
         $nicu->u_id = $request->user()->id;
+        $created_at = str_replace(' ', '_', $nicu->created_at);
 
         if ($request->get('date')) {
             $nicu->nicu_datetime = $request->get('date');
@@ -658,8 +664,8 @@ class SuperRekmedController extends Controller
             if ($dbfile && file_exists(storage_path("app/public/$dbfile"))) {
                 \Storage::delete("public/$dbfile");
             }
-            $dir = "Rekmed/$rek_id/NICU/$id/Catatan_Perkembangan_Terintegrasi/";
-            $file = $id . "_nicu_cpt.pdf";
+            $dir = "Rekmed/$rek_id/NICU/$created_at/Catatan_Perkembangan_Terintegrasi/";
+            $file = $rek_id . '_' . $created_at . "_nicu_cpt.pdf";
 
             $request->file('cp')->storeAs("public/$dir", $file);
             $nicu->nicu_ctt_integ = $dir . $file;
@@ -670,8 +676,8 @@ class SuperRekmedController extends Controller
             if ($dbfile && file_exists(storage_path("app/public/$dbfile"))) {
                 \Storage::delete("public/$dbfile");
             }
-            $dir = "Rekmed/$rek_id/NICU/$id/Resume/";
-            $file = $id . "_nicu_r.pdf";
+            $dir = "Rekmed/$rek_id/NICU/$created_at/Resume/";
+            $file = $rek_id . '_' . $created_at . "_nicu_r.pdf";
 
             $request->file('resume')->storeAs("public/$dir", $file);
             $nicu->nicu_resume = $dir . $file;
@@ -682,8 +688,8 @@ class SuperRekmedController extends Controller
             if ($dbfile && file_exists(storage_path("app/public/$dbfile"))) {
                 \Storage::delete("public/$dbfile");
             }
-            $dir = "Rekmed/$rek_id/NICU/$id/Pengkajian_Awal/";
-            $file = $id . "_nicu_pa.pdf";
+            $dir = "Rekmed/$rek_id/NICU/$created_at/Pengkajian_Awal/";
+            $file = $rek_id . '_' . $created_at . "_nicu_pa.pdf";
 
             $request->file('pengkajian')->storeAs("public/$dir", $file);
             $nicu->nicu_pengkajian = $dir . $file;
@@ -694,8 +700,8 @@ class SuperRekmedController extends Controller
             if ($dbfile && file_exists(storage_path("app/public/$dbfile"))) {
                 \Storage::delete("public/$dbfile");
             }
-            $dir = "Rekmed/$rek_id/NICU/$id/Grafik/";
-            $file = $id . "_nicu_g.pdf";
+            $dir = "Rekmed/$rek_id/NICU/$created_at/Grafik/";
+            $file = $rek_id . '_' . $created_at . "_nicu_g.pdf";
 
             $request->file('grafik')->storeAs("public/$dir", $file);
             $nicu->nicu_grafik = $dir . $file;
@@ -706,8 +712,8 @@ class SuperRekmedController extends Controller
             if ($dbfile && file_exists(storage_path("app/public/$dbfile"))) {
                 \Storage::delete("public/$dbfile");
             }
-            $dir = "Rekmed/$rek_id/NICU/$id/File_Lengkap/";
-            $file = $id . "_nicu_fl.pdf";
+            $dir = "Rekmed/$rek_id/NICU/$created_at/File_Lengkap/";
+            $file = $rek_id . '_' . $created_at . "_nicu_fl.pdf";
 
             $request->file('fl')->storeAs("public/$dir", $file);
             $nicu->nicu_file_lengkap = $dir . $file;
@@ -715,6 +721,8 @@ class SuperRekmedController extends Controller
         $nicu->save();
 
         //penunjang
+        $dir = "Rekmed/$rek_id/NICU/$created_at/Penunjang/";
+
         if ($request->file('xray')) {
             if ($request->get('id_xray')) {
                 $nicu_p = NicuPenunjang::findOrFail($request->get('id_xray'));
@@ -728,8 +736,8 @@ class SuperRekmedController extends Controller
                 $nicu_p->p_name = "xray";
                 $nicu_p->nicu_id = $id;
             }
-            $dir = "Rekmed/$rek_id/NICU/$id/Penunjang/";
-            $file = $id . "_nicu_p-xray.pdf";
+
+            $file = $rek_id . '_' . $created_at . "_nicu_p-xray.pdf";
 
             $request->file('xray')->storeAs("public/$dir", $file);
             $nicu_p->p_file = $dir . $file;
@@ -749,8 +757,8 @@ class SuperRekmedController extends Controller
                 $nicu_p->p_name = "lab";
                 $nicu_p->nicu_id = $id;
             }
-            $dir = "Rekmed/$rek_id/NICU/$id/Penunjang/";
-            $file = $id . "_nicu_p-lab.pdf";
+
+            $file = $rek_id . '_' . $created_at . "_nicu_p-lab.pdf";
 
             $request->file('lab')->storeAs("public/$dir", $file);
             $nicu_p->p_file = $dir . $file;
@@ -794,6 +802,7 @@ class SuperRekmedController extends Controller
         $ri = RawatInap::findOrFail($id);
 
         $ri->u_id = $request->user()->id;
+        $created_at = str_replace(' ', '_', $ri->created_at);
 
         if ($request->get('date')) {
             $ri->ri_datetime = $request->get('date');
@@ -804,8 +813,8 @@ class SuperRekmedController extends Controller
             if ($dbfile && file_exists(storage_path("app/public/$dbfile"))) {
                 \Storage::delete("public/$dbfile");
             }
-            $dir = "Rekmed/$rek_id/Rawat_Inap/$id/Catatan_Perkembangan_Terintegrasi/";
-            $file = $id . "_ri_cpt.pdf";
+            $dir = "Rekmed/$rek_id/Rawat_Inap/$created_at/Catatan_Perkembangan_Terintegrasi/";
+            $file = $rek_id . '_' . $created_at . "_ri_cpt.pdf";
 
             $request->file('cp')->storeAs("public/$dir", $file);
             $ri->ri_ctt_integ = $dir . $file;
@@ -813,8 +822,8 @@ class SuperRekmedController extends Controller
 
         if ($request->file('resume')) {
             $dbfile = $ri->ri_resume;
-            $dir = "Rekmed/$rek_id/Rawat_Inap/$id/Resume_Inap/";
-            $file = $id . "_ri_r.pdf";
+            $dir = "Rekmed/$rek_id/Rawat_Inap/$created_at/Resume_Inap/";
+            $file = $rek_id . '_' . $created_at . "_ri_r.pdf";
 
             $request->file('resume')->storeAs("public/$dir", $file);
             $ri->ri_resume = $dir . $file;
@@ -825,8 +834,8 @@ class SuperRekmedController extends Controller
             if ($dbfile && file_exists(storage_path("app/public/$dbfile"))) {
                 \Storage::delete("public/$dbfile");
             }
-            $dir = "Rekmed/$rek_id/Rawat_Inap/$id/Catatan_Tindakan-Operasi/";
-            $file = $id . "_ri_cto.pdf";
+            $dir = "Rekmed/$rek_id/Rawat_Inap/$created_at/Catatan_Tindakan-Operasi/";
+            $file = $rek_id . '_' . $created_at . "_ri_cto.pdf";
 
             $request->file('cto')->storeAs("public/$dir", $file);
             $ri->ri_ctt_oper = $dir . $file;
@@ -837,8 +846,8 @@ class SuperRekmedController extends Controller
             if ($dbfile && file_exists(storage_path("app/public/$dbfile"))) {
                 \Storage::delete("public/$dbfile");
             }
-            $dir = "Rekmed/$rek_id/Rawat_Inap/$id/Bayi/";
-            $file = $id . "_ri_b.pdf";
+            $dir = "Rekmed/$rek_id/Rawat_Inap/$created_at/Bayi/";
+            $file = $rek_id . '_' . $created_at . "_ri_b.pdf";
 
             $request->file('bayi')->storeAs("public/$dir", $file);
             $ri->ri_bayi = $dir . $file;
@@ -849,8 +858,8 @@ class SuperRekmedController extends Controller
             if ($dbfile && file_exists(storage_path("app/public/$dbfile"))) {
                 \Storage::delete("public/$dbfile");
             }
-            $dir = "Rekmed/$rek_id/Rawat_Inap/$id/File_Lengkap/";
-            $file = $id . "_ri_fl.pdf";
+            $dir = "Rekmed/$rek_id/Rawat_Inap/$created_at/File_Lengkap/";
+            $file = $rek_id . '_' . $created_at . "_ri_fl.pdf";
 
             $request->file('fl')->storeAs("public/$dir", $file);
             $ri->ri_file_lengkap = $dir . $file;
@@ -858,6 +867,8 @@ class SuperRekmedController extends Controller
         $ri->save();
 
         //penunjang
+        $dir = "Rekmed/$rek_id/Rawat_Inap/$created_at/Penunjang/";
+
         if ($request->file('xray')) {
             if ($request->get('id_xray')) {
                 $ri_p = RawatInapPenunjang::findOrFail($request->get('id_xray'));
@@ -871,8 +882,8 @@ class SuperRekmedController extends Controller
                 $ri_p->p_name = "xray";
                 $ri_p->ri_id = $id;
             }
-            $dir = "Rekmed/$rek_id/Rawat_Inap/$id/Penunjang/";
-            $file = $id . "_ri_p-xray.pdf";
+
+            $file = $rek_id . '_' . $created_at . "_ri_p-xray.pdf";
 
             $request->file('xray')->storeAs("public/$dir", $file);
             $ri_p->p_file = $dir . $file;
@@ -892,8 +903,8 @@ class SuperRekmedController extends Controller
                 $ri_p->p_name = "lab";
                 $ri_p->ri_id = $id;
             }
-            $dir = "Rekmed/$rek_id/Rawat_Inap/$id/Penunjang/";
-            $file = $id . "_ri_p-lab.pdf";
+
+            $file = $rek_id . '_' . $created_at . "_ri_p-lab.pdf";
 
             $request->file('lab')->storeAs("public/$dir", $file);
             $ri_p->p_file = $dir . $file;
@@ -911,8 +922,8 @@ class SuperRekmedController extends Controller
     {
         $arsip = Arsip::findOrFail($id);
         return view('super.rekmed.detail_edit.arsip', [
-            'rek_id'=>$rek_id,
-            'arsip'=>$arsip
+            'rek_id' => $rek_id,
+            'arsip' => $arsip
         ]);
     }
 
@@ -934,15 +945,15 @@ class SuperRekmedController extends Controller
             if ($dbfile && file_exists(storage_path("app/public/$dbfile"))) {
                 \Storage::delete("public/$dbfile");
             }
-            $dir = "Rekmed/$rek_id/Arsip/";
-            $file = $arsip->created_at . "_arsip.zip";
+            $dir = "Arsip_Tahunan/$rek_id/Arsip/";
+            $file = $arsip->rek_id . '_' . str_replace(' ', '_', $arsip->created_at) . "_arsip.zip";
 
             $request->file('arsip_file')->storeAs("public/$dir", $file);
             $arsip->arsip_file =  $dir . $file;
         }
         $arsip->save();
 
-        return redirect()->route('super.rekmed.arsip.edit', ['rek_id'=>$rek_id, 'id'=>$id])->with('status', "Berhasil Mengedit Arsip $arsip->created_at");
+        return redirect()->route('super.rekmed.arsip.edit', ['rek_id' => $rek_id, 'id' => $id])->with('status', "Berhasil Mengedit Arsip $arsip->created_at");
     }
 
 
@@ -1092,6 +1103,6 @@ class SuperRekmedController extends Controller
         }
         $arsip->delete();
 
-        return redirect()->route('super.show.arsip', ['rek_id'=>$rek_id]);
+        return redirect()->route('super.show.arsip', ['rek_id' => $rek_id]);
     }
 }
