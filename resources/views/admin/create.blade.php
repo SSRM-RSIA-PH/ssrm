@@ -136,10 +136,6 @@ Add ID Rekam Medis
                             <label for="rs_job">Pekerjaan Suami</label>
                             <input type="text" class="form-control" name="rs_job" id="rs_job" aria-describedby="helpId"
                                 placeholder="">
-                            <select name="rs_job" id="rs_job">
-                                <option value="">Pilih</option>
-                                <option value=""></option>
-                            </select>
                         </div>
 
                         <div class="form-group">
