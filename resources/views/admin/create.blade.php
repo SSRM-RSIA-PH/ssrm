@@ -79,8 +79,15 @@ Add ID Rekam Medis
 
                     <div class="form-group">
                         <label for="rek_agama">Agama</label>
-                        <input type="text" class="form-control" name="rek_agama" id="rek_agama" aria-describedby=""
-                            placeholder="" value="{{old('rek_agama')}}" required>
+                        <select class="form-control" name="rek_agama" id="rek_agama" required>
+                            <option>Pilih</option>
+                            <option value="Islam">Islam</option>
+                            <option value="Kristen">Kristen</option>
+                            <option value="Katolik">Katolik</option>
+                            <option value="Hindu">Hindu</option>
+                            <option value="Buddha">Buddha</option>
+                            <option value="Konghucu">Konghucu</option>
+                        </select>
                     </div>
 
                     <div class="form-group">
@@ -129,6 +136,10 @@ Add ID Rekam Medis
                             <label for="rs_job">Pekerjaan Suami</label>
                             <input type="text" class="form-control" name="rs_job" id="rs_job" aria-describedby="helpId"
                                 placeholder="">
+                            <select name="rs_job" id="rs_job">
+                                <option value="">Pilih</option>
+                                <option value=""></option>
+                            </select>
                         </div>
 
                         <div class="form-group">
