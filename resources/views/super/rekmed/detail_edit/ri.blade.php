@@ -319,7 +319,7 @@ Edit Detail
                                         <input type="hidden" name="_method" value="DELETE">
 
                                         <input type="hidden" name="field" value="ri_file_lengkap">
-                                        <input type="submit" class="btn btn-danger" value="Delete File Lengkap">
+                                        <input type="submit" class="btn btn-danger" value="Delete">
                                     </form>
                                     @endif
                                 </div>
