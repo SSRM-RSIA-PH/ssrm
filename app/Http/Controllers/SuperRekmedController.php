@@ -1012,7 +1012,8 @@ class SuperRekmedController extends Controller
         $log->save();
 
         $rek_id = $db->rek_id;
-        \Storage::deleteDirectory("public/Rekmed/$rek_id/$ctgdb/$id");
+        $dir = str_replace(' ', '_', $db->created_at);
+        \Storage::deleteDirectory("public/Rekmed/$rek_id/$ctgdb/$dir");
 
         $db->delete();
 
