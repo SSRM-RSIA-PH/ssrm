@@ -979,6 +979,14 @@ class SuperRekmedController extends Controller
         return redirect()->route('super.rekmed');
     }
 
+    public function destroy_anak($ra_id)
+    {
+        $anak = RekmedAnak::findOrFail($ra_id);
+        $rek_id = $anak->rek_id;
+        $anak->delete();
+        return redirect()->route('super.rekmed.edit-anak', ['rek_id' => $rek_id]);
+    }
+
     //destroy ctg
     public function destroy_ctg($id, $ctg)
     {

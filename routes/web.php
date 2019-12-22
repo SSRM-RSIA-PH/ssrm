@@ -69,6 +69,9 @@ Route::group(['prefix' => '/supervisor'], function () {
         //delete rekmed
         Route::delete('/{rek_id}/destroy', 'SuperRekmedController@destroy_rekmed')->name('super.rekmed.destroy');
 
+        //delete anak
+        Route::delete('/{ra_id}/destroy_anak', 'SuperRekmedController@destroy_anak')->name('super.rekmed.destroy_anak');
+
         //delete ctg
         Route::delete('/{id}/{ctg}/destroy', 'SuperRekmedController@destroy_ctg')->name('super.rekmed.destroy_ctg');
 
