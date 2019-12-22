@@ -419,56 +419,68 @@ Edit
             </div>
         </form>
     </div>
+    <div class="col-2">
+        <div class="row" style="height: 470px">
+            {{-- delete anak1 --}}
+            @if (isset($anak1))
+            <form onsubmit="return confirm('Delete anak {{$anak1->ra_name}} ?')"
+                action="{{route('super.rekmed.destroy_anak', ['ra_id'=>$anak1->ra_id])}}" method="POST">
+                @csrf
+                <input type="hidden" name="_method" value="DELETE">
+                <input type="submit" value="Delete" class="btn btn-danger btn-sm">
+            </form>
+            @endif
+        </div>
+
+        <div class="row" style="height: 470px">
+            {{-- delete anak2  --}}
+            @if (isset($anak2))
+            <form onsubmit="return confirm('Delete anak {{$anak2->ra_name}}  ?')"
+                action="{{route('super.rekmed.destroy_anak', ['ra_id'=>$anak2->ra_id])}}" method="POST">
+                @csrf
+                <input type="hidden" name="_method" value="DELETE">
+                <input type="submit" value="Delete" class="btn btn-danger btn-sm">
+            </form>
+            @endif
+        </div>
+
+        <div class="row" style="height: 470px">
+            {{-- delete anak3  --}}
+            @if (isset($anak3))
+            <form onsubmit="return confirm('Delete anak {{$anak3->ra_name}}  ?')"
+                action="{{route('super.rekmed.destroy_anak', ['ra_id'=>$anak3->ra_id])}}" method="POST">
+                @csrf
+                <input type="hidden" name="_method" value="DELETE">
+                <input type="submit" value="Delete" class="btn btn-danger btn-sm">
+            </form>
+            @endif
+        </div>
+
+        <div class="row" style="height: 470px">
+            {{-- delete anak4  --}}
+            @if (isset($anak4))
+            <form onsubmit="return confirm('Delete anak {{$anak4->ra_name}}  ?')"
+                action="{{route('super.rekmed.destroy_anak', ['ra_id'=>$anak4->ra_id])}}" method="POST">
+                @csrf
+                <input type="hidden" name="_method" value="DELETE">
+                <input type="submit" value="Delete" class="btn btn-danger btn-sm">
+            </form>
+            @endif
+        </div>
+
+        <div class="row" style="height: 470px">
+            {{-- delete anak5  --}}
+            @if (isset($anak5))
+            <form onsubmit="return confirm('Delete anak {{$anak5->ra_name}}  ?')"
+                action="{{route('super.rekmed.destroy_anak', ['ra_id'=>$anak5->ra_id])}}" method="POST">
+                @csrf
+                <input type="hidden" name="_method" value="DELETE">
+                <input type="submit" value="Delete" class="btn btn-danger btn-sm">
+            </form>
+            @endif
+        </div>
+    </div>
 </div>
 
-{{-- delete anak1 --}}
-@if (isset($anak1))
-<form onsubmit="return confirm('Delete anak {{$anak1->ra_name}} ?')"
-    action="{{route('super.rekmed.destroy_anak', ['ra_id'=>$anak1->ra_id])}}" method="POST">
-    @csrf
-    <input type="hidden" name="_method" value="DELETE">
-    <input type="submit" value="Delete" class="btn btn-danger btn-sm">
-</form>
-@endif
-
-{{-- delete anak2  --}}
-@if (isset($anak2))
-<form onsubmit="return confirm('Delete anak {{$anak2->ra_name}}  ?')"
-    action="{{route('super.rekmed.destroy_anak', ['ra_id'=>$anak2->ra_id])}}" method="POST">
-    @csrf
-    <input type="hidden" name="_method" value="DELETE">
-    <input type="submit" value="Delete" class="btn btn-danger btn-sm">
-</form>
-@endif
-
-{{-- delete anak3  --}}
-@if (isset($anak3))
-<form onsubmit="return confirm('Delete anak {{$anak3->ra_name}}  ?')"
-    action="{{route('super.rekmed.destroy_anak', ['ra_id'=>$anak3->ra_id])}}" method="POST">
-    @csrf
-    <input type="hidden" name="_method" value="DELETE">
-    <input type="submit" value="Delete" class="btn btn-danger btn-sm">
-</form>
-@endif
-
-{{-- delete anak4  --}}
-@if (isset($anak4))
-<form onsubmit="return confirm('Delete anak {{$anak4->ra_name}}  ?')"
-    action="{{route('super.rekmed.destroy_anak', ['ra_id'=>$anak4->ra_id])}}" method="POST">
-    @csrf
-    <input type="hidden" name="_method" value="DELETE">
-    <input type="submit" value="Delete" class="btn btn-danger btn-sm">
-</form>
-@endif
-
-{{-- delete anak5  --}}
-@if (isset($anak5))
-<form onsubmit="return confirm('Delete anak {{$anak5->ra_name}}  ?')"
-    action="{{route('super.rekmed.destroy_anak', ['ra_id'=>$anak5->ra_id])}}" method="POST">
-    @csrf
-    <input type="hidden" name="_method" value="DELETE">
-    <input type="submit" value="Delete" class="btn btn-danger btn-sm">
-</form>
-@endif
 
 @endsection
