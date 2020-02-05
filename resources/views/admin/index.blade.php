@@ -19,7 +19,7 @@
         <div class="col-7">
             <form action="{{route('admin.index')}}">
                 <div class="input-group input-group-lg mb-3">
-                    <input name="search" id="search" type="text" class="form-control" maxlength="6" minlength="6" onkeypress='validate(event)'
+                    <input name="search" id="search" type="text" class="form-control" maxlength="6" minlength="6"
                         style="border-bottom-left-radius: 30px;border-top-left-radius: 30px"
                         placeholder="Search No Rekam Medis" aria-label="Search No Rekam Medis"
                         aria-describedby="button-addon2" value="{{Request::get('search')}}">
@@ -49,7 +49,7 @@
                     <input type="submit" class="list-group-item list-group-item-action"
                         value="Not Found [{{strtoupper(Request::get('search'))}}] Click to Create New">
                 </form>
-                @else
+                @else                
                 <small>Result : </small>
                 @foreach ($find as $f)
                     <a href="{{route('admin.show.rek', ['rek_id'=>$f->rek_id])}}" class="font-weight-bold h3">

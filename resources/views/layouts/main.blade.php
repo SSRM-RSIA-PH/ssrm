@@ -463,33 +463,31 @@
             $('#ba5').attr('hidden', false);
         });
 
-        function validate(evt) {
-            var theEvent = evt || window.event;
-
-            // Handle paste
-            if (theEvent.type === 'paste') {
-                key = event.clipboardData.getData('text/plain');
-            } else {
-                // Handle key press
-                var key = theEvent.keyCode || theEvent.which;
-                key = String.fromCharCode(key);
-            }
-            var regex = /[0-9]|\./;
-            if( !regex.test(key) ) {
-                theEvent.returnValue = false;
-                if(theEvent.preventDefault) theEvent.preventDefault();
-            }
+        // Numeric only control handler
+        jQuery.fn.ForceNumericOnly =
+        function()
+        {
+            return this.each(function()
+            {
+                $(this).keydown(function(e)
+                {
+                    var key = e.charCode || e.keyCode || 0;
+                    // allow backspace, tab, delete, enter, arrows, numbers and keypad numbers ONLY
+                    // home, end, period, and numpad decimal
+                    return (
+                        key == 8 || 
+                        key == 9 ||
+                        key == 13 ||
+                        key == 46 ||
+                        key == 110 ||
+                        key == 190 ||
+                        (key >= 35 && key <= 40) ||
+                        (key >= 48 && key <= 57) ||
+                        (key >= 96 && key <= 105));
+                });
+            });
         };
-
-        function cari() {
-            
-        }
-
-        $('#search').on('keyup', function (e) {
-            if (e.keyCode === 13) {
-                cari();
-            }
-        });
+        $("#search").ForceNumericOnly();
     </script>
 </body>
 
