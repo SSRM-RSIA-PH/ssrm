@@ -22,5 +22,13 @@ class UserSeeder extends Seeder
         //         'password' => \Hash::make('1234567890')
         //     ]);
         // }
+
+        // DB::table('users')->insert([
+        //     'name' => "admin",
+        //     'username' => "admin",
+        //     'email' => "admin@ssrm.com",
+        //     'role' => "ADMIN",
+        //     'password' => Hash::make('1234567890')
+        // ]);
     }
 }

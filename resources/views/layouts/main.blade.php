@@ -47,7 +47,6 @@
                 <ul class="navbar-nav h5">
                     @yield("menu")
                 </ul>
-
             </div>
             <div class="float-right mr-1">
                 @yield('pasien')
@@ -324,8 +323,6 @@
     <script src="{{asset('js/jquery.min.js')}}"></script>
     <script src="{{asset('js/bootstrap.min.js')}}"></script>
     <script src="{{asset('js/bscfi.js')}}"></script>
-    <script src="{{asset('js/sweetalert2.all.min.js')}}"></script>
-    <script src="{{asset('js/sweetalert2.min.js')}}"></script>
 
     <script>
         $(document).ready(function () {
@@ -464,6 +461,34 @@
         $('#ca5').click(function() {
             $('#ba5').toggle();
             $('#ba5').attr('hidden', false);
+        });
+
+        function validate(evt) {
+            var theEvent = evt || window.event;
+
+            // Handle paste
+            if (theEvent.type === 'paste') {
+                key = event.clipboardData.getData('text/plain');
+            } else {
+                // Handle key press
+                var key = theEvent.keyCode || theEvent.which;
+                key = String.fromCharCode(key);
+            }
+            var regex = /[0-9]|\./;
+            if( !regex.test(key) ) {
+                theEvent.returnValue = false;
+                if(theEvent.preventDefault) theEvent.preventDefault();
+            }
+        };
+
+        function cari() {
+            
+        }
+
+        $('#search').on('keyup', function (e) {
+            if (e.keyCode === 13) {
+                cari();
+            }
         });
     </script>
 </body>
