@@ -22,7 +22,10 @@ class AdminController extends Controller
         $search = $request->get('search');
         $find = NULL;
         if ($search) {
-            $find = Rekmed::where('rek_id', 'LIKE', $search)->get();
+            $find = Rekmed::where('rek_id', 'LIKE', $search)->get()->first();
+            if ($find != NULL) {
+                return redirect()->route('admin.show.rek', ['rek_id'=>$find->rek_id]);
+            }
         }
 
         return view('admin.index', ['find' => $find]);

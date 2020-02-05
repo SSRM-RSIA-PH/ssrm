@@ -41,25 +41,14 @@
     <div class="row d-flex justify-content-center">
         <div class="col-8">
             <div class="list-group">
-                @isset($find)
-                @if ($find == '[]')
+                @if ($find == NULL)
                 <small>Result : </small>
                 <form action="{{route('admin.create.rek')}}" class="form-inline font-weight-bold h3">
                     <input type="hidden" name="id" value="{{Request::get('search')}}">
                     <input type="submit" class="list-group-item list-group-item-action"
                         value="Not Found [{{strtoupper(Request::get('search'))}}] Click to Create New">
                 </form>
-                @else
-                <small>Result : </small>
-                @foreach ($find as $f)
-                    <a href="{{route('admin.show.rek', ['rek_id'=>$f->rek_id])}}" class="font-weight-bold h3">
-                        <div class="alert alert-primary">
-                            {{$f->rek_id}} - {{$f->rek_name}}
-                        </div>
-                    </a>
-                @endforeach
                 @endif
-                @endisset
             </div>
         </div>
     </div>
