@@ -25,7 +25,7 @@ Add ID Rekam Medis
                     <div class="form-group">
                         <label for="rek_id">Rekam Medis ID</label>
                         <input type="text" class="form-control {{$errors->first('rek_id') ? 'is-invalid':''}}"
-                            name="rek_id" id="rek_id" aria-describedby="rek_id" placeholder=""
+                            name="rek_id" id="rek_id" aria-describedby="rek_id" placeholder="" maxlength="6" minlength="6"
                             value="{{$errors->first('rek_id') ? old('rek_id'):$id}}" required autofocus>
 
                         @if ($errors->first('rek_id'))

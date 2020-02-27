@@ -488,6 +488,7 @@
             });
         };
         $("#search").ForceNumericOnly();
+        $("#rek_id").ForceNumericOnly();
     </script>
 </body>
 
