@@ -26,10 +26,15 @@ class DokterController extends Controller
         $search = $request->get('search');
         $find = NULL;
         if ($search) {
-            $find = Rekmed::where('rek_id', 'LIKE', $search)->get();
+            $find = Rekmed::where('rek_id', 'LIKE', $search)->get()->first();
+            if ($find != NULL) {
+                return redirect()->route('dokter.show', ['rek_id' => $find->rek_id]);
+            } else {
+                return view('dokter.index', ['find' => $find, 'type' => true]);
+            }
         }
 
-        return view('dokter.index', ['find' => $find]);
+        return view('dokter.index', ['find' => $find, 'type'=>false]);
     }
 
     public function show($rek_id)
