@@ -45,6 +45,7 @@ class AdminPoliController extends Controller
 
         $poli->poli_datetime = $request->get('date');
         $created_at = str_replace(' ', '_', $poli->created_at);
+        $created_at = str_replace(':', '-', $created_at);
 
         if ($request->file('ct')) {
             $dir = "Rekmed/$rek_id/POLI/$created_at/Catatan_Terintegrasi/";
