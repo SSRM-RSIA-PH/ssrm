@@ -36,9 +36,12 @@ class AdminArsipController extends Controller
         $arsip->arsip_datetime = $request->get('date');
         $arsip->save();
 
+        $created_at = str_replace(' ', '_', $arsip->created_at);
+        $created_at = str_replace(':', '-', $created_at);
+
         if ($request->file('arsip')) {
             $dir = "Arsip_Tahunan/$rek_id/";
-            $file = $arsip->rek_id . '_' . str_replace(' ', '_', $arsip->created_at) . "_arsip.zip";
+            $file = $arsip->rek_id . '_' . str_replace(' ', '_', $created_at) . "_arsip.zip";
 
             $request->file('arsip')->storeAs("public/$dir", $file);
             $arsip->arsip_file =  $dir . $file;
