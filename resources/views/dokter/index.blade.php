@@ -17,8 +17,8 @@
     <div class="col-8">
         <form action="{{route('dokter.index')}}">
             <div class="input-group input-group-lg mb-3">
-                <input name="search" type="text" class="form-control"
-                    style="border-bottom-left-radius: 30px;border-top-left-radius: 30px"
+                <input name="search" type="text" class="form-control" id="search"
+                    style="border-bottom-left-radius: 30px;border-top-left-radius: 30px" maxlength="7" minlength="6"
                     placeholder="Search Rekam Medis" aria-label="Search No Rekam Medis" aria-describedby="button-addon2"
                     value="{{Request::get('search')}}">
                 <div class="input-group-append">

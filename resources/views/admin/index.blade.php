@@ -19,7 +19,7 @@
         <div class="col-7">
             <form action="{{route('admin.index')}}">
                 <div class="input-group input-group-lg mb-3">
-                    <input name="search" id="search" type="text" class="form-control" maxlength="6" minlength="6"
+                    <input name="search" id="search" type="text" class="form-control" maxlength="7" minlength="6"
                         style="border-bottom-left-radius: 30px;border-top-left-radius: 30px"
                         placeholder="Search No Rekam Medis" aria-label="Search No Rekam Medis"
                         aria-describedby="button-addon2" value="{{Request::get('search')}}">
