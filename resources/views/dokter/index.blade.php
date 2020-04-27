@@ -22,9 +22,7 @@
                     placeholder="Search Rekam Medis" aria-label="Search No Rekam Medis" aria-describedby="button-addon2"
                     value="{{Request::get('search')}}">
                 <div class="input-group-append">
-                    <input class="btn btn-outline-primary"
-                        style="border-bottom-right-radius: 30px;border-top-right-radius: 30px" type="submit"
-                        id="button-addon2" value="Search">
+                    <input class="btn btn-outline-primary" style="border-bottom-right-radius: 30px;border-top-right-radius: 30px" type="submit" id="button-addon2" value="Search">
                 </div>
             </div>
         </form>
@@ -33,22 +31,14 @@
 <div class="row d-flex justify-content-center">
     <div class="col-8">
         <div class="list-group">
-            @isset($find)
+            @if ($find == NULL)
+            @if($type)
             <small>Result : </small>
-            @if ($find == '[]')
             <div class="alert alert-danger font-weight-bold h3">
                 Data tidak ditemukan
             </div>
-            @else
-            @foreach ($find as $f)
-            <a href="{{route('dokter.show', ['rek_id'=>$f->rek_id])}}" class="font-weight-bold h3">
-                <div class="alert alert-primary">
-                    {{$f->rek_id}} - {{$f->rek_name}}
-                </div>
-            </a>
-            @endforeach
             @endif
-            @endisset
+            @endif
         </div>
     </div>
 </div>

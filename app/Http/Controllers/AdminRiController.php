@@ -44,6 +44,7 @@ class AdminRiController extends Controller
 
         $ri->ri_datetime = $request->get('date');
         $created_at = str_replace(' ', '_', $ri->created_at);
+        $created_at = str_replace(':', '-', $created_at);
 
         if ($request->file('ct')) {
             $dir = "Rekmed/$rek_id/Rawat_Inap/$created_at/Catatan_Perkembangan_Terintegrasi/";

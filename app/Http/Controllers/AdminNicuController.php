@@ -44,6 +44,7 @@ class AdminNicuController extends Controller
 
         $nicu->nicu_datetime = $request->get('date');
         $created_at = str_replace(' ', '_', $nicu->created_at);
+        $created_at = str_replace(':', '-', $created_at);
 
         if ($request->file('ct')) {
             $dir = "Rekmed/$rek_id/NICU/$created_at/Catatan_Perkembangan_Terintegrasi/";

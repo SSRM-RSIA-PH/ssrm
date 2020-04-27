@@ -25,7 +25,7 @@ class AdminArsipController extends Controller
     {
         \Validator::make($request->all(), [
             // 'date' => 'date_format:Y-m-d H:i',
-            'arsip' => 'required|mimetypes:application/zip'
+            'arsip' => 'required|mimetypes:application/pdf'
         ])->validate();
 
         $rek_id = $request->get('rek_id');
@@ -36,9 +36,12 @@ class AdminArsipController extends Controller
         $arsip->arsip_datetime = $request->get('date');
         $arsip->save();
 
+        $created_at = str_replace(' ', '_', $arsip->created_at);
+        $created_at = str_replace(':', '-', $created_at);
+
         if ($request->file('arsip')) {
             $dir = "Arsip_Tahunan/$rek_id/";
-            $file = $arsip->rek_id . '_' . str_replace(' ', '_', $arsip->created_at) . "_arsip.zip";
+            $file = $arsip->rek_id . '_' . str_replace(' ', '_', $created_at) . "_arsip.pdf";
 
             $request->file('arsip')->storeAs("public/$dir", $file);
             $arsip->arsip_file =  $dir . $file;

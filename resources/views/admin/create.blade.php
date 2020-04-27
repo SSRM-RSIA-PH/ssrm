@@ -99,7 +99,7 @@ Add ID Rekam Medis
                     <div class="form-group">
                         <label for="rek_hp">No HP</label>
                         <input type="text" class="form-control" name="rek_hp" id="rek_hp" aria-describedby=""
-                            placeholder="" value="{{old('rek_hp')}}">
+                            placeholder="" value="{{old('rek_hp')}}" maxlength="15">
                     </div>
 
                     <div class="form-group">
@@ -152,7 +152,7 @@ Add ID Rekam Medis
                         <div class="form-group">
                             <label for="rs_hp">No HP Suami</label>
                             <input type="text" class="form-control" name="rs_hp" id="rs_hp" aria-describedby=""
-                                placeholder="">
+                                placeholder="" maxlength="15">
                         </div>
 
                         <div class="form-group">
@@ -172,7 +172,7 @@ Add ID Rekam Medis
                         <div class="form-group">
                             <label for="rp_ibu_hp">No Telp Ibu</label>
                             <input type="text" class="form-control" name="rp_ibu_hp" id="rp_ibu_hp"
-                                aria-describedby="rp_ibu_hp">
+                                aria-describedby="rp_ibu_hp" maxlength="15">
                         </div>
 
                         <div class="form-group">
@@ -184,7 +184,7 @@ Add ID Rekam Medis
                         <div class="form-group">
                             <label for="rp_ayah_hp">No Telp Ayah</label>
                             <input type="text" class="form-control" name="rp_ayah_hp" id="rp_ayah_hp"
-                                aria-describedby="rp_ayah_hp">
+                                aria-describedby="rp_ayah_hp" maxlength="15">
                         </div>
                     </div>
 

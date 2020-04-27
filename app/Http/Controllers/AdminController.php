@@ -24,11 +24,13 @@ class AdminController extends Controller
         if ($search) {
             $find = Rekmed::where('rek_id', 'LIKE', $search)->get()->first();
             if ($find != NULL) {
-                return redirect()->route('admin.show.rek', ['rek_id'=>$find->rek_id]);
+                return redirect()->route('admin.show.rek', ['rek_id' => $find->rek_id]);
+            } else {
+                return view('admin.index', ['find' => $find, 'type' => true]);
             }
         }
 
-        return view('admin.index', ['find' => $find]);
+        return view('admin.index', ['find' => $find, 'type' => false]);
     }
 
     public function create(Request $request)
@@ -79,7 +81,7 @@ class AdminController extends Controller
 
         switch ($status) {
             case 'ibu':
-                return redirect()->route('admin.create_anak.rek', ['rek_id'=>$rek_id]);
+                return redirect()->route('admin.create_anak.rek', ['rek_id' => $rek_id]);
                 break;
 
             default:

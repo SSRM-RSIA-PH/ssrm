@@ -103,7 +103,12 @@ class SuperUserController extends Controller
     public function destroy($id)
     {
         $user = User::findOrFail($id);
-        $user->delete();
-        return redirect()->route('user.index')->with('status', 'User successfully deleted');
+
+        if ($user->name != 'root') {
+            $user->delete();
+            return redirect()->route('user.index')->with('status', 'User successfully deleted');
+        }
+
+        return redirect()->route('user.index')->with('status', "Sorry can't delete root");
     }
 }

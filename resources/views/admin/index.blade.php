@@ -38,16 +38,19 @@
             </form>
         </div>
     </div>
+    
     <div class="row d-flex justify-content-center">
         <div class="col-8">
             <div class="list-group">
                 @if ($find == NULL)
+                @if($type)
                 <small>Result : </small>
                 <form action="{{route('admin.create.rek')}}" class="form-inline font-weight-bold h3">
                     <input type="hidden" name="id" value="{{Request::get('search')}}">
                     <input type="submit" class="list-group-item list-group-item-action"
                         value="Not Found [{{strtoupper(Request::get('search'))}}] Click to Create New">
                 </form>
+               @endif
                 @endif
             </div>
         </div>

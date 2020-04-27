@@ -61,11 +61,11 @@
                                         <label class="custom-file-label" id="cfl1" for="arsip">Choose file</label>
                                         <input type="file"
                                             class="custom-file-input {{$errors->first('arsip') ? 'is-invalid':''}}"
-                                            value="{{old('arsip')}}" id="arsip" name="arsip" accept="application/zip">
+                                            value="{{old('arsip')}}" id="arsip" name="arsip" accept="application/pdf">
 
                                         @if ($errors->first('arsip'))
                                         <div class="invalid-feedback">
-                                            File harus berformat zip
+                                            File harus berformat pdf
                                         </div>
                                         @endif
                                     </div>

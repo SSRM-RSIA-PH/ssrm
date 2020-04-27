@@ -45,6 +45,7 @@ class AdminIgdController extends Controller
 
         $igd->igd_datetime = $request->get('date');
         $created_at = str_replace(' ', '_', $igd->created_at);
+        $created_at = str_replace(':', '-', $created_at);
 
         if ($request->file('cp')) {
             $dir = "Rekmed/$rek_id/IGD/$created_at/Catatan_Perkembangan/";
