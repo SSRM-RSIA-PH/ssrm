@@ -43,7 +43,7 @@ class AdminController extends Controller
     public function store(Request $request)
     {
         \Validator::make($request->all(), [
-            'rek_id' => 'required|min:6|max:6|unique:rekmed',
+            'rek_id' => 'required|min:6|max:7|unique:rekmed',
             'rek_nik' => 'unique:rekmed',
             'rek_status' => 'required'
         ])->validate();
