@@ -489,6 +489,7 @@
         };
         $("#search").ForceNumericOnly();
         $("#rek_id").ForceNumericOnly();
+        $('#rek_nik').ForceNumericOnly();
     </script>
 </body>
 
