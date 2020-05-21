@@ -20,12 +20,28 @@ class SuperLogController extends Controller
         });
     }
 
-    public function index()
+    public function index(Request $request)
     {
-        $logs = Log::orderBy('created_at', 'DESC')->paginate(10);
+        $user = $request->get('user');
+        $d_from = $request->get('d_from');
+        $d_to = $request->get('d_to');
+
+        if ($user) {
+            if ($d_from && $d_to) {
+                $logs = Log::whereBetween('created_at', [$d_from, $d_to])
+                ->where('log_user', 'LIKE', "%$user%")
+                ->orderBy('created_at', 'DESC')
+                ->paginate(10);
+            } else {
+                $logs = Log::where('log_user', 'LIKE', "%$user%")->orderBy('created_at', 'DESC')->paginate(10);
+            }
+        } else {
+            $logs = Log::orderBy('created_at', 'DESC')->paginate(10);
+        }
+
         return view('super.log', ['logs' => $logs]);
     }
-    
+
 
     //detail file
     public function detail_igd($rek_id, $id)
