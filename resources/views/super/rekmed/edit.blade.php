@@ -36,13 +36,13 @@ Edit
                     <div class="form-group">
                         <label for="rek_name">Nama Pasien</label>
                         <input type="text" class="form-control" name="rek_name" id="rek_name"
-                            aria-describedby="rek_name" required autofocus value="{{$rekmed->rek_name}}" required>
+                            aria-describedby="rek_name" required autofocus value="{{$rekmed->rek_name}}">
                     </div>
 
                     <div class="form-group">
                         <label for="rek_nik">NIK</label>
                         <input type="text" class="form-control" name="rek_nik" id="rek_nik" aria-describedby=""
-                            placeholder="" value="{{$rekmed->rek_nik}}" required>
+                            placeholder="" value="{{$rekmed->rek_nik}}">
 
                         @if ($errors->first('rek_nik'))
                         <div class="small" style="color:red; padding-top: 5px">
@@ -76,8 +76,17 @@ Edit
 
                     <div class="form-group">
                         <label for="rek_agama">Agama</label>
-                        <input type="text" class="form-control" name="rek_agama" id="rek_agama" aria-describedby=""
-                            placeholder="" value="{{$rekmed->rek_agama}}" required>
+                        <select class="form-control" name="rek_agama" id="rek_agama" required>
+                            <option {{$rekmed->rek_agama == "Islam" ? "selected" : ""}} value="Islam">Islam</option>
+                            <option {{$rekmed->rek_agama == "Kristen" ? "selected" : ""}} value="Kristen">Kristen
+                            </option>
+                            <option {{$rekmed->rek_agama == "Katolik" ? "selected" : ""}} value="Katolik">Katolik
+                            </option>
+                            <option {{$rekmed->rek_agama == "Hindu" ? "selected" : ""}} value="Hindu">Hindu</option>
+                            <option {{$rekmed->rek_agama == "Buddha" ? "selected" : ""}} value="Buddha">Buddha</option>
+                            <option {{$rekmed->rek_agama == "Konghucu" ? "selected" : ""}} value="Konghucu">Konghucu
+                            </option>
+                        </select>
                     </div>
 
                     <div class="form-group">

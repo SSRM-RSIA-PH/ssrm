@@ -25,8 +25,8 @@ Add ID Rekam Medis
                     <div class="form-group">
                         <label for="rek_id">Rekam Medis ID</label>
                         <input type="text" class="form-control {{$errors->first('rek_id') ? 'is-invalid':''}}"
-                            name="rek_id" id="rek_id" aria-describedby="rek_id" placeholder="" maxlength="8" minlength="6"
-                            value="{{$errors->first('rek_id') ? old('rek_id'):$id}}" required autofocus>
+                            name="rek_id" id="rek_id" aria-describedby="rek_id" placeholder="" maxlength="8"
+                            minlength="6" value="{{$errors->first('rek_id') ? old('rek_id'):$id}}" required autofocus>
 
                         @if ($errors->first('rek_id'))
                         <div class="error-message">
@@ -58,10 +58,10 @@ Add ID Rekam Medis
                         <label for="rek_darah">Golongan Darah</label>
                         <select class="form-control" name="rek_darah" id="rek_darah">
                             <option value="">Pilih</option>
-                            <option value="A">A</option>
-                            <option value="B">B</option>
-                            <option value="AB">AB</option>
-                            <option value="O">O</option>
+                            <option {{old("rek_darah") == "A" ? "selected" : ""}} value="A">A</option>
+                            <option {{old("rek_darah") == "B" ? "selected" : ""}} value="B">B</option>
+                            <option {{old("rek_darah") == "AB" ? "selected" : ""}} value="AB">AB</option>
+                            <option {{old("rek_darah") == "O" ? "selected" : ""}} value="O">O</option>
                         </select>
                     </div>
 
@@ -74,19 +74,20 @@ Add ID Rekam Medis
                     <div class="form-group">
                         <label for="rek_tanggal_lahir">Tanggal Lahir</label>
                         <input type="date" class="form-control" name="rek_tanggal_lahir" id="rek_tanggal_lahir"
-                            aria-describedby="" placeholder="">
+                            aria-describedby="" placeholder="" value="{{old('rek_tanggal_lahir')}}">
                     </div>
 
                     <div class="form-group">
                         <label for="rek_agama">Agama</label>
                         <select class="form-control" name="rek_agama" id="rek_agama" required>
                             <option value="">Pilih</option>
-                            <option value="Islam">Islam</option>
-                            <option value="Kristen">Kristen</option>
-                            <option value="Katolik">Katolik</option>
-                            <option value="Hindu">Hindu</option>
-                            <option value="Buddha">Buddha</option>
-                            <option value="Konghucu">Konghucu</option>
+                            <option {{old("rek_agama") == "Islam" ? "selected" : ""}} value="Islam">Islam</option>
+                            <option {{old("rek_agama") == "Kristen" ? "selected" : ""}} value="Kristen">Kristen</option>
+                            <option {{old("rek_agama") == "Katolik" ? "selected" : ""}} value="Katolik">Katolik</option>
+                            <option {{old("rek_agama") == "Hindu" ? "selected" : ""}} value="Hindu">Hindu</option>
+                            <option {{old("rek_agama") == "Buddha" ? "selected" : ""}} value="Buddha">Buddha</option>
+                            <option {{old("rek_agama") == "Konghucu" ? "selected" : ""}} value="Konghucu">Konghucu
+                            </option>
                         </select>
                     </div>
 
@@ -135,7 +136,7 @@ Add ID Rekam Medis
                         <div class="form-group">
                             <label for="rs_job">Pekerjaan Suami</label>
                             <input type="text" class="form-control" name="rs_job" id="rs_job" aria-describedby="helpId"
-                                placeholder="">
+                                placeholder="" >
                         </div>
 
                         <div class="form-group">
@@ -152,13 +153,13 @@ Add ID Rekam Medis
                         <div class="form-group">
                             <label for="rs_hp">No HP Suami</label>
                             <input type="text" class="form-control" name="rs_hp" id="rs_hp" aria-describedby=""
-                                placeholder="" maxlength="15">
+                                placeholder="" maxlength="15" >
                         </div>
 
                         <div class="form-group">
                             <label for="rs_alamat">Alamat Suami</label>
                             <input type="text" class="form-control" name="rs_alamat" id="rs_alamat" aria-describedby=""
-                                placeholder="">
+                                placeholder="" >
                         </div>
                     </div>
 
@@ -166,7 +167,8 @@ Add ID Rekam Medis
                         {{-- profile orangtua --}}
                         <div class="form-group">
                             <label for="rp_ibu">Nama Ibu</label>
-                            <input type="text" class="form-control" name="rp_ibu" id="rp_ibu" aria-describedby="rp_ibu">
+                            <input type="text" class="form-control" name="rp_ibu" id="rp_ibu" aria-describedby="rp_ibu"
+                                >
                         </div>
 
                         <div class="form-group">

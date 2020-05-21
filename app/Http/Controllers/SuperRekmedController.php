@@ -146,10 +146,12 @@ class SuperRekmedController extends Controller
     {
         $rekmed = Rekmed::findOrFail($rek_id);
 
-        if ($request->get('rek_nik') != $rekmed->rek_nik) {
-            \Validator::make($request->all(), [
-                'rek_nik' => 'unique:rekmed'
-            ])->validate();
+        if (!empty($request->get('rek_nik'))) {
+            if ($request->get('rek_nik') != $rekmed->rek_nik) {
+                \Validator::make($request->all(), [
+                    'rek_nik' => 'unique:rekmed'
+                ])->validate();
+            }
         }
 
         $rekmed->u_id = $request->user()->id;

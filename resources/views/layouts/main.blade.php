@@ -431,10 +431,28 @@
         $('#ribu').click(function() {
             $('#suami').show();
             $('#ortu').hide();
+            document.getElementById("rs_name").value = null;
+            document.getElementById("rs_job").value = null;
+            document.getElementById("rs_darah").value = null;
+            document.getElementById("rs_hp").value = null;
+            document.getElementById("rs_alamat").value = null;
+            document.getElementById("rp_ibu").value = null;
+            document.getElementById("rp_ibu_hp").value = null;
+            document.getElementById("rp_ayah").value = null;
+            document.getElementById("rp_ayah_hp").value = null;
         });
         $('#ranak').click(function() {
             $('#suami').hide();
             $('#ortu').show();
+            document.getElementById("rs_name").value = null;
+            document.getElementById("rs_job").value = null;
+            document.getElementById("rs_darah").value = null;
+            document.getElementById("rs_hp").value = null;
+            document.getElementById("rs_alamat").value = null;
+            document.getElementById("rp_ibu").value = null;
+            document.getElementById("rp_ibu_hp").value = null;
+            document.getElementById("rp_ayah").value = null;
+            document.getElementById("rp_ayah_hp").value = null;
         });
 
         // anak pasien
@@ -490,6 +508,9 @@
         $("#search").ForceNumericOnly();
         $("#rek_id").ForceNumericOnly();
         $('#rek_nik').ForceNumericOnly();
+        $('#rs_hp').ForceNumericOnly();
+        $('#rp_ibu_hp').ForceNumericOnly();
+        $('#rp_ayah_hp').ForceNumericOnly();
     </script>
 </body>
 
