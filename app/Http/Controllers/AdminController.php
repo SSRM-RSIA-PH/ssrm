@@ -44,9 +44,14 @@ class AdminController extends Controller
     {
         \Validator::make($request->all(), [
             'rek_id' => 'required|min:6|max:8|unique:rekmed',
-            'rek_nik' => 'unique:rekmed',
             'rek_status' => 'required'
         ])->validate();
+
+        if (!empty($request->get('rek_nik'))) {
+            \Validator::make($request->all(), [
+            'rek_nik' => 'unique:rekmed',
+            ])->validate();
+        }
 
         $rek_id = strtoupper($request->get('rek_id'));
         $status = $request->get('rek_status');

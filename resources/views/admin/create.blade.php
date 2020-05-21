@@ -57,7 +57,7 @@ Add ID Rekam Medis
                     <div class="form-group">
                         <label for="rek_darah">Golongan Darah</label>
                         <select class="form-control" name="rek_darah" id="rek_darah">
-                            <option>Pilih</option>
+                            <option value="">Pilih</option>
                             <option value="A">A</option>
                             <option value="B">B</option>
                             <option value="AB">AB</option>
@@ -80,7 +80,7 @@ Add ID Rekam Medis
                     <div class="form-group">
                         <label for="rek_agama">Agama</label>
                         <select class="form-control" name="rek_agama" id="rek_agama" required>
-                            <option>Pilih</option>
+                            <option value="">Pilih</option>
                             <option value="Islam">Islam</option>
                             <option value="Kristen">Kristen</option>
                             <option value="Katolik">Katolik</option>
