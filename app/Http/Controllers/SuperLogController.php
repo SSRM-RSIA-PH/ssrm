@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\User;
 use App\Log;
 use App\Igd;
 use App\Nicu;
@@ -22,18 +23,18 @@ class SuperLogController extends Controller
 
     public function index(Request $request)
     {
-        $user = $request->get('user');
+        $userid = $request->get('userid');
         $d_from = $request->get('d_from');
         $d_to = $request->get('d_to');
 
-        if ($user) {
+        if ($userid) {
             if ($d_from && $d_to) {
                 $logs = Log::whereBetween('created_at', [$d_from, $d_to])
-                ->where('log_user', 'LIKE', "%$user%")
+                ->where('log_user', "$userid")
                 ->orderBy('created_at', 'DESC')
                 ->paginate(10);
             } else {
-                $logs = Log::where('log_user', 'LIKE', "%$user%")->orderBy('created_at', 'DESC')->paginate(10);
+                $logs = Log::where('log_user', "$userid")->orderBy('created_at', 'DESC')->paginate(10);
             }
         } else {
             $logs = Log::orderBy('created_at', 'DESC')->paginate(10);

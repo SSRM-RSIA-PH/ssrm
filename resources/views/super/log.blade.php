@@ -13,7 +13,7 @@ Log
 <form class="mb-3" action="{{ route('super.log') }}" method="get">
     <div class="row">
         <div class="col-3">
-            <label for="">User</label>
+            <label for="">ID User</label>
         </div>
         <div class="col-2">
             <label for="">Dari</label>
@@ -26,7 +26,7 @@ Log
     </div>
     <div class="row">
         <div class="col-3">
-            <input value="{{Request::get('user')}}" type="text" name="user" class="form-control d">
+            <input value="{{Request::get('userid')}}" type="text" name="userid" class="form-control d">
         </div>
         <div class="col-2">
             <input value="{{Request::get('d_from')}}" type="date" name="d_from" class="form-control d">
@@ -36,10 +36,10 @@ Log
         </div>
         <div class="col-3">
             <div class="row">
-                    <button class="btn btn-primary btn-md" type="submit">Filter</button>
-                    @if (Request::get('user'))
-                    <a href="{{ route('super.log') }}" class="btn btn-danger btn-md ml-2">Clear</a>
-                    @endif
+                <button class="btn btn-primary btn-md" type="submit">Filter</button>
+                @if (Request::get('userid'))
+                <a href="{{ route('super.log') }}" class="btn btn-danger btn-md ml-2">Clear</a>
+                @endif
             </div>
         </div>
 
@@ -48,6 +48,7 @@ Log
 <table class="table table-bordered">
     <tr>
         <th>Tanggal</th>
+        <th>ID User</th>
         <th>User</th>
         <th>Note</th>
         <th>Rekam Medis ID</th>
@@ -58,6 +59,7 @@ Log
     <tr>
         <td>{{$log->created_at}}</td>
         <td>{{$log->log_user}}</td>
+        <td>{{$log->user()}}</td>
         <td>{{$log->log_do}}</td>
         <td>{{$log->rek_id}}</td>
         <td>{{strtoupper($log->ctg)}}</td>
