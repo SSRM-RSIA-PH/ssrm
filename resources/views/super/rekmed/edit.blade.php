@@ -76,7 +76,8 @@ Edit
 
                     <div class="form-group">
                         <label for="rek_agama">Agama</label>
-                        <select class="form-control" name="rek_agama" id="rek_agama" required>
+                        <select class="form-control" name="rek_agama" id="rek_agama">
+                            <option value="">Pilih</option>
                             <option {{$rekmed->rek_agama == "Islam" ? "selected" : ""}} value="Islam">Islam</option>
                             <option {{$rekmed->rek_agama == "Kristen" ? "selected" : ""}} value="Kristen">Kristen
                             </option>
